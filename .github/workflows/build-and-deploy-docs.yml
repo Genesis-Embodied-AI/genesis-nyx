@@ -1,0 +1,268 @@
+name: Build and deploy docs
+
+on:
+  # Fired by the internal source repo when a new gs-nyx release is published.
+  # Expected client_payload: { "version": "0.1.0" }
+  repository_dispatch:
+    types: [nyx-released]
+
+  # Manual trigger for ad-hoc rebuilds (e.g. theme changes, backfilling a
+  # missed version, rebuilding every version after a template change).
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "gs-nyx version to build (e.g. 0.1.0), 'latest' to rebuild only latest/, or 'all' to rebuild every version present on gh-pages."
+        required: true
+        default: "latest"
+
+  # Doc-source changes on main: rebuild latest/ only, using the currently
+  # published gs-nyx version.
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "examples/**"
+      - ".github/workflows/build-and-deploy-docs.yml"
+
+concurrency:
+  group: docs-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  id-token: write   # needed for JFrog OIDC
+
+env:
+  SITE_BASE_URL: https://genesis-embodied-ai.github.io/nyx-for-genesis
+  # TEMP HACK: pinned to 3.10 because the Linux gs-nyx wheel vendored under
+  # wheels/ is tagged cp310-cp310 (not abi3). Bump back to 3.11 once an
+  # abi3 / cp311 Linux wheel is available.
+  PYTHON_VERSION: "3.10"
+
+jobs:
+  build-and-deploy:
+    # GPU runner: the docs build executes every examples/NN_*.py during
+    # sphinx-build (via the nyx_example_screenshots extension) so the
+    # user-guide example pages embed real renders. Set
+    # NYX_SKIP_EXAMPLE_SCREENSHOTS=1 to fall back to whatever PNGs already
+    # exist on disk (useful for theme-only rebuilds). Matches the runner the
+    # apollo-genesis-plugin "Tests" workflow uses — known-good for Nyx +
+    # Genesis + CUDA + Vulkan at runtime.
+    runs-on: gpu-t4-4-core
+    steps:
+      # gpu-t4-4-core ships without git-lfs; install it before the checkout
+      # so `lfs: true` below can resolve the vendored wheel pointers.
+      - name: Install git-lfs
+        run: sudo apt-get update && sudo apt-get install -y git-lfs
+
+      - name: Checkout docs source (main)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: src
+          # TEMP HACK: pull LFS so the vendored gs-nyx / gs-nyx-plugin wheels
+          # under wheels/ resolve to real files instead of pointer stubs.
+          # Drop once the wheels are no longer committed to the repo.
+          lfs: true
+
+      - name: Checkout gh-pages into worktree
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: public
+          fetch-depth: 0
+        continue-on-error: true   # first run: gh-pages doesn't exist yet
+
+      - name: Bootstrap empty gh-pages worktree if needed
+        run: |
+          set -euo pipefail
+          # The checkout step above runs with continue-on-error and is
+          # allowed to fail when the gh-pages branch doesn't exist yet. But
+          # actions/checkout does `git init` + `git fetch` *before* the ref
+          # resolution that fails, so it can leave public/.git initialised
+          # without a gh-pages branch — checking only for the directory
+          # would silently inherit that broken state and the later commit
+          # would land on `main` instead of `gh-pages`.
+          if [ -d public/.git ] && ! (cd public && git rev-parse --verify --quiet refs/heads/gh-pages > /dev/null); then
+            rm -rf public
+          fi
+          if [ ! -d public/.git ]; then
+            mkdir -p public
+            cd public
+            git init -b gh-pages
+            git remote add origin "https://github.com/${{ github.repository }}.git"
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      # Mirrors the apollo-genesis-plugin "Tests" workflow: Genesis touches
+      # OpenGL during scene setup even when the actual render goes through
+      # the Nyx Vulkan path, so the Mesa userspace libs need to be present.
+      - name: Install Mesa OpenGL driver
+        run: |
+          sudo add-apt-repository -y ppa:kisak/kisak-mesa
+          sudo apt-get update
+          sudo apt-get install -y libglu1-mesa libegl-mesa0 libgl1-mesa-dev
+
+      - name: Install docs requirements
+        working-directory: src
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r docs/requirements.txt
+          # PyTorch with a matching CUDA build — genesis-world deliberately
+          # doesn't declare torch as a pip dep so callers can pick the right
+          # CUDA variant. Without this, `import genesis` fails with
+          # "'torch' module not available" when the example scripts run.
+          # cu128 matches what the apollo-genesis-plugin tests workflow uses.
+          python -m pip install torch --extra-index-url https://download.pytorch.org/whl/cu128
+          # TEMP HACK: install gs-nyx + gs-nyx-plugin from the wheels vendored
+          # under wheels/ until they are published to a public index. Deps
+          # (genesis-world, pydantic, numpy, ...) come in transitively from
+          # the plugin wheel. Pillow is added separately because the
+          # nyx_example_screenshots extension shells out to run_example.py,
+          # which imports PIL to write the captured render PNGs. Revert this
+          # block + restore the JFrog OIDC login step below once the wheels
+          # are public.
+          python -m pip install wheels/*.whl
+          # Pillow: save hook in docs/scripts/run_example.py.
+          # av (PyAV): Genesis imports it at startup for video-encoding utilities
+          # and raises GenesisException if missing, even when the example
+          # scripts never record video.
+          python -m pip install Pillow av
+
+      - name: Resolve target versions
+        id: resolve
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_VERSION: ${{ github.event.client_payload.version }}
+          MANUAL_VERSION: ${{ github.event.inputs.version }}
+        run: |
+          set -euo pipefail
+          case "$EVENT_NAME" in
+            repository_dispatch)
+              echo "targets=${DISPATCH_VERSION#v}" >> "$GITHUB_OUTPUT"
+              echo "mode=release"                  >> "$GITHUB_OUTPUT"
+              ;;
+            workflow_dispatch)
+              if [ "$MANUAL_VERSION" = "all" ]; then
+                # Discover every v*/ dir currently in gh-pages.
+                cd public
+                versions=$(ls -d v*/ 2>/dev/null | sed 's|/$||;s|^v||' | tr '\n' ' ')
+                cd ..
+                echo "targets=$versions" >> "$GITHUB_OUTPUT"
+                echo "mode=backfill"     >> "$GITHUB_OUTPUT"
+              elif [ "$MANUAL_VERSION" = "latest" ]; then
+                echo "targets=latest" >> "$GITHUB_OUTPUT"
+                echo "mode=latest"    >> "$GITHUB_OUTPUT"
+              else
+                echo "targets=${MANUAL_VERSION#v}" >> "$GITHUB_OUTPUT"
+                echo "mode=release"                >> "$GITHUB_OUTPUT"
+              fi
+              ;;
+            push)
+              echo "targets=latest" >> "$GITHUB_OUTPUT"
+              echo "mode=latest"    >> "$GITHUB_OUTPUT"
+              ;;
+          esac
+
+      - name: Build target versions
+        working-directory: src
+        env:
+          TARGETS: ${{ steps.resolve.outputs.targets }}
+          MODE: ${{ steps.resolve.outputs.mode }}
+        run: |
+          set -euo pipefail
+          # TEMP HACK: gs-nyx + gs-nyx-plugin were already installed from
+          # wheels/ in the previous step. The version comes from whichever
+          # wheel is vendored. --no-install on build_version.py skips its
+          # pip-install path (which would otherwise hit the public PyPI and
+          # fail). Specific-version / backfill builds are not supported until
+          # the wheels are published.
+          installed=$(python -c "from importlib import metadata; print(metadata.version('gs-nyx'))")
+          for v in $TARGETS; do
+            if [ "$v" = "latest" ]; then
+              python docs/scripts/build_version.py \
+                --version "$installed" \
+                --no-install \
+                --output-dir "../public/latest" \
+                --switcher-url "${{ env.SITE_BASE_URL }}/_static/version_switcher.json"
+            else
+              if [ "$v" != "$installed" ]; then
+                echo "ERROR: requested version $v but only $installed is vendored in wheels/." >&2
+                echo "       Specific-version builds are disabled until gs-nyx is published." >&2
+                exit 1
+              fi
+              python docs/scripts/build_version.py \
+                --version "$v" \
+                --no-install \
+                --output-dir "../public/v$v" \
+                --switcher-url "${{ env.SITE_BASE_URL }}/_static/version_switcher.json"
+            fi
+          done
+
+      - name: Refresh latest/ and stable/ aliases on a release build
+        if: steps.resolve.outputs.mode == 'release'
+        env:
+          TARGETS: ${{ steps.resolve.outputs.targets }}
+        run: |
+          set -euo pipefail
+          cd public
+          # Pick the highest version among targets as the new "latest".
+          newest=$(echo $TARGETS | tr ' ' '\n' | sort -V | tail -n1)
+          rm -rf latest
+          cp -r "v$newest" latest
+          # stable/ tracks the newest non-prerelease.
+          if ! echo "$newest" | grep -qE '(a|b|rc|dev|pre)'; then
+            rm -rf stable
+            cp -r "v$newest" stable
+          fi
+
+      - name: Regenerate version_switcher.json
+        run: |
+          python src/docs/scripts/update_switcher.py \
+            --site-root public \
+            --base-url "${{ env.SITE_BASE_URL }}"
+
+      - name: Write root index.html (redirect to /latest/)
+        run: |
+          cat > public/index.html <<'EOF'
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8">
+              <meta http-equiv="refresh" content="0; url=./latest/">
+              <link rel="canonical" href="./latest/">
+              <title>Nyx for Genesis</title>
+            </head>
+            <body>
+              Redirecting to <a href="./latest/">the latest documentation</a>.
+            </body>
+          </html>
+          EOF
+
+      - name: Disable Jekyll on gh-pages
+        run: touch public/.nojekyll
+
+      - name: Commit and push gh-pages
+        working-directory: public
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to deploy."
+            exit 0
+          fi
+          summary="${{ steps.resolve.outputs.mode }}: ${{ steps.resolve.outputs.targets }}"
+          git commit -m "Deploy docs ($summary)"
+          # Use the token from GITHUB_TOKEN for the push URL. ``HEAD:gh-pages``
+          # so the push targets the right remote branch even if the local
+          # branch happens to be named differently (e.g. ``main`` after a
+          # first-run bootstrap path that didn't go through ``init -b``).
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" HEAD:gh-pages

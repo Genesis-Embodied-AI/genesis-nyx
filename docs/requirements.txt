@@ -1,0 +1,18 @@
+# Sphinx + theme
+sphinx>=7.3,<8
+pydata-sphinx-theme>=0.17,<0.18
+
+# MyST (Markdown source)
+myst-parser>=2.0,<5.0
+
+# Extensions used by conf.py
+sphinx-autodoc-typehints>=2.0
+sphinx-copybutton>=0.5
+sphinx-design>=0.6
+sphinx-togglebutton>=0.3
+sphinx-subfigure>=0.2
+sphinxcontrib-video>=0.2
+
+# Build helpers used locally
+sphinx-autobuild>=2024.4
+packaging>=24.0

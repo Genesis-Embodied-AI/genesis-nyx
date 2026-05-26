@@ -1,0 +1,25 @@
+# Sphinx build artefacts
+docs/build/
+docs/source/api_reference/generated/
+docs/source/_static/generated/
+
+# Per-script output produced when running examples locally
+examples/out/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local-only docs preview output
+public/
