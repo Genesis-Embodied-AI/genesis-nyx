@@ -1,0 +1,7 @@
+
+Constructor
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. nb-constructor:: gs_nyx.nyx_py_sdk.MaterialAsset

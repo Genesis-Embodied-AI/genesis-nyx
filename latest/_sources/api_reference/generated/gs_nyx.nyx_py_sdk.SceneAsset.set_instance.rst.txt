@@ -1,0 +1,7 @@
+
+set\_instance
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: SceneAsset.set_instance

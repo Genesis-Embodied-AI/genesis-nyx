@@ -1,0 +1,7 @@
+
+multiplier
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: EnvironmentMapAsset.multiplier

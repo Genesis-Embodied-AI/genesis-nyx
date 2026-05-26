@@ -1,0 +1,7 @@
+
+FastPathTracer
+==============
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoattribute:: ERenderMode.FastPathTracer

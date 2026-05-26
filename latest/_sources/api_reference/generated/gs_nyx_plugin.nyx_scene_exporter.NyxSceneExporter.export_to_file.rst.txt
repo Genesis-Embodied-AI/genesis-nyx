@@ -1,0 +1,7 @@
+
+export\_to\_file
+================
+
+.. currentmodule:: gs_nyx_plugin.nyx_scene_exporter
+
+.. automethod:: NyxSceneExporter.export_to_file

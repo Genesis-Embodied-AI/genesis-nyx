@@ -1,0 +1,7 @@
+
+update\_ground\_truth\_only
+===========================
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_options
+
+.. autoattribute:: NyxCameraOptions.update_ground_truth_only

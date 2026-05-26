@@ -1,0 +1,899 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lights &#8212; Nyx for Genesis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=4b7455de" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/advanced/lights';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Environment maps" href="environment_maps.html" />
+    <link rel="prev" title="Sensor lifecycle" href="sensor_lifecycle.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Nyx for Genesis</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supported_features.html">Supported features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/hello_nyx.html">Hello, Nyx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/attached_camera.html">Attaching a camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/light_types.html">Light types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/gaussian_splat.html">Gaussian splat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/object_picking.html">Object picking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/multi_camera_multi_env.html">Multiple cameras and parallel environments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sensor_lifecycle.html">Sensor lifecycle</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_maps.html">Environment maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="splats.html">Gaussian splats</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Lights</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lights">
+<h1>Lights<a class="headerlink" href="#lights" title="Link to this heading">#</a></h1>
+<p>Lights are declared on a Nyx camera sensor via the <code class="docutils literal notranslate"><span class="pre">lights</span></code> field of <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code></a>. At <code class="docutils literal notranslate"><span class="pre">scene.build()</span></code>, the plugin collects the lights from every Nyx sensor in the scene, converts each one to a <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.LightAsset.html#gs_nyx.nyx_py_sdk.LightAsset" title="gs_nyx.nyx_py_sdk.LightAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightAsset</span></code></a> (kinds enumerated by <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.ELightType.html#gs_nyx.nyx_py_sdk.ELightType" title="gs_nyx.nyx_py_sdk.ELightType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ELightType</span></code></a>), and writes the union into the shared Nyx scene description.</p>
+<p>This page describes the supported light types, their parameters, the coordinate convention, and the runtime constraints that apply once the scene is built.</p>
+<section id="declaring-lights">
+<h2>Declaring lights<a class="headerlink" href="#declaring-lights" title="Link to this heading">#</a></h2>
+<p>A light is a Python dictionary with a required <code class="docutils literal notranslate"><span class="pre">type</span></code> key. The dictionary is passed to the <code class="docutils literal notranslate"><span class="pre">lights</span></code> field of <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code></a> as a list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SPOT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span>      <span class="s2">&quot;spot&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pos&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span>
+    <span class="s2">&quot;dir&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.707</span><span class="p">),</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span>     <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
+    <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span>
+    <span class="s2">&quot;range&quot;</span><span class="p">:</span>     <span class="mf">10.0</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">POINT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span>      <span class="s2">&quot;point&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pos&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span>     <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
+    <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span>
+    <span class="s2">&quot;range&quot;</span><span class="p">:</span>     <span class="mf">10.0</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_sensor</span><span class="p">(</span><span class="n">NyxCameraOptions</span><span class="p">(</span>
+    <span class="n">res</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
+    <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">lookat</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">lights</span><span class="o">=</span><span class="p">[</span><span class="n">SPOT</span><span class="p">,</span> <span class="n">POINT</span><span class="p">],</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+<p>Lights declared on different Nyx sensors in the same scene are merged. Two cameras cannot see different lighting setups; they share one scene.</p>
+</section>
+<section id="supported-light-types">
+<h2>Supported light types<a class="headerlink" href="#supported-light-types" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">type</span></code> value</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Optional</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Point</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;point&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pos</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">range</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">intensity</span></code>, <code class="docutils literal notranslate"><span class="pre">shadow</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Directional</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;directional&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dir</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">intensity</span></code>, <code class="docutils literal notranslate"><span class="pre">shadow</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Spot</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;spot&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pos</span></code>, <code class="docutils literal notranslate"><span class="pre">dir</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">inner_angle</span></code>, <code class="docutils literal notranslate"><span class="pre">outer_angle</span></code>, <code class="docutils literal notranslate"><span class="pre">range</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">intensity</span></code>, <code class="docutils literal notranslate"><span class="pre">shadow</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ambient light is not supported. Use an environment map for image-based lighting instead (see <a class="reference internal" href="environment_maps.html"><span class="doc">Environment maps</span></a>).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Area lights are not exposed by the plugin. The Nyx engine supports rectangle / sphere / tube / disc emitters internally (see <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.EAreaShape.html#gs_nyx.nyx_py_sdk.EAreaShape" title="gs_nyx.nyx_py_sdk.EAreaShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">EAreaShape</span></code></a>), but they are not surfaced through <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code></a>.</p>
+</div>
+</section>
+<section id="common-properties">
+<h2>Common properties<a class="headerlink" href="#common-properties" title="Link to this heading">#</a></h2>
+<p>These keys are accepted by every light type.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">color</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">g,</span> <span class="pre">b)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code></p></td>
+<td><p>Linear RGB in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">intensity</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+<td><p>Light intensity in the unit set by the light type (see <a class="reference internal" href="#units">Units</a>).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="type-specific-properties">
+<h2>Type-specific properties<a class="headerlink" href="#type-specific-properties" title="Link to this heading">#</a></h2>
+<section id="point-light">
+<h3>Point light<a class="headerlink" href="#point-light" title="Link to this heading">#</a></h3>
+<p>A point light emits uniformly in every direction from a position.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pos</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">5)</span></code></p></td>
+<td><p>World position in Genesis Z-up coordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">range</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100.0</span></code></p></td>
+<td><p>Effective falloff distance.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="directional-light">
+<h3>Directional light<a class="headerlink" href="#directional-light" title="Link to this heading">#</a></h3>
+<p>A directional light emits along a direction vector. Position is irrelevant — the light is treated as infinitely far away.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dir</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">-1)</span></code></p></td>
+<td><p>Light direction in Genesis Z-up coordinates.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="spot-light">
+<h3>Spot light<a class="headerlink" href="#spot-light" title="Link to this heading">#</a></h3>
+<p>A spot light emits from a position in a cone defined by two cutoff angles.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pos</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">5)</span></code></p></td>
+<td><p>World position in Genesis Z-up coordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dir</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">-1)</span></code></p></td>
+<td><p>Cone axis in Genesis Z-up coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inner_angle</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> (degrees)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">15.0</span></code></p></td>
+<td><p>Full intensity is delivered inside this half-angle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">outer_angle</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> (degrees)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">30.0</span></code></p></td>
+<td><p>Falloff reaches zero at this half-angle.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">range</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100.0</span></code></p></td>
+<td><p>Effective falloff distance.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="units">
+<span id="id1"></span><h2>Units<a class="headerlink" href="#units" title="Link to this heading">#</a></h2>
+<p>Light intensity is expressed in <strong>photometric</strong> units — quantities weighted by the human eye’s spectral response, in contrast with radiometric (energy-based) units. The plugin fixes one photometric unit per light type to match physical convention. The full Nyx unit enum (<a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.ELightUnit.html#gs_nyx.nyx_py_sdk.ELightUnit" title="gs_nyx.nyx_py_sdk.ELightUnit"><code class="xref py py-class docutils literal notranslate"><span class="pre">ELightUnit</span></code></a>: Candela / Nit / EV100) is not currently surfaced through <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code></a>.</p>
+<section id="plugin-defaults">
+<h3>Plugin defaults<a class="headerlink" href="#plugin-defaults" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Light type</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">intensity</span></code> unit</p></th>
+<th class="head"><p>Quantity</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Point</p></td>
+<td><p>Lumen (<code class="docutils literal notranslate"><span class="pre">lm</span></code>)</p></td>
+<td><p>Luminous power</p></td>
+</tr>
+<tr class="row-odd"><td><p>Spot</p></td>
+<td><p>Lumen (<code class="docutils literal notranslate"><span class="pre">lm</span></code>)</p></td>
+<td><p>Luminous power</p></td>
+</tr>
+<tr class="row-even"><td><p>Directional</p></td>
+<td><p>Lux (<code class="docutils literal notranslate"><span class="pre">lx</span></code>)</p></td>
+<td><p>Illuminance</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="photometric-reference">
+<h3>Photometric reference<a class="headerlink" href="#photometric-reference" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Photometric term</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Power</p></td>
+<td><p>Luminous power / luminous flux (<span class="math notranslate nohighlight">\(\Phi_v\)</span>)</p></td>
+<td><p>Lumen (<code class="docutils literal notranslate"><span class="pre">lm</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Power per solid angle</p></td>
+<td><p>Luminous intensity (<span class="math notranslate nohighlight">\(I_v\)</span>)</p></td>
+<td><p>Candela (<code class="docutils literal notranslate"><span class="pre">cd</span></code>) — equivalent to <code class="docutils literal notranslate"><span class="pre">lm/sr</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Power per area</p></td>
+<td><p>Illuminance / luminous exitance (<span class="math notranslate nohighlight">\(E_v\)</span>, <span class="math notranslate nohighlight">\(M_v\)</span>)</p></td>
+<td><p>Lux (<code class="docutils literal notranslate"><span class="pre">lx</span></code>) — equivalent to <code class="docutils literal notranslate"><span class="pre">lm/m²</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Power per area per solid angle</p></td>
+<td><p>Luminance (<span class="math notranslate nohighlight">\(L_v\)</span>)</p></td>
+<td><p>Nit (<code class="docutils literal notranslate"><span class="pre">nt</span></code>) — equivalent to <code class="docutils literal notranslate"><span class="pre">cd/m²</span></code> or <code class="docutils literal notranslate"><span class="pre">lm/(m²·sr)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Energy</p></td>
+<td><p>Luminous energy (<span class="math notranslate nohighlight">\(Q_v\)</span>)</p></td>
+<td><p>Lumen-second (<code class="docutils literal notranslate"><span class="pre">lm·s</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="conventions-by-light-kind">
+<h3>Conventions by light kind<a class="headerlink" href="#conventions-by-light-kind" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Light kind</p></th>
+<th class="head"><p>Typical unit</p></th>
+<th class="head"><p>Rationale</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Punctual (point, spot)</p></td>
+<td><p>Luminous power (<code class="docutils literal notranslate"><span class="pre">lm</span></code>)</p></td>
+<td><p>A real bulb is rated by total light emitted in all directions.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Photometric (IES profile)</p></td>
+<td><p>Luminous intensity (<code class="docutils literal notranslate"><span class="pre">cd</span></code>)</p></td>
+<td><p>A photometric profile measures intensity per direction.</p></td>
+</tr>
+<tr class="row-even"><td><p>Sun / directional</p></td>
+<td><p>Illuminance (<code class="docutils literal notranslate"><span class="pre">lx</span></code>)</p></td>
+<td><p>A directional source has no finite total power; lux describes the light landing on a surface perpendicular to the rays.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sky / image-based</p></td>
+<td><p>Luminance (<code class="docutils literal notranslate"><span class="pre">cd/m²</span></code>)</p></td>
+<td><p>Captured environment maps are calibrated per solid angle.</p></td>
+</tr>
+<tr class="row-even"><td><p>Area / emissive surface</p></td>
+<td><p>Luminance (<code class="docutils literal notranslate"><span class="pre">cd/m²</span></code>) or EV</p></td>
+<td><p>Matches how displays and emissive textures are specified.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The last two rows are included for reference — the plugin does not currently surface area lights or photometric (IES) profiles, so luminance and per-direction candela values are not reachable through <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code></a>.</p>
+</section>
+</section>
+<section id="coordinate-convention">
+<h2>Coordinate convention<a class="headerlink" href="#coordinate-convention" title="Link to this heading">#</a></h2>
+<p>All positions and directions are specified in Genesis Z-up world coordinates. The plugin converts them to Nyx Y-up at build time. No manual axis swap is required.</p>
+</section>
+<section id="lifecycle-and-constraints">
+<h2>Lifecycle and constraints<a class="headerlink" href="#lifecycle-and-constraints" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Lights are baked into the scene at <code class="docutils literal notranslate"><span class="pre">scene.build()</span></code> and cannot be modified at runtime. Mutating the <code class="docutils literal notranslate"><span class="pre">lights</span></code> field of <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code></a> after build has no effect on rendered output. To change lighting, rebuild the scene.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Genesis <code class="docutils literal notranslate"><span class="pre">VisOptions.lights</span></code> (<code class="docutils literal notranslate"><span class="pre">DirectionalLight</span></code>, <code class="docutils literal notranslate"><span class="pre">PointLight</span></code>, <code class="docutils literal notranslate"><span class="pre">AmbientLight</span></code>) is ignored by the Nyx plugin. Configure lights through <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code></a> instead.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a scene contains no lights <em>and</em> no environment maps, the plugin emits a warning at build time and the scene is lit solely by Nyx’s default mid-grey HDRI sky (RGB ≈ <code class="docutils literal notranslate"><span class="pre">(0.5,</span> <span class="pre">0.5,</span> <span class="pre">0.5)</span></code>). This is rarely what you want; add at least one light, an HDRI, or a <a class="reference internal" href="environment_maps.html#solid-colour-hdri"><span class="std std-ref">solid-colour HDRI</span></a> with a chosen <code class="docutils literal notranslate"><span class="pre">tint</span></code> (use black to suppress the default sky entirely).</p>
+</div>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="environment_maps.html"><span class="doc">Environment maps</span></a> — Image-based lighting and HDRI assets.</p></li>
+<li><p><a class="reference internal" href="splats.html"><span class="doc">Gaussian splats</span></a> — Gaussian splats.</p></li>
+<li><p><a class="reference internal" href="sensor_lifecycle.html"><span class="doc">Sensor lifecycle</span></a> — When the scene description is baked and what triggers a re-render.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sensor_lifecycle.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sensor lifecycle</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="environment_maps.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Environment maps</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declaring-lights">Declaring lights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-light-types">Supported light types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-properties">Common properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-specific-properties">Type-specific properties</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-light">Point light</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directional-light">Directional light</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spot-light">Spot light</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-defaults">Plugin defaults</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photometric-reference">Photometric reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conventions-by-light-kind">Conventions by light kind</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-convention">Coordinate convention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lifecycle-and-constraints">Lifecycle and constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/user_guide/advanced/lights.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Genesis AI.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

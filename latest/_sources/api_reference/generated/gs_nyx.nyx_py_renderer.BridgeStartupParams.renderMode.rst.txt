@@ -1,0 +1,7 @@
+
+renderMode
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoproperty:: BridgeStartupParams.renderMode

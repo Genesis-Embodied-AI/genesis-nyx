@@ -1,0 +1,7 @@
+
+Constructor
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: FrameAsset.__init__

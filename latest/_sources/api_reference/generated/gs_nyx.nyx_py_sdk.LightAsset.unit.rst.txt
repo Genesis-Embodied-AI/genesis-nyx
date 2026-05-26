@@ -1,0 +1,7 @@
+
+unit
+====
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: LightAsset.unit

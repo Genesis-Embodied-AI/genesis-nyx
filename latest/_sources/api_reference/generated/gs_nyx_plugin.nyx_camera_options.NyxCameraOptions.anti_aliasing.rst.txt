@@ -1,0 +1,7 @@
+
+anti\_aliasing
+==============
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_options
+
+.. autoattribute:: NyxCameraOptions.anti_aliasing

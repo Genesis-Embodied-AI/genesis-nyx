@@ -1,0 +1,10 @@
+float3(x: float, y: float, z: float)
+====================================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. py:method:: float3.__init__(self, x: float, y: float, z: float) -> None
+   :no-index:
+
+   Construct a float3 from explicit components.
+

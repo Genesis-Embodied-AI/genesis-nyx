@@ -1,0 +1,62 @@
+float4
+======
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: float4
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.float4
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~float4.w
+      ~float4.x
+      ~float4.y
+      ~float4.z
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.float4

@@ -1,0 +1,45 @@
+/* Project-specific overrides for the PyData Sphinx Theme.
+ * Keep this file minimal, prefer theme options in conf.py over CSS hacks.
+ */
+
+/* Slightly tighter sidebar nav so the version switcher stays prominent */
+.bd-sidebar-primary .bd-toc-item {
+    font-size: 0.9rem;
+}
+
+/* Force a monokai-style dark background on code blocks in light mode.
+ * pydata_sphinx_theme strips the bg from the Pygments stylesheet and applies
+ * its own surface colour via CSS vars, which leaves monokai's foreground
+ * colours unreadable against the light page bg. */
+html[data-theme="light"] div.highlight,
+html[data-theme="light"] .highlight pre,
+html[data-theme="light"] pre.literal-block {
+    background-color: #272822;
+    color: #f8f8f2;
+}
+
+/* Copy button (sphinx_copybutton) sits on top of the highlight container,
+ * keep it visible against the dark bg. */
+html[data-theme="light"] button.copybtn {
+    color: #f8f8f2;
+    border-color: #75715e;
+}
+
+/* --------- Wide-screen layout ---------
+ * pydata_sphinx_theme caps the page at ~88em and the inner article
+ * container at 60em (~960 px), which leaves big empty gutters on
+ * widescreen monitors and squeezes our autosummary tables and code
+ * blocks. Above the laptop breakpoint, bump both caps up moderately,
+ * but don't lift them to 100% — that pinned the primary sidebar to the
+ * viewport edge (looked oversized) and stretched prose lines past
+ * comfortable reading length. The theme's mobile/tablet rules below
+ * 1280 px stay untouched.
+ */
+@media (min-width: 1280px) {
+    .bd-page-width {
+        max-width: 110em;
+    }
+    .bd-main .bd-content .bd-article-container {
+        max-width: 80em;
+    }
+}

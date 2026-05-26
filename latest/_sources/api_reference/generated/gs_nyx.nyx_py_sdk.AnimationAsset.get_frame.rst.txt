@@ -1,0 +1,7 @@
+
+get\_frame
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: AnimationAsset.get_frame

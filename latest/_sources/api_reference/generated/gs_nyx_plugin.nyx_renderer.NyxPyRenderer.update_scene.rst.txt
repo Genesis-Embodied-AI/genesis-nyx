@@ -1,0 +1,7 @@
+
+update\_scene
+=============
+
+.. currentmodule:: gs_nyx_plugin.nyx_renderer
+
+.. automethod:: NyxPyRenderer.update_scene

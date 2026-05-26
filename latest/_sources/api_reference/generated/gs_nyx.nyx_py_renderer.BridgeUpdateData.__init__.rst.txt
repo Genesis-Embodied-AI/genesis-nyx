@@ -1,0 +1,7 @@
+
+Constructor
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. nb-constructor:: gs_nyx.nyx_py_renderer.BridgeUpdateData

@@ -1,0 +1,7 @@
+
+Capsule
+=======
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EPrimitiveType.Capsule

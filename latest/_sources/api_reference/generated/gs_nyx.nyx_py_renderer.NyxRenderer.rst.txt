@@ -1,0 +1,78 @@
+NyxRenderer
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoclass:: NyxRenderer
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_renderer.NyxRenderer
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: nb-constructor-page
+      :no-table:
+
+      ~NyxRenderer.__init__
+   
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxRenderer.allocate_scene_buffers
+      ~NyxRenderer.load_scene_from_file
+      ~NyxRenderer.pick_pixel
+      ~NyxRenderer.render_frame
+      ~NyxRenderer.set_deform_entity_active_triangles
+      ~NyxRenderer.set_env_map
+      ~NyxRenderer.shutdown
+      ~NyxRenderer.startup
+      ~NyxRenderer.trace_ray
+      ~NyxRenderer.unload_scene
+      ~NyxRenderer.update
+      ~NyxRenderer.update_scene
+      ~NyxRenderer.update_scene_buffers
+   
+   
+
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_renderer.NyxRenderer

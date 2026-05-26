@@ -1,0 +1,7 @@
+
+set\_env\_map
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: SceneAsset.set_env_map

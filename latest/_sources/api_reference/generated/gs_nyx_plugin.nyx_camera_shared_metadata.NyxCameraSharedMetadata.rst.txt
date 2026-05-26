@@ -1,0 +1,80 @@
+NyxCameraSharedMetadata
+=======================
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_shared_metadata
+
+.. autoclass:: NyxCameraSharedMetadata
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: py-init-page
+      :no-table:
+
+      ~NyxCameraSharedMetadata.__init__
+   
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxCameraSharedMetadata.destroy
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxCameraSharedMetadata.camera_defs
+      ~NyxCameraSharedMetadata.image_cache
+      ~NyxCameraSharedMetadata.last_render_timestep
+      ~NyxCameraSharedMetadata.renderer
+      ~NyxCameraSharedMetadata.scene_description_export_path
+      ~NyxCameraSharedMetadata.scene_exporter
+      ~NyxCameraSharedMetadata.sensors
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata

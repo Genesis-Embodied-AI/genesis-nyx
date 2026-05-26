@@ -1,0 +1,7 @@
+
+InvGeoNormalWS
+==============
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoattribute:: EDebugView.InvGeoNormalWS

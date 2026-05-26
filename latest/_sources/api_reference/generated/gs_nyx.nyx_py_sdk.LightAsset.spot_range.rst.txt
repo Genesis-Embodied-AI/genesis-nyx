@@ -1,0 +1,7 @@
+
+spot\_range
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: LightAsset.spot_range

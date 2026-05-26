@@ -1,0 +1,7 @@
+
+set\_deform\_entity\_active\_triangles
+======================================
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.set_deform_entity_active_triangles

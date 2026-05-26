@@ -1,0 +1,7 @@
+
+force\_next\_frame\_as\_idr
+===========================
+
+.. currentmodule:: gs_nyx.nyx_py_video_encoder
+
+.. automethod:: GPUVideoEncoder.force_next_frame_as_idr

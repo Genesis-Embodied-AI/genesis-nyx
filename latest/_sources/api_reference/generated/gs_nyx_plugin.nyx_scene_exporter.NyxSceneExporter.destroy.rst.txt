@@ -1,0 +1,7 @@
+
+destroy
+=======
+
+.. currentmodule:: gs_nyx_plugin.nyx_scene_exporter
+
+.. automethod:: NyxSceneExporter.destroy

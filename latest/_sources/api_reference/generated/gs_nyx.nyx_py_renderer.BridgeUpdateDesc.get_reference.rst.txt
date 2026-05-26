@@ -1,0 +1,7 @@
+
+get\_reference
+==============
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: BridgeUpdateDesc.get_reference

@@ -1,0 +1,7 @@
+
+get\_camera
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: SceneAsset.get_camera

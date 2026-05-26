@@ -1,0 +1,7 @@
+
+load\_scene\_from\_file
+=======================
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.load_scene_from_file

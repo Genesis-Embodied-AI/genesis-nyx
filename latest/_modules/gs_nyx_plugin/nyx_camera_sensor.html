@@ -1,0 +1,1012 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gs_nyx_plugin.nyx_camera_sensor &#8212; Nyx for Genesis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=4b7455de" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/gs_nyx_plugin/nyx_camera_sensor';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Nyx for Genesis</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">gs_nyx_plugin.nyx_camera_sensor</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for gs_nyx_plugin.nyx_camera_sensor</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Nyx Camera Sensor for Genesis - GPU-accelerated rendering via Nyx renderer.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># External imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ctypes</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">importlib.metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">PackageNotFoundError</span><span class="p">,</span> <span class="n">distribution</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">NamedTuple</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="c1"># Internal imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">genesis</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gs</span>
+
+<span class="c1"># Required for the pick result</span>
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">genesis.engine.entities.base_entity</span><span class="w"> </span><span class="kn">import</span> <span class="n">Entity</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">genesis.engine.sensors.camera</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseCameraSensor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">genesis.engine.sensors.base_sensor</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Sensor</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gs_nyx</span><span class="w"> </span><span class="kn">import</span> <span class="n">nyx_py_sdk</span> <span class="k">as</span> <span class="n">nps</span>
+
+<span class="c1"># Relative imports</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.nyx_renderer</span><span class="w"> </span><span class="kn">import</span> <span class="n">NyxPyRenderer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.nyx_scene_exporter</span><span class="w"> </span><span class="kn">import</span> <span class="n">NyxSceneExporter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.nyx_camera_options</span><span class="w"> </span><span class="kn">import</span> <span class="n">NyxCameraOptions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.nyx_camera_shared_metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">NyxCameraSharedMetadata</span><span class="p">,</span> <span class="n">_nyx_make_complete_path</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NyxCameraSensor&quot;</span><span class="p">,</span> <span class="s2">&quot;NyxCameraData&quot;</span><span class="p">,</span> <span class="s2">&quot;NyxPickPixelResult&quot;</span><span class="p">]</span>
+
+
+<span class="c1"># ========================== Data Class ==========================</span>
+<div class="viewcode-block" id="NyxCameraData">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraData.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraData">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NyxCameraData</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return type of :meth:`NyxCameraSensor.read`.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    rgb : torch.Tensor</span>
+<span class="sd">        Rendered RGB image, shape ``(B, H, W, 3)`` with ``dtype=torch.uint8``,</span>
+<span class="sd">        resident on the CUDA device. ``B`` is the number of parallel Genesis</span>
+<span class="sd">        environments (``1`` for non-batched scenes); ``H`` and ``W`` match</span>
+<span class="sd">        the camera&#39;s configured :attr:`~NyxCameraOptions.res`. Channel order</span>
+<span class="sd">        is RGB, values in ``[0, 255]``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">rgb</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span></div>
+
+
+
+<span class="c1"># ========================== Nyx Pick Pixel Result ==========================</span>
+
+
+<div class="viewcode-block" id="NyxPickPixelResult">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxPickPixelResult.html#gs_nyx_plugin.nyx_camera_sensor.NyxPickPixelResult">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NyxPickPixelResult</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hit information returned by :meth:`NyxCameraSensor.pick_pixel`.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    entity : genesis.engine.entities.base_entity.Entity</span>
+<span class="sd">        The Genesis entity the ray hit.</span>
+<span class="sd">    link_name : str</span>
+<span class="sd">        Name of the hit link or sub-geometry. For URDF entities this is the</span>
+<span class="sd">        link name; for MJCF entities it is ``&quot;&lt;link&gt;_&lt;vgeom_idx&gt;&quot;``;</span>
+<span class="sd">        empty string for all other morph types.</span>
+<span class="sd">    position : tuple of float</span>
+<span class="sd">        World-space hit point ``(x, y, z)`` in Genesis Z-up coordinates.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">entity</span><span class="p">:</span> <span class="s2">&quot;Entity&quot;</span>
+    <span class="n">link_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">position</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span></div>
+
+
+
+<span class="c1"># ========================== Nyx Camera Sensor ==========================</span>
+<div class="viewcode-block" id="NyxCameraSensor">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NyxCameraSensor</span><span class="p">(</span>
+    <span class="n">BaseCameraSensor</span><span class="p">,</span> <span class="n">Sensor</span><span class="p">[</span><span class="n">NyxCameraOptions</span><span class="p">,</span> <span class="n">NyxCameraSharedMetadata</span><span class="p">,</span> <span class="n">NyxCameraData</span><span class="p">]</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;GPU-accelerated camera sensor backed by the Nyx renderer.</span>
+
+<span class="sd">    Registers with the Genesis sensor manager, contributes one camera (plus</span>
+<span class="sd">    any configured lights / env maps / light fields) to a renderer instance</span>
+<span class="sd">    shared across all :class:`NyxCameraSensor` sensors in the scene, and</span>
+<span class="sd">    produces RGB images on demand via the standard Genesis</span>
+<span class="sd">    :meth:`~genesis.engine.sensors.base_sensor.Sensor.read` API.</span>
+
+<span class="sd">    Configure with :class:`NyxCameraOptions`. The first ``NyxCameraSensor``</span>
+<span class="sd">    to finish building drives the actual renderer setup (scene export +</span>
+<span class="sd">    native renderer startup); subsequent sensors slot into the same shared</span>
+<span class="sd">    instance.</span>
+
+<span class="sd">    See the user guide for a configured example; this class is rarely</span>
+<span class="sd">    instantiated directly — pass :class:`NyxCameraOptions` to</span>
+<span class="sd">    :meth:`Scene.add_sensor` instead.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="NyxCameraSensor.__init__">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.__init__.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">options</span><span class="p">:</span> <span class="n">NyxCameraOptions</span><span class="p">,</span>
+        <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">manager</span><span class="p">:</span> <span class="s2">&quot;gs.SensorManager&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bind the sensor to a Genesis sensor manager.</span>
+
+<span class="sd">        Called by :meth:`Scene.add_sensor` — users should not invoke this</span>
+<span class="sd">        directly. The native renderer is **not** started here; setup runs</span>
+<span class="sd">        inside :meth:`build` once the Genesis scene is built and every</span>
+<span class="sd">        ``NyxCameraSensor`` in the scene has been added.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        options : NyxCameraOptions</span>
+<span class="sd">            Per-camera configuration (resolution, FOV, pose, render mode,</span>
+<span class="sd">            lights / env maps, etc.).</span>
+<span class="sd">        idx : int</span>
+<span class="sd">            Genesis-side sensor index assigned by the manager.</span>
+<span class="sd">        manager : genesis.SensorManager</span>
+<span class="sd">            The sensor manager that owns this sensor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">manager</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">:</span> <span class="n">NyxCameraOptions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_camera_idx</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Per-env camera poses from move_to_attach(), shape (B, 3) each, or None if not attached</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attached_pos</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attached_lookat</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attached_up</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+    <span class="c1"># ========================== Light Conversion ==========================</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_convert_light_dict_to_asset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">light_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert a light configuration dict to an Nyx LightAsset. Handles coordinate conversion from Genesis Z-up to Nyx Y-up.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        light_dict : dict</span>
+<span class="sd">            Light configuration with keys:</span>
+<span class="sd">            - type: &quot;point&quot;, &quot;directional&quot;, or &quot;spot&quot;</span>
+<span class="sd">            - pos: (x, y, z) position in Z-up coordinates (for point/spot)</span>
+<span class="sd">            - dir: (x, y, z) direction in Z-up coordinates (for directional/spot)</span>
+<span class="sd">            - color: (r, g, b) RGB color [0-1]</span>
+<span class="sd">            - intensity: Light intensity</span>
+<span class="sd">            - shadow: Whether to cast shadows (default True)</span>
+<span class="sd">            - inner_angle, outer_angle: For spot lights (degrees)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        LightAsset</span>
+<span class="sd">            Nyx LightAsset object configured with Y-up coordinates.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">light</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">LightAsset</span><span class="p">()</span>
+        <span class="n">light_type</span> <span class="o">=</span> <span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;directional&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">light_type</span> <span class="o">==</span> <span class="s2">&quot;point&quot;</span><span class="p">:</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">ELightType</span><span class="o">.</span><span class="n">Point</span>
+            <span class="c1"># Get the position and convert it.</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">point_position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="o">*</span><span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pos&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">point_position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3_z_up_to_y_up_a</span><span class="p">(</span><span class="n">light</span><span class="o">.</span><span class="n">point_position</span><span class="p">)</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">point_range</span> <span class="o">=</span> <span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;range&quot;</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">ELightUnit</span><span class="o">.</span><span class="n">Lumen</span>
+
+        <span class="k">elif</span> <span class="n">light_type</span> <span class="o">==</span> <span class="s2">&quot;directional&quot;</span><span class="p">:</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">ELightType</span><span class="o">.</span><span class="n">Directional</span>
+            <span class="c1"># Get the direction and convert it.</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">directional_direction</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="o">*</span><span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dir&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">directional_direction</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3_z_up_to_y_up_a</span><span class="p">(</span>
+                <span class="n">light</span><span class="o">.</span><span class="n">directional_direction</span>
+            <span class="p">)</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">ELightUnit</span><span class="o">.</span><span class="n">Lux</span>
+
+        <span class="k">elif</span> <span class="n">light_type</span> <span class="o">==</span> <span class="s2">&quot;spot&quot;</span><span class="p">:</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">ELightType</span><span class="o">.</span><span class="n">Spot</span>
+            <span class="c1"># Get the position and convert it.</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">spot_position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="o">*</span><span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pos&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">spot_position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3_z_up_to_y_up_a</span><span class="p">(</span><span class="n">light</span><span class="o">.</span><span class="n">spot_position</span><span class="p">)</span>
+            <span class="c1"># Get the direction and convert it.</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">spot_direction</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="o">*</span><span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dir&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">spot_direction</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3_z_up_to_y_up_a</span><span class="p">(</span><span class="n">light</span><span class="o">.</span><span class="n">spot_direction</span><span class="p">)</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">spot_innerAngle</span> <span class="o">=</span> <span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;inner_angle&quot;</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">spot_outerAngle</span> <span class="o">=</span> <span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;outer_angle&quot;</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">)</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">spot_range</span> <span class="o">=</span> <span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;range&quot;</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
+            <span class="n">light</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">ELightUnit</span><span class="o">.</span><span class="n">Lumen</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">gs</span><span class="o">.</span><span class="n">raise_exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown light type: </span><span class="si">{</span><span class="n">light_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Common light properties</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">intensity</span> <span class="o">=</span> <span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;intensity&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">light</span><span class="o">.</span><span class="n">shadow</span> <span class="o">=</span> <span class="n">light_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;shadow&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">light</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_apply_camera_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">camera_T</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Store per-env camera transforms from the attachment system.</span>
+
+<span class="sd">        Called by BaseCameraSensor.move_to_attach() with the computed world transform.</span>
+<span class="sd">        The stored values are sent to the renderer in _render_current_state().</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        camera_T : torch.Tensor</span>
+<span class="sd">            Transform matrix, shape (B, 4, 4) for batched envs or (4, 4) for single.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">camera_T</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">camera_T</span> <span class="o">=</span> <span class="n">camera_T</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Store per-env pos / lookat / up, all (B, 3)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attached_pos</span> <span class="o">=</span> <span class="n">camera_T</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attached_lookat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attached_pos</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">camera_T</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attached_up</span> <span class="o">=</span> <span class="n">camera_T</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stale</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="NyxCameraSensor.build">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.build.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.build">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Finalize the sensor and lazily start the shared Nyx renderer.</span>
+
+<span class="sd">        Called by the Genesis sensor manager once per sensor after the scene</span>
+<span class="sd">        has been built. Each call:</span>
+
+<span class="sd">        1. Resolves the optional rig attachment via :class:`RigidSensorMixin`.</span>
+<span class="sd">        2. Verifies CUDA is available (Nyx is GPU-only).</span>
+<span class="sd">        3. Registers this camera in the shared metadata, assigns it a Nyx</span>
+<span class="sd">           camera index, and captures its configuration as a definition dict.</span>
+<span class="sd">        4. If this is the final ``NyxCameraSensor`` left to build, collects</span>
+<span class="sd">           lights / env maps / light fields from **all** sibling sensors,</span>
+<span class="sd">           writes the scene-description JSON via :class:`NyxSceneExporter`,</span>
+<span class="sd">           and constructs the shared :class:`NyxPyRenderer`.</span>
+<span class="sd">        5. Pre-allocates this sensor&#39;s slot in the shared image cache:</span>
+<span class="sd">           ``(B, H, W, 3)`` ``uint8`` CUDA tensor.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        genesis.GenesisException</span>
+<span class="sd">            If CUDA is unavailable, or if sibling</span>
+<span class="sd">            :class:`NyxCameraSensor` instances disagree on ``render_mode``</span>
+<span class="sd">            (the shared renderer can serve only one mode).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>  <span class="c1"># Sets up _link from RigidSensorMixin</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+            <span class="n">gs</span><span class="o">.</span><span class="n">raise_exception</span><span class="p">(</span><span class="s2">&quot;NyxCameraSensor requires CUDA to be available.&quot;</span><span class="p">)</span>
+
+        <span class="n">scene</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">_sim</span><span class="o">.</span><span class="n">scene</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">camera_defs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">image_cache</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Register this sensor and assign a camera index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_camera_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Store camera configuration as a dict</span>
+        <span class="n">camera_def</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;pos&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span>
+            <span class="s2">&quot;lookat&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">lookat</span><span class="p">,</span>
+            <span class="s2">&quot;up&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">up</span><span class="p">,</span>
+            <span class="s2">&quot;fov&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">fov</span><span class="p">,</span>
+            <span class="s2">&quot;res&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">res</span><span class="p">,</span>
+            <span class="s2">&quot;spp&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">spp</span><span class="p">,</span>
+            <span class="s2">&quot;denoise&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">denoise</span><span class="p">,</span>
+            <span class="s2">&quot;aperture&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">,</span> <span class="s2">&quot;aperture&quot;</span><span class="p">,</span> <span class="mf">2.8</span><span class="p">),</span>
+            <span class="s2">&quot;focal_len&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">,</span> <span class="s2">&quot;focal_length&quot;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>
+            <span class="s2">&quot;near&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">near</span><span class="p">,</span>
+            <span class="s2">&quot;far&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">far</span><span class="p">,</span>
+            <span class="s2">&quot;tone_mapper&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">tone_mapper</span><span class="p">,</span>
+            <span class="s2">&quot;anti_aliasing&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">anti_aliasing</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">camera_defs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">camera_def</span><span class="p">)</span>
+
+        <span class="c1"># Initialize renderer once all cameras are registered</span>
+        <span class="n">all_nyx_sensors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">_sensors_by_type</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span>
+        <span class="n">all_sensors_built</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_nyx_sensors</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">renderer</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">all_sensors_built</span><span class="p">:</span>
+            <span class="c1"># Preload Nvidia compiler runtime if available (i.e. torch is not</span>
+            <span class="c1"># built from source).  Must happen after the CUDA check and before</span>
+            <span class="c1"># the renderer is created, loading it at package-import time via</span>
+            <span class="c1"># RTLD_GLOBAL interferes with torch&#39;s CUDA detection.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">nvrtc_dist</span> <span class="o">=</span> <span class="n">distribution</span><span class="p">(</span><span class="s2">&quot;nvidia_cuda_nvrtc&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">nvrtc_dist</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;libnvrtc-builtins.so.1&quot;</span><span class="p">):</span>
+                        <span class="n">ctypes</span><span class="o">.</span><span class="n">CDLL</span><span class="p">(</span><span class="n">nvrtc_dist</span><span class="o">.</span><span class="n">locate_file</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">RTLD_GLOBAL</span><span class="p">)</span>
+                        <span class="k">break</span>
+            <span class="k">except</span> <span class="p">(</span><span class="n">PackageNotFoundError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">):</span>
+                <span class="k">pass</span>
+
+            <span class="c1"># Collect lights from all sensors and convert to LightAssets</span>
+            <span class="n">lights</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">sensor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">light_dict</span> <span class="ow">in</span> <span class="n">sensor</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">lights</span><span class="p">:</span>
+                    <span class="n">lights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">_convert_light_dict_to_asset</span><span class="p">(</span><span class="n">light_dict</span><span class="p">))</span>
+
+            <span class="c1"># Collect env_maps from all sensors</span>
+            <span class="n">env_maps</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">sensor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">env_map</span> <span class="ow">in</span> <span class="n">sensor</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">env_maps</span><span class="p">:</span>
+                    <span class="n">env_maps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">env_map</span><span class="p">)</span>
+
+            <span class="c1"># Collect light_fields from all sensors</span>
+            <span class="n">light_fields</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">sensor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">light_field</span> <span class="ow">in</span> <span class="n">sensor</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">light_fields</span><span class="p">:</span>
+                    <span class="n">light_fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">light_field</span><span class="p">)</span>
+
+            <span class="c1"># When there is no lights or env maps, we notify the user.</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lights</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_maps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[93m [WARNING] NyxCameraSensor: The current scene has no lights or environment maps. &quot;</span>
+                    <span class="s2">&quot;If this is unintentional, please add a light source or an environment map.</span><span class="se">\033</span><span class="s2">[0m&quot;</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Generate the complete export path.</span>
+            <span class="n">complete_path</span> <span class="o">=</span> <span class="n">_nyx_make_complete_path</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">scene_description_export_path</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Build the scene description</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">scene_exporter</span> <span class="o">=</span> <span class="n">NyxSceneExporter</span><span class="p">(</span>
+                <span class="n">scene</span><span class="p">,</span>
+                <span class="n">cameras</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">camera_defs</span><span class="p">,</span>
+                <span class="n">export_folder</span><span class="o">=</span><span class="n">complete_path</span><span class="p">,</span>
+                <span class="n">lights</span><span class="o">=</span><span class="n">lights</span><span class="p">,</span>
+                <span class="n">env_maps</span><span class="o">=</span><span class="n">env_maps</span><span class="p">,</span>
+                <span class="n">light_fields</span><span class="o">=</span><span class="n">light_fields</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Export the scene to a json file that the Nyx renderer can read.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">scene_exporter</span><span class="o">.</span><span class="n">export_to_file</span><span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="n">complete_path</span><span class="p">,</span>
+                    <span class="s2">&quot;nyx_scene.json&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Get max resolution across all cameras</span>
+            <span class="n">max_width</span><span class="p">,</span> <span class="n">max_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_max_resolution</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">_options</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_nyx_sensors</span><span class="p">]</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Verify all sensors use the same render_mode</span>
+            <span class="n">render_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">render_mode</span>
+            <span class="k">for</span> <span class="n">sensor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="k">if</span> <span class="n">sensor</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">render_mode</span> <span class="o">!=</span> <span class="n">render_mode</span><span class="p">:</span>
+                    <span class="n">gs</span><span class="o">.</span><span class="n">raise_exception</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;All Nyx cameras must use the same render_mode. &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;Found &#39;</span><span class="si">{</span><span class="n">render_mode</span><span class="si">}</span><span class="s2">&#39; and &#39;</span><span class="si">{</span><span class="n">sensor</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">render_mode</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;Please ensure all NyxCameraOptions use the same render_mode.&quot;</span>
+                    <span class="p">)</span>
+
+            <span class="c1"># Create the Nyx renderer instance.</span>
+            <span class="n">n_envs</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">_sim</span><span class="o">.</span><span class="n">_B</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">debug_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">debug_view</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">renderer</span> <span class="o">=</span> <span class="n">NyxPyRenderer</span><span class="p">(</span>
+                <span class="n">scene</span><span class="p">,</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="n">complete_path</span><span class="p">,</span>
+                    <span class="s2">&quot;nyx_scene.json&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">max_width</span><span class="p">,</span>
+                <span class="n">max_height</span><span class="p">,</span>
+                <span class="n">n_envs</span><span class="o">=</span><span class="n">n_envs</span><span class="p">,</span>
+                <span class="n">open_window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">open_window</span><span class="p">,</span>
+                <span class="n">camera_defs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">camera_defs</span><span class="p">,</span>
+                <span class="n">render_mode</span><span class="o">=</span><span class="n">render_mode</span><span class="p">,</span>
+                <span class="n">debug_view</span><span class="o">=</span><span class="n">debug_view</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">build</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">scene_exporter</span><span class="o">.</span><span class="n">_entity_uuid_pairs</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Initialize image cache for this camera (always on CUDA for Nyx renderer)</span>
+        <span class="n">n_envs</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">_sim</span><span class="o">.</span><span class="n">_B</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">image_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">n_envs</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NyxCameraSensor.pick_pixel">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.pick_pixel.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.pick_pixel">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pick_pixel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">camera_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NyxPickPixelResult</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Cast a ray through pixel (x, y) of the given camera and return what it hits.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        camera_index : int</span>
+<span class="sd">            Index of the camera within this sensor&#39;s shared metadata. For a single</span>
+<span class="sd">            NyxCameraSensor this is 0; multi-camera setups index in registration order.</span>
+<span class="sd">        x, y : int</span>
+<span class="sd">            Pixel coordinates in image space, with the origin at the top-left of the</span>
+<span class="sd">            framebuffer. Must lie within the camera&#39;s configured resolution.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        NyxPickPixelResult or None</span>
+<span class="sd">            ``None`` if the ray missed all scene geometry (e.g. background / sky).</span>
+<span class="sd">            Otherwise a NyxPickPixelResult with fields:</span>
+
+<span class="sd">            - ``entity``: the Genesis Entity that was hit</span>
+<span class="sd">            - ``link_name``: name of the hit link (URDF) or ``&lt;link&gt;_&lt;vgeom_idx&gt;`` (MJCF);</span>
+<span class="sd">              empty string for other morph types</span>
+<span class="sd">            - ``position``: world-space hit point as ``(x, y, z)`` in Genesis Z-up coordinates</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Pick a pixel using the Nyx renderer&#39;s picking functionality.</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">pick_pixel</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">scene_exporter</span><span class="o">.</span><span class="n">_entity_uuid_pairs</span><span class="p">,</span> <span class="n">camera_index</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+        <span class="p">)</span>
+
+        <span class="c1"># If res is None, it means no entity was picked at that pixel.</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="c1"># If not, convert the picked result to Genesis entities and return as NyxPickPixelResult.</span>
+        <span class="k">return</span> <span class="n">NyxPickPixelResult</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_image_cache_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return this sensor&#39;s entry in the shared image cache.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">image_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_render_current_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform the actual render for all cameras.&quot;&quot;&quot;</span>
+        <span class="c1"># Shorthand</span>
+        <span class="n">sensors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">sensors</span> <span class="ow">or</span> <span class="p">[</span><span class="bp">self</span><span class="p">]</span>
+        <span class="n">renderer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">renderer</span>
+        <span class="n">scene</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">_sim</span><span class="o">.</span><span class="n">scene</span>
+
+        <span class="c1"># Update visualization transforms</span>
+        <span class="n">scene</span><span class="o">.</span><span class="n">visualizer</span><span class="o">.</span><span class="n">update_visual_states</span><span class="p">()</span>
+
+        <span class="c1"># Compute per-env attachment transforms for ALL attached sensors</span>
+        <span class="k">for</span> <span class="n">sensor</span> <span class="ow">in</span> <span class="n">sensors</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sensor</span><span class="o">.</span><span class="n">_link</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">sensor</span><span class="o">.</span><span class="n">move_to_attach</span><span class="p">()</span>
+
+        <span class="c1"># Update window events, delta time, etc.</span>
+        <span class="n">renderer</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="c1"># Nyx Renderer can only render a single env at a time</span>
+        <span class="c1"># So we loop over all envs and render all the sensors in this env</span>
+        <span class="k">for</span> <span class="n">env_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">_sim</span><span class="o">.</span><span class="n">_B</span><span class="p">,</span> <span class="mi">1</span><span class="p">)):</span>
+            <span class="c1"># Update camera tensors for this env</span>
+            <span class="k">for</span> <span class="n">sensor</span> <span class="ow">in</span> <span class="n">sensors</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">sensor</span><span class="o">.</span><span class="n">_attached_pos</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># Attached camera: use per-env transform from move_to_attach</span>
+                    <span class="n">renderer</span><span class="o">.</span><span class="n">update_camera_tensor</span><span class="p">(</span>
+                        <span class="n">sensor</span><span class="o">.</span><span class="n">_camera_idx</span><span class="p">,</span>
+                        <span class="n">sensor</span><span class="o">.</span><span class="n">_attached_pos</span><span class="p">[</span><span class="n">env_idx</span><span class="p">],</span>
+                        <span class="n">sensor</span><span class="o">.</span><span class="n">_attached_lookat</span><span class="p">[</span><span class="n">env_idx</span><span class="p">],</span>
+                        <span class="n">sensor</span><span class="o">.</span><span class="n">_attached_up</span><span class="p">[</span><span class="n">env_idx</span><span class="p">],</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Static camera: same pose for all envs</span>
+                    <span class="n">renderer</span><span class="o">.</span><span class="n">update_camera_tensor</span><span class="p">(</span>
+                        <span class="n">sensor</span><span class="o">.</span><span class="n">_camera_idx</span><span class="p">,</span>
+                        <span class="n">sensor</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span>
+                        <span class="n">sensor</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">lookat</span><span class="p">,</span>
+                        <span class="n">sensor</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">up</span><span class="p">,</span>
+                    <span class="p">)</span>
+
+            <span class="c1"># Sync geometry data from Genesis to Nyx for this env</span>
+            <span class="n">renderer</span><span class="o">.</span><span class="n">update_scene</span><span class="p">(</span><span class="n">env_idx</span><span class="p">)</span>
+
+            <span class="c1"># Render all cameras</span>
+            <span class="k">for</span> <span class="n">sensor</span> <span class="ow">in</span> <span class="n">sensors</span><span class="p">:</span>
+                <span class="n">rgb_tensor</span> <span class="o">=</span> <span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">camera_index</span><span class="o">=</span><span class="n">sensor</span><span class="o">.</span><span class="n">_camera_idx</span><span class="p">)</span>
+                <span class="n">sensor</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">image_cache</span><span class="p">[</span><span class="n">sensor</span><span class="o">.</span><span class="n">_idx</span><span class="p">][</span><span class="n">env_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">rgb_tensor</span>
+
+        <span class="c1"># Mark all sensors as fresh</span>
+        <span class="k">for</span> <span class="n">sensor</span> <span class="ow">in</span> <span class="n">sensors</span><span class="p">:</span>
+            <span class="n">sensor</span><span class="o">.</span><span class="n">_stale</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_shared_metadata</span><span class="o">.</span><span class="n">last_render_timestep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">_sim</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">t</span>
+
+<div class="viewcode-block" id="NyxCameraSensor.update_camera_pose">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.update_camera_pose.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.update_camera_pose">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_camera_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lookat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">up</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update camera pose dynamically (applies to all envs on next render).</span>
+
+<span class="sd">        Detaches the camera from any rig so the specified world-space pose</span>
+<span class="sd">        is used uniformly across all environments.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pos : tuple, optional</span>
+<span class="sd">            New camera position (x, y, z) in Z-up coordinates.</span>
+<span class="sd">        lookat : tuple, optional</span>
+<span class="sd">            New look-at point (x, y, z) in Z-up coordinates.</span>
+<span class="sd">        up : tuple, optional</span>
+<span class="sd">            New up vector (x, y, z) in Z-up coordinates.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lookat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">lookat</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">lookat</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">up</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">up</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">up</span><span class="p">)</span>
+
+        <span class="c1"># Detach from rig</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attached_pos</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attached_lookat</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attached_up</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stale</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_max_resolution</span><span class="p">(</span><span class="n">options_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">NyxCameraOptions</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the maximum resolution across all camera options.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">options_list</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">1024</span>
+        <span class="n">max_width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">options_list</span><span class="p">)</span>
+        <span class="n">max_height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">options_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">max_width</span><span class="p">,</span> <span class="n">max_height</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Genesis AI.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+NyxCameraOptions
+================
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_options
+
+.. autoclass:: NyxCameraOptions
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxCameraOptions.model_post_init
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxCameraOptions.anti_aliasing
+      ~NyxCameraOptions.debug_view
+      ~NyxCameraOptions.denoise
+      ~NyxCameraOptions.env_maps
+      ~NyxCameraOptions.far
+      ~NyxCameraOptions.light_fields
+      ~NyxCameraOptions.model
+      ~NyxCameraOptions.model_config
+      ~NyxCameraOptions.near
+      ~NyxCameraOptions.open_window
+      ~NyxCameraOptions.render_mode
+      ~NyxCameraOptions.spp
+      ~NyxCameraOptions.tone_mapper
+      ~NyxCameraOptions.update_ground_truth_only
+      ~NyxCameraOptions.window_size
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx_plugin.nyx_camera_options.NyxCameraOptions

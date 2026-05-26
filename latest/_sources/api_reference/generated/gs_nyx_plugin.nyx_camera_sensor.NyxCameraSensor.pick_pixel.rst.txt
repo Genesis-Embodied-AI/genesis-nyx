@@ -1,0 +1,7 @@
+
+pick\_pixel
+===========
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_sensor
+
+.. automethod:: NyxCameraSensor.pick_pixel

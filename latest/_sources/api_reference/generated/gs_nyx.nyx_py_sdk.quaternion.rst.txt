@@ -1,0 +1,62 @@
+quaternion
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: quaternion
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.quaternion
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~quaternion.w
+      ~quaternion.x
+      ~quaternion.y
+      ~quaternion.z
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.quaternion

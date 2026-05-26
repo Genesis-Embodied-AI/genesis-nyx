@@ -1,0 +1,7 @@
+
+area\_shape
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: LightAsset.area_shape

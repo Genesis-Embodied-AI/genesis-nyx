@@ -1,0 +1,7 @@
+
+import\_scene\_file
+===================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autofunction:: import_scene_file

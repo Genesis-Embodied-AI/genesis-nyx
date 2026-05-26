@@ -1,0 +1,7 @@
+
+allocate\_scene\_buffers
+========================
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.allocate_scene_buffers

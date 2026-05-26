@@ -1,0 +1,94 @@
+nyx\_py\_sdk
+============
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. automodule:: gs_nyx.nyx_py_sdk
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      export_scene_file
+      float3_y_up_a_to_z_up
+      float3_z_up_to_y_up_a
+      generate_uuid
+      import_scene_file
+      quaternion_conjugate
+      quaternion_mul
+      quaternion_wxyz_to_xyzw
+      quaternion_xyzw_to_wxyz
+      quaternion_y_up_a_to_z_up
+      quaternion_z_up_to_y_up_a
+      shutdown
+      startup
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: custom-class-template.rst
+   
+      AnimationAsset
+      CameraAsset
+      EAnimationType
+      EAntiAliasing
+      EAreaShape
+      EEnvMapLayout
+      EInstanceType
+      ELightFieldType
+      ELightType
+      ELightUnit
+      EMaterialClipping
+      EMaterialFeatures
+      EMaterialOpacity
+      EMaterialProperty
+      EMaterialSidedness
+      ENormalMode
+      EPrimitiveType
+      EToneMapper
+      EnvironmentMapAsset
+      FrameAsset
+      InstanceAsset
+      LightAsset
+      LightFieldAsset
+      MaterialAsset
+      SceneAsset
+      TransfromFrameData
+      float2
+      float3
+      float4
+      quaternion
+      uint2
+      uint3
+      uint4
+   
+   
+
+   
+   
+   
+
+
+

@@ -1,0 +1,7 @@
+
+transform\_rotation
+===================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: FrameAsset.transform_rotation

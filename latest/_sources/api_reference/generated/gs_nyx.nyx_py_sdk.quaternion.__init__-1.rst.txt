@@ -1,0 +1,10 @@
+quaternion(x: float, y: float, z: float, w: float)
+==================================================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. py:method:: quaternion.__init__(self, x: float, y: float, z: float, w: float) -> None
+   :no-index:
+
+   Construct a quaternion from explicit components.
+

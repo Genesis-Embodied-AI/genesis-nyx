@@ -1,0 +1,7 @@
+
+debug\_view
+===========
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_options
+
+.. autoattribute:: NyxCameraOptions.debug_view

@@ -1,0 +1,98 @@
+SceneAsset
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: SceneAsset
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.SceneAsset
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: nb-constructor-page
+      :no-table:
+
+      ~SceneAsset.__init__
+   
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~SceneAsset.animation_resize
+      ~SceneAsset.animation_size
+      ~SceneAsset.camera_resize
+      ~SceneAsset.camera_size
+      ~SceneAsset.env_map_resize
+      ~SceneAsset.env_map_size
+      ~SceneAsset.get_animation
+      ~SceneAsset.get_camera
+      ~SceneAsset.get_env_map
+      ~SceneAsset.get_instance
+      ~SceneAsset.get_light
+      ~SceneAsset.get_light_field
+      ~SceneAsset.instance_resize
+      ~SceneAsset.instance_size
+      ~SceneAsset.light_field_resize
+      ~SceneAsset.light_field_size
+      ~SceneAsset.light_resize
+      ~SceneAsset.light_size
+      ~SceneAsset.set_animation
+      ~SceneAsset.set_camera
+      ~SceneAsset.set_env_map
+      ~SceneAsset.set_instance
+      ~SceneAsset.set_light
+      ~SceneAsset.set_light_field
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~SceneAsset.rootFolder
+      ~SceneAsset.version
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.SceneAsset

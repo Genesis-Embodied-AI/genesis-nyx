@@ -1,0 +1,7 @@
+
+entity\_to\_uuid
+================
+
+.. currentmodule:: gs_nyx_plugin.nyx_renderer
+
+.. autofunction:: entity_to_uuid

@@ -1,0 +1,7 @@
+
+open\_window
+============
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_options
+
+.. autoattribute:: NyxCameraOptions.open_window

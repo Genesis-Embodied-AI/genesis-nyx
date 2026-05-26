@@ -1,0 +1,9 @@
+uint3()
+=======
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. py:method:: uint3.__init__(self) -> None
+
+   Construct a zero-initialized uint3.
+

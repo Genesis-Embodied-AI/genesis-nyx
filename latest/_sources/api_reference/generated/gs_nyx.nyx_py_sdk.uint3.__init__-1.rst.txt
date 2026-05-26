@@ -1,0 +1,10 @@
+uint3(x: int, y: int, z: int)
+=============================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. py:method:: uint3.__init__(self, x: int, y: int, z: int) -> None
+   :no-index:
+
+   Construct a uint3 from explicit components.
+

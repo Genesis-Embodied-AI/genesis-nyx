@@ -1,0 +1,1625 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gs_nyx_plugin.nyx_renderer &#8212; Nyx for Genesis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=4b7455de" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/gs_nyx_plugin/nyx_renderer';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Nyx for Genesis</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">gs_nyx_plugin.nyx_renderer</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for gs_nyx_plugin.nyx_renderer</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Nyx Renderer integration for Genesis simulation.&quot;&quot;&quot;</span>
+
+<span class="c1"># External imports</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+        <span class="s2">&quot;&#39;torch&#39; module not available. Please install pytorch manually: https://pytorch.org/get-started/locally/&quot;</span>
+    <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">NamedTuple</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="c1"># Internal imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">genesis</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">genesis.utils.geom</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gu</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">genesis.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">qd_to_torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gs_nyx</span><span class="w"> </span><span class="kn">import</span> <span class="n">nyx_py_sdk</span> <span class="k">as</span> <span class="n">nps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gs_nyx</span><span class="w"> </span><span class="kn">import</span> <span class="n">nyx_py_renderer</span> <span class="k">as</span> <span class="n">npr</span>
+
+<span class="c1"># Relative imports</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.nyx_scene_utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">is_mpm_visual_entity</span><span class="p">,</span>
+    <span class="n">is_mpm_recon_entity</span><span class="p">,</span>
+    <span class="n">is_sph_recon_entity</span><span class="p">,</span>
+    <span class="n">particle_recon_budget</span><span class="p">,</span>
+    <span class="n">_particle_solver_radius</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Aliases</span>
+<span class="n">NyxRenderer</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">NyxRenderer</span>
+<span class="n">BridgeStartupParams</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">BridgeStartupParams</span>
+<span class="n">BridgeUpdateDesc</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">BridgeUpdateDesc</span>
+<span class="n">BridgeUpdateData</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">BridgeUpdateData</span>
+<span class="n">ERenderMode</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">ERenderMode</span>
+<span class="n">EDebugView</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">EDebugView</span>
+
+
+<span class="c1"># Excludes the npr re-export aliases above on purpose: they are already</span>
+<span class="c1"># documented in gs_nyx.nyx_py_renderer and re-stubbing them here would create</span>
+<span class="c1"># duplicate cross-reference targets in the Sphinx inventory.</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NyxPyRenderer&quot;</span><span class="p">,</span> <span class="s2">&quot;entity_to_uuid&quot;</span><span class="p">,</span> <span class="s2">&quot;uuid_to_entity&quot;</span><span class="p">]</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_ReconSlot</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Per-entity bookkeeping for a particle-recon entity in the shared deformable buffer.</span>
+
+<span class="sd">    Used for both MPM-recon and SPH-recon entities; the ``solver`` field carries the owning</span>
+<span class="sd">    solver so the per-frame meshing step can pull particles and the correct radius from the</span>
+<span class="sd">    right place without the update loop branching on entity type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">entity</span><span class="p">:</span> <span class="nb">object</span>  <span class="c1"># MPMEntity or SPHEntity (kept for surface.recon_backend access)</span>
+    <span class="n">solver</span><span class="p">:</span> <span class="nb">object</span>  <span class="c1"># MPMSolver or SPHSolver (source of particle_radius + domain bounds)</span>
+    <span class="n">deform_idx</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Index within the deformable iteration order (FEM, PBD, MPM-visual, MPM-recon, SPH-recon)</span>
+    <span class="n">vert_start</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Start offset into _deformable_verts_cuda (in vertices)</span>
+    <span class="n">tri_start</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Start offset into _deformable_indices_cuda (in triangles)</span>
+    <span class="n">max_vertices</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Pre-allocated vertex budget</span>
+    <span class="n">max_triangles</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Pre-allocated triangle budget</span>
+
+
+<span class="c1"># ========================== Utility Functions ==========================</span>
+<div class="viewcode-block" id="entity_to_uuid">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.entity_to_uuid.html#gs_nyx_plugin.nyx_renderer.entity_to_uuid">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">entity_to_uuid</span><span class="p">(</span><span class="n">pair_list</span><span class="p">,</span> <span class="n">entity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Look up the Nyx UUID assigned to a Genesis entity.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pair_list : list of tuple</span>
+<span class="sd">        ``(entity, uuid)`` pairs produced by :class:`NyxSceneExporter` during</span>
+<span class="sd">        scene export. The list is ordered by export order and uses object</span>
+<span class="sd">        identity for the entity field.</span>
+<span class="sd">    entity : object</span>
+<span class="sd">        The Genesis entity to look up. Compared by identity (``is``), not</span>
+<span class="sd">        equality, because two distinct entities can compare equal under</span>
+<span class="sd">        Genesis&#39;s ``__eq__``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    uuid or None</span>
+<span class="sd">        The Nyx UUID registered for that entity, or ``None`` if the entity was</span>
+<span class="sd">        not exported (e.g. its morph had ``visualization=False``).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">pair_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="n">entity</span><span class="p">:</span>  <span class="c1"># identity comparison (important)</span>
+            <span class="k">return</span> <span class="n">u</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<div class="viewcode-block" id="uuid_to_entity">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.uuid_to_entity.html#gs_nyx_plugin.nyx_renderer.uuid_to_entity">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">uuid_to_entity</span><span class="p">(</span><span class="n">pair_list</span><span class="p">,</span> <span class="n">uuid</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reverse lookup: return the Genesis entity that owns a Nyx UUID.</span>
+
+<span class="sd">    Used to translate the ``targetUUID`` returned by Nyx&#39;s pixel-pick raycast</span>
+<span class="sd">    back into the Genesis-side entity object.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pair_list : list of tuple</span>
+<span class="sd">        ``(entity, uuid)`` pairs from :class:`NyxSceneExporter`.</span>
+<span class="sd">    uuid : object</span>
+<span class="sd">        UUID value to match (Nyx&#39;s :class:`gs_nyx.nyx_py_sdk.uuid` type).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    object or None</span>
+<span class="sd">        The Genesis entity, or ``None`` if the UUID is not present in the</span>
+<span class="sd">        pair list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">pair_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">u</span> <span class="o">==</span> <span class="n">uuid</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<span class="c1"># ========================== Nyx Renderer ==========================</span>
+<div class="viewcode-block" id="NyxPyRenderer">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.NyxPyRenderer.html#gs_nyx_plugin.nyx_renderer.NyxPyRenderer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NyxPyRenderer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Python-side wrapper around the native Nyx renderer.</span>
+
+<span class="sd">    Owns the CUDA tensors that bridge Genesis simulation state (rigid</span>
+<span class="sd">    transforms, deformable vertex positions, camera poses) to the Nyx</span>
+<span class="sd">    GPU renderer, and drives the per-frame upload + render. End users</span>
+<span class="sd">    typically interact with the renderer indirectly via</span>
+<span class="sd">    :class:`NyxCameraSensor`; this class is exposed for advanced use</span>
+<span class="sd">    cases that need to drive the renderer manually.</span>
+
+<span class="sd">    Coordinate convention</span>
+<span class="sd">    ---------------------</span>
+<span class="sd">    Genesis is Z-up, Nyx is Y-up. Static scene data is converted on the</span>
+<span class="sd">    CPU at export time by :class:`NyxSceneExporter`; per-frame transforms</span>
+<span class="sd">    are uploaded as raw Genesis-space (Z-up, WXYZ) values and converted</span>
+<span class="sd">    on the GPU.</span>
+
+<span class="sd">    Lifecycle</span>
+<span class="sd">    ---------</span>
+<span class="sd">    1. Construct with the scene, exported scene-description path, and</span>
+<span class="sd">       max viewport size.</span>
+<span class="sd">    2. Call :meth:`build` once after the Genesis scene has been built,</span>
+<span class="sd">       passing the entity-to-UUID mapping from</span>
+<span class="sd">       :class:`NyxSceneExporter`. This starts the renderer, loads the</span>
+<span class="sd">       scene, and allocates GPU buffers sized to the current geometry</span>
+<span class="sd">       counts.</span>
+<span class="sd">    3. Each frame: :meth:`update_scene` for each environment, then</span>
+<span class="sd">       :meth:`render` per camera. :meth:`update` once per frame drives</span>
+<span class="sd">       the window event loop and animation clock.</span>
+<span class="sd">    4. :meth:`destroy` releases the native renderer and GPU buffers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="NyxPyRenderer.__init__">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.NyxPyRenderer.__init__.html#gs_nyx_plugin.nyx_renderer.NyxPyRenderer.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">scene</span><span class="p">,</span>
+        <span class="n">scene_file_path</span><span class="p">,</span>
+        <span class="n">max_width</span><span class="p">,</span>
+        <span class="n">max_height</span><span class="p">,</span>
+        <span class="n">n_envs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">open_window</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">camera_defs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">render_mode</span><span class="o">=</span><span class="n">ERenderMode</span><span class="o">.</span><span class="n">FastPathTracer</span><span class="p">,</span>
+        <span class="n">debug_view</span><span class="o">=</span><span class="n">EDebugView</span><span class="o">.</span><span class="n">Meshlet</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct the renderer wrapper. Does **not** start the native renderer.</span>
+
+<span class="sd">        The native renderer is started inside :meth:`build`; this constructor</span>
+<span class="sd">        only captures parameters and inspects the Genesis solvers so the</span>
+<span class="sd">        geometry-count properties can be queried before build.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        scene : genesis.Scene</span>
+<span class="sd">            The built Genesis scene. Its solvers (rigid / FEM / PBD / MPM) are</span>
+<span class="sd">            queried for geometry counts and per-step state.</span>
+<span class="sd">        scene_file_path : str</span>
+<span class="sd">            Path to the Nyx scene-description JSON produced by</span>
+<span class="sd">            :class:`NyxSceneExporter`. Loaded once during :meth:`build`.</span>
+<span class="sd">        max_width, max_height : int</span>
+<span class="sd">            Maximum viewport size in pixels. Nyx pre-allocates framebuffers up</span>
+<span class="sd">            to this size; cameras with smaller resolutions render into a</span>
+<span class="sd">            sub-region. Set this to the largest ``res`` across all cameras</span>
+<span class="sd">            that will be registered.</span>
+<span class="sd">        n_envs : int, optional</span>
+<span class="sd">            Number of Genesis parallel environments (i.e. ``scene._B``).</span>
+<span class="sd">            Stored for reference; the renderer itself processes one env at a</span>
+<span class="sd">            time, with :meth:`update_scene` selecting the env via its</span>
+<span class="sd">            ``env_index`` argument.</span>
+<span class="sd">        open_window : bool, optional</span>
+<span class="sd">            If ``True``, open a native GUI window for live preview. Default</span>
+<span class="sd">            ``False`` (offscreen).</span>
+<span class="sd">        camera_defs : list of dict or None, optional</span>
+<span class="sd">            Per-camera definition dicts (built by</span>
+<span class="sd">            :class:`NyxCameraSensor.build`). When provided, the renderer uses</span>
+<span class="sd">            the dict-driven path and skips Genesis ``Camera`` objects. Pass</span>
+<span class="sd">            ``None`` when no Nyx sensors are registered to fall back to the</span>
+<span class="sd">            Genesis visualizer&#39;s cameras.</span>
+<span class="sd">        render_mode : gs_nyx.nyx_py_renderer.ERenderMode, optional</span>
+<span class="sd">            Rendering algorithm. Defaults to</span>
+<span class="sd">            :attr:`~gs_nyx.nyx_py_renderer.ERenderMode.FastPathTracer`.</span>
+<span class="sd">        debug_view : gs_nyx.nyx_py_renderer.EDebugView, optional</span>
+<span class="sd">            Debug visualization channel (e.g. meshlet IDs, normals).</span>
+<span class="sd">            Only takes effect when ``render_mode`` is the debug mode.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Keep track of the parameters.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene</span> <span class="o">=</span> <span class="n">scene</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_visualizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">visualizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_file_path</span> <span class="o">=</span> <span class="n">scene_file_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_width</span> <span class="o">=</span> <span class="n">max_width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_height</span> <span class="o">=</span> <span class="n">max_height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_n_envs</span> <span class="o">=</span> <span class="n">n_envs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_open_window</span> <span class="o">=</span> <span class="n">open_window</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_render_mode</span> <span class="o">=</span> <span class="n">render_mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_debug_view</span> <span class="o">=</span> <span class="n">debug_view</span>
+
+        <span class="c1"># Create nyx instance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span> <span class="o">=</span> <span class="n">NyxRenderer</span><span class="p">()</span>
+
+        <span class="c1"># Get the supported solvers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rigid_solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">rigid_solver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">fem_solver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">pbd_solver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">mpm_solver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sph_solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">sph_solver</span>
+
+        <span class="c1"># Camera tensor data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_cameras</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cam_pos_tensor_cuda</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cam_rot_tensor_cuda</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Pre-allocated single-env CUDA tensors for rigid geometry (shape: [n_vgeoms, 3/4])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geom_pos_tensor_cuda</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geom_rot_tensor_cuda</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+
+        <span class="c1"># Shared deformable GPU buffers for all the supported deformable solvers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_verts_cuda</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_uvs_cuda</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_indices_cuda</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+
+        <span class="c1"># Per-section views into the shared vertex buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_fem_verts_view</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_pbd_verts_view</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_mpm_visual_verts_view</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+
+        <span class="c1"># MPM-recon and SPH-recon entities: per-entity slot info; populated in _allocate_cuda_buffers.</span>
+        <span class="c1"># Kept as separate lists so the per-section vert/tri budgets and the reference-table</span>
+        <span class="c1"># ordering remain easy to follow, but a single _ReconSlot type drives both via slot.solver.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_slots</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">_ReconSlot</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_slots</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">_ReconSlot</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Cached MPM-visual entity list (in solver order) for per-step updates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_entities</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># MPM-visual section offsets (set when allocating)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_vert_start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_tri_start</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Camera definitions from sensor (if using NyxCameraSensor)</span>
+        <span class="c1"># Used only at build time for scene export. Not mutated at runtime.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_camera_defs</span> <span class="o">=</span> <span class="n">camera_defs</span></div>
+
+
+    <span class="c1"># -------------------------------------------------------------------------</span>
+    <span class="c1"># Solver geometry counts (per single Genesis env)</span>
+    <span class="c1"># -------------------------------------------------------------------------</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_rigid_geoms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rigid_solver</span><span class="o">.</span><span class="n">n_vgeoms</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_fem_verts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">n_vertices</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_fem_tris</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">n_surfaces</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_fem_entities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">entities</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_pbd_verts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">n_vverts</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_pbd_tris</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">n_vfaces</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_pbd_entities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">entities</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_mpm_entities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predicate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="o">.</span><span class="n">entities</span> <span class="k">if</span> <span class="n">predicate</span><span class="p">(</span><span class="n">e</span><span class="p">)]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_mpm_visual_entity_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_entities</span><span class="p">(</span><span class="n">is_mpm_visual_entity</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_mpm_recon_entity_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_entities</span><span class="p">(</span><span class="n">is_mpm_recon_entity</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_mpm_visual_verts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">n_vverts</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_entity_list</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_mpm_visual_tris</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">n_vfaces</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_entity_list</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_mpm_visual_entities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_entity_list</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_mpm_recon_entities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_entity_list</span><span class="p">)</span>
+
+    <span class="c1"># SPH (recon-only — SPH ships a fluid material exclusively, no skinning path).</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_sph_entities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predicate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_solver</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_solver</span><span class="o">.</span><span class="n">entities</span> <span class="k">if</span> <span class="n">predicate</span><span class="p">(</span><span class="n">e</span><span class="p">)]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_sph_recon_entity_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_entities</span><span class="p">(</span><span class="n">is_sph_recon_entity</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_sph_recon_entities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_entity_list</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_deform_verts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_verts</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_pbd_verts</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_mpm_visual_verts</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_verts_budget</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_verts_budget</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_deform_tris</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_tris</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_pbd_tris</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_mpm_visual_tris</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_tris_budget</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_tris_budget</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_num_deform_objs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_entities</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_pbd_entities</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_mpm_visual_entities</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_mpm_recon_entities</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_sph_recon_entities</span>
+        <span class="p">)</span>
+
+    <span class="c1"># MPM-recon worst-case budgets — computed once and cached so the property is stable</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_mpm_recon_verts_budget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="n">particle_recon_budget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="p">,</span> <span class="n">e</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_entity_list</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_mpm_recon_tris_budget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="n">particle_recon_budget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="p">,</span> <span class="n">e</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_entity_list</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_sph_recon_verts_budget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="n">particle_recon_budget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sph_solver</span><span class="p">,</span> <span class="n">e</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_entity_list</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_sph_recon_tris_budget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="n">particle_recon_budget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sph_solver</span><span class="p">,</span> <span class="n">e</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_entity_list</span>
+        <span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="NyxPyRenderer.build">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.NyxPyRenderer.build.html#gs_nyx_plugin.nyx_renderer.NyxPyRenderer.build">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair_list</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Start the native renderer and allocate all GPU buffers.</span>
+
+<span class="sd">        Must be called exactly once after the Genesis scene has been built</span>
+<span class="sd">        and the scene-description JSON has been exported by</span>
+<span class="sd">        :class:`NyxSceneExporter`. Inspects the active Genesis solvers to</span>
+<span class="sd">        determine vertex / triangle / camera counts, then:</span>
+
+<span class="sd">        1. Starts the Nyx native renderer with the configured viewport size,</span>
+<span class="sd">           render mode, and debug view.</span>
+<span class="sd">        2. Loads the scene description from ``scene_file_path``.</span>
+<span class="sd">        3. Allocates Nyx scene buffers sized for current geometry.</span>
+<span class="sd">        4. Allocates and pins this wrapper&#39;s interop CUDA tensors.</span>
+<span class="sd">        5. Uploads the static deformable data (UVs, triangle indices) for</span>
+<span class="sd">           FEM / PBD / MPM-visual entities. MPM-recon meshes are streamed</span>
+<span class="sd">           per frame.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pair_list : list of tuple</span>
+<span class="sd">            ``(entity, uuid)`` pairs from</span>
+<span class="sd">            :attr:`NyxSceneExporter._entity_uuid_pairs`. Used to populate</span>
+<span class="sd">            the rigid- and deformable-geometry reference tables so per-frame</span>
+<span class="sd">            transforms can be matched to the right scene instances.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        If any MPM-recon entities are present this also primes the configured</span>
+<span class="sd">        reconstruction backend (openvdb or splashsurf) with a one-particle</span>
+<span class="sd">        call so missing dependencies fail at build time rather than on the</span>
+<span class="sd">        first rendered frame.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cameras</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">List</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">camera</span> <span class="k">for</span> <span class="n">camera</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_visualizer</span><span class="o">.</span><span class="n">_cameras</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">camera</span><span class="o">.</span><span class="n">debug</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Cache the MPM-visual entity list for per-step updates (solver order)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_entities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_entity_list</span>
+
+        <span class="c1"># Log per-entity geometry counts so the user can sanity-check the allocated buffers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_mpm_entity_counts</span><span class="p">()</span>
+
+        <span class="c1"># If any particle-recon entities (MPM or SPH) are in play, smoke-test the reconstruction</span>
+        <span class="c1"># backend so a missing ParticleMesher / pysplashsurf surfaces here instead of every frame.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_mpm_recon_entities</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_sph_recon_entities</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_recon_backend_available</span><span class="p">()</span>
+
+        <span class="c1"># Startup the renderer</span>
+        <span class="n">startup_params</span> <span class="o">=</span> <span class="n">BridgeStartupParams</span><span class="p">()</span>
+        <span class="n">startup_params</span><span class="o">.</span><span class="n">cudaDevice</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">current_device</span><span class="p">()</span>
+        <span class="n">startup_params</span><span class="o">.</span><span class="n">renderMode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_mode</span>
+        <span class="n">startup_params</span><span class="o">.</span><span class="n">debugView</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_debug_view</span>
+        <span class="n">startup_params</span><span class="o">.</span><span class="n">maxViewportWidth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_width</span>
+        <span class="n">startup_params</span><span class="o">.</span><span class="n">maxViewportHeight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_height</span>
+        <span class="n">startup_params</span><span class="o">.</span><span class="n">openWindow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_window</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">startup</span><span class="p">(</span><span class="n">startup_params</span><span class="p">)</span>
+
+        <span class="c1"># Load the scene from file (exported by NyxSceneExporter)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">load_scene_from_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_scene_file_path</span><span class="p">)</span>
+
+        <span class="c1"># Allocate scene buffers based on geometry counts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allocate_scene_buffers</span><span class="p">(</span><span class="n">pair_list</span><span class="p">)</span>
+
+        <span class="c1"># Initialize update data structure with buffer pointers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_update_data</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_log_mpm_entity_counts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print per-particle-entity vertex/triangle counts (visual: fixed; recon: worst-case budget).&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_entities</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;entity[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">]&quot;</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;[NyxRenderer] MPM-visual &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;: &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;n_vverts=</span><span class="si">{</span><span class="n">entity</span><span class="o">.</span><span class="n">n_vverts</span><span class="si">}</span><span class="s2">, n_vfaces=</span><span class="si">{</span><span class="n">entity</span><span class="o">.</span><span class="n">n_vfaces</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_entity_list</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;entity[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">]&quot;</span>
+                <span class="n">max_v</span><span class="p">,</span> <span class="n">max_t</span> <span class="o">=</span> <span class="n">particle_recon_budget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="p">,</span> <span class="n">entity</span><span class="p">)</span>
+                <span class="n">backend</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;recon_backend&quot;</span><span class="p">,</span> <span class="s2">&quot;openvdb&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;[NyxRenderer] MPM-recon  &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;: budget verts=</span><span class="si">{</span><span class="n">max_v</span><span class="si">}</span><span class="s2">, &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;budget triangles=</span><span class="si">{</span><span class="n">max_t</span><span class="si">}</span><span class="s2">, backend=&#39;</span><span class="si">{</span><span class="n">backend</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_solver</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_entity_list</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;entity[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">]&quot;</span>
+                <span class="n">max_v</span><span class="p">,</span> <span class="n">max_t</span> <span class="o">=</span> <span class="n">particle_recon_budget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sph_solver</span><span class="p">,</span> <span class="n">entity</span><span class="p">)</span>
+                <span class="n">backend</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;recon_backend&quot;</span><span class="p">,</span> <span class="s2">&quot;openvdb&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;[NyxRenderer] SPH-recon  &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;: budget verts=</span><span class="si">{</span><span class="n">max_v</span><span class="si">}</span><span class="s2">, &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;budget triangles=</span><span class="si">{</span><span class="n">max_t</span><span class="si">}</span><span class="s2">, backend=&#39;</span><span class="si">{</span><span class="n">backend</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_recon_backend_available</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Smoke-test the reconstruction backend for each particle-recon entity (MPM or SPH).</span>
+
+<span class="sd">        `particles_to_mesh()` raises if the configured backend isn&#39;t usable on the current platform</span>
+<span class="sd">        (openvdb is Linux+py3.9 only; splashsurf needs pysplashsurf installed). Run a one-particle</span>
+<span class="sd">        call here so the user gets a clean failure at build time, not on the first render.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">genesis.utils.particle</span><span class="w"> </span><span class="kn">import</span> <span class="n">particles_to_mesh</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+        <span class="n">probe_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+        <span class="n">recon_targets</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;MPM&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_entity_list</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;SPH&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_solver</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_entity_list</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">solver_name</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">entity_list</span> <span class="ow">in</span> <span class="n">recon_targets</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">entity_list</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">radius</span> <span class="o">=</span> <span class="n">_particle_solver_radius</span><span class="p">(</span><span class="n">solver</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">entity_list</span><span class="p">:</span>
+                <span class="n">backend</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;recon_backend&quot;</span><span class="p">,</span> <span class="s2">&quot;openvdb&quot;</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">particles_to_mesh</span><span class="p">(</span><span class="n">probe_positions</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">gs</span><span class="o">.</span><span class="n">raise_exception_from</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">solver_name</span><span class="si">}</span><span class="s2"> recon entity &#39;</span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&lt;unnamed&gt;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39; requested &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;backend &#39;</span><span class="si">{</span><span class="n">backend</span><span class="si">}</span><span class="s2">&#39;, but it isn&#39;t available on this platform. openvdb requires &quot;</span>
+                        <span class="s2">&quot;Linux + Python 3.9; splashsurf requires &#39;pysplashsurf&#39; to be installed. Use &quot;</span>
+                        <span class="s2">&quot;vis_mode=&#39;visual&#39; if the material supports it, or skip this scene on this platform.&quot;</span><span class="p">,</span>
+                        <span class="n">e</span><span class="p">,</span>
+                    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_allocate_scene_buffers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair_list</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allocate Nyx scene buffers based on geometry counts.&quot;&quot;&quot;</span>
+
+        <span class="c1"># Create the update description</span>
+        <span class="n">update_desc</span> <span class="o">=</span> <span class="n">BridgeUpdateDesc</span><span class="p">()</span>
+
+        <span class="c1"># Determine number of cameras (from sensor definitions or Genesis visualizer)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_camera_defs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_cameras</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_camera_defs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_cameras</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cameras</span><span class="p">)</span>
+        <span class="n">update_desc</span><span class="o">.</span><span class="n">numCameras</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_cameras</span>
+
+        <span class="c1"># Rigid geometry</span>
+        <span class="n">update_desc</span><span class="o">.</span><span class="n">numRigidGeom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_rigid_geoms</span>
+
+        <span class="c1"># Deformable counts (includes MPM budgets)</span>
+        <span class="n">update_desc</span><span class="o">.</span><span class="n">numDeformVertices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_verts</span>
+        <span class="n">update_desc</span><span class="o">.</span><span class="n">numDeformTriangles</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_tris</span>
+        <span class="n">update_desc</span><span class="o">.</span><span class="n">numDeformObjects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_objs</span>
+
+        <span class="c1"># Build the reference table mapping geometry to UUIDs for Nyx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_reference_table</span><span class="p">(</span><span class="n">update_desc</span><span class="p">,</span> <span class="n">pair_list</span><span class="p">)</span>
+
+        <span class="c1"># Allocate the scene buffers in Nyx based on the update description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">allocate_scene_buffers</span><span class="p">(</span><span class="n">update_desc</span><span class="p">)</span>
+
+        <span class="c1"># Allocate internal CUDA buffers for the interop between Genesis and Nyx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allocate_cuda_buffers</span><span class="p">()</span>
+
+        <span class="c1"># Upload static deformable data (UVs + indices) to the internal CUDA buffers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_upload_static_deformable_data</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_allocate_cuda_buffers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allocate all Python-side CUDA tensors for camera, rigid, and deformable geometry.&quot;&quot;&quot;</span>
+        <span class="c1"># Camera tensors</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_cameras</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cam_pos_tensor_cuda</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_cameras</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cam_rot_tensor_cuda</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_cameras</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Rigid geometry tensors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geom_pos_tensor_cuda</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_rigid_geoms</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geom_rot_tensor_cuda</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_rigid_geoms</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Deformable geometry tensors</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_verts</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Section offsets (in vertices / triangles): FEM | PBD | MPM-visual | MPM-recon | SPH-recon.</span>
+        <span class="c1"># The SPH-recon section starts where MPM-recon ends; the slot-build loop below carries the</span>
+        <span class="c1"># running offset forward through both recon sections, so SPH start offsets aren&#39;t named here.</span>
+        <span class="n">fem_verts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_verts</span>
+        <span class="n">fem_tris</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_tris</span>
+        <span class="n">pbd_verts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_pbd_verts</span>
+        <span class="n">pbd_tris</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_pbd_tris</span>
+        <span class="n">mpm_v_verts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_mpm_visual_verts</span>
+        <span class="n">mpm_v_tris</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_mpm_visual_tris</span>
+
+        <span class="n">pbd_vert_start</span> <span class="o">=</span> <span class="n">fem_verts</span>
+        <span class="n">pbd_tri_start</span> <span class="o">=</span> <span class="n">fem_tris</span>
+        <span class="n">mpm_visual_vert_start</span> <span class="o">=</span> <span class="n">pbd_vert_start</span> <span class="o">+</span> <span class="n">pbd_verts</span>
+        <span class="n">mpm_visual_tri_start</span> <span class="o">=</span> <span class="n">pbd_tri_start</span> <span class="o">+</span> <span class="n">pbd_tris</span>
+        <span class="n">mpm_recon_vert_start</span> <span class="o">=</span> <span class="n">mpm_visual_vert_start</span> <span class="o">+</span> <span class="n">mpm_v_verts</span>
+        <span class="n">mpm_recon_tri_start</span> <span class="o">=</span> <span class="n">mpm_visual_tri_start</span> <span class="o">+</span> <span class="n">mpm_v_tris</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_vert_start</span> <span class="o">=</span> <span class="n">mpm_visual_vert_start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_tri_start</span> <span class="o">=</span> <span class="n">mpm_visual_tri_start</span>
+
+        <span class="c1"># Nyx expects flat, contiguous arrays: float3 positions, float2 UVs, int32 indices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_verts_cuda</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_verts</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_uvs_cuda</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_verts</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_indices_cuda</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_tris</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Calculate the starting index for PBD vertices in the shared vertex buffer.</span>
+        <span class="n">pbd_vert_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_verts</span>
+
+        <span class="c1"># Create per-solver views into the shared vertex buffer</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">and</span> <span class="n">fem_verts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_fem_verts_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_verts_cuda</span><span class="p">[</span>
+                <span class="p">:</span><span class="n">pbd_vert_start</span>
+            <span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">and</span> <span class="n">pbd_verts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_pbd_verts_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_verts_cuda</span><span class="p">[</span>
+                <span class="n">pbd_vert_start</span><span class="p">:</span><span class="n">mpm_visual_vert_start</span>
+            <span class="p">]</span>
+        <span class="k">if</span> <span class="n">mpm_v_verts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_mpm_visual_verts_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_verts_cuda</span><span class="p">[</span>
+                <span class="n">mpm_visual_vert_start</span><span class="p">:</span><span class="n">mpm_recon_vert_start</span>
+            <span class="p">]</span>
+
+        <span class="c1"># Bookkeeping for particle-recon entities (MPM then SPH). deform_idx must match the order</span>
+        <span class="c1"># references are added in _build_reference_table:</span>
+        <span class="c1">#   FEM (n_fem) -&gt; PBD (n_pbd) -&gt; MPM-visual (n_mpm_v) -&gt; MPM-recon -&gt; SPH-recon.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_slots</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_slots</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">mpm_recon_deform_base</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_entities</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_pbd_entities</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_mpm_visual_entities</span>
+        <span class="p">)</span>
+        <span class="n">cur_vert_start</span> <span class="o">=</span> <span class="n">mpm_recon_vert_start</span>
+        <span class="n">cur_tri_start</span> <span class="o">=</span> <span class="n">mpm_recon_tri_start</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_entity_list</span><span class="p">):</span>
+            <span class="n">max_v</span><span class="p">,</span> <span class="n">max_t</span> <span class="o">=</span> <span class="n">particle_recon_budget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="p">,</span> <span class="n">entity</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_slots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">_ReconSlot</span><span class="p">(</span>
+                    <span class="n">entity</span><span class="o">=</span><span class="n">entity</span><span class="p">,</span>
+                    <span class="n">solver</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="p">,</span>
+                    <span class="n">deform_idx</span><span class="o">=</span><span class="n">mpm_recon_deform_base</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span>
+                    <span class="n">vert_start</span><span class="o">=</span><span class="n">cur_vert_start</span><span class="p">,</span>
+                    <span class="n">tri_start</span><span class="o">=</span><span class="n">cur_tri_start</span><span class="p">,</span>
+                    <span class="n">max_vertices</span><span class="o">=</span><span class="n">max_v</span><span class="p">,</span>
+                    <span class="n">max_triangles</span><span class="o">=</span><span class="n">max_t</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">cur_vert_start</span> <span class="o">+=</span> <span class="n">max_v</span>
+            <span class="n">cur_tri_start</span> <span class="o">+=</span> <span class="n">max_t</span>
+
+        <span class="c1"># SPH-recon section starts where MPM-recon ends (matches sph_recon_vert_start above; we</span>
+        <span class="c1"># carry cur_* across instead of resetting to keep the running offset honest if budgets</span>
+        <span class="c1"># are clamped per entity later).</span>
+        <span class="n">sph_recon_deform_base</span> <span class="o">=</span> <span class="n">mpm_recon_deform_base</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_mpm_recon_entities</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_entity_list</span><span class="p">):</span>
+            <span class="n">max_v</span><span class="p">,</span> <span class="n">max_t</span> <span class="o">=</span> <span class="n">particle_recon_budget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sph_solver</span><span class="p">,</span> <span class="n">entity</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_slots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">_ReconSlot</span><span class="p">(</span>
+                    <span class="n">entity</span><span class="o">=</span><span class="n">entity</span><span class="p">,</span>
+                    <span class="n">solver</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_sph_solver</span><span class="p">,</span>
+                    <span class="n">deform_idx</span><span class="o">=</span><span class="n">sph_recon_deform_base</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span>
+                    <span class="n">vert_start</span><span class="o">=</span><span class="n">cur_vert_start</span><span class="p">,</span>
+                    <span class="n">tri_start</span><span class="o">=</span><span class="n">cur_tri_start</span><span class="p">,</span>
+                    <span class="n">max_vertices</span><span class="o">=</span><span class="n">max_v</span><span class="p">,</span>
+                    <span class="n">max_triangles</span><span class="o">=</span><span class="n">max_t</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">cur_vert_start</span> <span class="o">+=</span> <span class="n">max_v</span>
+            <span class="n">cur_tri_start</span> <span class="o">+=</span> <span class="n">max_t</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_reference_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">update_desc</span><span class="p">,</span> <span class="n">pair_list</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build the reference table mapping geometry to UUIDs for Nyx.</span>
+
+<span class="sd">        Deformable order MUST match _allocate_cuda_buffers&#39;s section layout:</span>
+<span class="sd">        FEM, PBD, MPM-visual, MPM-recon. The deform_idx fed to</span>
+<span class="sd">        set_deform_entity_active_triangles() is the index in this iteration.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Build the reference table for all geometry (rigid + all deformables)</span>
+        <span class="n">total_refs</span> <span class="o">=</span> <span class="n">update_desc</span><span class="o">.</span><span class="n">numRigidGeom</span> <span class="o">+</span> <span class="n">update_desc</span><span class="o">.</span><span class="n">numDeformObjects</span>
+        <span class="n">update_desc</span><span class="o">.</span><span class="n">reference_resize</span><span class="p">(</span><span class="n">total_refs</span><span class="p">)</span>
+
+        <span class="c1"># Rigid geometry references</span>
+        <span class="k">for</span> <span class="n">refIdx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">update_desc</span><span class="o">.</span><span class="n">numRigidGeom</span><span class="p">):</span>
+            <span class="n">currentRef</span> <span class="o">=</span> <span class="n">update_desc</span><span class="o">.</span><span class="n">get_reference</span><span class="p">(</span><span class="n">refIdx</span><span class="p">)</span>
+            <span class="n">current_vgeom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rigid_solver</span><span class="o">.</span><span class="n">vgeoms</span><span class="p">[</span><span class="n">refIdx</span><span class="p">]</span>
+            <span class="n">current_entity</span> <span class="o">=</span> <span class="n">current_vgeom</span><span class="o">.</span><span class="n">entity</span>
+
+            <span class="n">currentRef</span><span class="o">.</span><span class="n">targetUUID</span> <span class="o">=</span> <span class="n">entity_to_uuid</span><span class="p">(</span><span class="n">pair_list</span><span class="p">,</span> <span class="n">current_entity</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">current_entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">URDF</span><span class="p">):</span>
+                <span class="n">currentRef</span><span class="o">.</span><span class="n">nodeName</span> <span class="o">=</span> <span class="n">current_vgeom</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">current_entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">MJCF</span><span class="p">):</span>
+                <span class="n">currentRef</span><span class="o">.</span><span class="n">nodeName</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_vgeom</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">current_vgeom</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">vgeoms</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">current_vgeom</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">currentRef</span><span class="o">.</span><span class="n">nodeName</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+            <span class="n">update_desc</span><span class="o">.</span><span class="n">set_reference</span><span class="p">(</span><span class="n">refIdx</span><span class="p">,</span> <span class="n">currentRef</span><span class="p">)</span>
+
+        <span class="c1"># Deformable references in order: FEM -&gt; PBD -&gt; MPM-visual -&gt; MPM-recon -&gt; SPH-recon</span>
+        <span class="n">deform_idx</span> <span class="o">=</span> <span class="n">update_desc</span><span class="o">.</span><span class="n">numRigidGeom</span>
+
+        <span class="n">deformable_entity_lists</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+            <span class="n">deformable_entity_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">entities</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+            <span class="n">deformable_entity_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">entities</span><span class="p">)</span>
+        <span class="n">deformable_entity_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_entity_list</span><span class="p">)</span>
+        <span class="n">deformable_entity_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_entity_list</span><span class="p">)</span>
+        <span class="n">deformable_entity_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_entity_list</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">entity_list</span> <span class="ow">in</span> <span class="n">deformable_entity_lists</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">entity_list</span><span class="p">:</span>
+                <span class="n">currentRef</span> <span class="o">=</span> <span class="n">update_desc</span><span class="o">.</span><span class="n">get_reference</span><span class="p">(</span><span class="n">deform_idx</span><span class="p">)</span>
+                <span class="n">currentRef</span><span class="o">.</span><span class="n">targetUUID</span> <span class="o">=</span> <span class="n">entity_to_uuid</span><span class="p">(</span><span class="n">pair_list</span><span class="p">,</span> <span class="n">entity</span><span class="p">)</span>
+                <span class="n">currentRef</span><span class="o">.</span><span class="n">nodeName</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="n">update_desc</span><span class="o">.</span><span class="n">set_reference</span><span class="p">(</span><span class="n">deform_idx</span><span class="p">,</span> <span class="n">currentRef</span><span class="p">)</span>
+                <span class="n">deform_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_upload_static_deformable_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Upload static deformable data (UVs + indices) for FEM, PBD, and MPM-visual entities.</span>
+
+<span class="sd">        MPM-recon UVs and indices are streamed per frame, so we leave their buffer slots zeroed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_verts</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">pbd_vert_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_verts</span>
+        <span class="n">pbd_tris_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_tris</span>
+        <span class="n">mpm_v_vert_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_vert_start</span>
+        <span class="n">mpm_v_tri_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_tri_start</span>
+
+        <span class="c1"># FEM</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_verts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">fem_ti</span><span class="p">,</span> <span class="n">fem_uv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">get_state_render</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">_sim</span><span class="o">.</span><span class="n">cur_substep_local</span>
+            <span class="p">)</span>
+            <span class="n">fem_uvs_src</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span><span class="n">fem_uv</span><span class="p">,</span> <span class="n">transpose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+                <span class="n">torch</span><span class="o">.</span><span class="n">float32</span>
+            <span class="p">)</span>
+            <span class="n">fem_idx_src</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span><span class="n">fem_ti</span><span class="p">,</span> <span class="n">transpose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_uvs_cuda</span><span class="p">[:</span><span class="n">pbd_vert_start</span><span class="p">]</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">fem_uvs_src</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_indices_cuda</span><span class="p">[:</span> <span class="n">pbd_tris_start</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">fem_idx_src</span><span class="p">)</span>
+
+        <span class="c1"># PBD (indices need remapping into the shared vertex space)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_pbd_verts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">pbd_vu</span><span class="p">,</span> <span class="n">pbd_fi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">get_state_render</span><span class="p">()</span>
+            <span class="n">pbd_uvs_src</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span><span class="n">pbd_vu</span><span class="p">,</span> <span class="n">transpose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+                <span class="n">torch</span><span class="o">.</span><span class="n">float32</span>
+            <span class="p">)</span>
+            <span class="n">pbd_idx_src</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span><span class="n">pbd_fi</span><span class="p">,</span> <span class="n">transpose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">pbd_uv_dst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_uvs_cuda</span><span class="p">[</span><span class="n">pbd_vert_start</span><span class="p">:</span><span class="n">mpm_v_vert_start</span><span class="p">]</span>
+            <span class="n">pbd_idx_dst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_indices_cuda</span><span class="p">[</span>
+                <span class="n">pbd_tris_start</span> <span class="o">*</span> <span class="mi">3</span> <span class="p">:</span> <span class="n">mpm_v_tri_start</span> <span class="o">*</span> <span class="mi">3</span>
+            <span class="p">]</span>
+            <span class="n">pbd_uv_dst</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">pbd_uvs_src</span><span class="p">)</span>
+            <span class="n">pbd_idx_dst</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">pbd_idx_src</span><span class="p">)</span>
+            <span class="n">pbd_idx_dst</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">pbd_vert_start</span><span class="p">)</span>
+
+        <span class="c1"># MPM-visual: per-entity static face indices + (zero) UVs, remapped into shared vertex space</span>
+        <span class="n">cur_vert</span> <span class="o">=</span> <span class="n">mpm_v_vert_start</span>
+        <span class="n">cur_tri</span> <span class="o">=</span> <span class="n">mpm_v_tri_start</span>
+        <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_visual_entities</span><span class="p">:</span>
+            <span class="n">n_v</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">n_vverts</span>
+            <span class="n">n_t</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">n_vfaces</span>
+            <span class="k">if</span> <span class="n">n_v</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n_t</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1"># Genesis exposes the static face indices via _vfaces (numpy, local to the entity)</span>
+            <span class="n">faces</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span>
+                <span class="n">entity</span><span class="o">.</span><span class="n">_vfaces</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_indices_cuda</span><span class="p">[</span><span class="n">cur_tri</span> <span class="o">*</span> <span class="mi">3</span> <span class="p">:</span> <span class="p">(</span><span class="n">cur_tri</span> <span class="o">+</span> <span class="n">n_t</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span>
+                <span class="n">faces</span> <span class="o">+</span> <span class="n">cur_vert</span>
+            <span class="p">)</span>
+            <span class="n">cur_vert</span> <span class="o">+=</span> <span class="n">n_v</span>
+            <span class="n">cur_tri</span> <span class="o">+=</span> <span class="n">n_t</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_init_update_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the BridgeUpdateData structure with all buffer pointers.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span> <span class="o">=</span> <span class="n">BridgeUpdateData</span><span class="p">()</span>
+
+        <span class="c1"># Note that it&#39;s safe to use data_ptr() only at init time because we allocate</span>
+        <span class="c1"># the buffers ourselves and their address won&#39;t change. It&#39;s not safe to</span>
+        <span class="c1"># do a similar thing with buffers from Genesis.</span>
+
+        <span class="c1"># Camera data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">numCameras</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_cameras</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">camPosPtr</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cam_pos_tensor_cuda</span><span class="o">.</span><span class="n">data_ptr</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cam_pos_tensor_cuda</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="mi">0</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">camRotPtr</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cam_rot_tensor_cuda</span><span class="o">.</span><span class="n">data_ptr</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cam_rot_tensor_cuda</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="mi">0</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Rigid geometry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">numRigidGeom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_rigid_geoms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">rigidGeomPosPtr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geom_pos_tensor_cuda</span><span class="o">.</span><span class="n">data_ptr</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">rigidGeomRotPtr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geom_rot_tensor_cuda</span><span class="o">.</span><span class="n">data_ptr</span><span class="p">()</span>
+
+        <span class="c1"># Combined deformable geometry for all supported solvers</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_verts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">numDeformVertices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_verts</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">numDeformTriangles</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_tris</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">numDeformObjects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_deform_objs</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">deformVertexPosPtr</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_verts_cuda</span><span class="o">.</span><span class="n">data_ptr</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">deformVertexUVsPtr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_uvs_cuda</span><span class="o">.</span><span class="n">data_ptr</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="o">.</span><span class="n">deformTriangleIndicesPtr</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_indices_cuda</span><span class="o">.</span><span class="n">data_ptr</span><span class="p">()</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_geometry_tensors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update geometry buffers each frame: rigid transforms + deformable vertex positions.&quot;&quot;&quot;</span>
+        <span class="c1"># Get the current frame rigid geometry data from Genesis</span>
+        <span class="n">geom_pos_tensor</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rigid_solver</span><span class="o">.</span><span class="n">vgeoms_state</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span>
+            <span class="n">transpose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">geom_rot_tensor</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rigid_solver</span><span class="o">.</span><span class="n">vgeoms_state</span><span class="o">.</span><span class="n">quat</span><span class="p">,</span>
+            <span class="n">transpose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Copy env n data into pre-allocated single-env CUDA tensors</span>
+        <span class="c1"># Handles CPU to GPU transfer and float64 to float32 conversion</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geom_pos_tensor_cuda</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">geom_pos_tensor</span><span class="p">[</span><span class="n">env_index</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geom_rot_tensor_cuda</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">geom_rot_tensor</span><span class="p">[</span><span class="n">env_index</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+
+        <span class="c1"># Copy deformable vertex positions (env n) to the pre-allocated views</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_fem_verts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">fem_sv</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">get_state_render</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_fem_solver</span><span class="o">.</span><span class="n">_sim</span><span class="o">.</span><span class="n">cur_substep_local</span>
+            <span class="p">)</span>
+            <span class="n">fem_src</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span><span class="n">fem_sv</span><span class="p">,</span> <span class="n">transpose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_fem_verts_view</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">fem_src</span><span class="p">[</span><span class="n">env_index</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_pbd_verts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">pbd_vp</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pbd_solver</span><span class="o">.</span><span class="n">get_state_render</span><span class="p">()</span>
+            <span class="n">pbd_src</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span><span class="n">pbd_vp</span><span class="p">,</span> <span class="n">transpose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_pbd_verts_view</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">pbd_src</span><span class="p">[</span><span class="n">env_index</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+
+        <span class="c1"># MPM-visual: skinned vertices on GPU (mpm_solver.vverts_render.pos). Topology fixed.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_mpm_visual_verts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="o">.</span><span class="n">update_render_fields</span><span class="p">()</span>
+            <span class="n">mpm_vverts</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_solver</span><span class="o">.</span><span class="n">vverts_render</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="n">transpose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="c1"># Shape: (n_envs, total_vverts, 3) — slice the per-env data for the visual section</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_mpm_visual_verts_view</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span>
+                <span class="n">mpm_vverts</span><span class="p">[</span><span class="n">env_index</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Particle-recon: CPU reconstruction per entity per env, then upload + per-entity active</span>
+        <span class="c1"># count. MPM-recon and SPH-recon share the same code path; the slot carries the owning</span>
+        <span class="c1"># solver so the meshing call resolves the correct particle radius.</span>
+        <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpm_recon_slots</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_recon_slot</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">env_index</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sph_recon_slots</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_recon_slot</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">env_index</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_recon_slot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">:</span> <span class="n">_ReconSlot</span><span class="p">,</span> <span class="n">env_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reconstruct a particle-fluid surface and stream it into the shared deformable buffer.&quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">genesis.utils.particle</span><span class="w"> </span><span class="kn">import</span> <span class="n">particles_to_mesh</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+        <span class="c1"># Get particle positions for this env (numpy)</span>
+        <span class="n">poss</span> <span class="o">=</span> <span class="n">slot</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">get_particles_pos</span><span class="p">(</span><span class="n">envs_idx</span><span class="o">=</span><span class="n">env_index</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">poss</span><span class="p">,</span> <span class="s2">&quot;cpu&quot;</span><span class="p">):</span>
+            <span class="n">poss</span> <span class="o">=</span> <span class="n">poss</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">poss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">poss</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+        <span class="n">backend</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;recon_backend&quot;</span><span class="p">,</span> <span class="s2">&quot;openvdb&quot;</span><span class="p">)</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="n">_particle_solver_radius</span><span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">solver</span><span class="p">)</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">particles_to_mesh</span><span class="p">(</span><span class="n">poss</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
+
+        <span class="n">n_v</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">n_t</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">faces</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># Clamp to the pre-allocated budget; warn (once) if exceeded so the user can resize.</span>
+        <span class="k">if</span> <span class="n">n_v</span> <span class="o">&gt;</span> <span class="n">slot</span><span class="o">.</span><span class="n">max_vertices</span> <span class="ow">or</span> <span class="n">n_t</span> <span class="o">&gt;</span> <span class="n">slot</span><span class="o">.</span><span class="n">max_triangles</span><span class="p">:</span>
+            <span class="n">gs</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Recon reconstruction exceeded budget (</span><span class="si">{</span><span class="n">n_v</span><span class="si">}</span><span class="s2">v/</span><span class="si">{</span><span class="n">n_t</span><span class="si">}</span><span class="s2">t &gt; &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">slot</span><span class="o">.</span><span class="n">max_vertices</span><span class="si">}</span><span class="s2">v/</span><span class="si">{</span><span class="n">slot</span><span class="o">.</span><span class="n">max_triangles</span><span class="si">}</span><span class="s2">t); clamping. Coarsen recon voxel scale &quot;</span>
+                <span class="s2">&quot;or tighten the solver domain.&quot;</span>
+            <span class="p">)</span>
+            <span class="n">n_v</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">n_v</span><span class="p">,</span> <span class="n">slot</span><span class="o">.</span><span class="n">max_vertices</span><span class="p">)</span>
+            <span class="n">n_t</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">n_t</span><span class="p">,</span> <span class="n">slot</span><span class="o">.</span><span class="n">max_triangles</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">n_v</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">verts</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span>
+                <span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">[:</span><span class="n">n_v</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_verts_cuda</span><span class="p">[</span><span class="n">slot</span><span class="o">.</span><span class="n">vert_start</span> <span class="p">:</span> <span class="n">slot</span><span class="o">.</span><span class="n">vert_start</span> <span class="o">+</span> <span class="n">n_v</span><span class="p">]</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span>
+                <span class="n">verts</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">n_t</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Remap face indices into the shared vertex space (faces are local to the recon mesh)</span>
+            <span class="n">faces</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span>
+                <span class="n">mesh</span><span class="o">.</span><span class="n">faces</span><span class="p">[:</span><span class="n">n_t</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">faces</span> <span class="o">=</span> <span class="n">faces</span> <span class="o">+</span> <span class="n">slot</span><span class="o">.</span><span class="n">vert_start</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_deformable_indices_cuda</span><span class="p">[</span>
+                <span class="n">slot</span><span class="o">.</span><span class="n">tri_start</span> <span class="o">*</span> <span class="mi">3</span> <span class="p">:</span> <span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">tri_start</span> <span class="o">+</span> <span class="n">n_t</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">faces</span><span class="p">)</span>
+
+        <span class="c1"># Push the live triangle count to Nyx so the shader knows where to stop reading indices</span>
+        <span class="c1"># and starts zeroing the tail to keep the BLAS clean.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">set_deform_entity_active_triangles</span><span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">deform_idx</span><span class="p">,</span> <span class="n">n_t</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NyxPyRenderer.update_camera_tensor">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.NyxPyRenderer.update_camera_tensor.html#gs_nyx_plugin.nyx_renderer.NyxPyRenderer.update_camera_tensor">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_camera_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cam_index</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">lookat</span><span class="p">,</span> <span class="n">up</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write one camera&#39;s pos + quaternion directly into the CUDA tensors.</span>
+
+<span class="sd">        Called by NyxCameraSensor per-env before update_scene().</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cam_index : int</span>
+<span class="sd">            Camera index in the shared tensor.</span>
+<span class="sd">        pos, lookat, up : array-like (3,)</span>
+<span class="sd">            Camera pose in Z-up coordinates.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cam_pos_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">cam_lookat_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">lookat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">cam_up_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">up</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+        <span class="n">transform_mat</span> <span class="o">=</span> <span class="n">gu</span><span class="o">.</span><span class="n">pos_lookat_up_to_T</span><span class="p">(</span><span class="n">cam_pos_t</span><span class="p">,</span> <span class="n">cam_lookat_t</span><span class="p">,</span> <span class="n">cam_up_t</span><span class="p">)</span>
+        <span class="n">cam_quat_zup_wxyz</span> <span class="o">=</span> <span class="n">gu</span><span class="o">.</span><span class="n">R_to_quat</span><span class="p">(</span><span class="n">transform_mat</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cam_pos_tensor_cuda</span><span class="p">[</span><span class="n">cam_index</span><span class="p">]</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">cam_pos_t</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cam_rot_tensor_cuda</span><span class="p">[</span><span class="n">cam_index</span><span class="p">]</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">cam_quat_zup_wxyz</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_camera_tensors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update camera tensors from Genesis Camera objects (Z-up, WXYZ format).</span>
+
+<span class="sd">        Only used when no Nyx sensor is registered (camera_defs is None).</span>
+<span class="sd">        When Nyx sensors are active, they call update_camera_tensor() directly.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cam_pos_tensor_cuda</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Nyx sensors manage their own cameras via update_camera_tensor()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_camera_defs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Genesis Camera objects — select data for the target env</span>
+        <span class="k">for</span> <span class="n">cam_idx</span><span class="p">,</span> <span class="n">camera</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cameras</span><span class="p">):</span>
+            <span class="n">cam_pos</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">get_pos</span><span class="p">(</span><span class="n">envs_idx</span><span class="o">=</span><span class="n">env_index</span><span class="p">)</span>
+            <span class="n">cam_quat</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">get_quat</span><span class="p">(</span><span class="n">envs_idx</span><span class="o">=</span><span class="n">env_index</span><span class="p">)</span>  <span class="c1"># WXYZ format</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cam_pos_tensor_cuda</span><span class="p">[</span><span class="n">cam_idx</span><span class="p">]</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">cam_pos</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cam_rot_tensor_cuda</span><span class="p">[</span><span class="n">cam_idx</span><span class="p">]</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">cam_quat</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+
+<div class="viewcode-block" id="NyxPyRenderer.update_scene">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.NyxPyRenderer.update_scene.html#gs_nyx_plugin.nyx_renderer.NyxPyRenderer.update_scene">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sync one Genesis environment&#39;s state to the Nyx GPU buffers.</span>
+
+<span class="sd">        Per-frame entry point. Pulls the current rigid-body transforms,</span>
+<span class="sd">        deformable vertex positions, and (when no Nyx sensor is registered)</span>
+<span class="sd">        Genesis camera poses for the selected env, copies them into the</span>
+<span class="sd">        pre-allocated CUDA tensors, hands their pointers to Nyx via</span>
+<span class="sd">        :class:`~gs_nyx.nyx_py_renderer.BridgeUpdateData`, and selects the</span>
+<span class="sd">        environment map slot.</span>
+
+<span class="sd">        MPM-recon entities also get their per-frame surface reconstruction</span>
+<span class="sd">        run here: particles are pulled to the CPU, meshed via</span>
+<span class="sd">        :func:`genesis.utils.particle.particles_to_mesh`, and the resulting</span>
+<span class="sd">        vertices + remapped indices are streamed into the shared deformable</span>
+<span class="sd">        buffer along with a per-entity active-triangle count.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        env_index : int</span>
+<span class="sd">            Which parallel Genesis environment to render. Must be in</span>
+<span class="sd">            ``[0, n_envs)``.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Z-up (Genesis) to Y-up (Nyx) conversion for per-frame transforms is</span>
+<span class="sd">        deferred to the Nyx GPU shaders; the tensors uploaded here remain in</span>
+<span class="sd">        Genesis-native coordinates with WXYZ quaternions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Update camera tensors with current Genesis state (raw Z-up data)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_camera_tensors</span><span class="p">(</span><span class="n">env_index</span><span class="p">)</span>
+
+        <span class="c1"># Update all geometry buffer pointers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_geometry_tensors</span><span class="p">(</span><span class="n">env_index</span><span class="p">)</span>
+
+        <span class="c1"># Sync the updated tensors to Nyx (GPU shader handles Z-up to Y-up conversion)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">update_scene_buffers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="p">)</span>
+
+        <span class="c1"># Set the env map we need to set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">set_env_map</span><span class="p">(</span><span class="n">env_index</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NyxPyRenderer.update">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.NyxPyRenderer.update.html#gs_nyx_plugin.nyx_renderer.NyxPyRenderer.update">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Drive the native renderer&#39;s per-frame tick (window + animation clock).</span>
+
+<span class="sd">        Call once per simulation step, before the per-env render loop. When</span>
+<span class="sd">        :attr:`open_window` is ``True`` this pumps window events; otherwise</span>
+<span class="sd">        it advances the renderer&#39;s internal animation timing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="NyxPyRenderer.render">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.NyxPyRenderer.render.html#gs_nyx_plugin.nyx_renderer.NyxPyRenderer.render">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">camera_index</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Render one camera and return the resulting RGB image as a CUDA tensor.</span>
+
+<span class="sd">        Synchronizes the CUDA stream first so any pending Genesis kernel</span>
+<span class="sd">        work on the input tensors has completed before the renderer reads</span>
+<span class="sd">        them; without this the renderer can race with the simulation and</span>
+<span class="sd">        sample stale geometry.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        camera_index : int, optional</span>
+<span class="sd">            Index into the registered camera list (matches the order in</span>
+<span class="sd">            which :class:`NyxCameraSensor` instances were built, or the</span>
+<span class="sd">            Genesis visualizer&#39;s non-debug camera order when no sensors are</span>
+<span class="sd">            registered). Default 0.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        torch.Tensor</span>
+<span class="sd">            ``uint8`` image of shape ``(H, W, 3)`` on the CUDA device,</span>
+<span class="sd">            where ``(H, W)`` matches the camera&#39;s configured resolution.</span>
+<span class="sd">            The buffer is owned by the renderer — copy it if you need to</span>
+<span class="sd">            keep the data past the next :meth:`render` call.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Ensure all prior CUDA work is finished (necessary if all the input data is on the GPU)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">synchronize</span><span class="p">()</span>
+
+        <span class="n">color_tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">render_frame</span><span class="p">(</span><span class="n">camera_index</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">color_tensor</span></div>
+
+
+<div class="viewcode-block" id="NyxPyRenderer.pick_pixel">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.NyxPyRenderer.pick_pixel.html#gs_nyx_plugin.nyx_renderer.NyxPyRenderer.pick_pixel">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pick_pixel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">pair_list</span><span class="p">,</span> <span class="n">camera_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span>
+        <span class="nb">tuple</span><span class="p">[</span><span class="n">gs</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">entities</span><span class="o">.</span><span class="n">base_entity</span><span class="o">.</span><span class="n">Entity</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span>
+    <span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cast a ray through one pixel and return the entity and hit point.</span>
+
+<span class="sd">        Wraps the native :meth:`gs_nyx.nyx_py_renderer.NyxRenderer.pick_pixel`</span>
+<span class="sd">        and translates Nyx&#39;s UUID + Y-up hit location back to Genesis world</span>
+<span class="sd">        space.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pair_list : list of tuple</span>
+<span class="sd">            ``(entity, uuid)`` pairs from :class:`NyxSceneExporter`. Used to</span>
+<span class="sd">            convert the picked UUID back into a Genesis entity.</span>
+<span class="sd">        camera_index : int</span>
+<span class="sd">            Camera to cast through. Matches the index used by :meth:`render`.</span>
+<span class="sd">        x, y : int</span>
+<span class="sd">            Pixel coordinates with the origin at the top-left of the</span>
+<span class="sd">            camera&#39;s framebuffer.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple or None</span>
+<span class="sd">            ``None`` if the ray missed all geometry. Otherwise a 3-tuple</span>
+<span class="sd">            ``(entity, node_name, position)``:</span>
+
+<span class="sd">            - ``entity`` — the Genesis entity that was hit</span>
+<span class="sd">            - ``node_name`` — link / subgeometry name (URDF: link name;</span>
+<span class="sd">              MJCF: ``&quot;&lt;link&gt;_&lt;vgeom_idx&gt;&quot;``; otherwise empty)</span>
+<span class="sd">            - ``position`` — world-space hit point as ``(x, y, z)`` in</span>
+<span class="sd">              Genesis Z-up coordinates</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Try to intersect with the scene.</span>
+        <span class="n">ray_result</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">scene_ref</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">SceneReference</span><span class="p">()</span>
+        <span class="n">trace_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">pick_pixel</span><span class="p">(</span>
+            <span class="n">camera_index</span><span class="p">,</span> <span class="n">nps</span><span class="o">.</span><span class="n">uint2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">ray_result</span><span class="p">,</span> <span class="n">scene_ref</span>
+        <span class="p">)</span>
+
+        <span class="c1"># If we actually did hit something, evaluate the intersection data</span>
+        <span class="k">if</span> <span class="n">trace_result</span><span class="p">:</span>
+            <span class="c1"># Convert the return uuid to a Genesis entity and return the entity, node name, and hit location</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">uuid_to_entity</span><span class="p">(</span><span class="n">pair_list</span><span class="p">,</span> <span class="n">scene_ref</span><span class="o">.</span><span class="n">targetUUID</span><span class="p">)</span>
+            <span class="c1"># Nyx is Y-up, Genesis is Z-up</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="n">entity</span><span class="p">,</span>
+                <span class="n">scene_ref</span><span class="o">.</span><span class="n">nodeName</span><span class="p">,</span>
+                <span class="n">nps</span><span class="o">.</span><span class="n">float3_y_up_a_to_z_up</span><span class="p">(</span><span class="n">ray_result</span><span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="c1"># If we didn&#39;t hit anything, return None</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="NyxPyRenderer.unload_scene">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.NyxPyRenderer.unload_scene.html#gs_nyx_plugin.nyx_renderer.NyxPyRenderer.unload_scene">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unload_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Release the loaded scene without shutting down the renderer.</span>
+
+<span class="sd">        The native renderer remains alive; another scene can be loaded by</span>
+<span class="sd">        calling :meth:`build` again with a different scene-description</span>
+<span class="sd">        path. Most users should call :meth:`destroy` instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">unload_scene</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="NyxPyRenderer.destroy">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_renderer.NyxPyRenderer.destroy.html#gs_nyx_plugin.nyx_renderer.NyxPyRenderer.destroy">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Shut down the native renderer and release the interop buffers.</span>
+
+<span class="sd">        After this call the wrapper is no longer usable: calling any of</span>
+<span class="sd">        the per-frame methods will fail. Safe to call from a sensor&#39;s</span>
+<span class="sd">        ``destroy()`` hook.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_renderer</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Genesis AI.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

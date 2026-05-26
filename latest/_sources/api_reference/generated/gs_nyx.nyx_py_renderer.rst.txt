@@ -1,0 +1,49 @@
+nyx\_py\_renderer
+=================
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. automodule:: gs_nyx.nyx_py_renderer
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: custom-class-template.rst
+   
+      BridgeStartupParams
+      BridgeUpdateData
+      BridgeUpdateDesc
+      EDebugView
+      ERenderMode
+      NyxRenderer
+      SceneReference
+   
+   
+
+   
+   
+   
+
+
+

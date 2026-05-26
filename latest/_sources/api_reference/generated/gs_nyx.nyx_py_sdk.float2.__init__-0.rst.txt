@@ -1,0 +1,9 @@
+float2()
+========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. py:method:: float2.__init__(self) -> None
+
+   Construct a zero-initialized float2.
+

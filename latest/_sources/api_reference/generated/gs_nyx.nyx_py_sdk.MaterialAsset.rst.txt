@@ -1,0 +1,92 @@
+MaterialAsset
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: MaterialAsset
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.MaterialAsset
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: nb-constructor-page
+      :no-table:
+
+      ~MaterialAsset.__init__
+   
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~MaterialAsset.clear_properties
+      ~MaterialAsset.has_properties
+      ~MaterialAsset.set_properties
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~MaterialAsset.albedoColor
+      ~MaterialAsset.albedoTexture
+      ~MaterialAsset.anisotropy
+      ~MaterialAsset.armTexture
+      ~MaterialAsset.clipping
+      ~MaterialAsset.cutOff
+      ~MaterialAsset.emission
+      ~MaterialAsset.emissionTexture
+      ~MaterialAsset.features
+      ~MaterialAsset.metalness
+      ~MaterialAsset.normalMode
+      ~MaterialAsset.normalTexture
+      ~MaterialAsset.opacity
+      ~MaterialAsset.perceptualRoughness
+      ~MaterialAsset.sampler
+      ~MaterialAsset.sidedness
+      ~MaterialAsset.uvScale
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.MaterialAsset

@@ -1,0 +1,10 @@
+uint2(x: int, y: int)
+=====================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. py:method:: uint2.__init__(self, x: int, y: int) -> None
+   :no-index:
+
+   Construct a uint2 from explicit components.
+

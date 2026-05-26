@@ -1,0 +1,7 @@
+
+metalness
+=========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: MaterialAsset.metalness

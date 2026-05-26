@@ -1,0 +1,81 @@
+InstanceAsset
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: InstanceAsset
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.InstanceAsset
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: nb-constructor-page
+      :no-table:
+
+      ~InstanceAsset.__init__
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~InstanceAsset.convertAxis
+      ~InstanceAsset.dynamicMesh_dynamicConnectivity
+      ~InstanceAsset.dynamicMesh_numTriangles
+      ~InstanceAsset.dynamicMesh_numVertices
+      ~InstanceAsset.enabled
+      ~InstanceAsset.matOverride
+      ~InstanceAsset.mesh_uri
+      ~InstanceAsset.name
+      ~InstanceAsset.position
+      ~InstanceAsset.primitive_type
+      ~InstanceAsset.rotation
+      ~InstanceAsset.scale
+      ~InstanceAsset.smooth
+      ~InstanceAsset.subscene_uri
+      ~InstanceAsset.type
+      ~InstanceAsset.uuid
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.InstanceAsset

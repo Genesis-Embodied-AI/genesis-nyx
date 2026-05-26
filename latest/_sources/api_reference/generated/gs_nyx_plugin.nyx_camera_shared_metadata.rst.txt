@@ -1,0 +1,43 @@
+nyx\_camera\_shared\_metadata
+=============================
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. automodule:: gs_nyx_plugin.nyx_camera_shared_metadata
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: custom-class-template.rst
+   
+      NyxCameraSharedMetadata
+   
+   
+
+   
+   
+   
+
+
+

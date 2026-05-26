@@ -1,0 +1,71 @@
+EnvironmentMapAsset
+===================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: EnvironmentMapAsset
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.EnvironmentMapAsset
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: nb-constructor-page
+      :no-table:
+
+      ~EnvironmentMapAsset.__init__
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EnvironmentMapAsset.layout
+      ~EnvironmentMapAsset.multiplier
+      ~EnvironmentMapAsset.rotation
+      ~EnvironmentMapAsset.texture
+      ~EnvironmentMapAsset.tint
+      ~EnvironmentMapAsset.uuid
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.EnvironmentMapAsset

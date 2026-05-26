@@ -1,0 +1,7 @@
+
+model\_post\_init
+=================
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_options
+
+.. automethod:: NyxCameraOptions.model_post_init

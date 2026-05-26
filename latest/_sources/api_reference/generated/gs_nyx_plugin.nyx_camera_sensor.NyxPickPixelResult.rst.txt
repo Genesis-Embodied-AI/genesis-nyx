@@ -1,0 +1,38 @@
+NyxPickPixelResult
+==================
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_sensor
+
+.. autoclass:: NyxPickPixelResult
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxPickPixelResult.entity
+      ~NyxPickPixelResult.link_name
+      ~NyxPickPixelResult.position
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx_plugin.nyx_camera_sensor.NyxPickPixelResult

@@ -1,0 +1,7 @@
+
+spot\_position
+==============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: LightAsset.spot_position

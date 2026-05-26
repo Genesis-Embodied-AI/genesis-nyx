@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Attaching a camera &#8212; Nyx for Genesis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=4b7455de" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/examples/attached_camera';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Materials" href="materials.html" />
+    <link rel="prev" title="Hello, Nyx" href="hello_nyx.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Nyx for Genesis</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supported_features.html">Supported features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hello_nyx.html">Hello, Nyx</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Attaching a camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="light_types.html">Light types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gaussian_splat.html">Gaussian splat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_picking.html">Object picking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_camera_multi_env.html">Multiple cameras and parallel environments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../advanced/sensor_lifecycle.html">Sensor lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/lights.html">Lights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/environment_maps.html">Environment maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/splats.html">Gaussian splats</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Attaching a camera</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="attaching-a-camera">
+<h1>Attaching a camera<a class="headerlink" href="#attaching-a-camera" title="Link to this heading">#</a></h1>
+<p>A worked tour of the <strong>Genesis ↔ Nyx integration surface</strong>. The script mounts a Nyx camera on a Franka panda’s wrist, records the wrist view as an MP4 while the robot performs a short pick, and never once touches plugin-internal code, every interaction goes through stock Genesis APIs.</p>
+<div  class="sphinx-contrib-video-container align-left"><video autoplay="True" controls="True" loop="True" muted="True" preload="auto" width="100%" playsinline="True"><source src="../../_images/02_attached_camera.mp4" type="video/mp4"></video></div><section id="the-integration-in-one-sentence">
+<h2>The integration in one sentence<a class="headerlink" href="#the-integration-in-one-sentence" title="Link to this heading">#</a></h2>
+<p>Nyx ships its renderer as a standard Genesis <em>sensor</em>. <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code></a> derives from <code class="docutils literal notranslate"><span class="pre">genesis.options.sensors.camera.BaseCameraOptions</span></code>, <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor" title="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraSensor</span></code></a> derives from <code class="docutils literal notranslate"><span class="pre">genesis.engine.sensors.camera.BaseCameraSensor</span></code>. Everything else, attachment, lifecycle, recording, follows from that.</p>
+</section>
+<section id="where-the-plugin-meets-genesis">
+<h2>Where the plugin meets Genesis<a class="headerlink" href="#where-the-plugin-meets-genesis" title="Link to this heading">#</a></h2>
+<p>Five hand-offs happen in this example. They are the entire integration contract; nothing in user code is plugin-private.</p>
+<section id="sensor-registration-scene-add-sensor">
+<h3>1. Sensor registration — <code class="docutils literal notranslate"><span class="pre">scene.add_sensor</span></code><a class="headerlink" href="#sensor-registration-scene-add-sensor" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_sensor</span><span class="p">(</span><span class="n">NyxCameraOptions</span><span class="p">(</span>
+    <span class="n">res</span>            <span class="o">=</span> <span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">),</span>
+    <span class="n">fov</span>            <span class="o">=</span> <span class="mf">60.0</span><span class="p">,</span>
+    <span class="n">near</span>           <span class="o">=</span> <span class="mf">0.02</span><span class="p">,</span>
+    <span class="n">far</span>            <span class="o">=</span> <span class="mf">50.0</span><span class="p">,</span>
+    <span class="n">entity_idx</span>     <span class="o">=</span> <span class="n">franka</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span>
+    <span class="n">link_idx_local</span> <span class="o">=</span> <span class="n">franka</span><span class="o">.</span><span class="n">get_link</span><span class="p">(</span><span class="s2">&quot;hand&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">idx_local</span><span class="p">,</span>
+    <span class="n">offset_T</span>       <span class="o">=</span> <span class="n">WRIST_OFFSET_T</span><span class="p">,</span>
+    <span class="n">spp</span>            <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+    <span class="n">render_mode</span>    <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">ERenderMode</span><span class="o">.</span><span class="n">FastPathTracer</span><span class="p">,</span>
+    <span class="n">env_maps</span>       <span class="o">=</span> <span class="p">(</span><span class="n">env_map</span><span class="p">,),</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.add_sensor"><code class="docutils literal notranslate"><span class="pre">scene.add_sensor</span></code></a> is Genesis’ built-in sensor factory. It uses the type of the options object to pick a sensor class, <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code></a> resolves to <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor" title="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraSensor</span></code></a> via the typed generic in its base class. The sensor is then held by Genesis’ <code class="docutils literal notranslate"><span class="pre">SensorManager</span></code> and gets the same lifecycle (<code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">step</span></code>, <code class="docutils literal notranslate"><span class="pre">read</span></code>) as a contact sensor, an IMU, or any other built-in.</p>
+</section>
+<section id="link-attachment-genesis-owned-not-nyx">
+<h3>2. Link attachment — Genesis-owned, not Nyx<a class="headerlink" href="#link-attachment-genesis-owned-not-nyx" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">entity_idx</span></code>, <code class="docutils literal notranslate"><span class="pre">link_idx_local</span></code>, and <code class="docutils literal notranslate"><span class="pre">offset_T</span></code> are inherited from the <code class="docutils literal notranslate"><span class="pre">KinematicSensorOptionsMixin</span></code> Genesis ships. When you set them, Genesis’ <code class="docutils literal notranslate"><span class="pre">SensorManager</span></code> calls <code class="docutils literal notranslate"><span class="pre">move_to_attach()</span></code> on the sensor every time the scene steps. <code class="docutils literal notranslate"><span class="pre">move_to_attach()</span></code> reads the link’s world transform from the rigid solver, composes it with <code class="docutils literal notranslate"><span class="pre">offset_T</span></code>, and feeds the result back into the Nyx renderer as the camera pose. The plugin only implements the small <code class="docutils literal notranslate"><span class="pre">_apply_camera_transform</span></code> callback that Genesis invokes with the final 4×4 matrix.</p>
+<p>Net effect: the wrist camera tracks the gripper for free. There is no <code class="docutils literal notranslate"><span class="pre">cam.update_pose()</span></code> loop in the example, and there couldn’t be, the per-step camera transform is owned by the Genesis side.</p>
+</section>
+<section id="sdk-lifecycle-gs-register-external-module">
+<h3>3. SDK lifecycle — <code class="docutils literal notranslate"><span class="pre">gs.register_external_module</span></code><a class="headerlink" href="#sdk-lifecycle-gs-register-external-module" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># excerpt from gs_nyx_plugin/nyx_camera_options.py</span>
+<span class="n">gs</span><span class="o">.</span><span class="n">register_external_module</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">startup</span><span class="p">,</span> <span class="n">nps</span><span class="o">.</span><span class="n">shutdown</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The plugin registers its SDK start / stop pair with Genesis at <em>import</em> time. <code class="docutils literal notranslate"><span class="pre">gs.init()</span></code> then walks its registry and calls every registered startup; <code class="docutils literal notranslate"><span class="pre">gs.destroy()</span></code> (or interpreter teardown) does the symmetric shutdown.</p>
+<p>This is also why mocking <code class="docutils literal notranslate"><span class="pre">genesis</span></code> for docs builds works, the plugin doesn’t have a hard dependency on a running Nyx SDK to be <em>importable</em>, only to be <em>used</em>.</p>
+</section>
+<section id="reading-triggers-rendering-cam-read">
+<h3>4. Reading triggers rendering — <code class="docutils literal notranslate"><span class="pre">cam.read()</span></code><a class="headerlink" href="#reading-triggers-rendering-cam-read" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span><span class="o">.</span><span class="n">start_recording</span><span class="p">(</span>
+    <span class="n">data_func</span>   <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">cam</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">rgb</span><span class="p">,</span>
+    <span class="n">rec_options</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">recorders</span><span class="o">.</span><span class="n">VideoFile</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">OUTPUT_PATH</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="n">FPS</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data"><code class="docutils literal notranslate"><span class="pre">cam.read()</span></code></a> is the Genesis sensor read API. For <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor" title="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraSensor</span></code></a> the read is <em>lazy</em>: it asks Genesis’ base machinery “am I stale for the current sim step?”, and only if the answer is yes calls <code class="docutils literal notranslate"><span class="pre">_render_current_state()</span></code>. That method does the actual Genesis ↔ Nyx glue:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scene.visualizer.update_visual_states()</span></code> (Genesis) syncs visual transforms from the solvers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">move_to_attach()</span></code> (Genesis, on each attached sensor) refreshes the camera pose from the link.</p></li>
+<li><p>The Nyx renderer’s <code class="docutils literal notranslate"><span class="pre">update_scene</span></code> / <code class="docutils literal notranslate"><span class="pre">render</span></code> are then called with the up-to-date state.</p></li>
+<li><p>The frame is wrapped in a <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraData.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraData" title="gs_nyx_plugin.nyx_camera_sensor.NyxCameraData"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraData</span></code></a> named-tuple. Because the scene was built without <code class="docutils literal notranslate"><span class="pre">n_envs</span></code>, <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data"><code class="docutils literal notranslate"><span class="pre">cam.read()</span></code></a><code class="docutils literal notranslate"><span class="pre">.rgb</span></code> is a <code class="docutils literal notranslate"><span class="pre">(H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code> <code class="docutils literal notranslate"><span class="pre">uint8</span></code> CUDA tensor; with <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.build"><code class="docutils literal notranslate"><span class="pre">scene.build(n_envs=N)</span></code></a> the same field comes out as <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code> and you’d index <code class="docutils literal notranslate"><span class="pre">[0]</span></code>, that’s the single change between this script and <code class="docutils literal notranslate"><span class="pre">01_hello_nyx.py</span></code>.</p></li>
+</ol>
+<p>User code never calls a render function explicitly. One <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.step"><code class="docutils literal notranslate"><span class="pre">scene.step()</span></code></a> followed by one <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data"><code class="docutils literal notranslate"><span class="pre">cam.read()</span></code></a> is the whole loop.</p>
+</section>
+<section id="recording-stock-genesis-pipeline">
+<h3>5. Recording — stock Genesis pipeline<a class="headerlink" href="#recording-stock-genesis-pipeline" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.start_recording"><code class="docutils literal notranslate"><span class="pre">scene.start_recording</span></code></a> and <code class="docutils literal notranslate"><span class="pre">gs.recorders.VideoFile</span></code> are both Genesis, not Nyx. The Genesis <code class="docutils literal notranslate"><span class="pre">RecorderManager</span></code> invokes <code class="docutils literal notranslate"><span class="pre">data_func</span></code> after each step, hands the returned <code class="docutils literal notranslate"><span class="pre">(H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code> <code class="docutils literal notranslate"><span class="pre">uint8</span></code> array to the <code class="docutils literal notranslate"><span class="pre">VideoFile</span></code> writer, and the writer pipes frames through PyAV to an H.264 MP4. The Nyx camera is just a data source, swap it for a Genesis rasterizer camera and the same recorder code works unchanged.</p>
+</section>
+</section>
+<section id="why-the-timing-lines-up">
+<h2>Why the timing lines up<a class="headerlink" href="#why-the-timing-lines-up" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">FPS</span></code> ties simulation time to video time: one <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.step"><code class="docutils literal notranslate"><span class="pre">scene.step()</span></code></a> produces exactly one frame of the recording, so the MP4 plays back at the same speed the robot moved. If you raise <code class="docutils literal notranslate"><span class="pre">FPS</span></code>, drop <code class="docutils literal notranslate"><span class="pre">dt</span></code> correspondingly; the recorder doesn’t care about real wall-clock time, only step counts.</p>
+</section>
+<section id="source">
+<h2>Source<a class="headerlink" href="#source" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="sd">&quot;&quot;&quot;Attached camera example for the Nyx renderer plugin.</span>
+<span class="linenos">  2</span>
+<span class="linenos">  3</span><span class="sd">Mounts a ``NyxCameraOptions`` on the Franka panda&#39;s wrist via Genesis&#39;</span>
+<span class="linenos">  4</span><span class="sd">built-in sensor-attachment fields (``entity_idx`` / ``link_idx_local`` /</span>
+<span class="linenos">  5</span><span class="sd">``offset_T``), then streams its RGB output to an MP4 through</span>
+<span class="linenos">  6</span><span class="sd">``scene.start_recording`` while the robot performs a short pick. The camera</span>
+<span class="linenos">  7</span><span class="sd">follows the link automatically every step, no plugin-specific glue.</span>
+<span class="linenos">  8</span>
+<span class="linenos">  9</span><span class="sd">Usage:</span>
+<span class="linenos"> 10</span><span class="sd">    uv run python examples/02_attached_camera.py</span>
+<span class="linenos"> 11</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 12</span>
+<span class="linenos"> 13</span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="linenos"> 14</span>
+<span class="linenos"> 15</span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="linenos"> 16</span>
+<span class="linenos"> 17</span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="linenos"> 18</span>
+<span class="linenos"> 19</span><span class="kn">import</span><span class="w"> </span><span class="nn">genesis</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gs</span>
+<span class="linenos"> 20</span><span class="kn">import</span><span class="w"> </span><span class="nn">gs_nyx.nyx_py_renderer</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">npr</span>
+<span class="linenos"> 21</span><span class="kn">from</span><span class="w"> </span><span class="nn">gs_nyx_plugin.nyx_camera_options</span><span class="w"> </span><span class="kn">import</span> <span class="n">NyxCameraOptions</span>
+<span class="linenos"> 22</span>
+<span class="linenos"> 23</span>
+<span class="linenos"> 24</span><span class="n">HERE</span>        <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="linenos"> 25</span><span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;out&quot;</span><span class="p">,</span> <span class="s2">&quot;02_attached_camera.mp4&quot;</span><span class="p">)</span>
+<span class="linenos"> 26</span>
+<span class="linenos"> 27</span><span class="n">FPS</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="linenos"> 28</span>
+<span class="linenos"> 29</span><span class="c1"># Wrist camera pose in the Franka &quot;hand&quot; link frame. The camera sits at</span>
+<span class="linenos"> 30</span><span class="c1"># (10 cm, 8 cm, 0) in the hand frame and is rotated to look at the gripper</span>
+<span class="linenos"> 31</span><span class="c1"># fingertip at (0, 0, 10 cm) — the rotation is a standard look-at with</span>
+<span class="linenos"> 32</span><span class="c1"># hand -Z as the up hint, which is world up during the grasp because the</span>
+<span class="linenos"> 33</span><span class="c1"># wrist&#39;s R_x(180°) pose flips Z between hand and world. That keeps the</span>
+<span class="linenos"> 34</span><span class="c1"># closing jaws centered as the gripper descends onto the cube.</span>
+<span class="linenos"> 35</span><span class="n">WRIST_OFFSET_T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+<span class="linenos"> 36</span>    <span class="p">[</span>
+<span class="linenos"> 37</span>        <span class="p">[</span> <span class="mf">0.624695</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.480604</span><span class="p">,</span>  <span class="mf">0.615457</span><span class="p">,</span>  <span class="mf">0.10</span><span class="p">],</span>
+<span class="linenos"> 38</span>        <span class="p">[</span><span class="o">-</span><span class="mf">0.780869</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.384483</span><span class="p">,</span>  <span class="mf">0.492366</span><span class="p">,</span>  <span class="mf">0.08</span><span class="p">],</span>
+<span class="linenos"> 39</span>        <span class="p">[</span> <span class="mf">0.000000</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.788170</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.615457</span><span class="p">,</span>  <span class="mf">0.00</span><span class="p">],</span>
+<span class="linenos"> 40</span>        <span class="p">[</span> <span class="mf">0.000000</span><span class="p">,</span>  <span class="mf">0.000000</span><span class="p">,</span>  <span class="mf">0.000000</span><span class="p">,</span>  <span class="mf">1.00</span><span class="p">],</span>
+<span class="linenos"> 41</span>    <span class="p">],</span>
+<span class="linenos"> 42</span>    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
+<span class="linenos"> 43</span><span class="p">)</span>
+<span class="linenos"> 44</span>
+<span class="linenos"> 45</span>
+<span class="linenos"> 46</span><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos"> 47</span>    <span class="n">gs</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">cpu</span><span class="p">)</span>
+<span class="linenos"> 48</span>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 49</span>
+<span class="linenos"> 50</span>    <span class="n">scene</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span>
+<span class="linenos"> 51</span>        <span class="n">sim_options</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">SimOptions</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">FPS</span><span class="p">,</span> <span class="n">substeps</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+<span class="linenos"> 52</span>        <span class="n">show_viewer</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="linenos"> 53</span>    <span class="p">)</span>
+<span class="linenos"> 54</span>
+<span class="linenos"> 55</span>    <span class="n">scene</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Plane</span><span class="p">())</span>
+<span class="linenos"> 56</span>    <span class="n">scene</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">),</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)),</span> <span class="n">surface</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">surfaces</span><span class="o">.</span><span class="n">Gold</span><span class="p">(</span><span class="n">roughness</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="linenos"> 57</span>    <span class="n">franka</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">MJCF</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;xml/franka_emika_panda/panda.xml&quot;</span><span class="p">))</span>
+<span class="linenos"> 58</span>
+<span class="linenos"> 59</span>    <span class="c1"># Camera intrinsics + attachment to the Franka wrist + lighting. The</span>
+<span class="linenos"> 60</span>    <span class="c1"># ``lights`` list is plain Genesis sensor config; the plugin converts each</span>
+<span class="linenos"> 61</span>    <span class="c1"># dict into an Nyx ``LightAsset`` at build time.</span>
+<span class="linenos"> 62</span>    <span class="n">cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_sensor</span><span class="p">(</span><span class="n">NyxCameraOptions</span><span class="p">(</span>
+<span class="linenos"> 63</span>        <span class="n">res</span>            <span class="o">=</span> <span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">),</span>
+<span class="linenos"> 64</span>        <span class="n">fov</span>            <span class="o">=</span> <span class="mf">60.0</span><span class="p">,</span>
+<span class="linenos"> 65</span>        <span class="n">near</span>           <span class="o">=</span> <span class="mf">0.02</span><span class="p">,</span>
+<span class="linenos"> 66</span>        <span class="n">far</span>            <span class="o">=</span> <span class="mf">50.0</span><span class="p">,</span>
+<span class="linenos"> 67</span>        <span class="n">entity_idx</span>     <span class="o">=</span> <span class="n">franka</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span>
+<span class="linenos"> 68</span>        <span class="n">link_idx_local</span> <span class="o">=</span> <span class="n">franka</span><span class="o">.</span><span class="n">get_link</span><span class="p">(</span><span class="s2">&quot;hand&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">idx_local</span><span class="p">,</span>
+<span class="linenos"> 69</span>        <span class="n">offset_T</span>       <span class="o">=</span> <span class="n">WRIST_OFFSET_T</span><span class="p">,</span>
+<span class="linenos"> 70</span>        <span class="n">spp</span>            <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+<span class="linenos"> 71</span>        <span class="n">render_mode</span>    <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">ERenderMode</span><span class="o">.</span><span class="n">FastPathTracer</span><span class="p">,</span>
+<span class="linenos"> 72</span>        <span class="n">lights</span>         <span class="o">=</span> <span class="p">[{</span>
+<span class="linenos"> 73</span>            <span class="s2">&quot;type&quot;</span><span class="p">:</span>      <span class="s2">&quot;directional&quot;</span><span class="p">,</span>
+<span class="linenos"> 74</span>            <span class="s2">&quot;dir&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">),</span>
+<span class="linenos"> 75</span>            <span class="s2">&quot;color&quot;</span><span class="p">:</span>     <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+<span class="linenos"> 76</span>            <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+<span class="linenos"> 77</span>            <span class="s2">&quot;shadow&quot;</span><span class="p">:</span>    <span class="kc">True</span><span class="p">,</span>
+<span class="linenos"> 78</span>        <span class="p">}],</span>
+<span class="linenos"> 79</span>    <span class="p">))</span>
+<span class="linenos"> 80</span>
+<span class="linenos"> 81</span>    <span class="c1"># Stream RGB frames to an MP4 file. ``cam.read().rgb`` is shape</span>
+<span class="linenos"> 82</span>    <span class="c1"># (H, W, 3) uint8 in single-env mode.</span>
+<span class="linenos"> 83</span>    <span class="n">scene</span><span class="o">.</span><span class="n">start_recording</span><span class="p">(</span>
+<span class="linenos"> 84</span>        <span class="n">data_func</span>   <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">cam</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">rgb</span><span class="p">,</span>
+<span class="linenos"> 85</span>        <span class="n">rec_options</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">recorders</span><span class="o">.</span><span class="n">VideoFile</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">OUTPUT_PATH</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="n">FPS</span><span class="p">),</span>
+<span class="linenos"> 86</span>    <span class="p">)</span>
+<span class="linenos"> 87</span>
+<span class="linenos"> 88</span>    <span class="n">scene</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="linenos"> 89</span>
+<span class="linenos"> 90</span>    <span class="c1"># Franka controller gains (from the Genesis IK tutorial)</span>
+<span class="linenos"> 91</span>    <span class="n">franka</span><span class="o">.</span><span class="n">set_dofs_kp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4500</span><span class="p">,</span> <span class="mi">4500</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]))</span>
+<span class="linenos"> 92</span>    <span class="n">franka</span><span class="o">.</span><span class="n">set_dofs_kv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mi">450</span><span class="p">,</span>  <span class="mi">450</span><span class="p">,</span>  <span class="mi">350</span><span class="p">,</span>  <span class="mi">350</span><span class="p">,</span>  <span class="mi">200</span><span class="p">,</span>  <span class="mi">200</span><span class="p">,</span>  <span class="mi">200</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span>  <span class="mi">10</span><span class="p">]))</span>
+<span class="linenos"> 93</span>    <span class="n">franka</span><span class="o">.</span><span class="n">set_dofs_force_range</span><span class="p">(</span>
+<span class="linenos"> 94</span>        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">87</span><span class="p">,</span> <span class="o">-</span><span class="mi">87</span><span class="p">,</span> <span class="o">-</span><span class="mi">87</span><span class="p">,</span> <span class="o">-</span><span class="mi">87</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">]),</span>
+<span class="linenos"> 95</span>        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mi">87</span><span class="p">,</span>  <span class="mi">87</span><span class="p">,</span>  <span class="mi">87</span><span class="p">,</span>  <span class="mi">87</span><span class="p">,</span>  <span class="mi">12</span><span class="p">,</span>  <span class="mi">12</span><span class="p">,</span>  <span class="mi">12</span><span class="p">,</span>  <span class="mi">100</span><span class="p">,</span>  <span class="mi">100</span><span class="p">]),</span>
+<span class="linenos"> 96</span>    <span class="p">)</span>
+<span class="linenos"> 97</span>    <span class="n">motors_dof</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="linenos"> 98</span>    <span class="n">fingers_dof</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="linenos"> 99</span>    <span class="n">hand</span>        <span class="o">=</span> <span class="n">franka</span><span class="o">.</span><span class="n">get_link</span><span class="p">(</span><span class="s2">&quot;hand&quot;</span><span class="p">)</span>
+<span class="linenos">100</span>
+<span class="linenos">101</span>    <span class="k">def</span><span class="w"> </span><span class="nf">execute_path</span><span class="p">(</span><span class="n">target_pos</span><span class="p">,</span> <span class="n">gripper</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">num_waypoints</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+<span class="linenos">102</span>        <span class="n">qpos</span> <span class="o">=</span> <span class="n">franka</span><span class="o">.</span><span class="n">inverse_kinematics</span><span class="p">(</span>
+<span class="linenos">103</span>            <span class="n">link</span><span class="o">=</span><span class="n">hand</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">target_pos</span><span class="p">),</span> <span class="n">quat</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+<span class="linenos">104</span>        <span class="p">)</span>
+<span class="linenos">105</span>        <span class="n">qpos</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="n">gripper</span>
+<span class="linenos">106</span>        <span class="k">for</span> <span class="n">waypoint</span> <span class="ow">in</span> <span class="n">franka</span><span class="o">.</span><span class="n">plan_path</span><span class="p">(</span><span class="n">qpos_goal</span><span class="o">=</span><span class="n">qpos</span><span class="p">,</span> <span class="n">num_waypoints</span><span class="o">=</span><span class="n">num_waypoints</span><span class="p">):</span>
+<span class="linenos">107</span>            <span class="n">franka</span><span class="o">.</span><span class="n">control_dofs_position</span><span class="p">(</span><span class="n">waypoint</span><span class="p">)</span>
+<span class="linenos">108</span>            <span class="n">scene</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="linenos">109</span>
+<span class="linenos">110</span>    <span class="k">def</span><span class="w"> </span><span class="nf">hold</span><span class="p">(</span><span class="n">seconds</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="linenos">111</span>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">FPS</span><span class="p">))):</span>
+<span class="linenos">112</span>            <span class="n">scene</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="linenos">113</span>
+<span class="linenos">114</span>    <span class="c1"># --- Scripted pick task -------------------------------------------------</span>
+<span class="linenos">115</span>    <span class="n">execute_path</span><span class="p">((</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>                                <span class="c1"># pre-grasp above cube</span>
+<span class="linenos">116</span>    <span class="n">execute_path</span><span class="p">((</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">))</span>                                <span class="c1"># descend onto cube</span>
+<span class="linenos">117</span>    <span class="n">franka</span><span class="o">.</span><span class="n">control_dofs_force</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">]),</span> <span class="n">fingers_dof</span><span class="p">)</span> <span class="c1"># close gripper</span>
+<span class="linenos">118</span>    <span class="n">hold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="linenos">119</span>
+<span class="linenos">120</span>    <span class="n">qpos_lift</span> <span class="o">=</span> <span class="n">franka</span><span class="o">.</span><span class="n">inverse_kinematics</span><span class="p">(</span>
+<span class="linenos">121</span>        <span class="n">link</span><span class="o">=</span><span class="n">hand</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]),</span> <span class="n">quat</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+<span class="linenos">122</span>    <span class="p">)</span>
+<span class="linenos">123</span>    <span class="n">franka</span><span class="o">.</span><span class="n">control_dofs_position</span><span class="p">(</span><span class="n">qpos_lift</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">motors_dof</span><span class="p">)</span>       <span class="c1"># lift while gripping</span>
+<span class="linenos">124</span>    <span class="n">hold</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="linenos">125</span>
+<span class="linenos">126</span>    <span class="n">scene</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">()</span>
+<span class="linenos">127</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">128</span>
+<span class="linenos">129</span>
+<span class="linenos">130</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">131</span>    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Run it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/02_attached_camera.py
+</pre></div>
+</div>
+<p>The MP4 is written to <code class="docutils literal notranslate"><span class="pre">examples/out/02_attached_camera.mp4</span></code>. The Sphinx build copies that file into <code class="docutils literal notranslate"><span class="pre">_static/generated/examples/02_attached_camera.mp4</span></code> and embeds it at the top of this page, so the video on the docs site stays in lock-step with whatever the latest run produced.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hello_nyx.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Hello, Nyx</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="materials.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Materials</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-integration-in-one-sentence">The integration in one sentence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-plugin-meets-genesis">Where the plugin meets Genesis</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensor-registration-scene-add-sensor">1. Sensor registration — <code class="docutils literal notranslate"><span class="pre">scene.add_sensor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#link-attachment-genesis-owned-not-nyx">2. Link attachment — Genesis-owned, not Nyx</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sdk-lifecycle-gs-register-external-module">3. SDK lifecycle — <code class="docutils literal notranslate"><span class="pre">gs.register_external_module</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-triggers-rendering-cam-read">4. Reading triggers rendering — <code class="docutils literal notranslate"><span class="pre">cam.read()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-stock-genesis-pipeline">5. Recording — stock Genesis pipeline</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-the-timing-lines-up">Why the timing lines up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/user_guide/examples/attached_camera.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Genesis AI.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

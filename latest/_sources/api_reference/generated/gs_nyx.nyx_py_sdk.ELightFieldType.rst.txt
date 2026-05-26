@@ -1,0 +1,37 @@
+ELightFieldType
+===============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: ELightFieldType
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~ELightFieldType.SparseGrid
+      ~ELightFieldType.GaussianField
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.ELightFieldType

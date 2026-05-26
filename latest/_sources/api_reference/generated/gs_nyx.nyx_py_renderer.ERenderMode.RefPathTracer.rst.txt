@@ -1,0 +1,7 @@
+
+RefPathTracer
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoattribute:: ERenderMode.RefPathTracer

@@ -1,0 +1,7 @@
+
+reference\_size
+===============
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: BridgeUpdateDesc.reference_size

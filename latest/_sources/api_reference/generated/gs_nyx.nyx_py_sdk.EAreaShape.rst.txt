@@ -1,0 +1,39 @@
+EAreaShape
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: EAreaShape
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EAreaShape.Rectangle
+      ~EAreaShape.Sphere
+      ~EAreaShape.Tube
+      ~EAreaShape.Disc
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.EAreaShape

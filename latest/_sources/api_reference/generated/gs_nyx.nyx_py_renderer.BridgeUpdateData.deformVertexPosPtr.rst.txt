@@ -1,0 +1,7 @@
+
+deformVertexPosPtr
+==================
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoproperty:: BridgeUpdateData.deformVertexPosPtr

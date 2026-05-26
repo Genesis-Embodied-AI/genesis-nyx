@@ -1,0 +1,7 @@
+
+pick\_pixel
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.pick_pixel

@@ -1,0 +1,7 @@
+
+Opaque
+======
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EMaterialOpacity.Opaque

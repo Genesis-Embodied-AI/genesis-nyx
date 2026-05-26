@@ -1,0 +1,67 @@
+SceneReference
+==============
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoclass:: SceneReference
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_renderer.SceneReference
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: nb-constructor-page
+      :no-table:
+
+      ~SceneReference.__init__
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~SceneReference.nodeName
+      ~SceneReference.targetUUID
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_renderer.SceneReference

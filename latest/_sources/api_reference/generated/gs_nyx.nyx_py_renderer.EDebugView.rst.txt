@@ -1,0 +1,51 @@
+EDebugView
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoclass:: EDebugView
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EDebugView.Meshlet
+      ~EDebugView.Triangle
+      ~EDebugView.UVChecker
+      ~EDebugView.Albedo
+      ~EDebugView.Alpha
+      ~EDebugView.Cutoff
+      ~EDebugView.GeoNormalWS
+      ~EDebugView.InvGeoNormalWS
+      ~EDebugView.GeoTangentWS
+      ~EDebugView.NormalWS
+      ~EDebugView.NormalTS
+      ~EDebugView.AO
+      ~EDebugView.Roughness
+      ~EDebugView.Metalness
+      ~EDebugView.VertexColor
+      ~EDebugView.Count
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_renderer.EDebugView

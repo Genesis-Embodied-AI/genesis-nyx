@@ -1,0 +1,7 @@
+
+max\_buffer\_size
+=================
+
+.. currentmodule:: gs_nyx.nyx_py_video_encoder
+
+.. automethod:: GPUVideoEncoder.max_buffer_size

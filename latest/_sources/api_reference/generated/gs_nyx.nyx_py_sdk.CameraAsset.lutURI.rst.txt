@@ -1,0 +1,7 @@
+
+lutURI
+======
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: CameraAsset.lutURI

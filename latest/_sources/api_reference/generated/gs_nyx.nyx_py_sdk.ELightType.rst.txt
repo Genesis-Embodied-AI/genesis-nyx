@@ -1,0 +1,39 @@
+ELightType
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: ELightType
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~ELightType.Directional
+      ~ELightType.Point
+      ~ELightType.Spot
+      ~ELightType.Area
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.ELightType

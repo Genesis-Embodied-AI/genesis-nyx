@@ -1,0 +1,1110 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>export_to_file &#8212; Nyx for Genesis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=4b7455de" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/generated/gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.export_to_file';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="destroy" href="gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.destroy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Nyx for Genesis</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="gs_nyx.html">gs_nyx</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="gs_nyx.nyx_py_renderer.html">nyx_py_renderer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeStartupParams.html">BridgeStartupParams</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeStartupParams.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeStartupParams.cudaDevice.html">cudaDevice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeStartupParams.debugView.html">debugView</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeStartupParams.maxViewportHeight.html">maxViewportHeight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeStartupParams.maxViewportWidth.html">maxViewportWidth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeStartupParams.openWindow.html">openWindow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeStartupParams.renderMode.html">renderMode</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.html">BridgeUpdateData</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.camPosPtr.html">camPosPtr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.camRotPtr.html">camRotPtr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.deformTriangleIndicesPtr.html">deformTriangleIndicesPtr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.deformVertexPosPtr.html">deformVertexPosPtr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.deformVertexUVsPtr.html">deformVertexUVsPtr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.numCameras.html">numCameras</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.numDeformObjects.html">numDeformObjects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.numDeformTriangles.html">numDeformTriangles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.numDeformVertices.html">numDeformVertices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.numRigidGeom.html">numRigidGeom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.rigidGeomPosPtr.html">rigidGeomPosPtr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateData.rigidGeomRotPtr.html">rigidGeomRotPtr</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.html">BridgeUpdateDesc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.get_reference.html">get_reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.reference_resize.html">reference_resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.reference_size.html">reference_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.set_reference.html">set_reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.numCameras.html">numCameras</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.numDeformObjects.html">numDeformObjects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.numDeformTriangles.html">numDeformTriangles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.numDeformVertices.html">numDeformVertices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.BridgeUpdateDesc.numRigidGeom.html">numRigidGeom</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.html">EDebugView</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.Meshlet.html">Meshlet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.Triangle.html">Triangle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.UVChecker.html">UVChecker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.Albedo.html">Albedo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.Alpha.html">Alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.Cutoff.html">Cutoff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.GeoNormalWS.html">GeoNormalWS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.InvGeoNormalWS.html">InvGeoNormalWS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.GeoTangentWS.html">GeoTangentWS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.NormalWS.html">NormalWS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.NormalTS.html">NormalTS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.AO.html">AO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.Roughness.html">Roughness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.Metalness.html">Metalness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.VertexColor.html">VertexColor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.EDebugView.Count.html">Count</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_renderer.ERenderMode.html">ERenderMode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.ERenderMode.Forward.html">Forward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.ERenderMode.FastPathTracer.html">FastPathTracer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.ERenderMode.RefPathTracer.html">RefPathTracer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.ERenderMode.Debug.html">Debug</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.ERenderMode.Count.html">Count</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.html">NyxRenderer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.allocate_scene_buffers.html">allocate_scene_buffers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.load_scene_from_file.html">load_scene_from_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.pick_pixel.html">pick_pixel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.render_frame.html">render_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.set_deform_entity_active_triangles.html">set_deform_entity_active_triangles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.set_env_map.html">set_env_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.shutdown.html">shutdown</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.startup.html">startup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.trace_ray.html">trace_ray</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.unload_scene.html">unload_scene</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.update.html">update</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.update_scene.html">update_scene</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.NyxRenderer.update_scene_buffers.html">update_scene_buffers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_renderer.SceneReference.html">SceneReference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.SceneReference.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.SceneReference.nodeName.html">nodeName</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_renderer.SceneReference.targetUUID.html">targetUUID</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.html">nyx_py_sdk</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.export_scene_file.html">export_scene_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float3_y_up_a_to_z_up.html">float3_y_up_a_to_z_up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float3_z_up_to_y_up_a.html">float3_z_up_to_y_up_a</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.generate_uuid.html">generate_uuid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.import_scene_file.html">import_scene_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion_conjugate.html">quaternion_conjugate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion_mul.html">quaternion_mul</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion_wxyz_to_xyzw.html">quaternion_wxyz_to_xyzw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion_xyzw_to_wxyz.html">quaternion_xyzw_to_wxyz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion_y_up_a_to_z_up.html">quaternion_y_up_a_to_z_up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion_z_up_to_y_up_a.html">quaternion_z_up_to_y_up_a</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.shutdown.html">shutdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx.nyx_py_sdk.startup.html">startup</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.AnimationAsset.html">AnimationAsset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.AnimationAsset.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.AnimationAsset.frame_resize.html">frame_resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.AnimationAsset.frame_size.html">frame_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.AnimationAsset.get_frame.html">get_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.AnimationAsset.set_frame.html">set_frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.AnimationAsset.frameArray.html">frameArray</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.AnimationAsset.targetUUID.html">targetUUID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.AnimationAsset.type.html">type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.AnimationAsset.uuid.html">uuid</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.html">CameraAsset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.antiAliasing.html">antiAliasing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.aperture.html">aperture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.denoise.html">denoise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.farPlane.html">farPlane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.focalLength.html">focalLength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.fovY.html">fovY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.lutURI.html">lutURI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.nearPlane.html">nearPlane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.position.html">position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.resolution.html">resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.rotation.html">rotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.spp.html">spp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.toneMapper.html">toneMapper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.CameraAsset.uuid.html">uuid</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAnimationType.html">EAnimationType</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAnimationType.Transform.html">Transform</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAntiAliasing.html">EAntiAliasing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAntiAliasing.Off.html">Off</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAntiAliasing.FXAA.html">FXAA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAntiAliasing.SMAA.html">SMAA</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAreaShape.html">EAreaShape</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAreaShape.Rectangle.html">Rectangle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAreaShape.Sphere.html">Sphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAreaShape.Tube.html">Tube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EAreaShape.Disc.html">Disc</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EEnvMapLayout.html">EEnvMapLayout</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EEnvMapLayout.LongLat.html">LongLat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EEnvMapLayout.Column.html">Column</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EEnvMapLayout.Row.html">Row</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EEnvMapLayout.HorizontalCross.html">HorizontalCross</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EEnvMapLayout.VerticalCross.html">VerticalCross</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EInstanceType.html">EInstanceType</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EInstanceType.Primitive.html">Primitive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EInstanceType.DynamicMesh.html">DynamicMesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EInstanceType.Mesh.html">Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EInstanceType.SubScene.html">SubScene</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightFieldType.html">ELightFieldType</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightFieldType.SparseGrid.html">SparseGrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightFieldType.GaussianField.html">GaussianField</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightType.html">ELightType</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightType.Directional.html">Directional</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightType.Point.html">Point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightType.Spot.html">Spot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightType.Area.html">Area</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightUnit.html">ELightUnit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightUnit.Lux.html">Lux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightUnit.Lumen.html">Lumen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightUnit.Candela.html">Candela</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightUnit.Nit.html">Nit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ELightUnit.EV100.html">EV100</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialClipping.html">EMaterialClipping</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialClipping.Off.html">Off</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialClipping.On.html">On</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialFeatures.html">EMaterialFeatures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialFeatures.Standard.html">Standard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialFeatures.Anisotropy.html">Anisotropy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialOpacity.html">EMaterialOpacity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialOpacity.Opaque.html">Opaque</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialOpacity.Transparent.html">Transparent</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.html">EMaterialProperty</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.Off.html">Off</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.Opacity.html">Opacity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.Clipping.html">Clipping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.Sidedness.html">Sidedness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.NormalMode.html">NormalMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.Features.html">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.AlbedoColor.html">AlbedoColor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.Emission.html">Emission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.PerceptualRoughness.html">PerceptualRoughness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.Metalness.html">Metalness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.CutOffValue.html">CutOffValue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.Anisotropy.html">Anisotropy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.UVScale.html">UVScale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.AlbedoTexture.html">AlbedoTexture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.NormalTexture.html">NormalTexture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.ArmTexture.html">ArmTexture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.EmissionTexture.html">EmissionTexture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialProperty.Sampler.html">Sampler</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialSidedness.html">EMaterialSidedness</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialSidedness.Single.html">Single</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EMaterialSidedness.Double.html">Double</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ENormalMode.html">ENormalMode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ENormalMode.Flip.html">Flip</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ENormalMode.Mirror.html">Mirror</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.ENormalMode.Off.html">Off</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EPrimitiveType.html">EPrimitiveType</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EPrimitiveType.Plane.html">Plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EPrimitiveType.Sphere.html">Sphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EPrimitiveType.Cylinder.html">Cylinder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EPrimitiveType.Capsule.html">Capsule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EPrimitiveType.Box.html">Box</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EToneMapper.html">EToneMapper</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EToneMapper.Off.html">Off</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EToneMapper.Reinhard.html">Reinhard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EToneMapper.Neutral.html">Neutral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EToneMapper.ACES_1_3.html">ACES_1_3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EToneMapper.LUT.html">LUT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EnvironmentMapAsset.html">EnvironmentMapAsset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EnvironmentMapAsset.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EnvironmentMapAsset.layout.html">layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EnvironmentMapAsset.multiplier.html">multiplier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EnvironmentMapAsset.rotation.html">rotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EnvironmentMapAsset.texture.html">texture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EnvironmentMapAsset.tint.html">tint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.EnvironmentMapAsset.uuid.html">uuid</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.FrameAsset.html">FrameAsset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.FrameAsset.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.FrameAsset.timeStamp.html">timeStamp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.FrameAsset.transform_position.html">transform_position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.FrameAsset.transform_rotation.html">transform_rotation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.html">InstanceAsset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.convertAxis.html">convertAxis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.dynamicMesh_dynamicConnectivity.html">dynamicMesh_dynamicConnectivity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.dynamicMesh_numTriangles.html">dynamicMesh_numTriangles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.dynamicMesh_numVertices.html">dynamicMesh_numVertices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.enabled.html">enabled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.matOverride.html">matOverride</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.mesh_uri.html">mesh_uri</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.name.html">name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.position.html">position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.primitive_type.html">primitive_type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.rotation.html">rotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.scale.html">scale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.smooth.html">smooth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.subscene_uri.html">subscene_uri</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.type.html">type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.InstanceAsset.uuid.html">uuid</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.html">LightAsset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.area_position.html">area_position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.area_range.html">area_range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.area_rotation.html">area_rotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.area_shape.html">area_shape</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.color.html">color</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.directional_direction.html">directional_direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.intensity.html">intensity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.point_position.html">point_position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.point_range.html">point_range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.shadow.html">shadow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.spot_direction.html">spot_direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.spot_innerAngle.html">spot_innerAngle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.spot_outerAngle.html">spot_outerAngle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.spot_position.html">spot_position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.spot_range.html">spot_range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.type.html">type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.unit.html">unit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightAsset.uuid.html">uuid</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightFieldAsset.html">LightFieldAsset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightFieldAsset.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightFieldAsset.position.html">position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightFieldAsset.rotation.html">rotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightFieldAsset.scale.html">scale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightFieldAsset.tint.html">tint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightFieldAsset.type.html">type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightFieldAsset.uri.html">uri</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.LightFieldAsset.uuid.html">uuid</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.html">MaterialAsset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.clear_properties.html">clear_properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.has_properties.html">has_properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.set_properties.html">set_properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.albedoColor.html">albedoColor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.albedoTexture.html">albedoTexture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.anisotropy.html">anisotropy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.armTexture.html">armTexture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.clipping.html">clipping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.cutOff.html">cutOff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.emission.html">emission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.emissionTexture.html">emissionTexture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.features.html">features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.metalness.html">metalness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.normalMode.html">normalMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.normalTexture.html">normalTexture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.opacity.html">opacity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.perceptualRoughness.html">perceptualRoughness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.sampler.html">sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.sidedness.html">sidedness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.MaterialAsset.uvScale.html">uvScale</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.html">SceneAsset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.animation_resize.html">animation_resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.animation_size.html">animation_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.camera_resize.html">camera_resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.camera_size.html">camera_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.env_map_resize.html">env_map_resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.env_map_size.html">env_map_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.get_animation.html">get_animation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.get_camera.html">get_camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.get_env_map.html">get_env_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.get_instance.html">get_instance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.get_light.html">get_light</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.get_light_field.html">get_light_field</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.instance_resize.html">instance_resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.instance_size.html">instance_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.light_field_resize.html">light_field_resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.light_field_size.html">light_field_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.light_resize.html">light_resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.light_size.html">light_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.set_animation.html">set_animation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.set_camera.html">set_camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.set_env_map.html">set_env_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.set_instance.html">set_instance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.set_light.html">set_light</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.set_light_field.html">set_light_field</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.rootFolder.html">rootFolder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.SceneAsset.version.html">version</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.TransfromFrameData.html">TransfromFrameData</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.TransfromFrameData.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.TransfromFrameData.position.html">position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.TransfromFrameData.rotation.html">rotation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float2.html">float2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float2.__init__-0.html">float2()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float2.__init__-1.html">float2(x: float, y: float)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float2.x.html">x</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float2.y.html">y</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float3.html">float3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float3.__init__-0.html">float3()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float3.__init__-1.html">float3(x: float, y: float, z: float)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float3.x.html">x</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float3.y.html">y</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float3.z.html">z</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float4.html">float4</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float4.__init__-0.html">float4()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float4.__init__-1.html">float4(x: float, y: float, z: float, w: float)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float4.w.html">w</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float4.x.html">x</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float4.y.html">y</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.float4.z.html">z</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion.html">quaternion</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion.__init__-0.html">quaternion()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion.__init__-1.html">quaternion(x: float, y: float, z: float, w: float)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion.w.html">w</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion.x.html">x</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion.y.html">y</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.quaternion.z.html">z</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint2.html">uint2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint2.__init__-0.html">uint2()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint2.__init__-1.html">uint2(x: int, y: int)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint2.x.html">x</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint2.y.html">y</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint3.html">uint3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint3.__init__-0.html">uint3()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint3.__init__-1.html">uint3(x: int, y: int, z: int)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint3.x.html">x</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint3.y.html">y</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint3.z.html">z</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint4.html">uint4</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint4.__init__-0.html">uint4()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint4.__init__-1.html">uint4(x: int, y: int, z: int, w: int)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint4.w.html">w</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint4.x.html">x</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint4.y.html">y</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_sdk.uint4.z.html">z</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.html">nyx_py_video_encoder</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.GPUVideoEncoder.html">GPUVideoEncoder</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.GPUVideoEncoder.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.GPUVideoEncoder.encode_frame_srgb_to_cpu.html">encode_frame_srgb_to_cpu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.GPUVideoEncoder.force_next_frame_as_idr.html">force_next_frame_as_idr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.GPUVideoEncoder.max_buffer_size.html">max_buffer_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.GPUVideoEncoder.next_frame_is_idr.html">next_frame_is_idr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.GPUVideoEncoder.set_encoding_parameters.html">set_encoding_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.GPUVideoEncoder.shutdown.html">shutdown</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.GPUVideoEncoder.startup.html">startup</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.VideoEncoderStartupParams.html">VideoEncoderStartupParams</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.VideoEncoderStartupParams.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.VideoEncoderStartupParams.bitrate.html">bitrate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.VideoEncoderStartupParams.cudaDevice.html">cudaDevice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.VideoEncoderStartupParams.frameHeight.html">frameHeight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.VideoEncoderStartupParams.frameRate.html">frameRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.VideoEncoderStartupParams.frameWidth.html">frameWidth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx.nyx_py_video_encoder.VideoEncoderStartupParams.gopSize.html">gopSize</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="gs_nyx_plugin.html">gs_nyx_plugin</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.html">nyx_camera_options</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html">NyxCameraOptions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.model_post_init.html">model_post_init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.anti_aliasing.html">anti_aliasing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.debug_view.html">debug_view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.denoise.html">denoise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.env_maps.html">env_maps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.far.html">far</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.light_fields.html">light_fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.model.html">model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.model_config.html">model_config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.near.html">near</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.open_window.html">open_window</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.render_mode.html">render_mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.spp.html">spp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.tone_mapper.html">tone_mapper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.update_ground_truth_only.html">update_ground_truth_only</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.window_size.html">window_size</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.html">nyx_camera_sensor</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxCameraData.html">NyxCameraData</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxCameraData.rgb.html">rgb</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.html">NyxCameraSensor</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.build.html">build</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.pick_pixel.html">pick_pixel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.update_camera_pose.html">update_camera_pose</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxPickPixelResult.html">NyxPickPixelResult</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxPickPixelResult.entity.html">entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxPickPixelResult.link_name.html">link_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_sensor.NyxPickPixelResult.position.html">position</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.html">nyx_camera_shared_metadata</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.html">NyxCameraSharedMetadata</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.destroy.html">destroy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.camera_defs.html">camera_defs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.image_cache.html">image_cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.last_render_timestep.html">last_render_timestep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.renderer.html">renderer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.scene_description_export_path.html">scene_description_export_path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.scene_exporter.html">scene_exporter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.sensors.html">sensors</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.html">nyx_renderer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.entity_to_uuid.html">entity_to_uuid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.uuid_to_entity.html">uuid_to_entity</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.NyxPyRenderer.html">NyxPyRenderer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.NyxPyRenderer.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.NyxPyRenderer.build.html">build</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.NyxPyRenderer.destroy.html">destroy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.NyxPyRenderer.pick_pixel.html">pick_pixel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.NyxPyRenderer.render.html">render</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.NyxPyRenderer.unload_scene.html">unload_scene</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.NyxPyRenderer.update.html">update</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.NyxPyRenderer.update_camera_tensor.html">update_camera_tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_renderer.NyxPyRenderer.update_scene.html">update_scene</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_scene_exporter.html">nyx_scene_exporter</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.html">NyxSceneExporter</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.__init__.html">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.destroy.html">destroy</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">export_to_file</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="gs_nyx_plugin.html" class="nav-link">gs_nyx_plugin</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="gs_nyx_plugin.nyx_scene_exporter.html" class="nav-link">nyx_scene_exporter</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.html" class="nav-link">NyxSceneExporter</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">export_to_file</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="export-to-file">
+<h1>export_to_file<a class="headerlink" href="#export-to-file" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.export_to_file">
+<span class="sig-prename descclassname"><span class="pre">NyxSceneExporter.</span></span><span class="sig-name descname"><span class="pre">export_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">export_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/gs_nyx_plugin/nyx_scene_exporter.html#NyxSceneExporter.export_to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.export_to_file" title="Link to this definition">#</a></dt>
+<dd><p>Serialize the built <code class="docutils literal notranslate"><span class="pre">SceneAsset</span></code> to JSON on disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>export_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Output path for the scene-description JSON. The Nyx renderer
+reads this file in <code class="xref py py-meth docutils literal notranslate"><span class="pre">NyxRenderer.load_scene_from_file()</span></code>,
+so the path must be readable when the renderer builds.
+Conventionally written as <code class="docutils literal notranslate"><span class="pre">&lt;export_folder&gt;/nyx_scene.json</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.destroy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">destroy</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.export_to_file"><code class="docutils literal notranslate"><span class="pre">NyxSceneExporter.export_to_file()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/api_reference/generated/gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.export_to_file.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Genesis AI.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

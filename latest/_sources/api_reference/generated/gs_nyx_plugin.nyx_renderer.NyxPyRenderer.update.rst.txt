@@ -1,0 +1,7 @@
+
+update
+======
+
+.. currentmodule:: gs_nyx_plugin.nyx_renderer
+
+.. automethod:: NyxPyRenderer.update

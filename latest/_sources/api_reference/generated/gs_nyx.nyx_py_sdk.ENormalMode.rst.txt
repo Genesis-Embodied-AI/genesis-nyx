@@ -1,0 +1,38 @@
+ENormalMode
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: ENormalMode
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~ENormalMode.Flip
+      ~ENormalMode.Mirror
+      ~ENormalMode.Off
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.ENormalMode

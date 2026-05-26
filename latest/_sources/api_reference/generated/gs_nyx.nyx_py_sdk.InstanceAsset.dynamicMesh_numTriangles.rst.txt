@@ -1,0 +1,7 @@
+
+dynamicMesh\_numTriangles
+=========================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: InstanceAsset.dynamicMesh_numTriangles

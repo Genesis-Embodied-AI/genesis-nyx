@@ -1,0 +1,7 @@
+
+Constructor
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: AnimationAsset.__init__

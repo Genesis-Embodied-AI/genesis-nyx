@@ -1,0 +1,7 @@
+
+update\_camera\_tensor
+======================
+
+.. currentmodule:: gs_nyx_plugin.nyx_renderer
+
+.. automethod:: NyxPyRenderer.update_camera_tensor

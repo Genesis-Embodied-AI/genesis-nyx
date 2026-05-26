@@ -1,0 +1,833 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Multiple cameras and parallel environments &#8212; Nyx for Genesis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=4b7455de" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/examples/multi_camera_multi_env';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Sensor lifecycle" href="../advanced/sensor_lifecycle.html" />
+    <link rel="prev" title="Object picking" href="object_picking.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Nyx for Genesis</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supported_features.html">Supported features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="hello_nyx.html">Hello, Nyx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attached_camera.html">Attaching a camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="light_types.html">Light types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gaussian_splat.html">Gaussian splat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_picking.html">Object picking</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Multiple cameras and parallel environments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../advanced/sensor_lifecycle.html">Sensor lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/lights.html">Lights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/environment_maps.html">Environment maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/splats.html">Gaussian splats</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Multiple cameras and parallel environments</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="multiple-cameras-and-parallel-environments">
+<h1>Multiple cameras and parallel environments<a class="headerlink" href="#multiple-cameras-and-parallel-environments" title="Link to this heading">#</a></h1>
+<p>Two orthogonal patterns the Nyx plugin composes for free: <strong>multiple cameras</strong> in one scene and <strong>multiple Genesis environments</strong> built in parallel. This example puts both to work at once — two <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor" title="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraSensor</span></code></a>s and <code class="docutils literal notranslate"><span class="pre">n_envs=4</span></code> — and tiles the resulting <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">4,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code> image stack into a single PNG so the symmetry is visible at a glance.</p>
+<p><img alt="Rendered output of " src="../../_images/07_multi_camera_multi_env.png" /></p>
+<p>Both features are independent knobs on the same APIs — multi-camera is a second <code class="docutils literal notranslate"><span class="pre">scene.add_sensor</span></code> call, multi-env is a <code class="docutils literal notranslate"><span class="pre">n_envs=N</span></code> argument to <code class="docutils literal notranslate"><span class="pre">scene.build</span></code>. Either alone is already useful (multi-view supervision, batched RL rollouts, synthetic data generation). The two sections below cover what each one changes; the rest of the page covers the bits that only show up when you combine them.</p>
+<section id="what-changes-when-you-add-a-second-camera">
+<h2>What changes when you add a second camera<a class="headerlink" href="#what-changes-when-you-add-a-second-camera" title="Link to this heading">#</a></h2>
+<p>Concretely, nothing in your code except a second <code class="docutils literal notranslate"><span class="pre">scene.add_sensor(NyxCameraOptions(...))</span></code> call. Each sensor gets its own resolution, FOV, pose, attachment, and <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.pick_pixel.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.pick_pixel" title="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.pick_pixel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pick_pixel()</span></code></a> entry-point. Under the hood the plugin keeps <strong>one</strong> native renderer alive for the whole scene and contributes every camera (plus its lights, env maps and light fields) to that shared instance.</p>
+<p>That sharing is worth a moment because it turns three potential footguns into non-issues:</p>
+<ul class="simple">
+<li><p><strong>Lights and light fields are scene-wide.</strong> <code class="docutils literal notranslate"><span class="pre">lights</span></code> and <code class="docutils literal notranslate"><span class="pre">light_fields</span></code> from every Nyx sensor are merged at build time, so every env sees the union of them through both cameras. Declare them on whichever camera reads best in code; duplicating them on every camera duplicates the underlying asset. Env maps are the exception — see <a class="reference internal" href="#different-lighting-per-environment">Different lighting per environment</a> below.</p></li>
+<li><p><strong>Render mode is scene-wide too.</strong> Every Nyx sensor must agree on <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.render_mode.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.render_mode" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.render_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">render_mode</span></code></a> — the shared renderer can only serve one mode at a time. Mixing <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_renderer.ERenderMode.html#gs_nyx.nyx_py_renderer.ERenderMode" title="gs_nyx.nyx_py_renderer.ERenderMode"><code class="xref py py-class docutils literal notranslate"><span class="pre">ERenderMode</span></code></a> values like <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_renderer.ERenderMode.FastPathTracer.html#gs_nyx.nyx_py_renderer.ERenderMode.FastPathTracer" title="gs_nyx.nyx_py_renderer.ERenderMode.FastPathTracer"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FastPathTracer</span></code></a> and <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_renderer.ERenderMode.Debug.html#gs_nyx.nyx_py_renderer.ERenderMode.Debug" title="gs_nyx.nyx_py_renderer.ERenderMode.Debug"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Debug</span></code></a> raises at build.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pick_pixel</span></code> indexes registration order.</strong> The first sensor added is <code class="docutils literal notranslate"><span class="pre">camera_index=0</span></code>, the second <code class="docutils literal notranslate"><span class="pre">1</span></code>, and so on, all reachable from <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.pick_pixel.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.pick_pixel" title="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.pick_pixel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pick_pixel()</span></code></a> <code class="docutils literal notranslate"><span class="pre">(camera_index,</span> <span class="pre">x,</span> <span class="pre">y)</span></code> on any sensor. See <a class="reference internal" href="object_picking.html"><span class="doc">Object picking</span></a> for the ray API itself.</p></li>
+</ul>
+</section>
+<section id="what-changes-when-you-add-parallel-environments">
+<h2>What changes when you add parallel environments<a class="headerlink" href="#what-changes-when-you-add-parallel-environments" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.build"><code class="docutils literal notranslate"><span class="pre">scene.build(n_envs=N)</span></code></a> widens every sensor’s read shape from <code class="docutils literal notranslate"><span class="pre">(H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code> to <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code>. The cost is honest: the plugin renders one env at a time internally, so wall-clock time grows linearly with <code class="docutils literal notranslate"><span class="pre">N</span></code>. The benefit is that the simulator does too — one <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.step"><code class="docutils literal notranslate"><span class="pre">scene.step()</span></code></a> advances every env, and one <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data"><code class="docutils literal notranslate"><span class="pre">cam.read()</span></code></a> returns the whole batch.</p>
+<p>Per-env state lives on the <strong>entities</strong>, not the camera. After <code class="docutils literal notranslate"><span class="pre">build()</span></code>, any state setter accepts an <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">...)</span></code>-shaped argument and writes a different value into each env:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ball</span><span class="o">.</span><span class="n">set_pos</span><span class="p">([</span>
+    <span class="p">[</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+    <span class="p">[</span> <span class="mf">1.2</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+    <span class="p">[</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+<p>That single call is what makes the four columns of the wide overview differ — the camera pose is constant, but the simulator has placed the ball somewhere else in every env. Anything you can set per env in Genesis (rigid pose, joint positions, particle state, …) shows up the same way in the next render.</p>
+</section>
+<section id="different-camera-positions-per-environment">
+<h2>Different camera positions per environment<a class="headerlink" href="#different-camera-positions-per-environment" title="Link to this heading">#</a></h2>
+<p>Per-env state is on entities, so to place a camera differently in every env you bind it to one. Add an invisible rigid entity to act as an attachment target, attach the camera to it via <code class="docutils literal notranslate"><span class="pre">entity_idx</span></code> / <code class="docutils literal notranslate"><span class="pre">offset_T</span></code>, and <code class="docutils literal notranslate"><span class="pre">set_pos</span></code> / <code class="docutils literal notranslate"><span class="pre">set_quat</span></code> it per env — the camera moves with it, exactly the way it would move with a Franka wrist link in <a class="reference internal" href="attached_camera.html"><span class="doc">Attaching a camera</span></a>. <code class="docutils literal notranslate"><span class="pre">offset_T</span></code> is the camera’s pose <strong>in the rig’s local frame</strong>, so the same offset stays consistent relative to the rig no matter where the rig ends up; per-env <em>position</em> slides the camera around the world, per-env <em>orientation</em> rotates its viewing angle. In this example the rig is set to point outward from the centre of the plane in each env, so the follow row shows the same ball framed from four different radial angles, each against a different slice of the HDRI sky.</p>
+</section>
+<section id="different-lighting-per-environment">
+<h2>Different lighting per environment<a class="headerlink" href="#different-lighting-per-environment" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">env_maps</span></code> is the one piece of the camera config that the renderer <strong>indexes by env</strong> rather than merging scene-wide: env <code class="docutils literal notranslate"><span class="pre">i</span></code> is lit by <code class="docutils literal notranslate"><span class="pre">env_maps[i]</span></code>. Passing an <code class="docutils literal notranslate"><span class="pre">N</span></code>-long tuple to a single <code class="docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code> is therefore enough to render every env under its own HDRI, with no extra calls or per-step bookkeeping. This example alternates two assets across four envs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env_maps</span> <span class="o">=</span> <span class="p">(</span><span class="n">env_map_sky</span><span class="p">,</span> <span class="n">env_map_studio</span><span class="p">,</span> <span class="n">env_map_sky</span><span class="p">,</span> <span class="n">env_map_studio</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Even-indexed envs render under an outdoor sky, odd-indexed envs under a studio softbox. The choice flows through both cameras automatically because the renderer instance is shared, so the top-row wide overview and the bottom-row follow camera both see env 0 lit by <code class="docutils literal notranslate"><span class="pre">env_map_sky</span></code>, env 1 by <code class="docutils literal notranslate"><span class="pre">env_map_studio</span></code>, and so on. A few constraints worth knowing:</p>
+<ul class="simple">
+<li><p>The mapping is strictly positional. There is no per-env override API or “default” entry; the tuple must be at least <code class="docutils literal notranslate"><span class="pre">n_envs</span></code> long.</p></li>
+<li><p>The tuple is collected at build time across every Nyx sensor in the scene. Declare it on one sensor (as here) to keep the source of truth in a single place; declaring it on multiple cameras concatenates the lists and the indexing drifts.</p></li>
+<li><p>Each entry is a full <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.EnvironmentMapAsset.html#gs_nyx.nyx_py_sdk.EnvironmentMapAsset" title="gs_nyx.nyx_py_sdk.EnvironmentMapAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnvironmentMapAsset</span></code></a>, so per-env intensity (<code class="docutils literal notranslate"><span class="pre">multiplier</span></code>), rotation, and tint are all available — useful for domain-randomized lighting on top of a single base HDRI.</p></li>
+</ul>
+</section>
+<section id="heterogeneous-environments-not-supported">
+<h2>Heterogeneous environments: not supported<a class="headerlink" href="#heterogeneous-environments-not-supported" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">...)</span></code>-shaped state setters above all assume every env contains the <strong>same</strong> geometry — only the state differs. Genesis itself has a stronger form of variation called <em>heterogeneous simulation</em>, where you pass a tuple of morph variants to <code class="docutils literal notranslate"><span class="pre">scene.add_entity</span></code> and the rigid solver hands each env a different variant:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Valid Genesis call. Will simulate correctly, but Nyx will NOT render it correctly.</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span><span class="n">morph</span><span class="o">=</span><span class="p">(</span>
+    <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">),</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)),</span>
+    <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Sphere</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>           <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)),</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>The Nyx plugin does not currently support heterogeneous morphs.</strong> The scene description the plugin builds at <code class="docutils literal notranslate"><span class="pre">scene.build()</span></code> time captures a single set of meshes shared across all envs, so even if the rigid solver is dispatching a different variant per env on the physics side, every env will render with the same geometry the plugin saw first. The mismatch is silent — no exception is raised, the image just doesn’t match the simulation.</p>
+<p>If you need different <em>models</em> per env, the options today are:</p>
+<ul class="simple">
+<li><p><strong>Spawn every variant in every env and toggle their state per env.</strong> Add all candidate morphs as separate entities, then in each env push the inactive ones below the plane (or to a far-away corner) via <code class="docutils literal notranslate"><span class="pre">set_pos</span></code>. Geometry stays homogeneous from the plugin’s perspective, so rendering is correct.</p></li>
+<li><p><strong>Build separate scenes.</strong> Run one Genesis scene per variant and read each one independently. You lose the batched-step speed-up but keep both physics and rendering correct.</p></li>
+</ul>
+<p>State-based variation works fine: positions, joint angles, velocities, masses through domain randomization, and per-env lighting (see <a class="reference internal" href="#different-lighting-per-environment">Different lighting per environment</a> above). The limitation only applies when you need a different mesh in each env.</p>
+</section>
+<section id="reading-the-saved-image">
+<h2>Reading the saved image<a class="headerlink" href="#reading-the-saved-image" title="Link to this heading">#</a></h2>
+<p>The PNG is a 2 × 4 grid. Top row: the wide overview, four times — same camera pose, four different ball positions, with the lighting alternating outdoor sky / studio softbox / outdoor sky / studio softbox across columns. Bottom row: the follow camera, four times — both the camera pose <em>and</em> the ball move per env, with the rig rotated outward from the centre so each cell shows the ball from a different radial angle, lit by the same HDRI as the wide cell directly above it. Comparing top and bottom of the same column tells you per-env state and per-env env maps are shared across cameras; comparing left to right of the same row tells you the per-env variation actually took effect.</p>
+</section>
+<section id="source">
+<h2>Source<a class="headerlink" href="#source" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="sd">&quot;&quot;&quot;Multi-camera, multi-environment example for the Nyx renderer plugin.</span>
+<span class="linenos">  2</span>
+<span class="linenos">  3</span><span class="sd">Builds a scene with **two** ``NyxCameraSensor`` instances and ``n_envs=4``</span>
+<span class="linenos">  4</span><span class="sd">parallel Genesis environments, then teleports the rendered ball to a</span>
+<span class="linenos">  5</span><span class="sd">different spot on the plane in each env. The first camera is a static</span>
+<span class="linenos">  6</span><span class="sd">high overhead view shared across every env; the second is a low follow</span>
+<span class="linenos">  7</span><span class="sd">camera attached to an invisible rigid rig whose position **and** orientation</span>
+<span class="linenos">  8</span><span class="sd">are set per env, so each follow cell approaches the ball from a different</span>
+<span class="linenos">  9</span><span class="sd">direction. A single ``read()`` per camera returns a batched</span>
+<span class="linenos"> 10</span><span class="sd">``(N_ENVS, H, W, 3)`` tensor, which the script tiles into one PNG</span>
+<span class="linenos"> 11</span><span class="sd">(rows = cameras, columns = envs).</span>
+<span class="linenos"> 12</span>
+<span class="linenos"> 13</span><span class="sd">Usage:</span>
+<span class="linenos"> 14</span><span class="sd">    uv run python examples/07_multi_camera_multi_env.py</span>
+<span class="linenos"> 15</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 16</span>
+<span class="linenos"> 17</span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="linenos"> 18</span>
+<span class="linenos"> 19</span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="linenos"> 20</span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="linenos"> 21</span>
+<span class="linenos"> 22</span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="linenos"> 23</span><span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="linenos"> 24</span>
+<span class="linenos"> 25</span><span class="kn">import</span><span class="w"> </span><span class="nn">genesis</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gs</span>
+<span class="linenos"> 26</span><span class="kn">import</span><span class="w"> </span><span class="nn">gs_nyx.nyx_py_renderer</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">npr</span>
+<span class="linenos"> 27</span><span class="kn">import</span><span class="w"> </span><span class="nn">gs_nyx.nyx_py_sdk</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nps</span>
+<span class="linenos"> 28</span><span class="kn">from</span><span class="w"> </span><span class="nn">gs_nyx_plugin.nyx_camera_options</span><span class="w"> </span><span class="kn">import</span> <span class="n">NyxCameraOptions</span>
+<span class="linenos"> 29</span>
+<span class="linenos"> 30</span>
+<span class="linenos"> 31</span><span class="n">HERE</span>         <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="linenos"> 32</span><span class="n">PBR_BALL</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;PBR_Ball.glb&quot;</span><span class="p">)</span>
+<span class="linenos"> 33</span><span class="n">ENV_MAP_SKY</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;kloppenheim_07_puresky_4k.hdr&quot;</span><span class="p">)</span>
+<span class="linenos"> 34</span><span class="n">ENV_MAP_STUD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;green_sanctuary_4k.hdr&quot;</span><span class="p">)</span>
+<span class="linenos"> 35</span><span class="n">OUTPUT_PATH</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;out&quot;</span><span class="p">,</span> <span class="s2">&quot;07_multi_camera_multi_env.png&quot;</span><span class="p">)</span>
+<span class="linenos"> 36</span>
+<span class="linenos"> 37</span><span class="n">N_ENVS</span>  <span class="o">=</span> <span class="mi">4</span>
+<span class="linenos"> 38</span><span class="n">CAM_RES</span> <span class="o">=</span> <span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
+<span class="linenos"> 39</span>
+<span class="linenos"> 40</span><span class="c1"># One ball position per env, arranged on a circle of radius R so the wide</span>
+<span class="linenos"> 41</span><span class="c1"># overview shows the ball at four clearly different spots. The Z component</span>
+<span class="linenos"> 42</span><span class="c1"># lifts the ball off the plane so it sits cleanly above the ground.</span>
+<span class="linenos"> 43</span><span class="n">R</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="linenos"> 44</span><span class="n">BALL_POSITIONS</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 45</span>    <span class="p">[</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="n">R</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+<span class="linenos"> 46</span>    <span class="p">[</span>  <span class="n">R</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+<span class="linenos"> 47</span>    <span class="p">[</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="n">R</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+<span class="linenos"> 48</span>    <span class="p">[</span> <span class="o">-</span><span class="n">R</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+<span class="linenos"> 49</span><span class="p">]</span>
+<span class="linenos"> 50</span>
+<span class="linenos"> 51</span><span class="c1"># Per-env rig orientation (Z-axis rotation, WXYZ quaternion). Rotates the</span>
+<span class="linenos"> 52</span><span class="c1"># rig so that the follow camera&#39;s &quot;behind&quot; direction always points outward</span>
+<span class="linenos"> 53</span><span class="c1"># from the centre of the plane — every env sees the ball from a different</span>
+<span class="linenos"> 54</span><span class="c1"># radial angle, which is what makes the follow row visually distinct.</span>
+<span class="linenos"> 55</span><span class="n">RIG_OUTWARD_QUATS</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 56</span>    <span class="p">[</span>           <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>            <span class="mf">1.0</span><span class="p">],</span>  <span class="c1"># 180° around Z</span>
+<span class="linenos"> 57</span>    <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)],</span>  <span class="c1"># -90° around Z</span>
+<span class="linenos"> 58</span>    <span class="p">[</span>           <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>            <span class="mf">0.0</span><span class="p">],</span>  <span class="c1">#   0° around Z</span>
+<span class="linenos"> 59</span>    <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)],</span>  <span class="c1"># +90° around Z</span>
+<span class="linenos"> 60</span><span class="p">]</span>
+<span class="linenos"> 61</span>
+<span class="linenos"> 62</span>
+<span class="linenos"> 63</span><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos"> 64</span>    <span class="n">gs</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="linenos"> 65</span>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 66</span>
+<span class="linenos"> 67</span>    <span class="n">scene</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span>
+<span class="linenos"> 68</span>        <span class="n">sim_options</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">SimOptions</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.01</span><span class="p">),</span>
+<span class="linenos"> 69</span>        <span class="n">show_viewer</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="linenos"> 70</span>    <span class="p">)</span>
+<span class="linenos"> 71</span>
+<span class="linenos"> 72</span>    <span class="n">scene</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span><span class="n">morph</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Plane</span><span class="p">(</span><span class="n">plane_size</span><span class="o">=</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)))</span>
+<span class="linenos"> 73</span>
+<span class="linenos"> 74</span>    <span class="c1"># Override the GLB&#39;s embedded materials with a polished sapphire-blue</span>
+<span class="linenos"> 75</span>    <span class="c1"># chrome — low roughness + full metallic so each follow camera&#39;s</span>
+<span class="linenos"> 76</span>    <span class="c1"># reflection of the HDRI sky reads as a distinct slice of the dome.</span>
+<span class="linenos"> 77</span>    <span class="c1"># ``align=False`` keeps the link origin at the GLB&#39;s authored pivot</span>
+<span class="linenos"> 78</span>    <span class="c1"># (the cup base) instead of re-framing it to the composite&#39;s COM, so</span>
+<span class="linenos"> 79</span>    <span class="c1"># ``set_pos(z=0)`` lands the cup cleanly on the plane.</span>
+<span class="linenos"> 80</span>    <span class="n">ball</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span>
+<span class="linenos"> 81</span>        <span class="n">morph</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">PBR_BALL</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+<span class="linenos"> 82</span>        <span class="n">surface</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">surfaces</span><span class="o">.</span><span class="n">BSDF</span><span class="p">(</span><span class="n">metallic</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">roughness</span><span class="o">=</span><span class="mf">0.15</span><span class="p">),</span>
+<span class="linenos"> 83</span>    <span class="p">)</span>
+<span class="linenos"> 84</span>
+<span class="linenos"> 85</span>    <span class="c1"># Invisible rigid rig used as the follow camera&#39;s attachment point.</span>
+<span class="linenos"> 86</span>    <span class="c1"># Both its position and its orientation are set per env, which is how</span>
+<span class="linenos"> 87</span>    <span class="c1"># the follow camera ends up at a different world pose in every env.</span>
+<span class="linenos"> 88</span>    <span class="c1"># Must be added before any FEM / MPM / PBD entity so its ``entity.idx``</span>
+<span class="linenos"> 89</span>    <span class="c1"># matches the rigid solver&#39;s index — that&#39;s what</span>
+<span class="linenos"> 90</span>    <span class="c1"># ``NyxCameraOptions.entity_idx`` uses.</span>
+<span class="linenos"> 91</span>    <span class="n">follow_rig</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span>
+<span class="linenos"> 92</span>        <span class="n">morph</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Sphere</span><span class="p">(</span>
+<span class="linenos"> 93</span>            <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+<span class="linenos"> 94</span>            <span class="n">visualization</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos"> 95</span>        <span class="p">),</span>
+<span class="linenos"> 96</span>    <span class="p">)</span>
+<span class="linenos"> 97</span>
+<span class="linenos"> 98</span>    <span class="c1"># Lighting. ``env_maps`` is indexed positionally by env: env ``i`` is</span>
+<span class="linenos"> 99</span>    <span class="c1"># lit by ``env_maps[i]``. We alternate two HDRIs across the four envs</span>
+<span class="linenos">100</span>    <span class="c1"># so even envs render under a clear outdoor sky and odd envs render</span>
+<span class="linenos">101</span>    <span class="c1"># under a studio softbox setup — same scene, two completely different</span>
+<span class="linenos">102</span>    <span class="c1"># lighting moods, visible side by side in the tiled output. ``lights``</span>
+<span class="linenos">103</span>    <span class="c1"># and ``light_fields`` (not used here) are merged scene-wide instead.</span>
+<span class="linenos">104</span>    <span class="k">def</span><span class="w"> </span><span class="nf">_make_env_map</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nps</span><span class="o">.</span><span class="n">EnvironmentMapAsset</span><span class="p">:</span>
+<span class="linenos">105</span>        <span class="n">asset</span>            <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EnvironmentMapAsset</span><span class="p">()</span>
+<span class="linenos">106</span>        <span class="n">asset</span><span class="o">.</span><span class="n">texture</span>    <span class="o">=</span> <span class="n">path</span>
+<span class="linenos">107</span>        <span class="n">asset</span><span class="o">.</span><span class="n">layout</span>     <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EEnvMapLayout</span><span class="o">.</span><span class="n">LongLat</span>
+<span class="linenos">108</span>        <span class="n">asset</span><span class="o">.</span><span class="n">multiplier</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="linenos">109</span>        <span class="k">return</span> <span class="n">asset</span>
+<span class="linenos">110</span>
+<span class="linenos">111</span>    <span class="n">env_map_sky</span>    <span class="o">=</span> <span class="n">_make_env_map</span><span class="p">(</span><span class="n">ENV_MAP_SKY</span><span class="p">)</span>
+<span class="linenos">112</span>    <span class="n">env_map_studio</span> <span class="o">=</span> <span class="n">_make_env_map</span><span class="p">(</span><span class="n">ENV_MAP_STUD</span><span class="p">)</span>
+<span class="linenos">113</span>    <span class="n">per_env_maps</span>   <span class="o">=</span> <span class="p">(</span><span class="n">env_map_sky</span><span class="p">,</span> <span class="n">env_map_studio</span><span class="p">,</span> <span class="n">env_map_sky</span><span class="p">,</span> <span class="n">env_map_studio</span><span class="p">)</span>
+<span class="linenos">114</span>
+<span class="linenos">115</span>    <span class="c1"># Camera A — high overhead overview. Same world pose in every env; what</span>
+<span class="linenos">116</span>    <span class="c1"># differs per column is the simulator state inside the frame.</span>
+<span class="linenos">117</span>    <span class="n">wide_cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_sensor</span><span class="p">(</span><span class="n">NyxCameraOptions</span><span class="p">(</span>
+<span class="linenos">118</span>        <span class="n">res</span>         <span class="o">=</span> <span class="n">CAM_RES</span><span class="p">,</span>
+<span class="linenos">119</span>        <span class="n">pos</span>         <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">),</span>
+<span class="linenos">120</span>        <span class="n">lookat</span>      <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+<span class="linenos">121</span>        <span class="n">fov</span>         <span class="o">=</span> <span class="mf">42.0</span><span class="p">,</span>
+<span class="linenos">122</span>        <span class="n">spp</span>         <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+<span class="linenos">123</span>        <span class="n">render_mode</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">ERenderMode</span><span class="o">.</span><span class="n">FastPathTracer</span><span class="p">,</span>
+<span class="linenos">124</span>        <span class="n">env_maps</span>    <span class="o">=</span> <span class="n">per_env_maps</span><span class="p">,</span>
+<span class="linenos">125</span>    <span class="p">))</span>
+<span class="linenos">126</span>
+<span class="linenos">127</span>    <span class="c1"># Camera B — eye-level follow camera. ``offset_T`` is the camera pose</span>
+<span class="linenos">128</span>    <span class="c1"># in the rig&#39;s local frame: 1.1 m back along the rig&#39;s -Y axis and</span>
+<span class="linenos">129</span>    <span class="c1"># 0.45 m above it, aimed at the ball portion of the composite (0.25 m</span>
+<span class="linenos">130</span>    <span class="c1"># above the cup base). Rotating the rig per env rotates the camera&#39;s</span>
+<span class="linenos">131</span>    <span class="c1"># relative pose with it, so the follow cell for each env shows a</span>
+<span class="linenos">132</span>    <span class="c1"># different radial angle on the same ball.</span>
+<span class="linenos">133</span>    <span class="n">offset_T</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pos_lookat_up_to_T</span><span class="p">(</span>
+<span class="linenos">134</span>        <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+<span class="linenos">135</span>        <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">((</span><span class="mf">0.0</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+<span class="linenos">136</span>        <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">((</span><span class="mf">0.0</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>  <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+<span class="linenos">137</span>    <span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="linenos">138</span>
+<span class="linenos">139</span>    <span class="n">follow_cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_sensor</span><span class="p">(</span><span class="n">NyxCameraOptions</span><span class="p">(</span>
+<span class="linenos">140</span>        <span class="n">res</span>         <span class="o">=</span> <span class="n">CAM_RES</span><span class="p">,</span>
+<span class="linenos">141</span>        <span class="n">fov</span>         <span class="o">=</span> <span class="mf">45.0</span><span class="p">,</span>
+<span class="linenos">142</span>        <span class="n">spp</span>         <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+<span class="linenos">143</span>        <span class="n">render_mode</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">ERenderMode</span><span class="o">.</span><span class="n">FastPathTracer</span><span class="p">,</span>
+<span class="linenos">144</span>        <span class="n">entity_idx</span>  <span class="o">=</span> <span class="n">follow_rig</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span>
+<span class="linenos">145</span>        <span class="n">offset_T</span>    <span class="o">=</span> <span class="n">offset_T</span><span class="p">,</span>
+<span class="linenos">146</span>    <span class="p">))</span>
+<span class="linenos">147</span>
+<span class="linenos">148</span>    <span class="c1"># ``n_envs=N`` makes every sensor return a batched tensor:</span>
+<span class="linenos">149</span>    <span class="c1"># ``cam.read().rgb`` has shape ``(N_ENVS, H, W, 3)``.</span>
+<span class="linenos">150</span>    <span class="n">scene</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">n_envs</span><span class="o">=</span><span class="n">N_ENVS</span><span class="p">)</span>
+<span class="linenos">151</span>
+<span class="linenos">152</span>    <span class="c1"># Per-env state setters. All three calls share the outer dimension</span>
+<span class="linenos">153</span>    <span class="c1"># ``N_ENVS``: ball position, rig position (rig follows the ball), and</span>
+<span class="linenos">154</span>    <span class="c1"># rig orientation (rig points outward in each env).</span>
+<span class="linenos">155</span>    <span class="n">ball</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="n">BALL_POSITIONS</span><span class="p">)</span>
+<span class="linenos">156</span>    <span class="n">follow_rig</span><span class="o">.</span><span class="n">set_pos</span><span class="p">(</span><span class="n">BALL_POSITIONS</span><span class="p">)</span>
+<span class="linenos">157</span>    <span class="n">follow_rig</span><span class="o">.</span><span class="n">set_quat</span><span class="p">(</span><span class="n">RIG_OUTWARD_QUATS</span><span class="p">)</span>
+<span class="linenos">158</span>
+<span class="linenos">159</span>    <span class="c1"># One step drives every sensor; one ``read()`` returns the full batch.</span>
+<span class="linenos">160</span>    <span class="n">scene</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="linenos">161</span>    <span class="n">wide_batch</span>   <span class="o">=</span> <span class="n">wide_cam</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">rgb</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="linenos">162</span>    <span class="n">follow_batch</span> <span class="o">=</span> <span class="n">follow_cam</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">rgb</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="linenos">163</span>
+<span class="linenos">164</span>    <span class="c1"># Tile: rows = cameras (wide on top, follow below), columns = envs.</span>
+<span class="linenos">165</span>    <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">CAM_RES</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">CAM_RES</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos">166</span>    <span class="n">grid</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">W</span> <span class="o">*</span> <span class="n">N_ENVS</span><span class="p">,</span> <span class="n">H</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+<span class="linenos">167</span>    <span class="k">for</span> <span class="n">env_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ENVS</span><span class="p">):</span>
+<span class="linenos">168</span>        <span class="n">grid</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">wide_batch</span><span class="p">[</span><span class="n">env_idx</span><span class="p">]),</span>   <span class="p">(</span><span class="n">env_idx</span> <span class="o">*</span> <span class="n">W</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="linenos">169</span>        <span class="n">grid</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">follow_batch</span><span class="p">[</span><span class="n">env_idx</span><span class="p">]),</span> <span class="p">(</span><span class="n">env_idx</span> <span class="o">*</span> <span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">))</span>
+<span class="linenos">170</span>    <span class="n">grid</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">)</span>
+<span class="linenos">171</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">172</span>
+<span class="linenos">173</span>
+<span class="linenos">174</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">175</span>    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Run it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/07_multi_camera_multi_env.py
+</pre></div>
+</div>
+<p>The PNG is written to <code class="docutils literal notranslate"><span class="pre">examples/out/07_multi_camera_multi_env.png</span></code>. The Sphinx build copies it to <code class="docutils literal notranslate"><span class="pre">_static/generated/examples/07_multi_camera_multi_env.png</span></code> and embeds it at the top of this page, so the docs site always shows whatever the latest run produced.</p>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="attached_camera.html"><span class="doc">Attaching a camera</span></a> — Full walk-through of <code class="docutils literal notranslate"><span class="pre">entity_idx</span></code> / <code class="docutils literal notranslate"><span class="pre">offset_T</span></code> and Genesis’ sensor-attachment lifecycle. The follow camera here is the same mechanism, just bound to an invisible rig instead of a robot link.</p></li>
+<li><p><a class="reference internal" href="../advanced/sensor_lifecycle.html"><span class="doc">Sensor lifecycle</span></a> — When the shared renderer is created (after the <em>last</em> <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor.html#gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor" title="gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraSensor</span></code></a> finishes building) and the implications for sensors added or read in unusual orders.</p></li>
+<li><p><a class="reference internal" href="hello_nyx.html"><span class="doc">Hello, Nyx</span></a> — The single-camera, single-env baseline. Diff this example against it to see exactly which lines flip on multi-camera and multi-env behaviour.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="object_picking.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Object picking</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../advanced/sensor_lifecycle.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sensor lifecycle</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-changes-when-you-add-a-second-camera">What changes when you add a second camera</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-changes-when-you-add-parallel-environments">What changes when you add parallel environments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#different-camera-positions-per-environment">Different camera positions per environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#different-lighting-per-environment">Different lighting per environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heterogeneous-environments-not-supported">Heterogeneous environments: not supported</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-saved-image">Reading the saved image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/user_guide/examples/multi_camera_multi_env.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Genesis AI.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

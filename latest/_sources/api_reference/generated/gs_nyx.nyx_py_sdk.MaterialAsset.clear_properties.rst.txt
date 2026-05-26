@@ -1,0 +1,7 @@
+
+clear\_properties
+=================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: MaterialAsset.clear_properties

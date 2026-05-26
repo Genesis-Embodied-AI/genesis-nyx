@@ -1,0 +1,9 @@
+quaternion()
+============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. py:method:: quaternion.__init__(self) -> None
+
+   Construct the identity quaternion (0, 0, 0, 1).
+

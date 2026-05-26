@@ -1,0 +1,1295 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gs_nyx_plugin.nyx_scene_exporter &#8212; Nyx for Genesis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=4b7455de" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/gs_nyx_plugin/nyx_scene_exporter';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Nyx for Genesis</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">gs_nyx_plugin.nyx_scene_exporter</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for gs_nyx_plugin.nyx_scene_exporter</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Nyx Scene Exporter for Genesis.&quot;&quot;&quot;</span>
+
+<span class="c1"># External dependencies</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">trimesh.visual.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColorVisuals</span>
+
+<span class="c1"># Internal dependencies</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">genesis</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">genesis.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">qd_to_torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gs_nyx</span><span class="w"> </span><span class="kn">import</span> <span class="n">nyx_py_sdk</span> <span class="k">as</span> <span class="n">nps</span>
+
+<span class="c1"># Relative imports</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.nyx_camera_shared_metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">_nyx_random_string</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.nyx_scene_utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_rel_asset_path</span><span class="p">,</span>
+    <span class="n">instance_type</span><span class="p">,</span>
+    <span class="n">primitive_type</span><span class="p">,</span>
+    <span class="n">primitive_scale</span><span class="p">,</span>
+    <span class="n">file_morph_scale</span><span class="p">,</span>
+    <span class="n">surface_for_material</span><span class="p">,</span>
+    <span class="n">camera_get_quaternion</span><span class="p">,</span>
+    <span class="n">particle_recon_budget</span><span class="p">,</span>
+    <span class="n">is_exportable_entity</span><span class="p">,</span>
+    <span class="n">is_rigid_entity</span><span class="p">,</span>
+    <span class="n">is_pbd_entity</span><span class="p">,</span>
+    <span class="n">is_fem_entity</span><span class="p">,</span>
+    <span class="n">is_dynamic_mesh_entity</span><span class="p">,</span>
+    <span class="n">is_mpm_visual_entity</span><span class="p">,</span>
+    <span class="n">is_mpm_recon_entity</span><span class="p">,</span>
+    <span class="n">is_sph_recon_entity</span><span class="p">,</span>
+    <span class="n">should_export_at_geom_level</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="c1"># Only the main exporter class is part of the public API</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NyxSceneExporter&quot;</span><span class="p">]</span>
+
+<span class="c1"># Look up table for metal colors (We&#39;ll handle complex IORs later)</span>
+<span class="n">METAL_PROPERTIES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;aluminium&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;metallic_color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.916</span><span class="p">,</span> <span class="mf">0.923</span><span class="p">,</span> <span class="mf">0.924</span><span class="p">)},</span>
+    <span class="s2">&quot;gold&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;metallic_color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.773</span><span class="p">,</span> <span class="mf">0.307</span><span class="p">)},</span>
+    <span class="s2">&quot;copper&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;metallic_color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.932</span><span class="p">,</span> <span class="mf">0.623</span><span class="p">,</span> <span class="mf">0.522</span><span class="p">)},</span>
+    <span class="s2">&quot;brass&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;metallic_color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.910</span><span class="p">,</span> <span class="mf">0.778</span><span class="p">,</span> <span class="mf">0.423</span><span class="p">)},</span>
+    <span class="s2">&quot;iron&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;metallic_color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.530</span><span class="p">,</span> <span class="mf">0.513</span><span class="p">,</span> <span class="mf">0.494</span><span class="p">)},</span>
+    <span class="s2">&quot;titanium&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;metallic_color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.441</span><span class="p">,</span> <span class="mf">0.400</span><span class="p">,</span> <span class="mf">0.361</span><span class="p">)},</span>
+    <span class="s2">&quot;vanadium&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;metallic_color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.534</span><span class="p">,</span> <span class="mf">0.526</span><span class="p">,</span> <span class="mf">0.546</span><span class="p">)},</span>
+    <span class="s2">&quot;lithium&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;metallic_color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.916</span><span class="p">,</span> <span class="mf">0.890</span><span class="p">,</span> <span class="mf">0.807</span><span class="p">)},</span>
+<span class="p">}</span>
+
+
+<span class="c1"># ============================================================================</span>
+<span class="c1"># SceneAsset Exporter</span>
+<span class="c1"># ============================================================================</span>
+<div class="viewcode-block" id="NyxSceneExporter">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.html#gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NyxSceneExporter</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Translate a Genesis scene into a Nyx ``SceneAsset`` JSON description.</span>
+
+<span class="sd">    Walks the built Genesis scene once to populate a</span>
+<span class="sd">    :class:`gs_nyx.nyx_py_sdk.SceneAsset` with one instance per renderable</span>
+<span class="sd">    sub-geometry, the cameras, lights, environment maps and light fields</span>
+<span class="sd">    that the renderer should use, then serializes the result with</span>
+<span class="sd">    :meth:`export_to_file`. The Nyx renderer reads the written JSON during</span>
+<span class="sd">    its scene load step.</span>
+
+<span class="sd">    Instances are emitted in solver order (rigid → FEM → PBD → MPM-visual →</span>
+<span class="sd">    MPM-recon) so the deformable index space matches the layout</span>
+<span class="sd">    :class:`NyxPyRenderer` uses when streaming per-frame vertex data and</span>
+<span class="sd">    calling ``set_deform_entity_active_triangles``.</span>
+
+<span class="sd">    Conversion handles</span>
+<span class="sd">    ------------------</span>
+<span class="sd">    - Z-up (Genesis) → Y-up (Nyx) for static transforms and scales.</span>
+<span class="sd">    - WXYZ → XYZW quaternion handedness.</span>
+<span class="sd">    - Rigid entities are split into one Nyx instance per vgeom; dynamic-mesh</span>
+<span class="sd">      entities (FEM / PBD / MPM) emit a single ``DynamicMesh`` instance with</span>
+<span class="sd">      worst-case vertex / triangle budgets pre-allocated.</span>
+
+<span class="sd">    The :attr:`_entity_uuid_pairs` list it builds is the canonical mapping</span>
+<span class="sd">    used elsewhere in the plugin to translate Nyx UUIDs back to Genesis</span>
+<span class="sd">    entities (see :meth:`NyxPyRenderer.pick_pixel`).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="NyxSceneExporter.__init__">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.__init__.html#gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">scene</span><span class="p">,</span>
+        <span class="n">export_folder</span><span class="p">,</span>
+        <span class="n">cameras</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">lights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">asset_root_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">env_maps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">light_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build the Nyx ``SceneAsset`` from a Genesis scene.</span>
+
+<span class="sd">        Runs the full export pipeline (instance / camera / light / env-map /</span>
+<span class="sd">        light-field build) immediately; call :meth:`export_to_file` after</span>
+<span class="sd">        construction to serialize the result. Asset side effects (e.g.</span>
+<span class="sd">        MJCF / procedural-mesh ``.obj`` exports) are written under</span>
+<span class="sd">        ``export_folder`` during construction.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        scene : genesis.Scene</span>
+<span class="sd">            Built Genesis scene to export. All entities with</span>
+<span class="sd">            ``morph.visualization=True`` and a renderable type are included.</span>
+<span class="sd">        export_folder : str</span>
+<span class="sd">            Directory under ``__nyx_cache__/`` where the scene JSON and any</span>
+<span class="sd">            per-vgeom ``.obj`` files are written. Must already exist.</span>
+<span class="sd">        cameras : list of dict or list of genesis.Camera, optional</span>
+<span class="sd">            Cameras to write into the scene description. Pass camera-definition</span>
+<span class="sd">            dicts (the format produced by :meth:`NyxCameraSensor.build`) when</span>
+<span class="sd">            driving the renderer through Nyx sensors. When ``None``, the</span>
+<span class="sd">            scene&#39;s non-debug Genesis ``Camera`` objects are exported instead.</span>
+<span class="sd">        lights : list of gs_nyx.nyx_py_sdk.LightAsset, optional</span>
+<span class="sd">            Lights to include. ``None`` (default) means no lights.</span>
+<span class="sd">        asset_root_path : str, optional</span>
+<span class="sd">            Root prefix recorded in the scene description for resolving</span>
+<span class="sd">            relative asset paths. Defaults to empty string (paths are</span>
+<span class="sd">            relative to ``export_folder``).</span>
+<span class="sd">        env_maps : list of gs_nyx.nyx_py_sdk.EnvironmentMapAsset, optional</span>
+<span class="sd">            Environment maps to include. ``None`` (default) means none.</span>
+<span class="sd">        light_fields : list of gs_nyx.nyx_py_sdk.LightFieldAsset, optional</span>
+<span class="sd">            Pre-baked light fields to include. ``None`` (default) means none.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Keep track of the scene and additional properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene</span> <span class="o">=</span> <span class="n">scene</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_export_folder</span> <span class="o">=</span> <span class="n">export_folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_asset_root_path</span> <span class="o">=</span> <span class="n">asset_root_path</span> <span class="k">if</span> <span class="n">asset_root_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_genesis_assets_dir</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_assets_dir</span><span class="p">()</span>
+
+        <span class="c1"># Map that allows us to retrived uuids based on entities.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_entity_uuid_pairs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Create SceneAsset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">SceneAsset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">rootFolder</span> <span class="o">=</span> <span class="s2">&quot;../../&quot;</span>
+
+        <span class="c1"># Process cameras (only Genesis Camera objects)</span>
+        <span class="k">if</span> <span class="n">cameras</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cameras</span> <span class="o">=</span> <span class="p">[</span><span class="n">cam</span> <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <span class="n">scene</span><span class="o">.</span><span class="n">visualizer</span><span class="o">.</span><span class="n">cameras</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">cam</span><span class="o">.</span><span class="n">debug</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cameras</span> <span class="o">=</span> <span class="n">cameras</span>
+
+        <span class="c1"># Process lights - if None, use empty list (caller should provide lights)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lights</span> <span class="o">=</span> <span class="n">lights</span> <span class="k">if</span> <span class="n">lights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+
+        <span class="c1"># Process env_maps - if None, use empty list (caller should provide env_maps)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_env_maps</span> <span class="o">=</span> <span class="n">env_maps</span> <span class="k">if</span> <span class="n">env_maps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+
+        <span class="c1"># Process light_fields - if None, use empty list (caller should provide light_fields)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_light_fields</span> <span class="o">=</span> <span class="n">light_fields</span> <span class="k">if</span> <span class="n">light_fields</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+
+        <span class="c1"># Animation tracking</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_frame_counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Build scene</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_scene</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_scene</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># First we simply count how many instances will endup in our scene (scene level instances)</span>
+        <span class="n">num_instances</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">entities</span><span class="p">:</span>
+            <span class="c1"># Some entities are simply not supported</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">is_exportable_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># If we support the sub-scene export we simply export one instance per scene for this entity.</span>
+            <span class="k">if</span> <span class="n">should_export_at_geom_level</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+                <span class="n">num_instances</span> <span class="o">+=</span> <span class="n">entity</span><span class="o">.</span><span class="n">n_vgeoms</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">num_instances</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Enumerate the other components.</span>
+        <span class="n">num_cameras</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cameras</span><span class="p">)</span>
+        <span class="n">num_lights</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lights</span><span class="p">)</span>
+        <span class="n">num_env_maps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_env_maps</span><span class="p">)</span>
+        <span class="n">num_light_fields</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_light_fields</span><span class="p">)</span>
+
+        <span class="c1"># Resize the buffers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">instance_resize</span><span class="p">(</span><span class="n">num_instances</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">camera_resize</span><span class="p">(</span><span class="n">num_cameras</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">light_resize</span><span class="p">(</span><span class="n">num_lights</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">env_map_resize</span><span class="p">(</span><span class="n">num_env_maps</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">light_field_resize</span><span class="p">(</span><span class="n">num_light_fields</span><span class="p">)</span>
+
+        <span class="c1"># Build all the scene components.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_instances</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_cameras</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_lights</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_env_maps</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_light_fields</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_instances</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build all mesh/primitive instances, sorted by solver type (rigid first, then FEM, PBD, MPM).&quot;&quot;&quot;</span>
+        <span class="n">instance_idx</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Collect exportable entities preserving original order</span>
+        <span class="n">exportable_entities</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">entities</span> <span class="k">if</span> <span class="n">is_exportable_entity</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="c1"># Order: rigid -&gt; FEM -&gt; PBD -&gt; MPM (visual then recon) -&gt; SPH (recon). This matches the</span>
+        <span class="c1"># order the renderer walks deformables when building the reference / indirection table, so</span>
+        <span class="c1"># the deform index used by set_deform_entity_active_triangles() lines up.</span>
+        <span class="n">rigid_entities</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">exportable_entities</span> <span class="k">if</span> <span class="n">is_rigid_entity</span><span class="p">(</span><span class="n">e</span><span class="p">)]</span>
+        <span class="n">fem_entities</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">exportable_entities</span> <span class="k">if</span> <span class="n">is_fem_entity</span><span class="p">(</span><span class="n">e</span><span class="p">)]</span>
+        <span class="n">pbd_entities</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">exportable_entities</span> <span class="k">if</span> <span class="n">is_pbd_entity</span><span class="p">(</span><span class="n">e</span><span class="p">)]</span>
+        <span class="n">mpm_visual_entities</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">exportable_entities</span> <span class="k">if</span> <span class="n">is_mpm_visual_entity</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">mpm_recon_entities</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">exportable_entities</span> <span class="k">if</span> <span class="n">is_mpm_recon_entity</span><span class="p">(</span><span class="n">e</span><span class="p">)]</span>
+        <span class="n">sph_recon_entities</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">exportable_entities</span> <span class="k">if</span> <span class="n">is_sph_recon_entity</span><span class="p">(</span><span class="n">e</span><span class="p">)]</span>
+        <span class="n">sorted_entities</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">rigid_entities</span>
+            <span class="o">+</span> <span class="n">fem_entities</span>
+            <span class="o">+</span> <span class="n">pbd_entities</span>
+            <span class="o">+</span> <span class="n">mpm_visual_entities</span>
+            <span class="o">+</span> <span class="n">mpm_recon_entities</span>
+            <span class="o">+</span> <span class="n">sph_recon_entities</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Loop through the entities and process them.</span>
+        <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">sorted_entities</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">should_export_at_geom_level</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+                <span class="n">instance_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_vgeom_instances</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">instance_idx</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">instance_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_entity_instance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">instance_idx</span><span class="p">)</span>
+
+    <span class="c1"># Function that is able to apply textures to a material override.</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_apply_texture</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">surface</span><span class="p">,</span>
+        <span class="n">mat</span><span class="p">,</span>
+        <span class="n">vmesh</span><span class="p">,</span>
+        <span class="n">surface_attr</span><span class="p">,</span>
+        <span class="n">mat_property</span><span class="p">,</span>
+        <span class="n">mat_attr</span><span class="p">,</span>
+        <span class="n">metadata_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">texture</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="n">surface_attr</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">texture</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># Raise the property, it will be overriden</span>
+        <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">mat_property</span><span class="p">)</span>
+
+        <span class="c1"># Is it a full image or just a value?</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">textures</span><span class="o">.</span><span class="n">ImageTexture</span><span class="p">):</span>
+            <span class="c1"># Non genesis resource</span>
+            <span class="k">if</span> <span class="n">texture</span><span class="o">.</span><span class="n">image_path</span><span class="p">:</span>
+                <span class="c1"># Use the path as is.</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">mat_attr</span><span class="p">,</span> <span class="n">texture</span><span class="o">.</span><span class="n">image_path</span><span class="p">)</span>
+
+            <span class="c1"># Genesis resource, use relative paths</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="n">vmesh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">vmesh</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">metadata_key</span>
+                <span class="ow">and</span> <span class="n">metadata_key</span> <span class="ow">in</span> <span class="n">vmesh</span><span class="o">.</span><span class="n">metadata</span>
+            <span class="p">):</span>
+                <span class="c1"># Need to apply the genesis path</span>
+                <span class="nb">setattr</span><span class="p">(</span>
+                    <span class="n">mat</span><span class="p">,</span>
+                    <span class="n">mat_attr</span><span class="p">,</span>
+                    <span class="n">get_rel_asset_path</span><span class="p">(</span>
+                        <span class="n">vmesh</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="n">metadata_key</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_genesis_assets_dir</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span>
+                    <span class="p">),</span>
+                <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">textures</span><span class="o">.</span><span class="n">ColorTexture</span><span class="p">):</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">mat_attr</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Succesfully overriden</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_material_override</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">surface</span><span class="p">,</span> <span class="n">entity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmesh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">overriddenSurface</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build material override from Genesis surface.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            surface: Genesis surface object</span>
+<span class="sd">            entity: Optional entity object (needed for plane UV scale handling)</span>
+<span class="sd">            vmesh: Optional vmesh object (for accessing metadata like texture_path)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">MaterialAsset</span><span class="p">()</span>
+
+        <span class="c1"># If the surface was overriden, unset all the textures.</span>
+        <span class="k">if</span> <span class="n">overriddenSurface</span><span class="p">:</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">AlbedoTexture</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">albedoTexture</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">NormalTexture</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">normalTexture</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">ArmTexture</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">armTexture</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">EmissionTexture</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">emissionTexture</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="c1"># Handle metals</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">surfaces</span><span class="o">.</span><span class="n">Metal</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">metal_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">metal_props</span> <span class="o">=</span> <span class="n">METAL_PROPERTIES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">surface</span><span class="o">.</span><span class="n">metal_type</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">metal_props</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">AlbedoColor</span><span class="p">)</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">Metalness</span><span class="p">)</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="n">metal_props</span><span class="p">[</span><span class="s2">&quot;metallic_color&quot;</span><span class="p">]</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">albedoColor</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float4</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mf">1.0</span><span class="p">)</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">metalness</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="c1"># Colors and alpha</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">AlbedoColor</span><span class="p">)</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">color</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">alpha</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">albedoColor</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float4</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">alpha</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">opacity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">AlbedoColor</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">albedoColor</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float4</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">surface</span><span class="o">.</span><span class="n">opacity</span><span class="p">)</span>
+
+        <span class="c1"># Emission</span>
+        <span class="n">hasEmission</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;emissive&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">emissive</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">Emission</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">emission</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="o">*</span><span class="n">surface</span><span class="o">.</span><span class="n">emissive</span><span class="p">)</span>
+            <span class="n">hasEmission</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">emissive_tex</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;emissive_texture&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">emissive_tex</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">textures</span><span class="o">.</span><span class="n">ColorTexture</span><span class="p">):</span>
+                <span class="c1"># Genesis routes Emission(color=...)</span>
+                <span class="c1"># This converts back the genesis texture to an RGB value.</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">emissive_tex</span><span class="o">.</span><span class="n">color</span><span class="p">))</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">g</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">r</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">r</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">Emission</span><span class="p">)</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">emission</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+                <span class="n">hasEmission</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Roughness</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;roughness&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">roughness</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">PerceptualRoughness</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">perceptualRoughness</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">roughness</span>
+
+        <span class="c1"># Metallic</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;metallic&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">metallic</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">Metalness</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">metalness</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">metallic</span>
+
+        <span class="c1"># Albedo texture</span>
+        <span class="n">hasDiffuse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_texture</span><span class="p">(</span>
+            <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span>
+            <span class="n">mat</span><span class="o">=</span><span class="n">mat</span><span class="p">,</span>
+            <span class="n">vmesh</span><span class="o">=</span><span class="n">vmesh</span><span class="p">,</span>
+            <span class="n">surface_attr</span><span class="o">=</span><span class="s2">&quot;diffuse_texture&quot;</span><span class="p">,</span>
+            <span class="n">mat_property</span><span class="o">=</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">AlbedoTexture</span><span class="p">,</span>
+            <span class="n">mat_attr</span><span class="o">=</span><span class="s2">&quot;albedoTexture&quot;</span><span class="p">,</span>
+            <span class="n">metadata_key</span><span class="o">=</span><span class="s2">&quot;texture_path&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Normal texture</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_apply_texture</span><span class="p">(</span>
+            <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span>
+            <span class="n">mat</span><span class="o">=</span><span class="n">mat</span><span class="p">,</span>
+            <span class="n">vmesh</span><span class="o">=</span><span class="n">vmesh</span><span class="p">,</span>
+            <span class="n">surface_attr</span><span class="o">=</span><span class="s2">&quot;normal_texture&quot;</span><span class="p">,</span>
+            <span class="n">mat_property</span><span class="o">=</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">NormalTexture</span><span class="p">,</span>
+            <span class="n">mat_attr</span><span class="o">=</span><span class="s2">&quot;normalTexture&quot;</span><span class="p">,</span>
+            <span class="n">metadata_key</span><span class="o">=</span><span class="s2">&quot;normal_texture_path&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Emission texture</span>
+        <span class="n">hasEmission</span> <span class="o">=</span> <span class="n">hasEmission</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_texture</span><span class="p">(</span>
+            <span class="n">surface</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span>
+            <span class="n">mat</span><span class="o">=</span><span class="n">mat</span><span class="p">,</span>
+            <span class="n">vmesh</span><span class="o">=</span><span class="n">vmesh</span><span class="p">,</span>
+            <span class="n">surface_attr</span><span class="o">=</span><span class="s2">&quot;emissive_texture&quot;</span><span class="p">,</span>
+            <span class="n">mat_property</span><span class="o">=</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">EmissionTexture</span><span class="p">,</span>
+            <span class="n">mat_attr</span><span class="o">=</span><span class="s2">&quot;emissionTexture&quot;</span><span class="p">,</span>
+            <span class="n">metadata_key</span><span class="o">=</span><span class="s2">&quot;emissive_texture_path&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Double sided support</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;double_sided&quot;</span><span class="p">):</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">Sidedness</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">sidedness</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EMaterialSidedness</span><span class="o">.</span><span class="n">Double</span>
+
+        <span class="c1"># In the specific case of the diffuse texture and a plane, we handle UVs</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">hasDiffuse</span>
+            <span class="ow">and</span> <span class="n">entity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Plane</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">plane_size</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">plane_size</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">UVScale</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">uvScale</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float2</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">plane_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">plane_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+        <span class="c1"># For now, if it emissive, we kill the other lobes.</span>
+        <span class="k">if</span> <span class="n">hasEmission</span><span class="p">:</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">AlbedoColor</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">albedoColor</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float4</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">Metalness</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">metalness</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="k">return</span> <span class="n">mat</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_full_material</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surface</span><span class="p">,</span> <span class="n">entity</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build a complete material description for dynamic meshes.</span>
+
+<span class="sd">        Unlike _build_material_override which only exports properties that differ from defaults,</span>
+<span class="sd">        this method exports all material properties needed for rendering since dynamic meshes</span>
+<span class="sd">        don&#39;t have a mesh file with embedded materials to fall back on.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">MaterialAsset</span><span class="p">()</span>
+
+        <span class="c1"># Always set albedo color (default to white if not specified)</span>
+        <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">AlbedoColor</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">color</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="k">if</span> <span class="n">surface</span><span class="o">.</span><span class="n">opacity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mf">1.0</span>
+            <span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">albedoColor</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float4</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">alpha</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">opacity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="mf">1.0</span>
+            <span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">albedoColor</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float4</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+
+        <span class="c1"># Only set roughness and metallic if they are specified, otherwise leave them at Nyx default</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;roughness&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">roughness</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">PerceptualRoughness</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">perceptualRoughness</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">roughness</span>
+
+        <span class="c1"># Only set metallic if it&#39;s specified, otherwise leave it at Nyx default</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;metallic&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">metallic</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">Metalness</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">metalness</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">metallic</span>
+
+        <span class="c1"># Textures (if available)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;diffuse_texture&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">diffuse_texture</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">texture</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">diffuse_texture</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">textures</span><span class="o">.</span><span class="n">ImageTexture</span><span class="p">)</span> <span class="ow">and</span> <span class="n">texture</span><span class="o">.</span><span class="n">image_path</span><span class="p">:</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">AlbedoTexture</span><span class="p">)</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">albedoTexture</span> <span class="o">=</span> <span class="n">get_rel_asset_path</span><span class="p">(</span>
+                    <span class="n">texture</span><span class="o">.</span><span class="n">image_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_genesis_assets_dir</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;normal_texture&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">normal_texture</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">texture</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">normal_texture</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">textures</span><span class="o">.</span><span class="n">ImageTexture</span><span class="p">)</span> <span class="ow">and</span> <span class="n">texture</span><span class="o">.</span><span class="n">image_path</span><span class="p">:</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">NormalTexture</span><span class="p">)</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">normalTexture</span> <span class="o">=</span> <span class="n">get_rel_asset_path</span><span class="p">(</span>
+                    <span class="n">texture</span><span class="o">.</span><span class="n">image_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_genesis_assets_dir</span>
+                <span class="p">)</span>
+
+        <span class="c1"># Double sided support (default to single sided)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="s2">&quot;double_sided&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">surface</span><span class="o">.</span><span class="n">double_sided</span><span class="p">:</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">Sidedness</span><span class="p">)</span>
+            <span class="n">mat</span><span class="o">.</span><span class="n">sidedness</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EMaterialSidedness</span><span class="o">.</span><span class="n">Double</span>
+
+        <span class="k">return</span> <span class="n">mat</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_entity_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">,</span> <span class="n">instance_idx</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build a single entity instance (not expanded to vgeoms).&quot;&quot;&quot;</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">instance_idx</span><span class="p">)</span>
+
+        <span class="c1"># Type and scale - FEM, PBD, and MPM entities use DynamicMesh type</span>
+        <span class="k">if</span> <span class="n">is_dynamic_mesh_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EInstanceType</span><span class="o">.</span><span class="n">DynamicMesh</span>
+            <span class="c1"># Set vertex and triangle counts from entity</span>
+            <span class="k">if</span> <span class="n">is_fem_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_numVertices</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">n_vertices</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_numTriangles</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">n_surfaces</span>
+            <span class="k">elif</span> <span class="n">is_pbd_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_numVertices</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">n_vverts</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_numTriangles</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">n_vfaces</span>
+            <span class="k">elif</span> <span class="n">is_mpm_visual_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+                <span class="c1"># Skinning mesh: fixed topology, animated verts (via mpm_solver.vverts_render)</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_numVertices</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">n_vverts</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_numTriangles</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">n_vfaces</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_dynamicConnectivity</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">is_mpm_recon_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+                <span class="c1"># Variable topology: pre-allocate worst-case from solver domain + recon voxel scale</span>
+                <span class="n">max_v</span><span class="p">,</span> <span class="n">max_t</span> <span class="o">=</span> <span class="n">particle_recon_budget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">mpm_solver</span><span class="p">,</span> <span class="n">entity</span><span class="p">)</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_numVertices</span> <span class="o">=</span> <span class="n">max_v</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_numTriangles</span> <span class="o">=</span> <span class="n">max_t</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_dynamicConnectivity</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">is_sph_recon_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+                <span class="c1"># SPH liquids share the MPM-recon variable-topology path: budget the same way</span>
+                <span class="c1"># using the SPH domain + particle radius.</span>
+                <span class="n">max_v</span><span class="p">,</span> <span class="n">max_t</span> <span class="o">=</span> <span class="n">particle_recon_budget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">sph_solver</span><span class="p">,</span> <span class="n">entity</span><span class="p">)</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_numVertices</span> <span class="o">=</span> <span class="n">max_v</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_numTriangles</span> <span class="o">=</span> <span class="n">max_t</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dynamicMesh_dynamicConnectivity</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># DynamicMesh vertices are in absolute world position, so use identity transform</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span>
+                <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span>
+            <span class="p">)</span>  <span class="c1"># Identity scale - vertices are already world-space</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Transform for non-dynamic meshes</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3_z_up_to_y_up_a</span><span class="p">(</span>
+                <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span>
+                    <span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">pos</span>
+
+            <span class="c1"># Rotation</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion</span><span class="p">(</span>
+                <span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">quat</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">quat</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">quat</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                <span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">quat</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+            <span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion_z_up_to_y_up_a</span><span class="p">(</span>
+                <span class="n">nps</span><span class="o">.</span><span class="n">quaternion_wxyz_to_xyzw</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Type and scale</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">instance_type</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Primitive</span><span class="p">):</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">primitive_type</span> <span class="o">=</span> <span class="n">primitive_type</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">)</span>
+                <span class="n">scale</span> <span class="o">=</span> <span class="n">primitive_scale</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">URDF</span><span class="p">):</span>
+                <span class="n">subscene_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">subscene_uri</span> <span class="o">=</span> <span class="n">subscene_path</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">convertAxis</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">file_meshes_are_zup</span>
+                <span class="n">scale</span> <span class="o">=</span> <span class="n">file_morph_scale</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">)</span>
+                <span class="c1"># Sanity check - we don&#39;t support URDFs with merged fixed links since we can&#39;t export the sub-scene with the correct structure to handle them.</span>
+                <span class="k">if</span> <span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">merge_fixed_links</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;The Nyx Renderer does not support exporting an URDF entity with merged fixed links: </span><span class="si">{</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">FileMorph</span><span class="p">):</span>
+                <span class="n">mesh_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">mesh_uri</span> <span class="o">=</span> <span class="n">mesh_path</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">convertAxis</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">vgeoms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;imported_as_zup&quot;</span><span class="p">]</span>
+                <span class="n">scale</span> <span class="o">=</span> <span class="n">file_morph_scale</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">scale</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+        <span class="c1"># Convert the scale to Yup before leaving.</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3_z_up_to_y_up_a</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+
+        <span class="c1"># Material</span>
+        <span class="n">surface</span><span class="p">,</span> <span class="n">overriddenSurface</span> <span class="o">=</span> <span class="n">surface_for_material</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_dynamic_mesh_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+            <span class="c1"># Dynamic meshes need complete material description (no mesh file with embedded materials)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">matOverride</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_full_material</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="n">entity</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Get vmesh for primitives (to access metadata like texture_path)</span>
+            <span class="n">vmesh</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Primitive</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="s2">&quot;vgeoms&quot;</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">entity</span><span class="o">.</span><span class="n">vgeoms</span>
+            <span class="p">):</span>
+                <span class="n">vmesh</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">vgeoms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vmesh</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">matOverride</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_material_override</span><span class="p">(</span>
+                <span class="n">surface</span><span class="p">,</span> <span class="n">entity</span><span class="p">,</span> <span class="n">vmesh</span><span class="p">,</span> <span class="n">overriddenSurface</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Flags</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">smooth</span> <span class="o">=</span> <span class="n">is_mpm_recon_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_sph_recon_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">uuid</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">generate_uuid</span><span class="p">()</span>
+        <span class="c1"># Keep track of the mapping</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_entity_uuid_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">entity</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">uuid</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">set_instance</span><span class="p">(</span><span class="n">instance_idx</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">instance_idx</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_export_vgeom_to_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vgeom</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Serialize a vgeom&#39;s trimesh to an .obj inside the export folder and return its path.</span>
+
+<span class="sd">        Used for vgeoms that have no source mesh file on disk, either because the source</span>
+<span class="sd">        is a container Genesis re-meshes (MJCF) or because the mesh is procedurally</span>
+<span class="sd">        generated (e.g. gs.morphs.Terrain).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">_nyx_random_string</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;.obj&quot;</span>
+        <span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_export_folder</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">vgeom</span><span class="o">.</span><span class="n">vmesh</span><span class="o">.</span><span class="n">trimesh</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">full_path</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_vgeom_instances</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">,</span> <span class="n">instance_idx</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build instances from entity vgeoms.&quot;&quot;&quot;</span>
+        <span class="n">vgeoms_pos</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">rigid_solver</span><span class="o">.</span><span class="n">vgeoms_state</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+        <span class="n">vgeoms_quat</span> <span class="o">=</span> <span class="n">qd_to_torch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_scene</span><span class="o">.</span><span class="n">rigid_solver</span><span class="o">.</span><span class="n">vgeoms_state</span><span class="o">.</span><span class="n">quat</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+
+        <span class="c1"># Generate a unique UUID for the whole entity</span>
+        <span class="n">entity_uuid</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">generate_uuid</span><span class="p">()</span>
+
+        <span class="c1"># Keep track of the mapping (only done once)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_entity_uuid_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">entity</span><span class="p">,</span> <span class="n">entity_uuid</span><span class="p">))</span>
+
+        <span class="c1"># Loop through the geometries</span>
+        <span class="k">for</span> <span class="n">vgeom</span> <span class="ow">in</span> <span class="n">entity</span><span class="o">.</span><span class="n">vgeoms</span><span class="p">:</span>
+            <span class="c1"># Grab the instance to fill</span>
+            <span class="n">instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">instance_idx</span><span class="p">)</span>
+
+            <span class="c1"># Handle the position</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">vgeoms_pos</span><span class="p">[</span><span class="n">vgeom</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3_z_up_to_y_up_a</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+
+            <span class="c1"># Handle the rotation</span>
+            <span class="n">vgeom_quat</span> <span class="o">=</span> <span class="n">vgeoms_quat</span><span class="p">[</span><span class="n">vgeom</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">quat</span> <span class="o">=</span> <span class="n">vgeom_quat</span>
+            <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">vgeom_quat</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">quat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion</span><span class="p">(</span>
+                <span class="n">quat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">quat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">quat</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">quat</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion_z_up_to_y_up_a</span><span class="p">(</span>
+                <span class="n">nps</span><span class="o">.</span><span class="n">quaternion_wxyz_to_xyzw</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Type</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">vgeom</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">gs</span><span class="o">.</span><span class="n">GEOM_TYPE</span><span class="o">.</span><span class="n">BOX</span><span class="p">:</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EInstanceType</span><span class="o">.</span><span class="n">Primitive</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">primitive_type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EPrimitiveType</span><span class="o">.</span><span class="n">Box</span>
+                    <span class="n">extents</span> <span class="o">=</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">data</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="n">extents</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">extents</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">extents</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">gs</span><span class="o">.</span><span class="n">GEOM_TYPE</span><span class="o">.</span><span class="n">SPHERE</span><span class="p">:</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EInstanceType</span><span class="o">.</span><span class="n">Primitive</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">primitive_type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EPrimitiveType</span><span class="o">.</span><span class="n">Sphere</span>
+                    <span class="n">r</span> <span class="o">=</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">gs</span><span class="o">.</span><span class="n">GEOM_TYPE</span><span class="o">.</span><span class="n">CYLINDER</span><span class="p">:</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EInstanceType</span><span class="o">.</span><span class="n">Primitive</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">primitive_type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EPrimitiveType</span><span class="o">.</span><span class="n">Cylinder</span>
+                    <span class="n">r</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EInstanceType</span><span class="o">.</span><span class="n">Mesh</span>
+                    <span class="c1"># Get scale from entity morph if available</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vgeom</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">FileMorph</span><span class="p">):</span>
+                        <span class="n">instance</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">file_morph_scale</span><span class="p">(</span><span class="n">vgeom</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">instance</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EInstanceType</span><span class="o">.</span><span class="n">Mesh</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">convertAxis</span> <span class="o">=</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;imported_as_zup&quot;</span><span class="p">]</span>
+                <span class="c1"># Get scale from entity morph if available</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vgeom</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">FileMorph</span><span class="p">):</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">file_morph_scale</span><span class="p">(</span><span class="n">vgeom</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+                <span class="c1"># Convert the scale</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3_z_up_to_y_up_a</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
+
+            <span class="c1"># URI for mesh types</span>
+            <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">nps</span><span class="o">.</span><span class="n">EInstanceType</span><span class="o">.</span><span class="n">Mesh</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vgeom</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">MJCF</span><span class="p">):</span>
+                    <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_export_vgeom_to_obj</span><span class="p">(</span><span class="n">vgeom</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="s2">&quot;mesh_path&quot;</span> <span class="ow">in</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
+                    <span class="n">uri</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">vgeom</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;mesh_path&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                        <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Procedural meshes (e.g. gs.morphs.Terrain) have no source file</span>
+                    <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_export_vgeom_to_obj</span><span class="p">(</span><span class="n">vgeom</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">uri</span><span class="p">:</span>
+                    <span class="n">instance</span><span class="o">.</span><span class="n">mesh_uri</span> <span class="o">=</span> <span class="n">uri</span>
+
+            <span class="c1"># Material (try to get from vgeom visual)</span>
+            <span class="n">visual</span> <span class="o">=</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">get_trimesh</span><span class="p">()</span><span class="o">.</span><span class="n">visual</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">visual</span><span class="p">,</span> <span class="n">ColorVisuals</span><span class="p">):</span>
+                <span class="n">geom_color</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">main_color</span> <span class="o">/</span> <span class="mf">255.0</span>
+                <span class="n">mat</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">MaterialAsset</span><span class="p">()</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EMaterialProperty</span><span class="o">.</span><span class="n">AlbedoColor</span><span class="p">)</span>
+                <span class="n">mat</span><span class="o">.</span><span class="n">albedoColor</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float4</span><span class="p">(</span>
+                    <span class="n">geom_color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">geom_color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">geom_color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">geom_color</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">matOverride</span> <span class="o">=</span> <span class="n">mat</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Pass vgeom.vmesh to access metadata (e.g., texture_path for primitives)</span>
+                <span class="n">vmesh</span> <span class="o">=</span> <span class="n">vgeom</span><span class="o">.</span><span class="n">vmesh</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">vgeom</span><span class="p">,</span> <span class="s2">&quot;vmesh&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">matOverride</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_material_override</span><span class="p">(</span>
+                    <span class="n">entity</span><span class="o">.</span><span class="n">surface</span><span class="p">,</span> <span class="n">entity</span><span class="p">,</span> <span class="n">vmesh</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Flags</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">smooth</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">uuid</span> <span class="o">=</span> <span class="n">entity_uuid</span>
+
+            <span class="c1"># For MJCFs we want to keep track of the link and subgeometry name.</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vgeom</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">MJCF</span><span class="p">):</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">vgeom</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">vgeom</span><span class="o">.</span><span class="n">link</span><span class="o">.</span><span class="n">vgeoms</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">vgeom</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">set_instance</span><span class="p">(</span><span class="n">instance_idx</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
+            <span class="n">instance_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">instance_idx</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_cameras</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build all cameras from Genesis Camera objects or dict definitions.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">camera_idx</span><span class="p">,</span> <span class="n">camera</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cameras</span><span class="p">):</span>
+            <span class="n">cam_asset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">get_camera</span><span class="p">(</span><span class="n">camera_idx</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_build_camera_from_dict</span><span class="p">(</span><span class="n">cam_asset</span><span class="p">,</span> <span class="n">camera</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_build_camera_from_object</span><span class="p">(</span><span class="n">cam_asset</span><span class="p">,</span> <span class="n">camera</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">set_camera</span><span class="p">(</span><span class="n">camera_idx</span><span class="p">,</span> <span class="n">cam_asset</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_camera_from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cam_asset</span><span class="p">,</span> <span class="n">camera_def</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build camera from dictionary definition.&quot;&quot;&quot;</span>
+
+        <span class="c1"># Evaluate the position and convert to y-up</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">camera_def</span><span class="p">[</span><span class="s2">&quot;pos&quot;</span><span class="p">]</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3_z_up_to_y_up_a</span><span class="p">(</span><span class="n">cam_asset</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+
+        <span class="c1"># Rotation</span>
+        <span class="n">quat_z_up_wxyz</span> <span class="o">=</span> <span class="n">camera_get_quaternion</span><span class="p">(</span><span class="n">camera_def</span><span class="p">)</span>
+        <span class="n">quat_wxyz</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion</span><span class="p">(</span>
+            <span class="n">quat_z_up_wxyz</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">quat_z_up_wxyz</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">quat_z_up_wxyz</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">quat_z_up_wxyz</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">quat_xyzw</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion_wxyz_to_xyzw</span><span class="p">(</span><span class="n">quat_wxyz</span><span class="p">)</span>
+        <span class="n">quat_xyzw</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion_z_up_to_y_up_a</span><span class="p">(</span><span class="n">quat_xyzw</span><span class="p">)</span>
+        <span class="n">quat_xyzw</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion_conjugate</span><span class="p">(</span><span class="n">quat_xyzw</span><span class="p">)</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion_mul</span><span class="p">(</span>
+            <span class="n">nps</span><span class="o">.</span><span class="n">quaternion</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">quat_xyzw</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Properties</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">fovY</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">camera_def</span><span class="p">[</span><span class="s2">&quot;fov&quot;</span><span class="p">])</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">uint2</span><span class="p">(</span><span class="n">camera_def</span><span class="p">[</span><span class="s2">&quot;res&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">camera_def</span><span class="p">[</span><span class="s2">&quot;res&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">aperture</span> <span class="o">=</span> <span class="n">camera_def</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;aperture&quot;</span><span class="p">,</span> <span class="mf">2.8</span><span class="p">)</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">focalLength</span> <span class="o">=</span> <span class="n">camera_def</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;focal_len&quot;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">nearPlane</span> <span class="o">=</span> <span class="n">camera_def</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;near&quot;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">farPlane</span> <span class="o">=</span> <span class="n">camera_def</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;far&quot;</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">spp</span> <span class="o">=</span> <span class="n">camera_def</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spp&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">denoise</span> <span class="o">=</span> <span class="n">camera_def</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;denoise&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">toneMapper</span> <span class="o">=</span> <span class="n">camera_def</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tone_mapper&quot;</span><span class="p">,</span> <span class="n">nps</span><span class="o">.</span><span class="n">EToneMapper</span><span class="o">.</span><span class="n">Reinhard</span><span class="p">)</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">antiAliasing</span> <span class="o">=</span> <span class="n">camera_def</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;anti_aliasing&quot;</span><span class="p">,</span> <span class="n">nps</span><span class="o">.</span><span class="n">EAntiAliasing</span><span class="o">.</span><span class="n">SMAA</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_camera_from_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cam_asset</span><span class="p">,</span> <span class="n">camera</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build camera from Genesis Camera object.&quot;&quot;&quot;</span>
+        <span class="c1"># Position</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">_initial_pos</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3_z_up_to_y_up_a</span><span class="p">(</span><span class="n">cam_asset</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+
+        <span class="c1"># Rotation</span>
+        <span class="c1"># TODO: FIX ME LATER</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="kc">False</span>
+
+        <span class="c1"># Properties</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">fovY</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">camera</span><span class="o">.</span><span class="n">fov</span><span class="p">)</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">uint2</span><span class="p">(</span><span class="n">camera</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">camera</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">aperture</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">aperture</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">focalLength</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">focal_len</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">nearPlane</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">near</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">farPlane</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">far</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">spp</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">spp</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">denoise</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">denoise</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">toneMapper</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EToneMapper</span><span class="p">,</span> <span class="s2">&quot;None&quot;</span><span class="p">)</span>
+        <span class="n">cam_asset</span><span class="o">.</span><span class="n">antiAliasing</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nps</span><span class="o">.</span><span class="n">EAntiAliasing</span><span class="p">,</span> <span class="s2">&quot;None&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_lights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build all lights from LightAsset definitions.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">light_idx</span><span class="p">,</span> <span class="n">light</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lights</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">light</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">light</span><span class="p">,</span> <span class="s2">&quot;intensity&quot;</span><span class="p">),</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Light at index </span><span class="si">{</span><span class="n">light_idx</span><span class="si">}</span><span class="s2"> must be a LightAsset, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">light</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">set_light</span><span class="p">(</span><span class="n">light_idx</span><span class="p">,</span> <span class="n">light</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_env_maps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">env_map_idx</span><span class="p">,</span> <span class="n">env_map</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_env_maps</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env_map</span><span class="p">,</span> <span class="s2">&quot;texture&quot;</span><span class="p">),</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;EnvMap at index </span><span class="si">{</span><span class="n">env_map_idx</span><span class="si">}</span><span class="s2"> must be a EnvironmentMapAsset, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">env_map</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">set_env_map</span><span class="p">(</span><span class="n">env_map_idx</span><span class="p">,</span> <span class="n">env_map</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_light_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">light_field_idx</span><span class="p">,</span> <span class="n">light_field</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_light_fields</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="o">.</span><span class="n">set_light_field</span><span class="p">(</span><span class="n">light_field_idx</span><span class="p">,</span> <span class="n">light_field</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NyxSceneExporter.export_to_file">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.export_to_file.html#gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.export_to_file">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">export_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Serialize the built ``SceneAsset`` to JSON on disk.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        export_path : str</span>
+<span class="sd">            Output path for the scene-description JSON. The Nyx renderer</span>
+<span class="sd">            reads this file in :meth:`NyxRenderer.load_scene_from_file`,</span>
+<span class="sd">            so the path must be readable when the renderer builds.</span>
+<span class="sd">            Conventionally written as ``&lt;export_folder&gt;/nyx_scene.json``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nps</span><span class="o">.</span><span class="n">export_scene_file</span><span class="p">(</span><span class="n">export_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NyxSceneExporter.destroy">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.destroy.html#gs_nyx_plugin.nyx_scene_exporter.NyxSceneExporter.destroy">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scene_asset</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Genesis AI.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

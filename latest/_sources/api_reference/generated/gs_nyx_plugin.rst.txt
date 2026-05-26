@@ -1,0 +1,48 @@
+﻿gs\_nyx\_plugin
+===============
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. automodule:: gs_nyx_plugin
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Submodules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+   nyx_camera_options
+   nyx_camera_sensor
+   nyx_camera_shared_metadata
+   nyx_renderer
+   nyx_scene_exporter
+

@@ -1,0 +1,7 @@
+
+area\_rotation
+==============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: LightAsset.area_rotation

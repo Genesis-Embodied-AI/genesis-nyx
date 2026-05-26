@@ -1,0 +1,7 @@
+
+type
+====
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: LightFieldAsset.type

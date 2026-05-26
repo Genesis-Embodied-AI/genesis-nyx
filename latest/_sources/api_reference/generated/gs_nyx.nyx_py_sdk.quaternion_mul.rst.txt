@@ -1,0 +1,7 @@
+
+quaternion\_mul
+===============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autofunction:: quaternion_mul

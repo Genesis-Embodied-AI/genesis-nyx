@@ -1,0 +1,7 @@
+
+set\_light\_field
+=================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: SceneAsset.set_light_field

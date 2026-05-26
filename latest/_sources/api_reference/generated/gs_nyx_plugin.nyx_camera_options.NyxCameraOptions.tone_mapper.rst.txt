@@ -1,0 +1,7 @@
+
+tone\_mapper
+============
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_options
+
+.. autoattribute:: NyxCameraOptions.tone_mapper

@@ -1,0 +1,40 @@
+EPrimitiveType
+==============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: EPrimitiveType
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EPrimitiveType.Plane
+      ~EPrimitiveType.Sphere
+      ~EPrimitiveType.Cylinder
+      ~EPrimitiveType.Capsule
+      ~EPrimitiveType.Box
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.EPrimitiveType

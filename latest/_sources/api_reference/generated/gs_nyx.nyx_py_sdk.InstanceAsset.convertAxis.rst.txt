@@ -1,0 +1,7 @@
+
+convertAxis
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: InstanceAsset.convertAxis

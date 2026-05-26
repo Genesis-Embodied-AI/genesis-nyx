@@ -1,0 +1,7 @@
+
+y
+=
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: float2.y

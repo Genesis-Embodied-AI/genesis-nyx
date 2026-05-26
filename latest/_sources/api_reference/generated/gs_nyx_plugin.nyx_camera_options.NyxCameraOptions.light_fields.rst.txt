@@ -1,0 +1,7 @@
+
+light\_fields
+=============
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_options
+
+.. autoattribute:: NyxCameraOptions.light_fields

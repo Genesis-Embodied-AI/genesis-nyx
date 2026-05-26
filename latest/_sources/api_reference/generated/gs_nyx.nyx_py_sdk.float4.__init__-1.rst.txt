@@ -1,0 +1,10 @@
+float4(x: float, y: float, z: float, w: float)
+==============================================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. py:method:: float4.__init__(self, x: float, y: float, z: float, w: float) -> None
+   :no-index:
+
+   Construct a float4 from explicit components.
+

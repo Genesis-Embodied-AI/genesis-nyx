@@ -1,0 +1,7 @@
+
+Anisotropy
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EMaterialFeatures.Anisotropy

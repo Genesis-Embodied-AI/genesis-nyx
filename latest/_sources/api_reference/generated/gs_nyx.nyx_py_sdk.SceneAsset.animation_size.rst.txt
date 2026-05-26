@@ -1,0 +1,7 @@
+
+animation\_size
+===============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: SceneAsset.animation_size

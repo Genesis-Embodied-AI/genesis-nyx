@@ -1,0 +1,7 @@
+
+unload\_scene
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.unload_scene

@@ -1,0 +1,7 @@
+
+ACES\_1\_3
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EToneMapper.ACES_1_3

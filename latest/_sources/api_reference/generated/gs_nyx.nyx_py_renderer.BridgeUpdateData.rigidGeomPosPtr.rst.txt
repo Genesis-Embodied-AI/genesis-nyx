@@ -1,0 +1,7 @@
+
+rigidGeomPosPtr
+===============
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoproperty:: BridgeUpdateData.rigidGeomPosPtr

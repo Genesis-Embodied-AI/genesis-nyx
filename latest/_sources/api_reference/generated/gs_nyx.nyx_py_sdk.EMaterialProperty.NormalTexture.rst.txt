@@ -1,0 +1,7 @@
+
+NormalTexture
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EMaterialProperty.NormalTexture

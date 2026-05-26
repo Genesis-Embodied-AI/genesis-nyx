@@ -1,0 +1,7 @@
+
+cudaDevice
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_video_encoder
+
+.. autoproperty:: VideoEncoderStartupParams.cudaDevice

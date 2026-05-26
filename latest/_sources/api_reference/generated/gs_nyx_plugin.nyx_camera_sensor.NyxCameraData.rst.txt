@@ -1,0 +1,36 @@
+NyxCameraData
+=============
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_sensor
+
+.. autoclass:: NyxCameraData
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxCameraData.rgb
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx_plugin.nyx_camera_sensor.NyxCameraData

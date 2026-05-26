@@ -1,0 +1,7 @@
+
+subscene\_uri
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: InstanceAsset.subscene_uri

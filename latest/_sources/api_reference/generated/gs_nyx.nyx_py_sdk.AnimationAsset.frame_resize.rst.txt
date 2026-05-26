@@ -1,0 +1,7 @@
+
+frame\_resize
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: AnimationAsset.frame_resize

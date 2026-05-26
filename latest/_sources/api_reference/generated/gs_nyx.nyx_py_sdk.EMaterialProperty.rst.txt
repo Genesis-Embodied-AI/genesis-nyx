@@ -1,0 +1,53 @@
+EMaterialProperty
+=================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: EMaterialProperty
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EMaterialProperty.Off
+      ~EMaterialProperty.Opacity
+      ~EMaterialProperty.Clipping
+      ~EMaterialProperty.Sidedness
+      ~EMaterialProperty.NormalMode
+      ~EMaterialProperty.Features
+      ~EMaterialProperty.AlbedoColor
+      ~EMaterialProperty.Emission
+      ~EMaterialProperty.PerceptualRoughness
+      ~EMaterialProperty.Metalness
+      ~EMaterialProperty.CutOffValue
+      ~EMaterialProperty.Anisotropy
+      ~EMaterialProperty.UVScale
+      ~EMaterialProperty.AlbedoTexture
+      ~EMaterialProperty.NormalTexture
+      ~EMaterialProperty.ArmTexture
+      ~EMaterialProperty.EmissionTexture
+      ~EMaterialProperty.Sampler
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.EMaterialProperty

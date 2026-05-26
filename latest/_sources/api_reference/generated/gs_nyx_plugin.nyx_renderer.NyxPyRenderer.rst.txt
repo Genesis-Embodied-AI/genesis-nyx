@@ -1,0 +1,73 @@
+NyxPyRenderer
+=============
+
+.. currentmodule:: gs_nyx_plugin.nyx_renderer
+
+.. autoclass:: NyxPyRenderer
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx_plugin.nyx_renderer.NyxPyRenderer
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: py-init-page
+      :no-table:
+
+      ~NyxPyRenderer.__init__
+   
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxPyRenderer.build
+      ~NyxPyRenderer.destroy
+      ~NyxPyRenderer.pick_pixel
+      ~NyxPyRenderer.render
+      ~NyxPyRenderer.unload_scene
+      ~NyxPyRenderer.update
+      ~NyxPyRenderer.update_camera_tensor
+      ~NyxPyRenderer.update_scene
+   
+   
+
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx_plugin.nyx_renderer.NyxPyRenderer

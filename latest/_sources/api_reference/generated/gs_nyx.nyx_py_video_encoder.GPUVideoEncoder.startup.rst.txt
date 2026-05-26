@@ -1,0 +1,7 @@
+
+startup
+=======
+
+.. currentmodule:: gs_nyx.nyx_py_video_encoder
+
+.. automethod:: GPUVideoEncoder.startup

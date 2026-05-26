@@ -1,0 +1,40 @@
+ERenderMode
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoclass:: ERenderMode
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~ERenderMode.Forward
+      ~ERenderMode.FastPathTracer
+      ~ERenderMode.RefPathTracer
+      ~ERenderMode.Debug
+      ~ERenderMode.Count
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_renderer.ERenderMode

@@ -1,0 +1,7 @@
+
+position
+========
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_sensor
+
+.. autoattribute:: NyxPickPixelResult.position

@@ -1,0 +1,7 @@
+
+near
+====
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_options
+
+.. autoattribute:: NyxCameraOptions.near

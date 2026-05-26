@@ -1,0 +1,7 @@
+
+trace\_ray
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.trace_ray

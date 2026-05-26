@@ -1,0 +1,7 @@
+
+camera\_defs
+============
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_shared_metadata
+
+.. autoattribute:: NyxCameraSharedMetadata.camera_defs

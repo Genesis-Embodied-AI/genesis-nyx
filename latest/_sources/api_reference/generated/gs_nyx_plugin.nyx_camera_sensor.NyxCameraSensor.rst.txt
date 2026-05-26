@@ -1,0 +1,68 @@
+NyxCameraSensor
+===============
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_sensor
+
+.. autoclass:: NyxCameraSensor
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: py-init-page
+      :no-table:
+
+      ~NyxCameraSensor.__init__
+   
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxCameraSensor.build
+      ~NyxCameraSensor.pick_pixel
+      ~NyxCameraSensor.update_camera_pose
+   
+   
+
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx_plugin.nyx_camera_sensor.NyxCameraSensor

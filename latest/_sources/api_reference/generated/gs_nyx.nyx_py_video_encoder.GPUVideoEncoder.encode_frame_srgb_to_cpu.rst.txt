@@ -1,0 +1,7 @@
+
+encode\_frame\_srgb\_to\_cpu
+============================
+
+.. currentmodule:: gs_nyx.nyx_py_video_encoder
+
+.. automethod:: GPUVideoEncoder.encode_frame_srgb_to_cpu

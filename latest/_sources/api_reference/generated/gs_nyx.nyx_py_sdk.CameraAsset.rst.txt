@@ -1,0 +1,79 @@
+CameraAsset
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: CameraAsset
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.CameraAsset
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: nb-constructor-page
+      :no-table:
+
+      ~CameraAsset.__init__
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~CameraAsset.antiAliasing
+      ~CameraAsset.aperture
+      ~CameraAsset.denoise
+      ~CameraAsset.farPlane
+      ~CameraAsset.focalLength
+      ~CameraAsset.fovY
+      ~CameraAsset.lutURI
+      ~CameraAsset.nearPlane
+      ~CameraAsset.position
+      ~CameraAsset.resolution
+      ~CameraAsset.rotation
+      ~CameraAsset.spp
+      ~CameraAsset.toneMapper
+      ~CameraAsset.uuid
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.CameraAsset

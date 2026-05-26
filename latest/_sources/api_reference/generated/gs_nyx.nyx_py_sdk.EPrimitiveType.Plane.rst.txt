@@ -1,0 +1,7 @@
+
+Plane
+=====
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EPrimitiveType.Plane

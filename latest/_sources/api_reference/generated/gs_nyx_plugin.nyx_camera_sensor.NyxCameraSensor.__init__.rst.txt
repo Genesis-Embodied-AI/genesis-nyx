@@ -1,0 +1,7 @@
+
+Constructor
+===========
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_sensor
+
+.. automethod:: NyxCameraSensor.__init__

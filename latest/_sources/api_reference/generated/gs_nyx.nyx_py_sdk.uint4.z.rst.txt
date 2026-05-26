@@ -1,0 +1,7 @@
+
+z
+=
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: uint4.z

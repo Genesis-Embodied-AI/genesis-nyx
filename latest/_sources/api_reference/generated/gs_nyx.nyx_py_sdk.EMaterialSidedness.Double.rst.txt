@@ -1,0 +1,7 @@
+
+Double
+======
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EMaterialSidedness.Double

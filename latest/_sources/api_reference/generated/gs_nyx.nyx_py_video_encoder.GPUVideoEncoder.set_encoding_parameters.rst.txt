@@ -1,0 +1,7 @@
+
+set\_encoding\_parameters
+=========================
+
+.. currentmodule:: gs_nyx.nyx_py_video_encoder
+
+.. automethod:: GPUVideoEncoder.set_encoding_parameters

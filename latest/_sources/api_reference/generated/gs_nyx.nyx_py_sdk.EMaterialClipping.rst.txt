@@ -1,0 +1,37 @@
+EMaterialClipping
+=================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: EMaterialClipping
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EMaterialClipping.Off
+      ~EMaterialClipping.On
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.EMaterialClipping

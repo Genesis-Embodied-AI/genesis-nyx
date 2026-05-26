@@ -1,0 +1,10 @@
+float2(x: float, y: float)
+==========================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. py:method:: float2.__init__(self, x: float, y: float) -> None
+   :no-index:
+
+   Construct a float2 from explicit components.
+

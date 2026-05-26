@@ -1,0 +1,10 @@
+uint4(x: int, y: int, z: int, w: int)
+=====================================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. py:method:: uint4.__init__(self, x: int, y: int, z: int, w: int) -> None
+   :no-index:
+
+   Construct a uint4 from explicit components.
+

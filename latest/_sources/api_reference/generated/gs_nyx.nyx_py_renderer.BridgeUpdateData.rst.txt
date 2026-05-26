@@ -1,0 +1,77 @@
+BridgeUpdateData
+================
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoclass:: BridgeUpdateData
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_renderer.BridgeUpdateData
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: nb-constructor-page
+      :no-table:
+
+      ~BridgeUpdateData.__init__
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~BridgeUpdateData.camPosPtr
+      ~BridgeUpdateData.camRotPtr
+      ~BridgeUpdateData.deformTriangleIndicesPtr
+      ~BridgeUpdateData.deformVertexPosPtr
+      ~BridgeUpdateData.deformVertexUVsPtr
+      ~BridgeUpdateData.numCameras
+      ~BridgeUpdateData.numDeformObjects
+      ~BridgeUpdateData.numDeformTriangles
+      ~BridgeUpdateData.numDeformVertices
+      ~BridgeUpdateData.numRigidGeom
+      ~BridgeUpdateData.rigidGeomPosPtr
+      ~BridgeUpdateData.rigidGeomRotPtr
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_renderer.BridgeUpdateData

@@ -1,0 +1,7 @@
+
+scene\_description\_export\_path
+================================
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_shared_metadata
+
+.. autoattribute:: NyxCameraSharedMetadata.scene_description_export_path

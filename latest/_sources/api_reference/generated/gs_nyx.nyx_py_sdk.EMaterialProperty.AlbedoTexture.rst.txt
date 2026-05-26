@@ -1,0 +1,7 @@
+
+AlbedoTexture
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EMaterialProperty.AlbedoTexture

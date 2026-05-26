@@ -1,0 +1,7 @@
+
+quaternion\_xyzw\_to\_wxyz
+==========================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autofunction:: quaternion_xyzw_to_wxyz

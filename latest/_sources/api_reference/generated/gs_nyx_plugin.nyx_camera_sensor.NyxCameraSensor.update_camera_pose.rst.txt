@@ -1,0 +1,7 @@
+
+update\_camera\_pose
+====================
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_sensor
+
+.. automethod:: NyxCameraSensor.update_camera_pose

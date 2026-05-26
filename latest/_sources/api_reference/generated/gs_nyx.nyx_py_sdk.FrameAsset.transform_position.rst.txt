@@ -1,0 +1,7 @@
+
+transform\_position
+===================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: FrameAsset.transform_position

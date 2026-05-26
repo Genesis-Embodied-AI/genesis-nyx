@@ -1,0 +1,7 @@
+
+export\_scene\_file
+===================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autofunction:: export_scene_file

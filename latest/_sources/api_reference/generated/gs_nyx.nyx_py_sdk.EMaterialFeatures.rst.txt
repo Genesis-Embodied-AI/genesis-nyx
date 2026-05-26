@@ -1,0 +1,37 @@
+EMaterialFeatures
+=================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: EMaterialFeatures
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EMaterialFeatures.Standard
+      ~EMaterialFeatures.Anisotropy
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.EMaterialFeatures
