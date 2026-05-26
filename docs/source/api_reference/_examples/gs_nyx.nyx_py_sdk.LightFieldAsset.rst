@@ -18,7 +18,6 @@ through
     # (x, y, z, w) unit-quaternion convention.
     capture.rotation   = nps.quaternion(0.0, 0.0, -0.70710678, 0.70710678)
     capture.scale      = nps.float3(1.0, 1.0, 1.0)
-    capture.multiplier = 1.0
 
     # The asset is then consumed by a NyxCameraOptions instance:
     #
