@@ -12,7 +12,7 @@ sd_hide_title: true
 
 # Nyx for Genesis
 
-**A high-performance renderer plugin for the [Genesis](https://genesis-world.readthedocs.io/) simulator.**
+**A high-performance renderer plugin for the [Genesis World](https://genesis-world.readthedocs.io/) simulator.**
 
 ```{image} /_static/images/landing.png
 :alt: Path-traced render of dual robot arms over a fruit on a tabletop
