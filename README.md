@@ -6,9 +6,11 @@
 [![Documentation](https://img.shields.io/badge/docs-online-blue.svg)](https://genesis-embodied-ai.github.io/nyx-for-genesis/)
 [![License](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](LICENSE.txt)
 
-Documentation and runnable examples for the **Nyx renderer plugin** for the [Genesis](https://genesis-world.readthedocs.io/) simulator.
+Documentation and runnable examples for the **Nyx renderer plugin** for the [Genesis World](https://genesis-world.readthedocs.io/) simulator.
 
 Nyx is a GPU-accelerated path tracer that plugs into Genesis as a camera sensor. It supports PBR materials, HDRI and analytic lighting, 3D Gaussian splat assets, attached / multi-camera setups, multi-environment rendering, and per-pixel object picking.
+
+Prebuilt wheels are available for x86-64 Linux (manylinux 2.34+) and Windows 10/11 on Python 3.10–3.13, and require an NVIDIA GPU with CUDA support.
 
 ## What's in this repository
 
@@ -25,8 +27,6 @@ The scripts under [examples/](examples/) are the canonical, runnable versions. T
 pip install gs-nyx-plugin
 python examples/01_hello_nyx.py
 ```
-
-`gs-nyx-plugin` is not yet on PyPI — it is currently distributed through an internal package index while the project is being prepared for public release. Public installation instructions will land here once the wheel is published.
 
 ## Building the docs locally
 
