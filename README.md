@@ -3,7 +3,7 @@
 ![Path-traced render of dual robot arms on a tabletop](docs/source/_static/images/landing.png)
 
 [![PyPI version](https://img.shields.io/pypi/v/gs-nyx-plugin.svg)](https://pypi.org/project/gs-nyx-plugin/)
-[![Documentation](https://img.shields.io/badge/docs-online-blue.svg)](https://genesis-embodied-ai.github.io/nyx-for-genesis/)
+[![Documentation](https://img.shields.io/badge/docs-online-blue.svg)](https://genesis-embodied-ai.github.io/genesis-nyx/)
 [![License](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](LICENSE.txt)
 
 Documentation and runnable examples for the **Nyx renderer plugin** for the [Genesis World](https://genesis-world.readthedocs.io/) simulator.
