@@ -10,7 +10,7 @@ Documentation and runnable examples for the **Nyx renderer plugin** for the [Gen
 
 Nyx is a GPU-accelerated path tracer that plugs into Genesis as a camera sensor. It supports PBR materials, HDRI and analytic lighting, 3D Gaussian splat assets, attached / multi-camera setups, multi-environment rendering, and per-pixel object picking.
 
-Prebuilt wheels are available for x86-64 Linux (manylinux 2.34+) and Windows 10/11 on Python 3.10–3.13, and require an NVIDIA GPU with CUDA support.
+Prebuilt wheels are available for x86-64 Linux (manylinux 2.34+, validated on Ubuntu 22.04) and Windows 11 on Python 3.10–3.13. An NVIDIA GPU with CUDA 12.9+ and driver 575+ is required.
 
 ## What's in this repository
 
