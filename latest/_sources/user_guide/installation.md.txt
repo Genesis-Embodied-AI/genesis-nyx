@@ -5,9 +5,9 @@ The Nyx renderer plugin is distributed as the `gs-nyx` Python wheel. TODO: Updat
 ## Requirements
 
 - Python 3.10, 3.11, or 3.12
-- Linux (manylinux 2.39+) or Windows 10/11
-- A CUDA-capable GPU (NVIDIA, compute capability 7.0+)
-- A working CUDA driver, the wheels bundle their CUDA runtime, but the driver must be installed on the host
+- Windows 11, or Linux (validated on Ubuntu 22.04; manylinux 2.34+ wheels)
+- A CUDA-capable NVIDIA GPU (compute capability 7.0+)
+- CUDA 12.9 or newer, with NVIDIA driver 575 or newer. The wheels bundle their CUDA runtime, but the driver must be installed on the host.
 
 ## Installing the wheel
 
