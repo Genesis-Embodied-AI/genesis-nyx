@@ -1,6 +1,6 @@
 # Installation
 
-The Nyx renderer plugin is distributed as the `gs-nyx` Python wheel. TODO: Update this with the official published name
+The Nyx renderer plugin is distributed as the `gs-nyx` Python wheel.
 
 ## Requirements
 
