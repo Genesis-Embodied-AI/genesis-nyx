@@ -11,6 +11,7 @@ quickstart
 concepts
 supported_features
 known_issues
+changelog
 ```
 
 Each example below corresponds to a runnable script in the [`examples/`](https://github.com/Genesis-Embodied-AI/nyx-for-genesis/tree/main/examples) directory of this repository. The pages embed the script source verbatim via `literalinclude`, so what you read is exactly what you can run.
@@ -33,6 +34,8 @@ examples/multi_camera_multi_env
 :maxdepth: 1
 
 advanced/sensor_lifecycle
+advanced/gpu_backends
+advanced/camera_profiles
 advanced/lights
 advanced/environment_maps
 advanced/splats

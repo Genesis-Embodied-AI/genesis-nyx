@@ -6,7 +6,8 @@ It's inherited from Genesis' ``BaseCameraSensor`` so it doesn't get its
 own page in this reference, but the Nyx-specific behaviour is small
 enough to cover here. The returned
 :class:`~gs_nyx_plugin.nyx_camera_sensor.NyxCameraData` exposes a single
-``rgb`` tensor of shape ``(B, H, W, 3)`` resident on CUDA, where ``B`` is
+``rgb`` tensor of shape ``(B, H, W, 3)`` resident on the renderer's GPU (the
+CUDA or ROCm torch device it was paired with), where ``B`` is
 the number of parallel Genesis environments (always at least 1):
 
 .. nyx-test: compile-only
@@ -32,7 +33,7 @@ the number of parallel Genesis environments (always at least 1):
     scene.build(n_envs=1)
     scene.step()                              # triggers the actual render.
 
-    rgb   = cam.read().rgb                    # (1, 480, 640, 3) uint8 on CUDA.
+    rgb   = cam.read().rgb                    # (1, 480, 640, 3) uint8 on the GPU.
     frame = rgb[0].cpu().numpy()              # H × W × 3 numpy array, ready to save.
 
 .. note::

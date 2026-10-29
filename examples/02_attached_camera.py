@@ -3,7 +3,7 @@
 Mounts a ``NyxCameraOptions`` on the Franka panda's wrist via Genesis'
 built-in sensor-attachment fields (``entity_idx`` / ``link_idx_local`` /
 ``offset_T``), then streams its RGB output to an MP4 through
-``scene.start_recording`` while the robot performs a short pick. The camera
+``scene.add_recorder`` while the robot performs a short pick. The camera
 follows the link automatically every step, no plugin-specific glue.
 
 Usage:
@@ -80,7 +80,7 @@ def main() -> None:
 
     # Stream RGB frames to an MP4 file. ``cam.read().rgb`` is shape
     # (H, W, 3) uint8 in single-env mode.
-    scene.start_recording(
+    scene.add_recorder(
         data_func   = lambda: cam.read().rgb,
         rec_options = gs.recorders.VideoFile(filename=OUTPUT_PATH, fps=FPS),
     )

@@ -9,13 +9,12 @@ Environment maps are declared on a Nyx camera sensor via the {py:attr}`~gs_nyx_p
 An environment map is built by constructing an {py:class}`~gs_nyx.nyx_py_sdk.EnvironmentMapAsset`, setting its texture and parameters, and passing it through {py:attr}`~gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.env_maps`:
 
 ```python
-import math
 import gs_nyx.nyx_py_sdk as nps
 
 env_map            = nps.EnvironmentMapAsset()
 env_map.texture    = "path/to/envmap.hdr"
 env_map.layout     = nps.EEnvMapLayout.LongLat
-env_map.rotation   = math.radians(30)
+env_map.rotation   = 30.0   # degrees
 env_map.multiplier = 1.5
 
 cam = scene.add_sensor(NyxCameraOptions(
@@ -34,9 +33,13 @@ cam = scene.add_sensor(NyxCameraOptions(
 |---|---|---|
 | `texture` | `str` | Path to an `.hdr` or `.exr` file. Leave unset for a solid-colour HDRI driven entirely by `tint`. |
 | `layout` | {py:class}`~gs_nyx.nyx_py_sdk.EEnvMapLayout` | Image layout. `LongLat` is the standard equirectangular HDRI projection. |
-| `rotation` | `float` | Yaw rotation around the up axis, in radians. |
+| `rotation` | `float` | Yaw rotation around the up axis, in **degrees** (radians in releases before `gs-nyx` 0.1.9). |
 | `multiplier` | `float` | Brightness multiplier applied to the HDRI values. |
 | `tint` | {py:class}`~gs_nyx.nyx_py_sdk.float3` `(r, g, b)` | Colour tint multiplied into the HDRI. When `texture` is unset, this *is* the HDRI: a constant RGB radiance applied across the whole sphere. |
+| `parallax` | {py:class}`~gs_nyx.nyx_py_sdk.EEnvMapParallax` | `Off` samples the map at infinite distance (default). `Box` reprojects samples onto a box proxy, see [Parallax correction](#parallax-correction). |
+| `parallax_box_extent` | {py:class}`~gs_nyx.nyx_py_sdk.float3` | Size of the parallax box in world units. Only valid when `parallax` is `Box`. |
+| `parallax_box_capture_origin` | {py:class}`~gs_nyx.nyx_py_sdk.float3` | Position inside the box from which the HDRI was captured. Only valid when `parallax` is `Box`. |
+| `parallax_box_world_position` | {py:class}`~gs_nyx.nyx_py_sdk.float3` | World-space centre of the box. Only valid when `parallax` is `Box`. |
 
 ## Supported file formats
 
@@ -68,6 +71,22 @@ cam = scene.add_sensor(NyxCameraOptions(
 
 Use this whenever you need a clean, controllable lighting setup, for example when isolating the contribution of a single light, comparing materials under identical illumination, or generating synthetic data where ambient light would confound the labels. `multiplier` still applies, so a warm overcast wash can be expressed as `tint = nps.float3(0.6, 0.55, 0.5)` with `multiplier` tuned to taste.
 
+(parallax-correction)=
+## Parallax correction
+
+An HDRI is normally treated as infinitely far away, which is right for skies but wrong for a map captured inside a room: reflections on a shiny floor do not line up with the walls. Setting `parallax` to `Box` tells the renderer to reproject every lookup onto an axis-aligned box that stands in for the room, so reflections and the visible background shift with the viewpoint as they would in the real space:
+
+```python
+room                             = nps.EnvironmentMapAsset()
+room.texture                     = "studio_capture.hdr"
+room.parallax                    = nps.EEnvMapParallax.Box
+room.parallax_box_extent         = nps.float3(6.0, 3.0, 8.0)   # room size
+room.parallax_box_world_position = nps.float3(0.0, 1.5, 0.0)   # room centre
+room.parallax_box_capture_origin = nps.float3(0.0, 0.0, 0.0)   # tripod position, box-local
+```
+
+The `parallax_box_*` properties raise `RuntimeError` when read or written while `parallax` is `Off`; set the mode first. Positions are given in the renderer's coordinate frame as stored on the asset, which the plugin passes through unchanged.
+
 (per-environment-selection)=
 ## Per-environment selection
 
@@ -91,12 +110,12 @@ cam = scene.add_sensor(NyxCameraOptions(
 scene.build(n_envs=2)
 ```
 
-The plugin calls `set_env_map(env_index)` on the renderer inside the per-environment loop of the render pass (see {doc}`sensor_lifecycle`). This is the one piece of per-frame lighting state the plugin pushes, and it makes per-env HDRI domain randomisation cheap.
+The renderer selects each environment's map itself while it renders the batch (see {doc}`sensor_lifecycle`); the plugin only exports the tuple at build time. Per-env HDRI domain randomisation therefore costs nothing per frame.
 
 ## Lifecycle and constraints
 
 ```{warning}
-Environment maps are baked into the scene at `scene.build()`. The `texture`, `layout`, `rotation`, `multiplier`, and `tint` fields cannot be modified at runtime. To change the HDRI, rebuild the scene.
+Environment maps are baked into the scene at `scene.build()`. The `texture`, `layout`, `rotation`, `multiplier`, `tint` and `parallax*` fields cannot be modified at runtime. To change the HDRI, rebuild the scene.
 ```
 
 ```{note}

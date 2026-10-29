@@ -8,9 +8,9 @@
 
 Documentation and runnable examples for the **Nyx renderer plugin** for the [Genesis World](https://genesis-world.readthedocs.io/) simulator.
 
-Nyx is a GPU-accelerated path tracer that plugs into Genesis as a camera sensor. It supports PBR materials, HDRI and analytic lighting, 3D Gaussian splat assets, attached / multi-camera setups, multi-environment rendering, and per-pixel object picking.
+Nyx is a GPU-accelerated path tracer that plugs into Genesis as a camera sensor. It supports PBR materials, HDRI and analytic lighting, 3D Gaussian splat assets, physically based camera profiles, attached / multi-camera setups, batched multi-environment rendering, and per-pixel object picking.
 
-Prebuilt wheels are available for x86-64 Linux (manylinux 2.34+, validated on Ubuntu 22.04) and Windows 11 on Python 3.10–3.13. An NVIDIA GPU with CUDA 12.9+ and driver 575+ is required.
+Prebuilt wheels are available for x86-64 Linux (manylinux 2.34+, validated on Ubuntu 22.04) and Windows 11 on Python 3.10–3.13. A ray-tracing-capable GPU is required: NVIDIA GPUs are driven through a CUDA build of PyTorch and, new in this release, AMD GPUs through a ROCm build of PyTorch (validated on Windows 11 and Linux). The plugin targets Genesis World 1.4.x. See the [installation guide](https://genesis-embodied-ai.github.io/genesis-nyx/latest/user_guide/installation.html) for details.
 
 ## What's in this repository
 
