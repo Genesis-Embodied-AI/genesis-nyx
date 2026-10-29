@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/documentation_options.js?v=8618f531"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -58,7 +58,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.9';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -69,7 +69,7 @@
     <link rel="prev" title="Lights" href="lights.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.1.1" />
+  <meta name="docsearch:version" content="0.1.9" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -366,6 +366,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supported_features.html">Supported features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -380,6 +381,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sensor_lifecycle.html">Sensor lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_backends.html">GPU backends: CUDA and ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera_profiles.html">Camera profiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lights.html">Lights</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Environment maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="splats.html">Gaussian splats</a></li>
@@ -450,13 +453,12 @@
 <section id="declaring-an-environment-map">
 <h2>Declaring an environment map<a class="headerlink" href="#declaring-an-environment-map" title="Link to this heading">#</a></h2>
 <p>An environment map is built by constructing an <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.EnvironmentMapAsset.html#gs_nyx.nyx_py_sdk.EnvironmentMapAsset" title="gs_nyx.nyx_py_sdk.EnvironmentMapAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnvironmentMapAsset</span></code></a>, setting its texture and parameters, and passing it through <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.env_maps.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.env_maps" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.env_maps"><code class="xref py py-attr docutils literal notranslate"><span class="pre">env_maps</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">gs_nyx.nyx_py_sdk</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nps</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gs_nyx.nyx_py_sdk</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nps</span>
 
 <span class="n">env_map</span>            <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EnvironmentMapAsset</span><span class="p">()</span>
-<span class="n">env_map</span><span class="o">.</span><span class="n">texture</span>    <span class="o">=</span> <span class="s2">&quot;path/to/envmap.hdr&quot;</span>
+<span class="n">env_map</span><span class="o">.</span><span class="n">texture</span>    <span class="o">=</span> <span class="s2">"path/to/envmap.hdr"</span>
 <span class="n">env_map</span><span class="o">.</span><span class="n">layout</span>     <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EEnvMapLayout</span><span class="o">.</span><span class="n">LongLat</span>
-<span class="n">env_map</span><span class="o">.</span><span class="n">rotation</span>   <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">env_map</span><span class="o">.</span><span class="n">rotation</span>   <span class="o">=</span> <span class="mf">30.0</span>   <span class="c1"># degrees</span>
 <span class="n">env_map</span><span class="o">.</span><span class="n">multiplier</span> <span class="o">=</span> <span class="mf">1.5</span>
 
 <span class="n">cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_sensor</span><span class="p">(</span><span class="n">NyxCameraOptions</span><span class="p">(</span>
@@ -489,7 +491,7 @@
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rotation</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
-<td><p>Yaw rotation around the up axis, in radians.</p></td>
+<td><p>Yaw rotation around the up axis, in <strong>degrees</strong> (radians in releases before <code class="docutils literal notranslate"><span class="pre">gs-nyx</span></code> 0.1.9).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">multiplier</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
@@ -498,6 +500,22 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tint</span></code></p></td>
 <td><p><a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.float3.html#gs_nyx.nyx_py_sdk.float3" title="gs_nyx.nyx_py_sdk.float3"><code class="xref py py-class docutils literal notranslate"><span class="pre">float3</span></code></a> <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">g,</span> <span class="pre">b)</span></code></p></td>
 <td><p>Colour tint multiplied into the HDRI. When <code class="docutils literal notranslate"><span class="pre">texture</span></code> is unset, this <em>is</em> the HDRI: a constant RGB radiance applied across the whole sphere.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parallax</span></code></p></td>
+<td><p><a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.EEnvMapParallax.html#gs_nyx.nyx_py_sdk.EEnvMapParallax" title="gs_nyx.nyx_py_sdk.EEnvMapParallax"><code class="xref py py-class docutils literal notranslate"><span class="pre">EEnvMapParallax</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Off</span></code> samples the map at infinite distance (default). <code class="docutils literal notranslate"><span class="pre">Box</span></code> reprojects samples onto a box proxy, see <a class="reference internal" href="#parallax-correction">Parallax correction</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parallax_box_extent</span></code></p></td>
+<td><p><a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.float3.html#gs_nyx.nyx_py_sdk.float3" title="gs_nyx.nyx_py_sdk.float3"><code class="xref py py-class docutils literal notranslate"><span class="pre">float3</span></code></a></p></td>
+<td><p>Size of the parallax box in world units. Only valid when <code class="docutils literal notranslate"><span class="pre">parallax</span></code> is <code class="docutils literal notranslate"><span class="pre">Box</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parallax_box_capture_origin</span></code></p></td>
+<td><p><a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.float3.html#gs_nyx.nyx_py_sdk.float3" title="gs_nyx.nyx_py_sdk.float3"><code class="xref py py-class docutils literal notranslate"><span class="pre">float3</span></code></a></p></td>
+<td><p>Position inside the box from which the HDRI was captured. Only valid when <code class="docutils literal notranslate"><span class="pre">parallax</span></code> is <code class="docutils literal notranslate"><span class="pre">Box</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parallax_box_world_position</span></code></p></td>
+<td><p><a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.float3.html#gs_nyx.nyx_py_sdk.float3" title="gs_nyx.nyx_py_sdk.float3"><code class="xref py py-class docutils literal notranslate"><span class="pre">float3</span></code></a></p></td>
+<td><p>World-space centre of the box. Only valid when <code class="docutils literal notranslate"><span class="pre">parallax</span></code> is <code class="docutils literal notranslate"><span class="pre">Box</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -541,15 +559,28 @@
 </div>
 <p>Use this whenever you need a clean, controllable lighting setup, for example when isolating the contribution of a single light, comparing materials under identical illumination, or generating synthetic data where ambient light would confound the labels. <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> still applies, so a warm overcast wash can be expressed as <code class="docutils literal notranslate"><span class="pre">tint</span> <span class="pre">=</span> <span class="pre">nps.float3(0.6,</span> <span class="pre">0.55,</span> <span class="pre">0.5)</span></code> with <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> tuned to taste.</p>
 </section>
+<section id="parallax-correction">
+<span id="id1"></span><h2>Parallax correction<a class="headerlink" href="#parallax-correction" title="Link to this heading">#</a></h2>
+<p>An HDRI is normally treated as infinitely far away, which is right for skies but wrong for a map captured inside a room: reflections on a shiny floor do not line up with the walls. Setting <code class="docutils literal notranslate"><span class="pre">parallax</span></code> to <code class="docutils literal notranslate"><span class="pre">Box</span></code> tells the renderer to reproject every lookup onto an axis-aligned box that stands in for the room, so reflections and the visible background shift with the viewpoint as they would in the real space:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">room</span>                             <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EnvironmentMapAsset</span><span class="p">()</span>
+<span class="n">room</span><span class="o">.</span><span class="n">texture</span>                     <span class="o">=</span> <span class="s2">"studio_capture.hdr"</span>
+<span class="n">room</span><span class="o">.</span><span class="n">parallax</span>                    <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EEnvMapParallax</span><span class="o">.</span><span class="n">Box</span>
+<span class="n">room</span><span class="o">.</span><span class="n">parallax_box_extent</span>         <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="mf">6.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">)</span>   <span class="c1"># room size</span>
+<span class="n">room</span><span class="o">.</span><span class="n">parallax_box_world_position</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>   <span class="c1"># room centre</span>
+<span class="n">room</span><span class="o">.</span><span class="n">parallax_box_capture_origin</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>   <span class="c1"># tripod position, box-local</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">parallax_box_*</span></code> properties raise <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> when read or written while <code class="docutils literal notranslate"><span class="pre">parallax</span></code> is <code class="docutils literal notranslate"><span class="pre">Off</span></code>; set the mode first. Positions are given in the renderer’s coordinate frame as stored on the asset, which the plugin passes through unchanged.</p>
+</section>
 <section id="per-environment-selection">
-<span id="id1"></span><h2>Per-environment selection<a class="headerlink" href="#per-environment-selection" title="Link to this heading">#</a></h2>
+<span id="id2"></span><h2>Per-environment selection<a class="headerlink" href="#per-environment-selection" title="Link to this heading">#</a></h2>
 <p>In a batched scene (<code class="docutils literal notranslate"><span class="pre">scene.build(n_envs=N)</span></code>), the env-map tuple is indexed by Genesis environment. Environment <code class="docutils literal notranslate"><span class="pre">i</span></code> renders with <code class="docutils literal notranslate"><span class="pre">env_maps[i]</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env_map_a</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EnvironmentMapAsset</span><span class="p">()</span>
-<span class="n">env_map_a</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="s2">&quot;studio.hdr&quot;</span>
+<span class="n">env_map_a</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="s2">"studio.hdr"</span>
 <span class="n">env_map_a</span><span class="o">.</span><span class="n">tint</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 
 <span class="n">env_map_b</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">EnvironmentMapAsset</span><span class="p">()</span>
-<span class="n">env_map_b</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="s2">&quot;outdoor.exr&quot;</span>
+<span class="n">env_map_b</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="s2">"outdoor.exr"</span>
 <span class="n">env_map_b</span><span class="o">.</span><span class="n">tint</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">float3</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
 <span class="n">env_map_b</span><span class="o">.</span><span class="n">multiplier</span> <span class="o">=</span> <span class="mf">0.8</span>
 
@@ -561,13 +592,13 @@
 <span class="n">scene</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">n_envs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The plugin calls <code class="docutils literal notranslate"><span class="pre">set_env_map(env_index)</span></code> on the renderer inside the per-environment loop of the render pass (see <a class="reference internal" href="sensor_lifecycle.html"><span class="doc">Sensor lifecycle</span></a>). This is the one piece of per-frame lighting state the plugin pushes, and it makes per-env HDRI domain randomisation cheap.</p>
+<p>The renderer selects each environment’s map itself while it renders the batch (see <a class="reference internal" href="sensor_lifecycle.html"><span class="doc">Sensor lifecycle</span></a>); the plugin only exports the tuple at build time. Per-env HDRI domain randomisation therefore costs nothing per frame.</p>
 </section>
 <section id="lifecycle-and-constraints">
 <h2>Lifecycle and constraints<a class="headerlink" href="#lifecycle-and-constraints" title="Link to this heading">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Environment maps are baked into the scene at <code class="docutils literal notranslate"><span class="pre">scene.build()</span></code>. The <code class="docutils literal notranslate"><span class="pre">texture</span></code>, <code class="docutils literal notranslate"><span class="pre">layout</span></code>, <code class="docutils literal notranslate"><span class="pre">rotation</span></code>, <code class="docutils literal notranslate"><span class="pre">multiplier</span></code>, and <code class="docutils literal notranslate"><span class="pre">tint</span></code> fields cannot be modified at runtime. To change the HDRI, rebuild the scene.</p>
+<p>Environment maps are baked into the scene at <code class="docutils literal notranslate"><span class="pre">scene.build()</span></code>. The <code class="docutils literal notranslate"><span class="pre">texture</span></code>, <code class="docutils literal notranslate"><span class="pre">layout</span></code>, <code class="docutils literal notranslate"><span class="pre">rotation</span></code>, <code class="docutils literal notranslate"><span class="pre">multiplier</span></code>, <code class="docutils literal notranslate"><span class="pre">tint</span></code> and <code class="docutils literal notranslate"><span class="pre">parallax*</span></code> fields cannot be modified at runtime. To change the HDRI, rebuild the scene.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -639,6 +670,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-file-formats">Supported file formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-colour-hdri-default-sky-and-how-to-override-it">Solid-colour HDRI (default sky and how to override it)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallax-correction">Parallax correction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-environment-selection">Per-environment selection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lifecycle-and-constraints">Lifecycle and constraints</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See also</a></li>

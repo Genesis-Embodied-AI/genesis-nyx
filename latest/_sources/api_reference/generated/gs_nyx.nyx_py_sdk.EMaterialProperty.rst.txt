@@ -37,6 +37,10 @@ EMaterialProperty
       ~EMaterialProperty.Metalness
       ~EMaterialProperty.CutOffValue
       ~EMaterialProperty.Anisotropy
+      ~EMaterialProperty.Transmission
+      ~EMaterialProperty.Thickness
+      ~EMaterialProperty.Absorption
+      ~EMaterialProperty.IOR
       ~EMaterialProperty.UVScale
       ~EMaterialProperty.AlbedoTexture
       ~EMaterialProperty.NormalTexture

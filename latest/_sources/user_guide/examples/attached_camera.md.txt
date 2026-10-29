@@ -51,7 +51,7 @@ This is also why mocking `genesis` for docs builds works, the plugin doesn't hav
 ### 4. Reading triggers rendering — `cam.read()`
 
 ```python
-scene.start_recording(
+scene.add_recorder(
     data_func   = lambda: cam.read().rgb,
     rec_options = gs.recorders.VideoFile(filename=OUTPUT_PATH, fps=FPS),
 )
@@ -61,14 +61,14 @@ scene.start_recording(
 
 1. `scene.visualizer.update_visual_states()` (Genesis) syncs visual transforms from the solvers.
 2. `move_to_attach()` (Genesis, on each attached sensor) refreshes the camera pose from the link.
-3. The Nyx renderer's `update_scene` / `render` are then called with the up-to-date state.
-4. The frame is wrapped in a {py:class}`~gs_nyx_plugin.nyx_camera_sensor.NyxCameraData` named-tuple. Because the scene was built without `n_envs`, [`cam.read()`](https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data)`.rgb` is a `(H, W, 3)` `uint8` CUDA tensor; with [`scene.build(n_envs=N)`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.build) the same field comes out as `(N, H, W, 3)` and you'd index `[0]`, that's the single change between this script and `01_hello_nyx.py`.
+3. The Nyx renderer's `update_scene` / `render_all` are then called with the up-to-date state: one batched upload of every environment, one batched render of every camera.
+4. The frame is wrapped in a {py:class}`~gs_nyx_plugin.nyx_camera_sensor.NyxCameraData` named-tuple. Because the scene was built without `n_envs`, [`cam.read()`](https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data)`.rgb` is a `(H, W, 3)` `uint8` GPU tensor (on the CUDA or ROCm torch device paired with the renderer); with [`scene.build(n_envs=N)`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.build) the same field comes out as `(N, H, W, 3)` and you'd index `[0]`, that's the single change between this script and `01_hello_nyx.py`.
 
 User code never calls a render function explicitly. One [`scene.step()`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.step) followed by one [`cam.read()`](https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data) is the whole loop.
 
 ### 5. Recording — stock Genesis pipeline
 
-[`scene.start_recording`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.start_recording) and `gs.recorders.VideoFile` are both Genesis, not Nyx. The Genesis `RecorderManager` invokes `data_func` after each step, hands the returned `(H, W, 3)` `uint8` array to the `VideoFile` writer, and the writer pipes frames through PyAV to an H.264 MP4. The Nyx camera is just a data source, swap it for a Genesis rasterizer camera and the same recorder code works unchanged.
+[`scene.add_recorder`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.add_recorder) and `gs.recorders.VideoFile` are both Genesis, not Nyx. (Genesis 1.4 renamed the data-function recorder entry point from `start_recording` to `add_recorder`; `scene.start_recording` now records trajectory files.) The Genesis `RecorderManager` invokes `data_func` after each step, hands the returned `(H, W, 3)` `uint8` array to the `VideoFile` writer, and the writer pipes frames through PyAV to an H.264 MP4. The Nyx camera is just a data source, swap it for a Genesis rasterizer camera and the same recorder code works unchanged.
 
 ## Why the timing lines up
 

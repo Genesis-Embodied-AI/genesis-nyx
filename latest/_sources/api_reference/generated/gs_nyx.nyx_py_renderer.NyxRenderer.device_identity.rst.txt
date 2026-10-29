@@ -1,0 +1,7 @@
+
+device\_identity
+================
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.device_identity

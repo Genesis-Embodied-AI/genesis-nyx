@@ -1,0 +1,68 @@
+ExportedGraphicsBuffer
+======================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: ExportedGraphicsBuffer
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.ExportedGraphicsBuffer
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: py-init-page
+      :no-table:
+
+      ~ExportedGraphicsBuffer.__init__
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~ExportedGraphicsBuffer.allocationSize
+      ~ExportedGraphicsBuffer.handle
+      ~ExportedGraphicsBuffer.size
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.ExportedGraphicsBuffer

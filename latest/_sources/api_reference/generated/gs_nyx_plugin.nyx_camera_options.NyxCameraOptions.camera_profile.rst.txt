@@ -1,0 +1,7 @@
+
+camera\_profile
+===============
+
+.. currentmodule:: gs_nyx_plugin.nyx_camera_options
+
+.. autoattribute:: NyxCameraOptions.camera_profile

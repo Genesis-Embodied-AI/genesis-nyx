@@ -1,0 +1,7 @@
+
+set\_render\_mode
+=================
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.set_render_mode

@@ -1,0 +1,7 @@
+
+torch\_device
+=============
+
+.. currentmodule:: gs_nyx.nyx_external_memory
+
+.. autoproperty:: NyxImportedBuffer.torch_device

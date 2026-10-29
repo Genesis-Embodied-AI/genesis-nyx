@@ -1,0 +1,7 @@
+
+buffer\_size
+============
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.buffer_size

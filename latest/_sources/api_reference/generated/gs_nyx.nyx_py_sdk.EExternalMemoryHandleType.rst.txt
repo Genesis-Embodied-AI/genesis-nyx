@@ -1,0 +1,39 @@
+EExternalMemoryHandleType
+=========================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: EExternalMemoryHandleType
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EExternalMemoryHandleType.OpaqueFd
+      ~EExternalMemoryHandleType.OpaqueWin32
+      ~EExternalMemoryHandleType.D3D12Heap
+      ~EExternalMemoryHandleType.Count
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.EExternalMemoryHandleType

@@ -1,0 +1,7 @@
+
+import\_camera\_profile\_file
+=============================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autofunction:: import_camera_profile_file

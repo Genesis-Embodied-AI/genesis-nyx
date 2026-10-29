@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/documentation_options.js?v=8618f531"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -58,7 +58,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.9';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -69,7 +69,7 @@
     <link rel="prev" title="Object picking" href="object_picking.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.1.1" />
+  <meta name="docsearch:version" content="0.1.9" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -366,6 +366,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supported_features.html">Supported features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
@@ -380,6 +381,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../advanced/sensor_lifecycle.html">Sensor lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/gpu_backends.html">GPU backends: CUDA and ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/camera_profiles.html">Camera profiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/lights.html">Lights</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/environment_maps.html">Environment maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/splats.html">Gaussian splats</a></li>
@@ -460,7 +463,7 @@
 </section>
 <section id="what-changes-when-you-add-parallel-environments">
 <h2>What changes when you add parallel environments<a class="headerlink" href="#what-changes-when-you-add-parallel-environments" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.build"><code class="docutils literal notranslate"><span class="pre">scene.build(n_envs=N)</span></code></a> widens every sensor’s read shape from <code class="docutils literal notranslate"><span class="pre">(H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code> to <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code>. The cost is honest: the plugin renders one env at a time internally, so wall-clock time grows linearly with <code class="docutils literal notranslate"><span class="pre">N</span></code>. The benefit is that the simulator does too — one <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.step"><code class="docutils literal notranslate"><span class="pre">scene.step()</span></code></a> advances every env, and one <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data"><code class="docutils literal notranslate"><span class="pre">cam.read()</span></code></a> returns the whole batch.</p>
+<p><a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.build"><code class="docutils literal notranslate"><span class="pre">scene.build(n_envs=N)</span></code></a> widens every sensor’s read shape from <code class="docutils literal notranslate"><span class="pre">(H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code> to <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code>. Rendering is batched: the plugin uploads every env’s state in one copy and Nyx renders all <code class="docutils literal notranslate"><span class="pre">N</span></code> envs for every camera in a single native call, so the only per-env cost is GPU render time (see <a class="reference internal" href="../advanced/sensor_lifecycle.html"><span class="doc">Sensor lifecycle</span></a>). The simulator is batched too — one <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.step"><code class="docutils literal notranslate"><span class="pre">scene.step()</span></code></a> advances every env, and one <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data"><code class="docutils literal notranslate"><span class="pre">cam.read()</span></code></a> returns the whole batch.</p>
 <p>Per-env state lives on the <strong>entities</strong>, not the camera. After <code class="docutils literal notranslate"><span class="pre">build()</span></code>, any state setter accepts an <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">...)</span></code>-shaped argument and writes a different value into each env:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ball</span><span class="o">.</span><span class="n">set_pos</span><span class="p">([</span>
     <span class="p">[</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
@@ -513,7 +516,7 @@
 </section>
 <section id="source">
 <h2>Source<a class="headerlink" href="#source" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="sd">&quot;&quot;&quot;Multi-camera, multi-environment example for the Nyx renderer plugin.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="sd">"""Multi-camera, multi-environment example for the Nyx renderer plugin.</span>
 <span class="linenos">  2</span>
 <span class="linenos">  3</span><span class="sd">Builds a scene with **two** ``NyxCameraSensor`` instances and ``n_envs=4``</span>
 <span class="linenos">  4</span><span class="sd">parallel Genesis environments, then teleports the rendered ball to a</span>
@@ -527,7 +530,7 @@
 <span class="linenos"> 12</span>
 <span class="linenos"> 13</span><span class="sd">Usage:</span>
 <span class="linenos"> 14</span><span class="sd">    uv run python examples/07_multi_camera_multi_env.py</span>
-<span class="linenos"> 15</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 15</span><span class="sd">"""</span>
 <span class="linenos"> 16</span>
 <span class="linenos"> 17</span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 <span class="linenos"> 18</span>
@@ -544,10 +547,10 @@
 <span class="linenos"> 29</span>
 <span class="linenos"> 30</span>
 <span class="linenos"> 31</span><span class="n">HERE</span>         <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
-<span class="linenos"> 32</span><span class="n">PBR_BALL</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;PBR_Ball.glb&quot;</span><span class="p">)</span>
-<span class="linenos"> 33</span><span class="n">ENV_MAP_SKY</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;kloppenheim_07_puresky_4k.hdr&quot;</span><span class="p">)</span>
-<span class="linenos"> 34</span><span class="n">ENV_MAP_STUD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;green_sanctuary_4k.hdr&quot;</span><span class="p">)</span>
-<span class="linenos"> 35</span><span class="n">OUTPUT_PATH</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;out&quot;</span><span class="p">,</span> <span class="s2">&quot;07_multi_camera_multi_env.png&quot;</span><span class="p">)</span>
+<span class="linenos"> 32</span><span class="n">PBR_BALL</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">"assets"</span><span class="p">,</span> <span class="s2">"PBR_Ball.glb"</span><span class="p">)</span>
+<span class="linenos"> 33</span><span class="n">ENV_MAP_SKY</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">"assets"</span><span class="p">,</span> <span class="s2">"kloppenheim_07_puresky_4k.hdr"</span><span class="p">)</span>
+<span class="linenos"> 34</span><span class="n">ENV_MAP_STUD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">"assets"</span><span class="p">,</span> <span class="s2">"green_sanctuary_4k.hdr"</span><span class="p">)</span>
+<span class="linenos"> 35</span><span class="n">OUTPUT_PATH</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">"out"</span><span class="p">,</span> <span class="s2">"07_multi_camera_multi_env.png"</span><span class="p">)</span>
 <span class="linenos"> 36</span>
 <span class="linenos"> 37</span><span class="n">N_ENVS</span>  <span class="o">=</span> <span class="mi">4</span>
 <span class="linenos"> 38</span><span class="n">CAM_RES</span> <span class="o">=</span> <span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
@@ -564,7 +567,7 @@
 <span class="linenos"> 49</span><span class="p">]</span>
 <span class="linenos"> 50</span>
 <span class="linenos"> 51</span><span class="c1"># Per-env rig orientation (Z-axis rotation, WXYZ quaternion). Rotates the</span>
-<span class="linenos"> 52</span><span class="c1"># rig so that the follow camera&#39;s &quot;behind&quot; direction always points outward</span>
+<span class="linenos"> 52</span><span class="c1"># rig so that the follow camera's "behind" direction always points outward</span>
 <span class="linenos"> 53</span><span class="c1"># from the centre of the plane — every env sees the ball from a different</span>
 <span class="linenos"> 54</span><span class="c1"># radial angle, which is what makes the follow row visually distinct.</span>
 <span class="linenos"> 55</span><span class="n">RIG_OUTWARD_QUATS</span> <span class="o">=</span> <span class="p">[</span>
@@ -586,22 +589,22 @@
 <span class="linenos"> 71</span>
 <span class="linenos"> 72</span>    <span class="n">scene</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span><span class="n">morph</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Plane</span><span class="p">(</span><span class="n">plane_size</span><span class="o">=</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)))</span>
 <span class="linenos"> 73</span>
-<span class="linenos"> 74</span>    <span class="c1"># Override the GLB&#39;s embedded materials with a polished sapphire-blue</span>
-<span class="linenos"> 75</span>    <span class="c1"># chrome — low roughness + full metallic so each follow camera&#39;s</span>
+<span class="linenos"> 74</span>    <span class="c1"># Override the GLB's embedded materials with a polished sapphire-blue</span>
+<span class="linenos"> 75</span>    <span class="c1"># chrome — low roughness + full metallic so each follow camera's</span>
 <span class="linenos"> 76</span>    <span class="c1"># reflection of the HDRI sky reads as a distinct slice of the dome.</span>
-<span class="linenos"> 77</span>    <span class="c1"># ``align=False`` keeps the link origin at the GLB&#39;s authored pivot</span>
-<span class="linenos"> 78</span>    <span class="c1"># (the cup base) instead of re-framing it to the composite&#39;s COM, so</span>
+<span class="linenos"> 77</span>    <span class="c1"># ``align=False`` keeps the link origin at the GLB's authored pivot</span>
+<span class="linenos"> 78</span>    <span class="c1"># (the cup base) instead of re-framing it to the composite's COM, so</span>
 <span class="linenos"> 79</span>    <span class="c1"># ``set_pos(z=0)`` lands the cup cleanly on the plane.</span>
 <span class="linenos"> 80</span>    <span class="n">ball</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span>
 <span class="linenos"> 81</span>        <span class="n">morph</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">PBR_BALL</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
 <span class="linenos"> 82</span>        <span class="n">surface</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">surfaces</span><span class="o">.</span><span class="n">BSDF</span><span class="p">(</span><span class="n">metallic</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">roughness</span><span class="o">=</span><span class="mf">0.15</span><span class="p">),</span>
 <span class="linenos"> 83</span>    <span class="p">)</span>
 <span class="linenos"> 84</span>
-<span class="linenos"> 85</span>    <span class="c1"># Invisible rigid rig used as the follow camera&#39;s attachment point.</span>
+<span class="linenos"> 85</span>    <span class="c1"># Invisible rigid rig used as the follow camera's attachment point.</span>
 <span class="linenos"> 86</span>    <span class="c1"># Both its position and its orientation are set per env, which is how</span>
 <span class="linenos"> 87</span>    <span class="c1"># the follow camera ends up at a different world pose in every env.</span>
 <span class="linenos"> 88</span>    <span class="c1"># Must be added before any FEM / MPM / PBD entity so its ``entity.idx``</span>
-<span class="linenos"> 89</span>    <span class="c1"># matches the rigid solver&#39;s index — that&#39;s what</span>
+<span class="linenos"> 89</span>    <span class="c1"># matches the rigid solver's index — that's what</span>
 <span class="linenos"> 90</span>    <span class="c1"># ``NyxCameraOptions.entity_idx`` uses.</span>
 <span class="linenos"> 91</span>    <span class="n">follow_rig</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_entity</span><span class="p">(</span>
 <span class="linenos"> 92</span>        <span class="n">morph</span><span class="o">=</span><span class="n">gs</span><span class="o">.</span><span class="n">morphs</span><span class="o">.</span><span class="n">Sphere</span><span class="p">(</span>
@@ -640,9 +643,9 @@
 <span class="linenos">125</span>    <span class="p">))</span>
 <span class="linenos">126</span>
 <span class="linenos">127</span>    <span class="c1"># Camera B — eye-level follow camera. ``offset_T`` is the camera pose</span>
-<span class="linenos">128</span>    <span class="c1"># in the rig&#39;s local frame: 1.1 m back along the rig&#39;s -Y axis and</span>
+<span class="linenos">128</span>    <span class="c1"># in the rig's local frame: 1.1 m back along the rig's -Y axis and</span>
 <span class="linenos">129</span>    <span class="c1"># 0.45 m above it, aimed at the ball portion of the composite (0.25 m</span>
-<span class="linenos">130</span>    <span class="c1"># above the cup base). Rotating the rig per env rotates the camera&#39;s</span>
+<span class="linenos">130</span>    <span class="c1"># above the cup base). Rotating the rig per env rotates the camera's</span>
 <span class="linenos">131</span>    <span class="c1"># relative pose with it, so the follow cell for each env shows a</span>
 <span class="linenos">132</span>    <span class="c1"># different radial angle on the same ball.</span>
 <span class="linenos">133</span>    <span class="n">offset_T</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pos_lookat_up_to_T</span><span class="p">(</span>
@@ -678,15 +681,15 @@
 <span class="linenos">163</span>
 <span class="linenos">164</span>    <span class="c1"># Tile: rows = cameras (wide on top, follow below), columns = envs.</span>
 <span class="linenos">165</span>    <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">CAM_RES</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">CAM_RES</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="linenos">166</span>    <span class="n">grid</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">W</span> <span class="o">*</span> <span class="n">N_ENVS</span><span class="p">,</span> <span class="n">H</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+<span class="linenos">166</span>    <span class="n">grid</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"RGB"</span><span class="p">,</span> <span class="p">(</span><span class="n">W</span> <span class="o">*</span> <span class="n">N_ENVS</span><span class="p">,</span> <span class="n">H</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
 <span class="linenos">167</span>    <span class="k">for</span> <span class="n">env_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_ENVS</span><span class="p">):</span>
 <span class="linenos">168</span>        <span class="n">grid</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">wide_batch</span><span class="p">[</span><span class="n">env_idx</span><span class="p">]),</span>   <span class="p">(</span><span class="n">env_idx</span> <span class="o">*</span> <span class="n">W</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 <span class="linenos">169</span>        <span class="n">grid</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">follow_batch</span><span class="p">[</span><span class="n">env_idx</span><span class="p">]),</span> <span class="p">(</span><span class="n">env_idx</span> <span class="o">*</span> <span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">))</span>
 <span class="linenos">170</span>    <span class="n">grid</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">)</span>
-<span class="linenos">171</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">171</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Saved </span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="linenos">172</span>
 <span class="linenos">173</span>
-<span class="linenos">174</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">174</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 <span class="linenos">175</span>    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>

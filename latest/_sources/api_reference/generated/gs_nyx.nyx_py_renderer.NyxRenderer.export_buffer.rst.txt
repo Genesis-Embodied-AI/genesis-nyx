@@ -1,0 +1,7 @@
+
+export\_buffer
+==============
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.export_buffer

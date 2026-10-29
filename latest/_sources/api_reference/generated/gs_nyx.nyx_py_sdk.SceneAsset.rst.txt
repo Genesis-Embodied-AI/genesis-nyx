@@ -56,6 +56,7 @@ SceneAsset
       ~SceneAsset.animation_size
       ~SceneAsset.camera_resize
       ~SceneAsset.camera_size
+      ~SceneAsset.cleanup
       ~SceneAsset.env_map_resize
       ~SceneAsset.env_map_size
       ~SceneAsset.get_animation

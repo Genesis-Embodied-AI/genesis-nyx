@@ -1,0 +1,7 @@
+
+export\_input\_buffer
+=====================
+
+.. currentmodule:: gs_nyx.nyx_py_video_encoder
+
+.. automethod:: GPUVideoEncoder.export_input_buffer

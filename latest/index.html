@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script src="_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="_static/documentation_options.js?v=8618f531"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.9';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -70,7 +70,7 @@
     <link rel="next" title="User guide" href="user_guide/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.1.1" />
+  <meta name="docsearch:version" content="0.1.9" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -387,7 +387,7 @@
 <p><strong>A high-performance renderer plugin for the <a class="reference external" href="https://genesis-world.readthedocs.io/">Genesis World</a> simulator.</strong></p>
 <a class="sd-mb-3 reference internal image-reference" href="_images/landing.png"><img alt="Path-traced render of dual robot arms over a fruit on a tabletop" class="sd-mb-3" src="_images/landing.png" style="width: 100%;" />
 </a>
-<p>Nyx drops in where a Genesis <code class="docutils literal notranslate"><span class="pre">Camera</span></code> would go and produces photoreal, path-traced frames from the same scene state. It renders robots, articulated assets, terrain, cloth, HDRI lighting, and Gaussian-splat light fields, all GPU-resident and ready to feed straight back into a training loop.</p>
+<p>Nyx drops in where a Genesis <code class="docutils literal notranslate"><span class="pre">Camera</span></code> would go and produces photoreal, path-traced frames from the same scene state. It renders robots, articulated assets, terrain, cloth, HDRI lighting, and Gaussian-splat light fields, all GPU-resident and ready to feed straight back into a training loop, on NVIDIA GPUs through CUDA and on AMD GPUs through ROCm.</p>
 </div>
 </div>
 </div>
@@ -440,7 +440,7 @@
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 <svg version="1.1" width="1.2em" height="1.2em" class="sd-octicon sd-octicon-stack sd-mr-1" viewBox="0 0 16 16" aria-hidden="true"><path d="M7.122.392a1.75 1.75 0 0 1 1.756 0l5.003 2.902c.83.481.83 1.68 0 2.162L8.878 8.358a1.75 1.75 0 0 1-1.756 0L2.119 5.456a1.251 1.251 0 0 1 0-2.162ZM8.125 1.69a.248.248 0 0 0-.25 0l-4.63 2.685 4.63 2.685a.248.248 0 0 0 .25 0l4.63-2.685ZM1.601 7.789a.75.75 0 0 1 1.025-.273l5.249 3.044a.248.248 0 0 0 .25 0l5.249-3.044a.75.75 0 0 1 .752 1.298l-5.248 3.044a1.75 1.75 0 0 1-1.756 0L1.874 8.814A.75.75 0 0 1 1.6 7.789Zm0 3.5a.75.75 0 0 1 1.025-.273l5.249 3.044a.248.248 0 0 0 .25 0l5.249-3.044a.75.75 0 0 1 .752 1.298l-5.248 3.044a1.75 1.75 0 0 1-1.756 0l-5.248-3.044a.75.75 0 0 1-.273-1.025Z"></path></svg> Multi-env friendly</div>
-<p class="sd-card-text">Render <code class="docutils literal notranslate"><span class="pre">n_envs</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> rollouts with per-environment HDRI swaps for cheap domain randomization. RGB stays on the GPU as <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">3)</span> <span class="pre">uint8</span></code>.</p>
+<p class="sd-card-text">Render <code class="docutils literal notranslate"><span class="pre">n_envs</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> rollouts in one batched GPU pass, with per-environment HDRI swaps for cheap domain randomization. RGB stays on the GPU as <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">3)</span> <span class="pre">uint8</span></code>.</p>
 </div>
 <a class="sd-stretched-link sd-hide-link-text reference internal" href="user_guide/examples/multi_camera_multi_env.html"><span class="doc">Multiple cameras and parallel environments</span></a></div>
 </div>
@@ -458,7 +458,7 @@
 </section>
 <section id="get-started-in-a-minute">
 <h2>Get started in a minute<a class="headerlink" href="#get-started-in-a-minute" title="Link to this heading">#</a></h2>
-<p>Install the wheel from PyPI (see <a class="reference internal" href="user_guide/installation.html"><span class="doc">Installation</span></a> for the full requirements):</p>
+<p>Install a GPU build of PyTorch for your vendor (CUDA or ROCm), then the wheel from PyPI (see <a class="reference internal" href="user_guide/installation.html"><span class="doc">Installation</span></a> for the full requirements):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>gs-nyx-plugin
 </pre></div>
 </div>
@@ -489,11 +489,14 @@
 <section id="find-your-way-around">
 <h2>Find your way around<a class="headerlink" href="#find-your-way-around" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="user_guide/installation.html"><span class="doc">Installation</span></a>: wheel requirements, CUDA driver, version pinning.</p></li>
+<li><p><a class="reference internal" href="user_guide/installation.html"><span class="doc">Installation</span></a>: wheel requirements, CUDA / ROCm torch builds, version pinning.</p></li>
 <li><p><a class="reference internal" href="user_guide/quickstart.html"><span class="doc">Quickstart</span></a>: render your first frame from an existing Genesis scene.</p></li>
 <li><p><a class="reference internal" href="user_guide/concepts.html"><span class="doc">Concepts</span></a>: the renderer lifecycle, scenes, and assets.</p></li>
 <li><p><a class="reference internal" href="user_guide/supported_features.html"><span class="doc">Supported features</span></a>: what the plugin renders, what it doesn’t, and where the rough edges are.</p></li>
-<li><p><a class="reference internal" href="user_guide/advanced/sensor_lifecycle.html"><span class="doc">Sensor lifecycle</span></a>: operational details on the render-on-read model, multi-camera constraints, and the lighting model.</p></li>
+<li><p><a class="reference internal" href="user_guide/advanced/sensor_lifecycle.html"><span class="doc">Sensor lifecycle</span></a>: operational details on the render-on-read model, batched multi-env rendering, and multi-camera constraints.</p></li>
+<li><p><a class="reference internal" href="user_guide/advanced/gpu_backends.html"><span class="doc">GPU backends: CUDA and ROCm</span></a>: how Nyx shares its buffers with a CUDA or ROCm PyTorch and how the GPU is picked.</p></li>
+<li><p><a class="reference internal" href="user_guide/advanced/camera_profiles.html"><span class="doc">Camera profiles</span></a>: lens, sensor and tone-mapping settings through camera profile files.</p></li>
+<li><p><a class="reference internal" href="user_guide/changelog.html"><span class="doc">Changelog</span></a>: what changed in this release, including breaking changes.</p></li>
 <li><p><a class="reference internal" href="api_reference/index.html"><span class="doc">API reference</span></a>: the full <code class="docutils literal notranslate"><span class="pre">gs_nyx</span></code> and <code class="docutils literal notranslate"><span class="pre">gs_nyx_plugin</span></code> API.</p></li>
 </ul>
 <div class="toctree-wrapper compound">

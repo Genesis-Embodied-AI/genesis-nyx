@@ -1,0 +1,7 @@
+
+D3D12Heap
+=========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EExternalMemoryHandleType.D3D12Heap

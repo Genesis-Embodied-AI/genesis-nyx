@@ -1,0 +1,7 @@
+
+render\_all
+===========
+
+.. currentmodule:: gs_nyx_plugin.nyx_renderer
+
+.. automethod:: NyxPyRenderer.render_all

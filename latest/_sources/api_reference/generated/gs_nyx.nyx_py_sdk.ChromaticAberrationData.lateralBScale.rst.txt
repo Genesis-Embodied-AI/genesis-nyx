@@ -1,0 +1,7 @@
+
+lateralBScale
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: ChromaticAberrationData.lateralBScale

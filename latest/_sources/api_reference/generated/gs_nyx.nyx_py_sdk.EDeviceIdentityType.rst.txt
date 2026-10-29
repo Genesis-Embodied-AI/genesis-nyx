@@ -1,0 +1,38 @@
+EDeviceIdentityType
+===================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: EDeviceIdentityType
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EDeviceIdentityType.LUID
+      ~EDeviceIdentityType.PCIBus
+      ~EDeviceIdentityType.Count
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.EDeviceIdentityType

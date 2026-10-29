@@ -1,0 +1,7 @@
+
+external\_memory\_handle\_type
+==============================
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.external_memory_handle_type

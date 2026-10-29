@@ -1,0 +1,7 @@
+
+set\_debug\_view
+================
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. automethod:: NyxRenderer.set_debug_view

@@ -1,0 +1,7 @@
+
+k3
+==
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: LensDistortionData.k3

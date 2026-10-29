@@ -1,0 +1,7 @@
+
+sensor
+======
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: CameraProfileAsset.sensor

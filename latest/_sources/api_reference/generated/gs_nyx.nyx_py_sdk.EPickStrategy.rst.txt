@@ -1,0 +1,39 @@
+EPickStrategy
+=============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: EPickStrategy
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EPickStrategy.VRAMSize
+      ~EPickStrategy.VendorID
+      ~EPickStrategy.AdapterID
+      ~EPickStrategy.Count
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.EPickStrategy

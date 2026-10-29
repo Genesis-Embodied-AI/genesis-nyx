@@ -53,18 +53,28 @@ NyxRenderer
       :nosignatures:
    
       ~NyxRenderer.allocate_scene_buffers
+      ~NyxRenderer.buffer_size
+      ~NyxRenderer.camera_resolution
+      ~NyxRenderer.color_output_size
+      ~NyxRenderer.color_slot
+      ~NyxRenderer.device_identity
+      ~NyxRenderer.export_buffer
+      ~NyxRenderer.external_memory_handle_type
       ~NyxRenderer.load_scene_from_file
       ~NyxRenderer.pick_pixel
+      ~NyxRenderer.reload
+      ~NyxRenderer.render_batch
       ~NyxRenderer.render_frame
+      ~NyxRenderer.set_debug_view
       ~NyxRenderer.set_deform_entity_active_triangles
       ~NyxRenderer.set_env_map
+      ~NyxRenderer.set_render_mode
       ~NyxRenderer.shutdown
       ~NyxRenderer.startup
       ~NyxRenderer.trace_ray
       ~NyxRenderer.unload_scene
       ~NyxRenderer.update
       ~NyxRenderer.update_scene
-      ~NyxRenderer.update_scene_buffers
    
    
 

@@ -1,0 +1,67 @@
+TransformFrameData
+==================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: TransformFrameData
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.TransformFrameData
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: py-init-page
+      :no-table:
+
+      ~TransformFrameData.__init__
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~TransformFrameData.position
+      ~TransformFrameData.rotation
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.TransformFrameData

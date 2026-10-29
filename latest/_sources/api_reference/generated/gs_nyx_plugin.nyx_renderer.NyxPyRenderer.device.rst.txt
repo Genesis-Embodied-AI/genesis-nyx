@@ -1,0 +1,7 @@
+
+device
+======
+
+.. currentmodule:: gs_nyx_plugin.nyx_renderer
+
+.. autoproperty:: NyxPyRenderer.device

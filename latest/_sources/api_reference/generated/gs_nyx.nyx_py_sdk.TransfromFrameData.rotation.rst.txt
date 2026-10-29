@@ -1,7 +1,0 @@
-
-rotation
-========
-
-.. currentmodule:: gs_nyx.nyx_py_sdk
-
-.. autoproperty:: TransfromFrameData.rotation

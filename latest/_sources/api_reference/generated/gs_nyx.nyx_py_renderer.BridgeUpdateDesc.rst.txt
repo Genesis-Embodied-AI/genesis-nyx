@@ -70,6 +70,7 @@ BridgeUpdateDesc
       ~BridgeUpdateDesc.numDeformObjects
       ~BridgeUpdateDesc.numDeformTriangles
       ~BridgeUpdateDesc.numDeformVertices
+      ~BridgeUpdateDesc.numEnvs
       ~BridgeUpdateDesc.numRigidGeom
    
    

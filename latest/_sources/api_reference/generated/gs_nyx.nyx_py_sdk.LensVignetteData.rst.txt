@@ -1,0 +1,69 @@
+LensVignetteData
+================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: LensVignetteData
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.LensVignetteData
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: nb-constructor-page
+      :no-table:
+
+      ~LensVignetteData.__init__
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~LensVignetteData.k1
+      ~LensVignetteData.k2
+      ~LensVignetteData.strength
+      ~LensVignetteData.tint
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.LensVignetteData

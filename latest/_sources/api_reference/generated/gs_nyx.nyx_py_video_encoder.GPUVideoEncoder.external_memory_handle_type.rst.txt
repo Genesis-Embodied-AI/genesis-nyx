@@ -1,0 +1,7 @@
+
+external\_memory\_handle\_type
+==============================
+
+.. currentmodule:: gs_nyx.nyx_py_video_encoder
+
+.. automethod:: GPUVideoEncoder.external_memory_handle_type

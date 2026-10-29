@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/documentation_options.js?v=8618f531"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.9';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -68,10 +68,10 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Environment maps" href="environment_maps.html" />
-    <link rel="prev" title="Sensor lifecycle" href="sensor_lifecycle.html" />
+    <link rel="prev" title="Camera profiles" href="camera_profiles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.1.1" />
+  <meta name="docsearch:version" content="0.1.9" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -368,6 +368,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supported_features.html">Supported features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -382,6 +383,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sensor_lifecycle.html">Sensor lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_backends.html">GPU backends: CUDA and ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera_profiles.html">Camera profiles</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lights</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment_maps.html">Environment maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="splats.html">Gaussian splats</a></li>
@@ -453,20 +456,20 @@
 <h2>Declaring lights<a class="headerlink" href="#declaring-lights" title="Link to this heading">#</a></h2>
 <p>A light is a Python dictionary with a required <code class="docutils literal notranslate"><span class="pre">type</span></code> key. The dictionary is passed to the <code class="docutils literal notranslate"><span class="pre">lights</span></code> field of <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">NyxCameraOptions</span></code></a> as a list:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SPOT</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span>      <span class="s2">&quot;spot&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;pos&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span>
-    <span class="s2">&quot;dir&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.707</span><span class="p">),</span>
-    <span class="s2">&quot;color&quot;</span><span class="p">:</span>     <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
-    <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span>
-    <span class="s2">&quot;range&quot;</span><span class="p">:</span>     <span class="mf">10.0</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span>      <span class="s2">"spot"</span><span class="p">,</span>
+    <span class="s2">"pos"</span><span class="p">:</span>       <span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span>
+    <span class="s2">"dir"</span><span class="p">:</span>       <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.707</span><span class="p">),</span>
+    <span class="s2">"color"</span><span class="p">:</span>     <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
+    <span class="s2">"intensity"</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span>
+    <span class="s2">"range"</span><span class="p">:</span>     <span class="mf">10.0</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">POINT</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span>      <span class="s2">&quot;point&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;pos&quot;</span><span class="p">:</span>       <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span>
-    <span class="s2">&quot;color&quot;</span><span class="p">:</span>     <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
-    <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span>
-    <span class="s2">&quot;range&quot;</span><span class="p">:</span>     <span class="mf">10.0</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span>      <span class="s2">"point"</span><span class="p">,</span>
+    <span class="s2">"pos"</span><span class="p">:</span>       <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span>
+    <span class="s2">"color"</span><span class="p">:</span>     <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
+    <span class="s2">"intensity"</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span>
+    <span class="s2">"range"</span><span class="p">:</span>     <span class="mf">10.0</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_sensor</span><span class="p">(</span><span class="n">NyxCameraOptions</span><span class="p">(</span>
@@ -773,12 +776,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sensor_lifecycle.html"
+       href="camera_profiles.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Sensor lifecycle</p>
+        <p class="prev-next-title">Camera profiles</p>
       </div>
     </a>
     <a class="right-next"

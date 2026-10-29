@@ -34,10 +34,12 @@ NyxCameraOptions
       :nosignatures:
    
       ~NyxCameraOptions.anti_aliasing
+      ~NyxCameraOptions.camera_profile
       ~NyxCameraOptions.debug_view
       ~NyxCameraOptions.denoise
       ~NyxCameraOptions.env_maps
       ~NyxCameraOptions.far
+      ~NyxCameraOptions.gpu_vendor
       ~NyxCameraOptions.light_fields
       ~NyxCameraOptions.model
       ~NyxCameraOptions.model_config
@@ -45,7 +47,6 @@ NyxCameraOptions
       ~NyxCameraOptions.open_window
       ~NyxCameraOptions.render_mode
       ~NyxCameraOptions.spp
-      ~NyxCameraOptions.tone_mapper
       ~NyxCameraOptions.update_ground_truth_only
       ~NyxCameraOptions.window_size
    

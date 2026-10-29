@@ -52,7 +52,10 @@ GPUVideoEncoder
       :toctree:
       :nosignatures:
    
+      ~GPUVideoEncoder.device_identity
       ~GPUVideoEncoder.encode_frame_srgb_to_cpu
+      ~GPUVideoEncoder.export_input_buffer
+      ~GPUVideoEncoder.external_memory_handle_type
       ~GPUVideoEncoder.force_next_frame_as_idr
       ~GPUVideoEncoder.max_buffer_size
       ~GPUVideoEncoder.next_frame_is_idr

@@ -1,0 +1,67 @@
+ColorManagementData
+===================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: ColorManagementData
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_py_sdk.ColorManagementData
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: nb-constructor-page
+      :no-table:
+
+      ~ColorManagementData.__init__
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~ColorManagementData.lutURI
+      ~ColorManagementData.toneMapper
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.ColorManagementData

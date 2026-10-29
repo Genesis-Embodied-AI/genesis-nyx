@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/documentation_options.js?v=8618f531"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -58,7 +58,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.9';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -66,10 +66,10 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Attaching a camera" href="attached_camera.html" />
-    <link rel="prev" title="Known issues" href="../known_issues.html" />
+    <link rel="prev" title="Changelog" href="../changelog.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.1.1" />
+  <meta name="docsearch:version" content="0.1.9" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -366,6 +366,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supported_features.html">Supported features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
@@ -380,6 +381,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../advanced/sensor_lifecycle.html">Sensor lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/gpu_backends.html">GPU backends: CUDA and ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/camera_profiles.html">Camera profiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/lights.html">Lights</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/environment_maps.html">Environment maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/splats.html">Gaussian splats</a></li>
@@ -459,7 +462,7 @@
 </section>
 <section id="source">
 <h2>Source<a class="headerlink" href="#source" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">"""</span>
 <span class="linenos"> 2</span><span class="sd">Minimal Nyx example: a PBR ball on a plane lit by an environment map.</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="sd">Loads PBR_Ball.glb (GLTF embedded materials are forwarded to Nyx as-is) and</span>
@@ -467,7 +470,7 @@
 <span class="linenos"> 6</span>
 <span class="linenos"> 7</span><span class="sd">Usage:</span>
 <span class="linenos"> 8</span><span class="sd">    uv run python examples/01_hello_nyx.py</span>
-<span class="linenos"> 9</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="sd">"""</span>
 <span class="linenos">10</span>
 <span class="linenos">11</span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="linenos">12</span><span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
@@ -479,9 +482,9 @@
 <span class="linenos">18</span>
 <span class="linenos">19</span>
 <span class="linenos">20</span><span class="n">HERE</span>        <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
-<span class="linenos">21</span><span class="n">PBR_BALL</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;PBR_Ball.glb&quot;</span><span class="p">)</span>
-<span class="linenos">22</span><span class="n">ENV_MAP</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;kloppenheim_07_puresky_4k.hdr&quot;</span><span class="p">)</span>
-<span class="linenos">23</span><span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;out&quot;</span><span class="p">,</span> <span class="s2">&quot;01_hello_nyx.png&quot;</span><span class="p">)</span>
+<span class="linenos">21</span><span class="n">PBR_BALL</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">"assets"</span><span class="p">,</span> <span class="s2">"PBR_Ball.glb"</span><span class="p">)</span>
+<span class="linenos">22</span><span class="n">ENV_MAP</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">"assets"</span><span class="p">,</span> <span class="s2">"kloppenheim_07_puresky_4k.hdr"</span><span class="p">)</span>
+<span class="linenos">23</span><span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">"out"</span><span class="p">,</span> <span class="s2">"01_hello_nyx.png"</span><span class="p">)</span>
 <span class="linenos">24</span>
 <span class="linenos">25</span>
 <span class="linenos">26</span><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
@@ -528,10 +531,10 @@
 <span class="linenos">67</span>    <span class="n">rgb</span> <span class="o">=</span> <span class="n">cam</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">rgb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="linenos">68</span>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="linenos">69</span>    <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">)</span>
-<span class="linenos">70</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">70</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Saved </span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="linenos">71</span>
 <span class="linenos">72</span>
-<span class="linenos">73</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">73</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 <span class="linenos">74</span>    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -554,12 +557,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../known_issues.html"
+       href="../changelog.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Known issues</p>
+        <p class="prev-next-title">Changelog</p>
       </div>
     </a>
     <a class="right-next"

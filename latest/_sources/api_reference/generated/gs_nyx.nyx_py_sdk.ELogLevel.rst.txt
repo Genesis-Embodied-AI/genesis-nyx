@@ -1,0 +1,40 @@
+ELogLevel
+=========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: ELogLevel
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~ELogLevel.Off
+      ~ELogLevel.Verbose
+      ~ELogLevel.Info
+      ~ELogLevel.Warning
+      ~ELogLevel.Error
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.ELogLevel

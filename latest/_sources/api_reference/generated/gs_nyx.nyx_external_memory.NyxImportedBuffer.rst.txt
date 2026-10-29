@@ -1,0 +1,75 @@
+NyxImportedBuffer
+=================
+
+.. currentmodule:: gs_nyx.nyx_external_memory
+
+.. autoclass:: NyxImportedBuffer
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   .. rubric:: Constructors
+
+   .. nb-constructor-summary:: gs_nyx.nyx_external_memory.NyxImportedBuffer
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   .. autosummary::
+      :toctree:
+      :template: py-init-page
+      :no-table:
+
+      ~NyxImportedBuffer.__init__
+   
+   
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxImportedBuffer.release
+      ~NyxImportedBuffer.tensor
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxImportedBuffer.torch_device
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_external_memory.NyxImportedBuffer

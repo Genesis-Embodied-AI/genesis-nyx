@@ -1,0 +1,7 @@
+
+fov\_y
+======
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. automethod:: CameraProfileAsset.fov_y

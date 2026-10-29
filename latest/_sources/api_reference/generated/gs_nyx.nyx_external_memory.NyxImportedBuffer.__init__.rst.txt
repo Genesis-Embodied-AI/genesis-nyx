@@ -1,0 +1,7 @@
+
+Constructor
+===========
+
+.. currentmodule:: gs_nyx.nyx_external_memory
+
+.. automethod:: NyxImportedBuffer.__init__

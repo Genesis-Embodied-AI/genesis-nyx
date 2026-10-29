@@ -40,6 +40,7 @@
    :template: custom-module-template.rst
    :recursive:
 
+   nyx_external_memory
    nyx_py_renderer
    nyx_py_sdk
    nyx_py_video_encoder

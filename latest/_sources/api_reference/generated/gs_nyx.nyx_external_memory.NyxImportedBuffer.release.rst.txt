@@ -1,0 +1,7 @@
+
+release
+=======
+
+.. currentmodule:: gs_nyx.nyx_external_memory
+
+.. automethod:: NyxImportedBuffer.release

@@ -1,0 +1,7 @@
+
+update\_camera\_tensors\_batched
+================================
+
+.. currentmodule:: gs_nyx_plugin.nyx_renderer
+
+.. automethod:: NyxPyRenderer.update_camera_tensors_batched

@@ -55,11 +55,12 @@ BridgeStartupParams
       :toctree:
       :nosignatures:
    
-      ~BridgeStartupParams.cudaDevice
       ~BridgeStartupParams.debugView
+      ~BridgeStartupParams.deviceData
       ~BridgeStartupParams.maxViewportHeight
       ~BridgeStartupParams.maxViewportWidth
       ~BridgeStartupParams.openWindow
+      ~BridgeStartupParams.pickStrategy
       ~BridgeStartupParams.renderMode
    
    

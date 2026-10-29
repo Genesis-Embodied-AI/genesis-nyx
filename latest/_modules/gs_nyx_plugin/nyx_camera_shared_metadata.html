@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/documentation_options.js?v=8618f531"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -57,7 +57,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.9';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -66,7 +66,7 @@
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.1.1" />
+  <meta name="docsearch:version" content="0.1.9" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -398,9 +398,9 @@
                 <article class="bd-article">
                   
   <h1>Source code for gs_nyx_plugin.nyx_camera_shared_metadata</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Nyx Camera Shared Metadata for Genesis - GPU-accelerated rendering via Nyx renderer.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 <span class="c1"># External imports</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
@@ -421,17 +421,17 @@
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">.nyx_camera_sensor</span><span class="w"> </span><span class="kn">import</span> <span class="n">NyxCameraSensor</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NyxCameraSharedMetadata&quot;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"NyxCameraSharedMetadata"</span><span class="p">]</span>
 
 
 <span class="c1"># ========================== Utils ==========================</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">_nyx_random_string</span><span class="p">(</span><span class="n">length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">alphabet</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
-    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">))</span>
+    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">))</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_nyx_make_complete_path</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;__nyx_cache__/</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"__nyx_cache__/</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">"</span>
 
 
 <span class="c1"># ========================== Shared Metadata ==========================</span>
@@ -439,12 +439,12 @@
 <a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.html#gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata">[docs]</a>
 <span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">NyxCameraSharedMetadata</span><span class="p">(</span><span class="n">KinematicSensorMetadataMixin</span><span class="p">,</span> <span class="n">SharedSensorMetadata</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cross-sensor state shared by every :class:`NyxCameraSensor` in a scene.</span>
+<span class="w">    </span><span class="sd">"""Cross-sensor state shared by every :class:`NyxCameraSensor` in a scene.</span>
 
 <span class="sd">    Genesis instantiates one ``SharedSensorMetadata`` per sensor type per</span>
 <span class="sd">    sensor manager, and stamps it onto every sensor of that type via</span>
 <span class="sd">    ``self._shared_metadata``. The Nyx plugin uses it as the single source of</span>
-<span class="sd">    truth for &quot;things there should only ever be one of in the scene&quot;:</span>
+<span class="sd">    truth for "things there should only ever be one of in the scene":</span>
 <span class="sd">    the native renderer, the scene exporter, the on-disk scene-description</span>
 <span class="sd">    cache, and the per-sensor image cache that downstream consumers read.</span>
 
@@ -461,14 +461,14 @@
 <span class="sd">        :attr:`~NyxSceneExporter._entity_uuid_pairs`.</span>
 <span class="sd">    sensors : list of NyxCameraSensor or None</span>
 <span class="sd">        Every Nyx camera sensor registered with the manager, in registration</span>
-<span class="sd">        order. Each sensor&#39;s camera index in the shared renderer matches its</span>
+<span class="sd">        order. Each sensor's camera index in the shared renderer matches its</span>
 <span class="sd">        position in this list.</span>
 <span class="sd">    camera_defs : list of dict or None</span>
 <span class="sd">        Per-camera configuration dicts passed to the renderer when it</span>
 <span class="sd">        builds. One entry per sensor, in the same order as :attr:`sensors`.</span>
 <span class="sd">    image_cache : dict of int to torch.Tensor or None</span>
 <span class="sd">        ``{sensor_idx: tensor}`` map of pre-allocated ``(B, H, W, 3)``</span>
-<span class="sd">        ``uint8`` CUDA buffers that the renderer writes into each frame.</span>
+<span class="sd">        ``uint8`` GPU buffers that the renderer writes into each frame.</span>
 <span class="sd">        Returned by :meth:`NyxCameraSensor.read` without an extra copy.</span>
 <span class="sd">    last_render_timestep : int</span>
 <span class="sd">        Scene timestep at which the renderer last ran. Used for staleness</span>
@@ -476,15 +476,15 @@
 <span class="sd">        render. ``-1`` before the first frame.</span>
 <span class="sd">    scene_description_export_path : str or None</span>
 <span class="sd">        Path component (under ``__nyx_cache__/``) where the scene-description</span>
-<span class="sd">        JSON and any per-vgeom ``.obj`` exports live. Generated once at</span>
-<span class="sd">        construction; cleaned up by :meth:`destroy`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">        JSON, the per-camera profile JSONs and any per-vgeom ``.obj`` exports</span>
+<span class="sd">        live. Generated once at construction; cleaned up by :meth:`destroy`.</span>
+<span class="sd">    """</span>
 
     <span class="c1"># NyxRenderer instance</span>
     <span class="n">renderer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1"># NyxSceneExporter instance</span>
     <span class="n">scene_exporter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">sensors</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;NyxCameraSensor&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">sensors</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">"NyxCameraSensor"</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1"># List of camera definition dictionaries</span>
     <span class="n">camera_defs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1"># {sensor_idx: torch.Tensor with shape (B, H, W, 3)}</span>
@@ -506,15 +506,16 @@
 <div class="viewcode-block" id="NyxCameraSharedMetadata.destroy">
 <a class="viewcode-back" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.destroy.html#gs_nyx_plugin.nyx_camera_shared_metadata.NyxCameraSharedMetadata.destroy">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tear down the renderer and remove the on-disk scene cache.</span>
+<span class="w">        </span><span class="sd">"""Tear down the renderer and remove the on-disk scene cache.</span>
 
 <span class="sd">        Called by the Genesis sensor manager when the scene is destroyed.</span>
-<span class="sd">        Releases the native renderer (so its CUDA buffers are freed),</span>
+<span class="sd">        Releases the native renderer (so its GPU buffers are freed),</span>
 <span class="sd">        deletes the ``__nyx_cache__/&lt;id&gt;/`` directory that holds the exported</span>
-<span class="sd">        scene-description JSON plus any per-vgeom ``.obj`` files, and clears</span>
+<span class="sd">        scene-description JSON, the camera profiles and any per-vgeom</span>
+<span class="sd">        ``.obj`` files, and clears</span>
 <span class="sd">        the cached references so the metadata can be garbage-collected.</span>
 <span class="sd">        Safe to call exactly once; idempotency is not required.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="c1"># Destroy renderer</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">unload_scene</span><span class="p">()</span>

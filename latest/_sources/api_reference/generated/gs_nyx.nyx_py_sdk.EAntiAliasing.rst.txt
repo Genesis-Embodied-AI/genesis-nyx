@@ -28,6 +28,9 @@ EAntiAliasing
       ~EAntiAliasing.Off
       ~EAntiAliasing.FXAA
       ~EAntiAliasing.SMAA
+      ~EAntiAliasing.MSAA_2X
+      ~EAntiAliasing.MSAA_4X
+      ~EAntiAliasing.MSAA_8X
    
    
 

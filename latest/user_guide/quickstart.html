@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script src="../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../_static/documentation_options.js?v=8618f531"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -58,7 +58,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.9';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -69,7 +69,7 @@
     <link rel="prev" title="Installation" href="installation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.1.1" />
+  <meta name="docsearch:version" content="0.1.9" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -366,6 +366,7 @@
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supported_features.html">Supported features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="known_issues.html">Known issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -380,6 +381,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="advanced/sensor_lifecycle.html">Sensor lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/gpu_backends.html">GPU backends: CUDA and ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/camera_profiles.html">Camera profiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="advanced/lights.html">Lights</a></li>
 <li class="toctree-l1"><a class="reference internal" href="advanced/environment_maps.html">Environment maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="advanced/splats.html">Gaussian splats</a></li>
@@ -477,7 +480,7 @@
 <span class="p">))</span>
 </pre></div>
 </div>
-<p>To mount the camera on a robot link instead of a static pose, drop <code class="docutils literal notranslate"><span class="pre">pos</span></code>/<code class="docutils literal notranslate"><span class="pre">lookat</span></code> and pass <code class="docutils literal notranslate"><span class="pre">entity_idx</span></code> / <code class="docutils literal notranslate"><span class="pre">link_idx_local</span></code> / <code class="docutils literal notranslate"><span class="pre">offset_T</span></code>, see <a class="reference internal" href="examples/attached_camera.html"><span class="doc">Attaching a camera</span></a>.</p>
+<p>To mount the camera on a robot link instead of a static pose, drop <code class="docutils literal notranslate"><span class="pre">pos</span></code>/<code class="docutils literal notranslate"><span class="pre">lookat</span></code> and pass <code class="docutils literal notranslate"><span class="pre">entity_idx</span></code> / <code class="docutils literal notranslate"><span class="pre">link_idx_local</span></code> / <code class="docutils literal notranslate"><span class="pre">offset_T</span></code>, see <a class="reference internal" href="examples/attached_camera.html"><span class="doc">Attaching a camera</span></a>. To emulate a physical camera (lens distortion, sensor noise, a different tone mapper) pass a <code class="docutils literal notranslate"><span class="pre">camera_profile</span></code> file instead of <code class="docutils literal notranslate"><span class="pre">fov</span></code>, see <a class="reference internal" href="advanced/camera_profiles.html"><span class="doc">Camera profiles</span></a>.</p>
 </section>
 <section id="add-a-light">
 <h2>4. Add a light<a class="headerlink" href="#add-a-light" title="Link to this heading">#</a></h2>
@@ -504,7 +507,8 @@
 <span class="n">rgb</span> <span class="o">=</span> <span class="n">cam</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">rgb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>  <span class="c1"># (H, W, 3) uint8</span>
 </pre></div>
 </div>
-<p>For video, hand <code class="docutils literal notranslate"><span class="pre">cam.read().rgb[0]</span></code> to <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.start_recording"><code class="docutils literal notranslate"><span class="pre">scene.start_recording(...)</span></code></a>, see <a class="reference external" href="https://github.com/Genesis-Embodied-AI/nyx-for-genesis/blob/main/examples/02_attached_camera.py"><code class="docutils literal notranslate"><span class="pre">examples/02_attached_camera.py</span></code></a>.</p>
+<p>The tensor lives on the torch device paired with the GPU Nyx renders on, a CUDA device on NVIDIA and a ROCm device on AMD (see <a class="reference internal" href="advanced/gpu_backends.html"><span class="doc">GPU backends: CUDA and ROCm</span></a>). It is a view into the renderer’s output and is overwritten by the next render, so <code class="docutils literal notranslate"><span class="pre">.clone()</span></code> or <code class="docutils literal notranslate"><span class="pre">.cpu()</span></code> it to keep a frame.</p>
+<p>For video, hand <code class="docutils literal notranslate"><span class="pre">cam.read().rgb[0]</span></code> to <a class="reference external" href="https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.add_recorder"><code class="docutils literal notranslate"><span class="pre">scene.add_recorder(...)</span></code></a> with a <code class="docutils literal notranslate"><span class="pre">gs.recorders.VideoFile</span></code>, see <a class="reference external" href="https://github.com/Genesis-Embodied-AI/nyx-for-genesis/blob/main/examples/02_attached_camera.py"><code class="docutils literal notranslate"><span class="pre">examples/02_attached_camera.py</span></code></a>.</p>
 </section>
 <section id="where-to-go-next">
 <h2>Where to go next<a class="headerlink" href="#where-to-go-next" title="Link to this heading">#</a></h2>

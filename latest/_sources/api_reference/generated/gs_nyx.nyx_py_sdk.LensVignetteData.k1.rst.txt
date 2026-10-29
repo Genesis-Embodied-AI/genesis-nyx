@@ -1,0 +1,7 @@
+
+k1
+==
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: LensVignetteData.k1

@@ -1,0 +1,7 @@
+
+DeformTriangleIndices
+=====================
+
+.. currentmodule:: gs_nyx.nyx_py_renderer
+
+.. autoattribute:: EBridgeBuffer.DeformTriangleIndices

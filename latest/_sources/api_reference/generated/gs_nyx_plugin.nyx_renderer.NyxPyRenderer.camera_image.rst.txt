@@ -1,0 +1,7 @@
+
+camera\_image
+=============
+
+.. currentmodule:: gs_nyx_plugin.nyx_renderer
+
+.. automethod:: NyxPyRenderer.camera_image

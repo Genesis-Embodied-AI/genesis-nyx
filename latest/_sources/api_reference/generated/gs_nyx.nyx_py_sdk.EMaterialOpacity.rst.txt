@@ -27,6 +27,7 @@ EMaterialOpacity
    
       ~EMaterialOpacity.Opaque
       ~EMaterialOpacity.Transparent
+      ~EMaterialOpacity.Transmissive
    
    
 

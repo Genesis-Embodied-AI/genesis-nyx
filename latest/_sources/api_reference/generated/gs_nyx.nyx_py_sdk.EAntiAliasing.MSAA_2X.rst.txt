@@ -1,0 +1,7 @@
+
+MSAA\_2X
+========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EAntiAliasing.MSAA_2X

@@ -53,16 +53,27 @@ NyxPyRenderer
       :nosignatures:
    
       ~NyxPyRenderer.build
+      ~NyxPyRenderer.camera_image
       ~NyxPyRenderer.destroy
       ~NyxPyRenderer.pick_pixel
       ~NyxPyRenderer.render
+      ~NyxPyRenderer.render_all
       ~NyxPyRenderer.unload_scene
       ~NyxPyRenderer.update
       ~NyxPyRenderer.update_camera_tensor
+      ~NyxPyRenderer.update_camera_tensors_batched
       ~NyxPyRenderer.update_scene
    
    
 
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~NyxPyRenderer.device
    
    
 

@@ -1,7 +1,0 @@
-
-fovY
-====
-
-.. currentmodule:: gs_nyx.nyx_py_sdk
-
-.. autoproperty:: CameraAsset.fovY

@@ -57,6 +57,10 @@ EnvironmentMapAsset
    
       ~EnvironmentMapAsset.layout
       ~EnvironmentMapAsset.multiplier
+      ~EnvironmentMapAsset.parallax
+      ~EnvironmentMapAsset.parallax_box_capture_origin
+      ~EnvironmentMapAsset.parallax_box_extent
+      ~EnvironmentMapAsset.parallax_box_world_position
       ~EnvironmentMapAsset.rotation
       ~EnvironmentMapAsset.texture
       ~EnvironmentMapAsset.tint

@@ -56,18 +56,14 @@ CameraAsset
       :nosignatures:
    
       ~CameraAsset.antiAliasing
-      ~CameraAsset.aperture
+      ~CameraAsset.cameraProfileURI
       ~CameraAsset.denoise
       ~CameraAsset.farPlane
-      ~CameraAsset.focalLength
-      ~CameraAsset.fovY
-      ~CameraAsset.lutURI
       ~CameraAsset.nearPlane
       ~CameraAsset.position
       ~CameraAsset.resolution
       ~CameraAsset.rotation
       ~CameraAsset.spp
-      ~CameraAsset.toneMapper
       ~CameraAsset.uuid
    
    

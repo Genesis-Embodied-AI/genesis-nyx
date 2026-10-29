@@ -1,0 +1,40 @@
+EGPUVendor
+==========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoclass:: EGPUVendor
+   :show-inheritance:
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      ~EGPUVendor.Intel
+      ~EGPUVendor.AMD
+      ~EGPUVendor.Nvidia
+      ~EGPUVendor.Other
+      ~EGPUVendor.Count
+   
+   
+
+
+
+
+
+.. nyx-class-example:: gs_nyx.nyx_py_sdk.EGPUVendor

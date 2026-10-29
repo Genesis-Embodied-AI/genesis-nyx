@@ -32,8 +32,8 @@ nyx\_py\_renderer
       :template: custom-class-template.rst
    
       BridgeStartupParams
-      BridgeUpdateData
       BridgeUpdateDesc
+      EBridgeBuffer
       EDebugView
       ERenderMode
       NyxRenderer

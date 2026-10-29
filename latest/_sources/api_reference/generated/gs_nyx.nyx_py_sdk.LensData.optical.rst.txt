@@ -1,0 +1,7 @@
+
+optical
+=======
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: LensData.optical

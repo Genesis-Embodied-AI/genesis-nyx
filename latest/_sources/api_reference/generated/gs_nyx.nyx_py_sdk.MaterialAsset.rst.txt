@@ -65,6 +65,7 @@ MaterialAsset
       :toctree:
       :nosignatures:
    
+      ~MaterialAsset.absorption
       ~MaterialAsset.albedoColor
       ~MaterialAsset.albedoTexture
       ~MaterialAsset.anisotropy
@@ -74,6 +75,7 @@ MaterialAsset
       ~MaterialAsset.emission
       ~MaterialAsset.emissionTexture
       ~MaterialAsset.features
+      ~MaterialAsset.ior
       ~MaterialAsset.metalness
       ~MaterialAsset.normalMode
       ~MaterialAsset.normalTexture
@@ -81,6 +83,8 @@ MaterialAsset
       ~MaterialAsset.perceptualRoughness
       ~MaterialAsset.sampler
       ~MaterialAsset.sidedness
+      ~MaterialAsset.thickness
+      ~MaterialAsset.transmission
       ~MaterialAsset.uvScale
    
    

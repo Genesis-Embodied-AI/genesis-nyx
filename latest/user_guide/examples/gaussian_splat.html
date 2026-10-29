@@ -42,7 +42,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
-    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/documentation_options.js?v=8618f531"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -58,7 +58,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.9';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -69,7 +69,7 @@
     <link rel="prev" title="Light types" href="light_types.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.1.1" />
+  <meta name="docsearch:version" content="0.1.9" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -366,6 +366,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supported_features.html">Supported features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
@@ -380,6 +381,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../advanced/sensor_lifecycle.html">Sensor lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/gpu_backends.html">GPU backends: CUDA and ROCm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/camera_profiles.html">Camera profiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/lights.html">Lights</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/environment_maps.html">Environment maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/splats.html">Gaussian splats</a></li>
@@ -445,13 +448,13 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="gaussian-splat">
 <h1>Gaussian splat<a class="headerlink" href="#gaussian-splat" title="Link to this heading">#</a></h1>
-<p>A captured Gaussian splat composited into a live Genesis scene, lit by a single directional sun. The cactus is a <code class="docutils literal notranslate"><span class="pre">.ply</span></code> radiance field; the plane it sits on is a stock <code class="docutils literal notranslate"><span class="pre">gs.morphs.Plane</span></code>. Both are rendered in the same Nyx frame.</p>
+<p>A captured Gaussian splat composited into a live Genesis scene under an HDRI environment map. The plant is a <code class="docutils literal notranslate"><span class="pre">.ply</span></code> radiance field; the plane it sits on is a stock <code class="docutils literal notranslate"><span class="pre">gs.morphs.Plane</span></code>. Both are rendered in the same Nyx frame.</p>
 <p><img alt="Rendered output of " src="../../_images/05_gaussian_splat.png" /></p>
 <section id="what-it-shows">
 <h2>What it shows<a class="headerlink" href="#what-it-shows" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Loading a 3D Gaussian Splatting <code class="docutils literal notranslate"><span class="pre">.ply</span></code> file as a <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.LightFieldAsset.html#gs_nyx.nyx_py_sdk.LightFieldAsset" title="gs_nyx.nyx_py_sdk.LightFieldAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightFieldAsset</span></code></a> and attaching it to the camera through <a class="reference internal" href="../../api_reference/generated/gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.light_fields.html#gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.light_fields" title="gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.light_fields"><code class="xref py py-attr docutils literal notranslate"><span class="pre">light_fields</span></code></a>.</p></li>
-<li><p>Mixing the splat with <strong>simulated geometry</strong> (a Genesis <code class="docutils literal notranslate"><span class="pre">Plane</span></code>) lit by a single <strong>directional light</strong>. The plane is shaded by the sun; the cactus’s appearance is whatever the splat baked in at capture time.</p></li>
+<li><p>Mixing the splat with <strong>simulated geometry</strong> (a Genesis <code class="docutils literal notranslate"><span class="pre">Plane</span></code>) lit by an <strong>HDRI environment map</strong>. The plane is shaded by the environment; the plant’s appearance is whatever the splat baked in at capture time.</p></li>
 </ul>
 </section>
 <section id="how-the-splat-is-declared">
@@ -459,13 +462,13 @@
 <p>A splat is a <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.LightFieldAsset.html#gs_nyx.nyx_py_sdk.LightFieldAsset" title="gs_nyx.nyx_py_sdk.LightFieldAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightFieldAsset</span></code></a> with <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.ELightFieldType.html#gs_nyx.nyx_py_sdk.ELightFieldType" title="gs_nyx.nyx_py_sdk.ELightFieldType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ELightFieldType</span></code></a> set to <code class="docutils literal notranslate"><span class="pre">GaussianField</span></code>. Set its <code class="docutils literal notranslate"><span class="pre">uri</span></code> to a <code class="docutils literal notranslate"><span class="pre">.ply</span></code> (Inria-style 3DGS) or <code class="docutils literal notranslate"><span class="pre">.spz</span></code> (compressed) file, then hand it to the camera:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gs_nyx.nyx_py_sdk</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nps</span>
 
-<span class="n">cactus</span>      <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">LightFieldAsset</span><span class="p">()</span>
-<span class="n">cactus</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">ELightFieldType</span><span class="o">.</span><span class="n">GaussianField</span>
-<span class="n">cactus</span><span class="o">.</span><span class="n">uri</span>  <span class="o">=</span> <span class="s2">&quot;examples/assets/cactus.ply&quot;</span>
+<span class="n">plant</span>      <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">LightFieldAsset</span><span class="p">()</span>
+<span class="n">plant</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">ELightFieldType</span><span class="o">.</span><span class="n">GaussianField</span>
+<span class="n">plant</span><span class="o">.</span><span class="n">uri</span>  <span class="o">=</span> <span class="s2">"examples/assets/plant.ply"</span>
 
 <span class="n">cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">add_sensor</span><span class="p">(</span><span class="n">NyxCameraOptions</span><span class="p">(</span>
     <span class="o">...</span><span class="p">,</span>
-    <span class="n">light_fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">cactus</span><span class="p">],</span>
+    <span class="n">light_fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">plant</span><span class="p">],</span>
 <span class="p">))</span>
 </pre></div>
 </div>
@@ -474,12 +477,12 @@
 <li><p><strong>Splats are not Genesis entities.</strong> They never enter the rigid / FEM / MPM solvers, never collide, and have no morph. They live entirely on the renderer side; the only Genesis-facing surface is the <code class="docutils literal notranslate"><span class="pre">light_fields</span></code> field of the camera options.</p></li>
 <li><p><strong>Light fields are scene-wide.</strong> The plugin collects <code class="docutils literal notranslate"><span class="pre">light_fields</span></code> from every Nyx sensor at <code class="docutils literal notranslate"><span class="pre">scene.build()</span></code> and merges them into one shared scene description. Declaring the same splat on two cameras isn’t required — and would duplicate it.</p></li>
 <li><p><strong>Format is auto-detected.</strong> <code class="docutils literal notranslate"><span class="pre">.ply</span></code> for plain 3DGS output, <code class="docutils literal notranslate"><span class="pre">.spz</span></code> for the compressed variant. The extension decides which loader runs; there’s no flag to set.</p></li>
-<li><p><strong>The splat has a transform.</strong> <code class="docutils literal notranslate"><span class="pre">position</span></code>, <code class="docutils literal notranslate"><span class="pre">rotation</span></code> (quaternion), and per-axis <code class="docutils literal notranslate"><span class="pre">scale</span></code> are all on <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.LightFieldAsset.html#gs_nyx.nyx_py_sdk.LightFieldAsset" title="gs_nyx.nyx_py_sdk.LightFieldAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightFieldAsset</span></code></a>. The defaults — origin, identity, unit scale — keep this example simple, but you can move or resize the cactus by setting them before <code class="docutils literal notranslate"><span class="pre">scene.build()</span></code>. See <a class="reference internal" href="../advanced/splats.html"><span class="doc">Gaussian splats</span></a> for the full field list.</p></li>
+<li><p><strong>The splat has a transform.</strong> <code class="docutils literal notranslate"><span class="pre">position</span></code>, <code class="docutils literal notranslate"><span class="pre">rotation</span></code> (quaternion), and per-axis <code class="docutils literal notranslate"><span class="pre">scale</span></code> are all on <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.LightFieldAsset.html#gs_nyx.nyx_py_sdk.LightFieldAsset" title="gs_nyx.nyx_py_sdk.LightFieldAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightFieldAsset</span></code></a>. The example only sets <code class="docutils literal notranslate"><span class="pre">rotation</span></code> (a 90° turn about Z so the capture stands upright in Genesis’ Z-up world); you can move or resize the plant the same way before <code class="docutils literal notranslate"><span class="pre">scene.build()</span></code>. See <a class="reference internal" href="../advanced/splats.html"><span class="doc">Gaussian splats</span></a> for the full field list.</p></li>
 </ul>
 </section>
 <section id="source">
 <h2>Source<a class="headerlink" href="#source" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;Gaussian splat example for the Nyx renderer plugin.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">"""Gaussian splat example for the Nyx renderer plugin.</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="sd">Renders a captured Gaussian splat (``plant.ply``) sitting on a Genesis</span>
 <span class="linenos"> 4</span><span class="sd">``Plane``, lit by the ``green_sanctuary`` HDRI environment map. Demonstrates</span>
@@ -488,7 +491,7 @@
 <span class="linenos"> 7</span>
 <span class="linenos"> 8</span><span class="sd">Usage:</span>
 <span class="linenos"> 9</span><span class="sd">    uv run python examples/05_gaussian_splat.py</span>
-<span class="linenos">10</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="sd">"""</span>
 <span class="linenos">11</span>
 <span class="linenos">12</span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 <span class="linenos">13</span>
@@ -503,9 +506,9 @@
 <span class="linenos">22</span>
 <span class="linenos">23</span>
 <span class="linenos">24</span><span class="n">HERE</span>        <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
-<span class="linenos">25</span><span class="n">PLANT_PLY</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;plant.ply&quot;</span><span class="p">)</span>
-<span class="linenos">26</span><span class="n">ENV_MAP</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;green_sanctuary_4k.hdr&quot;</span><span class="p">)</span>
-<span class="linenos">27</span><span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">&quot;out&quot;</span><span class="p">,</span> <span class="s2">&quot;05_gaussian_splat.png&quot;</span><span class="p">)</span>
+<span class="linenos">25</span><span class="n">PLANT_PLY</span>   <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">"assets"</span><span class="p">,</span> <span class="s2">"plant.ply"</span><span class="p">)</span>
+<span class="linenos">26</span><span class="n">ENV_MAP</span>     <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">"assets"</span><span class="p">,</span> <span class="s2">"green_sanctuary_4k.hdr"</span><span class="p">)</span>
+<span class="linenos">27</span><span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s2">"out"</span><span class="p">,</span> <span class="s2">"05_gaussian_splat.png"</span><span class="p">)</span>
 <span class="linenos">28</span>
 <span class="linenos">29</span>
 <span class="linenos">30</span><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -525,7 +528,7 @@
 <span class="linenos">44</span>    <span class="n">plant</span>          <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">LightFieldAsset</span><span class="p">()</span>
 <span class="linenos">45</span>    <span class="n">plant</span><span class="o">.</span><span class="n">type</span>     <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">ELightFieldType</span><span class="o">.</span><span class="n">GaussianField</span>
 <span class="linenos">46</span>    <span class="n">plant</span><span class="o">.</span><span class="n">uri</span>      <span class="o">=</span> <span class="n">PLANT_PLY</span>
-<span class="linenos">47</span>    <span class="c1"># 90° rotation about Z stands the capture upright in Genesis&#39; Z-up world.</span>
+<span class="linenos">47</span>    <span class="c1"># 90° rotation about Z stands the capture upright in Genesis' Z-up world.</span>
 <span class="linenos">48</span>    <span class="n">plant</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">quaternion</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.70710678</span><span class="p">,</span> <span class="mf">0.70710678</span><span class="p">)</span>
 <span class="linenos">49</span>
 <span class="linenos">50</span>    <span class="c1"># HDRI environment lighting the plane. The splat already has</span>
@@ -552,10 +555,10 @@
 <span class="linenos">71</span>
 <span class="linenos">72</span>    <span class="n">rgb</span> <span class="o">=</span> <span class="n">cam</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">rgb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="linenos">73</span>    <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">OUTPUT_PATH</span><span class="p">)</span>
-<span class="linenos">74</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">74</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Saved </span><span class="si">{</span><span class="n">OUTPUT_PATH</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="linenos">75</span>
 <span class="linenos">76</span>
-<span class="linenos">77</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">77</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 <span class="linenos">78</span>    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -569,7 +572,7 @@
 <h2>See also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="../advanced/splats.html"><span class="doc">Gaussian splats</span></a> — Full reference for <a class="reference internal" href="../../api_reference/generated/gs_nyx.nyx_py_sdk.LightFieldAsset.html#gs_nyx.nyx_py_sdk.LightFieldAsset" title="gs_nyx.nyx_py_sdk.LightFieldAsset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LightFieldAsset</span></code></a>: supported formats, transform fields, tone-mapping guidance.</p></li>
-<li><p><a class="reference internal" href="light_types.html"><span class="doc">Light types</span></a> — Reference for the point / directional / spot light schema used here.</p></li>
+<li><p><a class="reference internal" href="../advanced/environment_maps.html"><span class="doc">Environment maps</span></a> — Reference for the HDRI environment map lighting the plane here.</p></li>
 <li><p><a class="reference internal" href="hello_nyx.html"><span class="doc">Hello, Nyx</span></a> — The simplest Nyx scene, useful as a contrast for what changes once a splat is involved.</p></li>
 </ul>
 </section>

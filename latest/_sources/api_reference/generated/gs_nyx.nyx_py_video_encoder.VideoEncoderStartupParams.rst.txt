@@ -56,11 +56,12 @@ VideoEncoderStartupParams
       :nosignatures:
    
       ~VideoEncoderStartupParams.bitrate
-      ~VideoEncoderStartupParams.cudaDevice
+      ~VideoEncoderStartupParams.deviceData
       ~VideoEncoderStartupParams.frameHeight
       ~VideoEncoderStartupParams.frameRate
       ~VideoEncoderStartupParams.frameWidth
       ~VideoEncoderStartupParams.gopSize
+      ~VideoEncoderStartupParams.pickStrategy
    
    
 

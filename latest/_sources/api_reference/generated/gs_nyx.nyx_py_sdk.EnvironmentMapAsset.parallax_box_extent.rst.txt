@@ -1,0 +1,7 @@
+
+parallax\_box\_extent
+=====================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: EnvironmentMapAsset.parallax_box_extent

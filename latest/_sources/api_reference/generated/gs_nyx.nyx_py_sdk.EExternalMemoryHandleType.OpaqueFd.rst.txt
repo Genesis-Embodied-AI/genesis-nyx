@@ -1,0 +1,7 @@
+
+OpaqueFd
+========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EExternalMemoryHandleType.OpaqueFd

@@ -1,0 +1,7 @@
+
+parallax\_box\_world\_position
+==============================
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoproperty:: EnvironmentMapAsset.parallax_box_world_position

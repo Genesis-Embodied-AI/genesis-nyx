@@ -1,0 +1,1073 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gs_nyx.nyx_external_memory &#8212; Nyx for Genesis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=4b7455de" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=8618f531"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/gs_nyx/nyx_external_memory';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://genesis-embodied-ai.github.io/nyx-for-genesis/_static/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1.9';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1.9" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Nyx for Genesis</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api_reference/index.html">
+    API reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://genesis-world.readthedocs.io/" title="Genesis" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Genesis</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">gs_nyx.nyx_external_memory</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for gs_nyx.nyx_external_memory</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Import the GPU buffers Nyx exports into the compute API behind torch, CUDA or HIP.</span>
+
+<span class="sd">Nyx exports a buffer as an OS handle (``EExternalMemoryHandleType``) with its allocation size and the identity of its</span>
+<span class="sd">GPU (``DeviceIdentity``). :class:`NyxExternalMemoryImporter` pairs the compute device with that GPU, imports the handle</span>
+<span class="sd">through the vendor driver already loaded by torch (``ctypes``, no package dependency) and wraps the mapped</span>
+<span class="sd">pointer as a torch tensor through the CUDA array interface, zero copy.</span>
+
+<span class="sd">Synchronization is on the CPU: call :meth:`NyxExternalMemoryImporter.synchronize` after writing and before Nyx</span>
+<span class="sd">reads; Nyx waits for its own GPU work before returning. Release every imported buffer before Nyx destroys it.</span>
+<span class="sd">"""</span>
+
+<span class="c1"># External imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ctypes</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"NyxExternalMemoryError"</span><span class="p">,</span> <span class="s2">"NyxExternalMemoryImporter"</span><span class="p">,</span> <span class="s2">"NyxImportedBuffer"</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="NyxExternalMemoryError">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxExternalMemoryError.html#gs_nyx.nyx_external_memory.NyxExternalMemoryError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NyxExternalMemoryError</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""A compute API call of the import failed."""</span></div>
+
+
+
+<span class="c1"># Nyx's EExternalMemoryHandleType values (gs_nyx.nyx_py_sdk.EExternalMemoryHandleType), by integer value.</span>
+<span class="n">_NYX_OPAQUE_FD</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">_NYX_OPAQUE_WIN32</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">_NYX_D3D12_HEAP</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Nyx's EDeviceIdentityType values (gs_nyx.nyx_py_sdk.EDeviceIdentityType), by integer value.</span>
+<span class="n">_NYX_IDENTITY_LUID</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">_NYX_IDENTITY_PCI_BUS</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># CUDA and HIP agree on the external memory handle type codes and on the dedicated flag.</span>
+<span class="n">_HANDLE_TYPE_CODES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">_NYX_OPAQUE_FD</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD / hipExternalMemoryHandleTypeOpaqueFd</span>
+    <span class="n">_NYX_OPAQUE_WIN32</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>  <span class="c1"># CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32 / hipExternalMemoryHandleTypeOpaqueWin32</span>
+    <span class="n">_NYX_D3D12_HEAP</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="c1"># CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP / hipExternalMemoryHandleTypeD3D12Heap</span>
+<span class="p">}</span>
+<span class="n">_EXTERNAL_MEMORY_DEDICATED</span> <span class="o">=</span> <span class="mh">0x1</span>
+
+<span class="c1"># numpy-style type strings of the CUDA array interface, per torch dtype</span>
+<span class="n">_TYPESTR</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">:</span> <span class="s2">"&lt;f4"</span><span class="p">,</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">:</span> <span class="s2">"&lt;f2"</span><span class="p">,</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">:</span> <span class="s2">"&lt;f8"</span><span class="p">,</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">:</span> <span class="s2">"&lt;i4"</span><span class="p">,</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">:</span> <span class="s2">"&lt;i8"</span><span class="p">,</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">uint8</span><span class="p">:</span> <span class="s2">"|u1"</span><span class="p">,</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">int8</span><span class="p">:</span> <span class="s2">"|i1"</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_Win32Handle</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"handle"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">),</span> <span class="p">(</span><span class="s2">"name"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">)]</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_HandleDescUnion</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">Union</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">"fd"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"win32"</span><span class="p">,</span> <span class="n">_Win32Handle</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"nvSciBufObject"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">),</span>
+    <span class="p">]</span>
+
+
+<span class="c1"># CUDA_EXTERNAL_MEMORY_HANDLE_DESC and hipExternalMemoryHandleDesc share this layout</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_ExternalMemoryHandleDesc</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">"type"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"handle"</span><span class="p">,</span> <span class="n">_HandleDescUnion</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"size"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ulonglong</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"flags"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"reserved"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span> <span class="o">*</span> <span class="mi">16</span><span class="p">),</span>
+    <span class="p">]</span>
+
+
+<span class="c1"># CUDA_EXTERNAL_MEMORY_BUFFER_DESC and hipExternalMemoryBufferDesc share this layout</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_ExternalMemoryBufferDesc</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">"offset"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ulonglong</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"size"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ulonglong</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"flags"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"reserved"</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span> <span class="o">*</span> <span class="mi">16</span><span class="p">),</span>
+    <span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_parse_pci_bus_id</span><span class="p">(</span><span class="n">bus_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Split a ``domain:bus:device.function`` string, as the compute APIs print it, into its four numbers."""</span>
+    <span class="n">domain</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">device_function</span> <span class="o">=</span> <span class="n">bus_id</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">)</span>
+    <span class="n">device</span><span class="p">,</span> <span class="n">function</span> <span class="o">=</span> <span class="n">device_function</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_close_os_handle</span><span class="p">(</span><span class="n">handle</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">handle_type</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">imported</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Release the exported handle, whether the import succeeded or not."""</span>
+    <span class="k">if</span> <span class="n">handle_type</span> <span class="o">==</span> <span class="n">_NYX_OPAQUE_FD</span><span class="p">:</span>
+        <span class="c1"># A successful import consumes the fd</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">imported</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s2">"win32"</span><span class="p">:</span>
+        <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">CloseHandle</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="n">handle</span><span class="p">))</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_CudaDriver</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""The handful of CUDA driver API entry points the import needs."""</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">"CUDA"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">lib_name</span> <span class="o">=</span> <span class="s2">"nvcuda.dll"</span> <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s2">"win32"</span> <span class="k">else</span> <span class="s2">"libcuda.so.1"</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">ctypes</span><span class="o">.</span><span class="n">WinDLL</span><span class="p">(</span><span class="n">lib_name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s2">"win32"</span>
+                <span class="k">else</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">CDLL</span><span class="p">(</span><span class="n">lib_name</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NyxExternalMemoryError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"CUDA driver library '</span><span class="si">{</span><span class="n">lib_name</span><span class="si">}</span><span class="s2">' not found: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="n">lib</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuInit</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuGetErrorString</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span><span class="p">)]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuDeviceGetCount</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">)]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuDeviceGet</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuDeviceGetLuid</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span><span class="p">,</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">),</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuDeviceGetPCIBusId</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuDevicePrimaryCtxRetain</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">),</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuDevicePrimaryCtxRelease_v2</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuCtxPushCurrent_v2</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuCtxPopCurrent_v2</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">)]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuImportExternalMemory</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">),</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">_ExternalMemoryHandleDesc</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuExternalMemoryGetMappedBuffer</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_ulonglong</span><span class="p">),</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">_ExternalMemoryBufferDesc</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuDestroyExternalMemory</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">cuMemFree_v2</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_ulonglong</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">lib</span><span class="o">.</span><span class="n">cuInit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s2">"cuInit"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">call</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuGetErrorString</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">value</span> <span class="k">else</span> <span class="s2">"unknown"</span>
+            <span class="k">raise</span> <span class="n">NyxExternalMemoryError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">call</span><span class="si">}</span><span class="s2"> failed: </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">device_count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuDeviceGetCount</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">count</span><span class="p">)),</span> <span class="s2">"cuDeviceGetCount"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">count</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">device_luid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""The LUID and node mask of the device, or None where the platform has no LUID."""</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">!=</span> <span class="s2">"win32"</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuDeviceGet</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">index</span><span class="p">),</span> <span class="s2">"cuDeviceGet"</span><span class="p">)</span>
+        <span class="n">luid</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">create_string_buffer</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">node_mask</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuDeviceGetLuid</span><span class="p">(</span><span class="n">luid</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">node_mask</span><span class="p">),</span> <span class="n">device</span><span class="p">),</span>
+            <span class="s2">"cuDeviceGetLuid"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">luid</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span> <span class="n">node_mask</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">device_pci_bus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuDeviceGet</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">index</span><span class="p">),</span> <span class="s2">"cuDeviceGet"</span><span class="p">)</span>
+        <span class="n">bus_id</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">create_string_buffer</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuDeviceGetPCIBusId</span><span class="p">(</span><span class="n">bus_id</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bus_id</span><span class="p">),</span> <span class="n">device</span><span class="p">),</span>
+            <span class="s2">"cuDeviceGetPCIBusId"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">_parse_pci_bus_id</span><span class="p">(</span><span class="n">bus_id</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">retain_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Retain the device's primary context, the one torch runs on."""</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuDeviceGet</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">index</span><span class="p">),</span> <span class="s2">"cuDeviceGet"</span><span class="p">)</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuDevicePrimaryCtxRetain</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">context</span><span class="p">),</span> <span class="n">device</span><span class="p">),</span>
+            <span class="s2">"cuDevicePrimaryCtxRetain"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">context</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">release_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuDeviceGet</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">index</span><span class="p">),</span> <span class="s2">"cuDeviceGet"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuDevicePrimaryCtxRelease_v2</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuCtxPushCurrent_v2</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="n">context</span><span class="p">)),</span> <span class="s2">"cuCtxPushCurrent"</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop_context</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">popped</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuCtxPopCurrent_v2</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">popped</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">import_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">desc</span><span class="p">:</span> <span class="n">_ExternalMemoryHandleDesc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">memory</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuImportExternalMemory</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">memory</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">desc</span><span class="p">)),</span>
+            <span class="s2">"cuImportExternalMemory"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">memory</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">map_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">desc</span><span class="p">:</span> <span class="n">_ExternalMemoryBufferDesc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">ptr</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ulonglong</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuExternalMemoryGetMappedBuffer</span><span class="p">(</span>
+                <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">ptr</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="n">memory</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="s2">"cuExternalMemoryGetMappedBuffer"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">ptr</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">unmap_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuMemFree_v2</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_ulonglong</span><span class="p">(</span><span class="n">ptr</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">destroy_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">cuDestroyExternalMemory</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="n">memory</span><span class="p">))</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_HipRuntime</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""The handful of HIP runtime entry points the import needs."""</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">"HIP"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_previous_devices</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">lib</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">hipGetErrorString</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">hipGetErrorString</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">hipGetDeviceCount</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">)]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">hipGetDevice</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">)]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">hipSetDevice</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">hipImportExternalMemory</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">),</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">_ExternalMemoryHandleDesc</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">hipExternalMemoryGetMappedBuffer</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">),</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">_ExternalMemoryBufferDesc</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">hipDestroyExternalMemory</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">hipFree</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">]</span>
+        <span class="n">lib</span><span class="o">.</span><span class="n">hipDeviceGetPCIBusId</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span><span class="p">,</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">,</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="c1"># The properties entry point is versioned by the struct layout it fills; R0600 is the layout with</span>
+        <span class="c1"># the luid fields right after the name and uuid, which is the one read below.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_properties</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">lib</span><span class="p">,</span> <span class="s2">"hipGetDevicePropertiesR0600"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="n">lib</span><span class="o">.</span><span class="n">hipGetDeviceProperties</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_properties</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_load</span><span class="p">():</span>
+<span class="w">        </span><span class="sd">"""Return the HIP runtime torch already holds, a second runtime instance cannot use its mappings."""</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s2">"win32"</span><span class="p">:</span>
+            <span class="n">kernel32</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span>
+            <span class="n">kernel32</span><span class="o">.</span><span class="n">GetModuleHandleW</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span>
+            <span class="n">kernel32</span><span class="o">.</span><span class="n">GetModuleHandleW</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_wchar_p</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"amdhip64_7.dll"</span><span class="p">,</span> <span class="s2">"amdhip64_6.dll"</span><span class="p">,</span> <span class="s2">"amdhip64.dll"</span><span class="p">):</span>
+                <span class="n">handle</span> <span class="o">=</span> <span class="n">kernel32</span><span class="o">.</span><span class="n">GetModuleHandleW</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">handle</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">WinDLL</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">handle</span><span class="o">=</span><span class="n">handle</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">NyxExternalMemoryError</span><span class="p">(</span>
+                <span class="s2">"No HIP runtime is loaded in the process; is this torch a ROCm build?"</span>
+            <span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"libamdhip64.so.7"</span><span class="p">,</span> <span class="s2">"libamdhip64.so.6"</span><span class="p">,</span> <span class="s2">"libamdhip64.so"</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">CDLL</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">RTLD_NOLOAD</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">RTLD_GLOBAL</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+                <span class="k">continue</span>
+        <span class="k">raise</span> <span class="n">NyxExternalMemoryError</span><span class="p">(</span>
+            <span class="s2">"No HIP runtime is loaded in the process; is this torch a ROCm build?"</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">call</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">hipGetErrorString</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="k">if</span> <span class="n">text</span> <span class="k">else</span> <span class="s2">"unknown"</span>
+            <span class="k">raise</span> <span class="n">NyxExternalMemoryError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">call</span><span class="si">}</span><span class="s2"> failed: </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">device_count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">hipGetDeviceCount</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">count</span><span class="p">)),</span> <span class="s2">"hipGetDeviceCount"</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">count</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+        <span class="c1"># hipDeviceProp_t is a few kilobytes; an oversized buffer absorbs any growth of the struct</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">create_string_buffer</span><span class="p">(</span><span class="mi">8192</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_properties</span><span class="p">(</span><span class="n">props</span><span class="p">,</span> <span class="n">index</span><span class="p">),</span> <span class="s2">"hipGetDeviceProperties"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">props</span><span class="o">.</span><span class="n">raw</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">device_luid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""The LUID and node mask of the device, or None where the platform has no LUID."""</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">!=</span> <span class="s2">"win32"</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="c1"># hipDeviceProp_t: char name[256]; hipUUID uuid (16 bytes); char luid[8]; unsigned int luidDeviceNodeMask; ...</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">props</span><span class="p">[</span><span class="mi">272</span><span class="p">:</span><span class="mi">280</span><span class="p">],</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="mi">280</span><span class="p">:</span><span class="mi">284</span><span class="p">],</span> <span class="s2">"little"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">device_pci_bus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bus_id</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">create_string_buffer</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">hipDeviceGetPCIBusId</span><span class="p">(</span><span class="n">bus_id</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bus_id</span><span class="p">),</span> <span class="n">index</span><span class="p">),</span>
+            <span class="s2">"hipDeviceGetPCIBusId"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">_parse_pci_bus_id</span><span class="p">(</span><span class="n">bus_id</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">retain_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># HIP has no context object; the device is selected per call</span>
+        <span class="k">return</span> <span class="n">index</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">release_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># The current device is thread state torch relies on, pop_context restores it</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">hipGetDevice</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">previous</span><span class="p">)),</span> <span class="s2">"hipGetDevice"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">hipSetDevice</span><span class="p">(</span><span class="n">context</span><span class="p">),</span> <span class="s2">"hipSetDevice"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_previous_devices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">previous</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop_context</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">hipSetDevice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_previous_devices</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">import_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">desc</span><span class="p">:</span> <span class="n">_ExternalMemoryHandleDesc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">memory</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">hipImportExternalMemory</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">memory</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">desc</span><span class="p">)),</span>
+            <span class="s2">"hipImportExternalMemory"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">memory</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">map_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">desc</span><span class="p">:</span> <span class="n">_ExternalMemoryBufferDesc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">ptr</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">hipExternalMemoryGetMappedBuffer</span><span class="p">(</span>
+                <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">ptr</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="n">memory</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="s2">"hipExternalMemoryGetMappedBuffer"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">ptr</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">unmap_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">hipFree</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="n">ptr</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">destroy_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lib</span><span class="o">.</span><span class="n">hipDestroyExternalMemory</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="n">memory</span><span class="p">))</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_DevicePointerArray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Exposes a device pointer through the CUDA array interface so torch can wrap it."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ptr</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">typestr</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cuda_array_interface__</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"shape"</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span>
+            <span class="s2">"typestr"</span><span class="p">:</span> <span class="n">typestr</span><span class="p">,</span>
+            <span class="s2">"data"</span><span class="p">:</span> <span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="s2">"version"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">"strides"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="p">}</span>
+
+
+<div class="viewcode-block" id="NyxImportedBuffer">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxImportedBuffer.html#gs_nyx.nyx_external_memory.NyxImportedBuffer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NyxImportedBuffer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A Nyx buffer mapped into the compute API. Create it through :meth:`NyxExternalMemoryImporter.import_buffer`."""</span>
+
+<div class="viewcode-block" id="NyxImportedBuffer.__init__">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxImportedBuffer.__init__.html#gs_nyx.nyx_external_memory.NyxImportedBuffer.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">importer</span><span class="p">:</span> <span class="s2">"NyxExternalMemoryImporter"</span><span class="p">,</span>
+        <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">device_ptr</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_importer</span> <span class="o">=</span> <span class="n">importer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span> <span class="o">=</span> <span class="n">memory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_ptr</span> <span class="o">=</span> <span class="n">device_ptr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tensors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">torch_device</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_importer</span><span class="o">.</span><span class="n">torch_device</span>
+
+<div class="viewcode-block" id="NyxImportedBuffer.tensor">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxImportedBuffer.tensor.html#gs_nyx.nyx_external_memory.NyxImportedBuffer.tensor">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return a torch tensor of the given shape and dtype aliasing the start of the buffer, zero copy."""</span>
+        <span class="n">numel</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">:</span>
+            <span class="n">numel</span> <span class="o">*=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+        <span class="n">element_size</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">element_size</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">numel</span> <span class="o">*</span> <span class="n">element_size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"NyxImportedBuffer: a </span><span class="si">{</span><span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">dtype</span><span class="si">}</span><span class="s2"> tensor needs </span><span class="si">{</span><span class="n">numel</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">element_size</span><span class="si">}</span><span class="s2"> bytes, the buffer holds </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">."</span>
+            <span class="p">)</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="n">_DevicePointerArray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device_ptr</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">_TYPESTR</span><span class="p">[</span><span class="n">dtype</span><span class="p">])</span>
+        <span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">torch_device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tensors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tensor</span></div>
+
+
+<div class="viewcode-block" id="NyxImportedBuffer.release">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxImportedBuffer.release.html#gs_nyx.nyx_external_memory.NyxImportedBuffer.release">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">release</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Unmap the buffer and drop the import. Every tensor returned by :meth:`tensor` is dangling afterwards."""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tensors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">api</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_importer</span><span class="o">.</span><span class="n">_api</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_importer</span><span class="o">.</span><span class="n">_push</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">api</span><span class="o">.</span><span class="n">unmap_buffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device_ptr</span><span class="p">)</span>
+            <span class="n">api</span><span class="o">.</span><span class="n">destroy_memory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_memory</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_importer</span><span class="o">.</span><span class="n">_pop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_ptr</span> <span class="o">=</span> <span class="mi">0</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="NyxExternalMemoryImporter">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.html#gs_nyx.nyx_external_memory.NyxExternalMemoryImporter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NyxExternalMemoryImporter</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Imports Nyx's exported buffers into the compute API torch was built for, on the GPU Nyx renders on.</span>
+
+<span class="sd">    Build one with :meth:`create` from the ``DeviceIdentity`` and ``EExternalMemoryHandleType`` Nyx reports, import every</span>
+<span class="sd">    exported buffer with :meth:`import_buffer`, release the buffers then :meth:`close` the importer before Nyx</span>
+<span class="sd">    shuts down.</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="NyxExternalMemoryImporter.__init__">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.__init__.html#gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api</span><span class="p">,</span> <span class="n">device_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">handle_type</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_api</span> <span class="o">=</span> <span class="n">api</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_index</span> <span class="o">=</span> <span class="n">device_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">torch_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">,</span> <span class="n">device_index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle_type</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">handle_type</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">,</span> <span class="n">handle_type</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_type_code</span> <span class="o">=</span> <span class="n">_HANDLE_TYPE_CODES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle_type</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">retain_context</span><span class="p">(</span><span class="n">device_index</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NyxExternalMemoryImporter.create">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.create.html#gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.create">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">device_identity</span><span class="p">,</span> <span class="n">handle_type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"NyxExternalMemoryImporter"</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Pick the compute API from the torch build and the compute device matching Nyx's ``DeviceIdentity``.</span>
+
+<span class="sd">        Pairing compares the LUID and node mask or the PCI bus location, whichever Nyx reports. Without a match the</span>
+<span class="sd">        import cannot map the memory, so creation fails.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">NyxExternalMemoryError</span><span class="p">(</span>
+                <span class="s2">"torch has no GPU backend available; the Nyx interop needs a CUDA or ROCm torch build."</span>
+            <span class="p">)</span>
+        <span class="n">api</span> <span class="o">=</span> <span class="n">_HipRuntime</span><span class="p">()</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">hip</span> <span class="k">else</span> <span class="n">_CudaDriver</span><span class="p">()</span>
+
+        <span class="n">handle_type</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">handle_type</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">,</span> <span class="n">handle_type</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">handle_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_HANDLE_TYPE_CODES</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NyxExternalMemoryError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Unsupported exported handle type </span><span class="si">{</span><span class="n">handle_type</span><span class="si">}</span><span class="s2">."</span>
+            <span class="p">)</span>
+
+        <span class="n">device_index</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_pair_device</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">device_identity</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">device_index</span><span class="p">,</span> <span class="n">handle_type</span><span class="p">)</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_pair_device</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">device_identity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">identity_type</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">device_identity</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">,</span> <span class="n">device_identity</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">device_identity</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">device_count</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">identity_type</span> <span class="o">==</span> <span class="n">_NYX_IDENTITY_LUID</span><span class="p">:</span>
+                <span class="n">compute_luid</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">device_luid</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+                <span class="n">node_mask</span> <span class="o">=</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="mi">12</span><span class="p">],</span> <span class="s2">"little"</span><span class="p">)</span>
+                <span class="c1"># A zero node mask is one the API leaves unset</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">compute_luid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                    <span class="ow">and</span> <span class="n">compute_luid</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span>
+                    <span class="ow">and</span> <span class="p">(</span>
+                        <span class="ow">not</span> <span class="n">node_mask</span>
+                        <span class="ow">or</span> <span class="ow">not</span> <span class="n">compute_luid</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                        <span class="ow">or</span> <span class="n">compute_luid</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">node_mask</span>
+                    <span class="p">)</span>
+                <span class="p">):</span>
+                    <span class="k">return</span> <span class="n">index</span>
+            <span class="k">elif</span> <span class="n">identity_type</span> <span class="o">==</span> <span class="n">_NYX_IDENTITY_PCI_BUS</span><span class="p">:</span>
+                <span class="n">location</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+                    <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">offset</span> <span class="p">:</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">4</span><span class="p">],</span> <span class="s2">"little"</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">offset</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">api</span><span class="o">.</span><span class="n">device_pci_bus</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="n">location</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">index</span>
+        <span class="k">raise</span> <span class="n">NyxExternalMemoryError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"NyxExternalMemoryImporter: no </span><span class="si">{</span><span class="n">api</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> device matches the GPU Nyx renders on. "</span>
+            <span class="s2">"Make Nyx pick a GPU torch can see (BridgeStartupParams.pickStrategy)."</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_push</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">push_context</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">pop_context</span><span class="p">()</span>
+
+<div class="viewcode-block" id="NyxExternalMemoryImporter.import_buffer">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.import_buffer.html#gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.import_buffer">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">import_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exported</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NyxImportedBuffer</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Import a buffer exported by Nyx (an object with ``handle``, ``allocationSize`` and ``size``).</span>
+
+<span class="sd">        The import takes the whole dedicated allocation, as the compute APIs require, and maps the bytes Nyx</span>
+<span class="sd">        reads or writes. The OS handle is released either way, the import holds its own reference.</span>
+<span class="sd">        """</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="n">_ExternalMemoryHandleDesc</span><span class="p">()</span>
+        <span class="n">desc</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type_code</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_type</span> <span class="o">==</span> <span class="n">_NYX_OPAQUE_FD</span><span class="p">:</span>
+            <span class="n">desc</span><span class="o">.</span><span class="n">handle</span><span class="o">.</span><span class="n">fd</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">exported</span><span class="o">.</span><span class="n">handle</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">desc</span><span class="o">.</span><span class="n">handle</span><span class="o">.</span><span class="n">win32</span><span class="o">.</span><span class="n">handle</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">exported</span><span class="o">.</span><span class="n">handle</span><span class="p">))</span>
+            <span class="n">desc</span><span class="o">.</span><span class="n">handle</span><span class="o">.</span><span class="n">win32</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">desc</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">exported</span><span class="o">.</span><span class="n">allocationSize</span><span class="p">)</span>
+        <span class="n">desc</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="n">_EXTERNAL_MEMORY_DEDICATED</span>
+
+        <span class="n">buffer_desc</span> <span class="o">=</span> <span class="n">_ExternalMemoryBufferDesc</span><span class="p">()</span>
+        <span class="n">buffer_desc</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">buffer_desc</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">exported</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="n">buffer_desc</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">imported</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_push</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">memory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">import_memory</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span>
+            <span class="n">imported</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">device_ptr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">map_buffer</span><span class="p">(</span><span class="n">memory</span><span class="p">,</span> <span class="n">buffer_desc</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">NyxExternalMemoryError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">destroy_memory</span><span class="p">(</span><span class="n">memory</span><span class="p">)</span>
+                <span class="k">raise</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pop</span><span class="p">()</span>
+            <span class="n">_close_os_handle</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">exported</span><span class="o">.</span><span class="n">handle</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_type</span><span class="p">,</span> <span class="n">imported</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">NyxImportedBuffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">device_ptr</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">exported</span><span class="o">.</span><span class="n">size</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="NyxExternalMemoryImporter.synchronize">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.synchronize.html#gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.synchronize">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">synchronize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Wait for every compute write on the device, so Nyx can read the buffers."""</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">synchronize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">torch_device</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NyxExternalMemoryImporter.close">
+<a class="viewcode-back" href="../../api_reference/generated/gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.close.html#gs_nyx.nyx_external_memory.NyxExternalMemoryImporter.close">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Release the compute context. Release every imported buffer first."""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">release_context</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device_index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Genesis AI.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

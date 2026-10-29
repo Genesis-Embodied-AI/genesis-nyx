@@ -1,0 +1,7 @@
+
+set\_log\_flags
+===============
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autofunction:: set_log_flags

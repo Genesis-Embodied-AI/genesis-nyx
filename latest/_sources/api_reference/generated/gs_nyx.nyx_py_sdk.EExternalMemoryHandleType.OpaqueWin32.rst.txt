@@ -1,0 +1,7 @@
+
+OpaqueWin32
+===========
+
+.. currentmodule:: gs_nyx.nyx_py_sdk
+
+.. autoattribute:: EExternalMemoryHandleType.OpaqueWin32
