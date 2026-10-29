@@ -18,7 +18,7 @@ That sharing is worth a moment because it turns three potential footguns into no
 
 ## What changes when you add parallel environments
 
-[`scene.build(n_envs=N)`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.build) widens every sensor's read shape from `(H, W, 3)` to `(N, H, W, 3)`. The cost is honest: the plugin renders one env at a time internally, so wall-clock time grows linearly with `N`. The benefit is that the simulator does too — one [`scene.step()`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.step) advances every env, and one [`cam.read()`](https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data) returns the whole batch.
+[`scene.build(n_envs=N)`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.build) widens every sensor's read shape from `(H, W, 3)` to `(N, H, W, 3)`. Rendering is batched: the plugin uploads every env's state in one copy and Nyx renders all `N` envs for every camera in a single native call, so the only per-env cost is GPU render time (see {doc}`../advanced/sensor_lifecycle`). The simulator is batched too — one [`scene.step()`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.step) advances every env, and one [`cam.read()`](https://genesis-world.readthedocs.io/en/latest/api_reference/sensor/index.html#reading-sensor-data) returns the whole batch.
 
 Per-env state lives on the **entities**, not the camera. After `build()`, any state setter accepts an `(N, ...)`-shaped argument and writes a different value into each env:
 

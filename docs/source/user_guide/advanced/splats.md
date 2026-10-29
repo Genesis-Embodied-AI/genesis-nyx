@@ -4,7 +4,7 @@ The Nyx plugin renders captured light fields alongside simulated geometry. One f
 
 - **Gaussian splats** — a point-cloud-like representation where each point is a 3D Gaussian with view-dependent colour. Loaded from a `.ply` or `.spz` file.
 
-Both are declared on a Nyx camera sensor via the {py:attr}`~gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.light_fields` field of {py:class}`~gs_nyx_plugin.nyx_camera_options.NyxCameraOptions` and modelled as {py:class}`~gs_nyx.nyx_py_sdk.LightFieldAsset` instances. They render as part of the scene every frame, alongside simulated rigid and deformable geometry.
+Light fields are declared on a Nyx camera sensor via the {py:attr}`~gs_nyx_plugin.nyx_camera_options.NyxCameraOptions.light_fields` field of {py:class}`~gs_nyx_plugin.nyx_camera_options.NyxCameraOptions` and modelled as {py:class}`~gs_nyx.nyx_py_sdk.LightFieldAsset` instances. They render as part of the scene every frame, alongside simulated rigid and deformable geometry.
 
 ## Declaring a light field
 
@@ -22,7 +22,6 @@ cam = scene.add_sensor(NyxCameraOptions(
     res=(256, 256),
     pos=(0, 0, 5),
     light_fields=[splat],
-    tone_mapper=nps.EToneMapper.Off,
 ))
 ```
 
@@ -43,23 +42,39 @@ cam = scene.add_sensor(NyxCameraOptions(
 
 The format is auto-detected from the URI extension. No flag is required to switch between them.
 
-## Common properties
+## Properties
 
 | Property | Type | Description |
 |---|---|---|
 | `type` | {py:class}`~gs_nyx.nyx_py_sdk.ELightFieldType` | `GaussianField`. |
 | `uri` | `str` | Path to the asset file. |
+| `position` | {py:class}`~gs_nyx.nyx_py_sdk.float3` | World-space position. |
+| `rotation` | {py:class}`~gs_nyx.nyx_py_sdk.quaternion` | World-space rotation, `(x, y, z, w)`. |
+| `scale` | {py:class}`~gs_nyx.nyx_py_sdk.float3` | Per-axis scale. |
+| `tint` | {py:class}`~gs_nyx.nyx_py_sdk.float3` | RGB multiplier on the field's radiance. |
 
 ## Tone mapping for Gaussian splats
 
-Gaussian splats are typically authored against a specific exposure and tone curve. To match the original capture, disable the renderer's tone mapper:
+Gaussian splats are typically authored against a specific exposure and tone curve. To match the original capture, disable the renderer's tone mapper. Tone mapping is a property of the camera profile (see {doc}`camera_profiles`), so write a profile with the tone mapper off and reference it from the camera:
 
 ```python
-NyxCameraOptions(
+import math
+import gs_nyx.nyx_py_sdk as nps
+
+profile = nps.CameraProfileAsset()
+profile.set_fov_y(math.radians(30.0))                     # fov now lives in the profile
+profile.colorManagement.toneMapper = nps.EToneMapper.Off
+nps.export_camera_profile_file("linear_profile.json", profile)
+
+cam = scene.add_sensor(NyxCameraOptions(
     ...,
-    tone_mapper=nps.EToneMapper.Off,
-    light_fields=[splat],
-)
+    camera_profile = "linear_profile.json",
+    light_fields   = [splat],
+))
+```
+
+```{note}
+Earlier plugin releases exposed `tone_mapper=nps.EToneMapper.Off` directly on {py:class}`~gs_nyx_plugin.nyx_camera_options.NyxCameraOptions`. That field was removed in `gs-nyx-plugin` 0.1.10; the profile is the only way to select the tone mapper.
 ```
 
 ## Lifecycle and constraints
@@ -76,3 +91,4 @@ Light fields render alongside simulated geometry. A scene can mix simulated rigi
 
 - {doc}`lights` — Direct light sources.
 - {doc}`environment_maps` — HDRI-based environment lighting.
+- {doc}`camera_profiles` — Lens, sensor and tone-mapping settings.

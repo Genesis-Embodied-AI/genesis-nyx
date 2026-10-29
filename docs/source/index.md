@@ -20,7 +20,7 @@ sd_hide_title: true
 :class: sd-mb-3
 ```
 
-Nyx drops in where a Genesis `Camera` would go and produces photoreal, path-traced frames from the same scene state. It renders robots, articulated assets, terrain, cloth, HDRI lighting, and Gaussian-splat light fields, all GPU-resident and ready to feed straight back into a training loop.
+Nyx drops in where a Genesis `Camera` would go and produces photoreal, path-traced frames from the same scene state. It renders robots, articulated assets, terrain, cloth, HDRI lighting, and Gaussian-splat light fields, all GPU-resident and ready to feed straight back into a training loop, on NVIDIA GPUs through CUDA and on AMD GPUs through ROCm.
 :::
 ::::
 
@@ -71,7 +71,7 @@ Mount sensors on any entity/link with an offset transform. Pose updates flow thr
 :link-type: doc
 :class-card: sd-text-center
 
-Render `n_envs > 1` rollouts with per-environment HDRI swaps for cheap domain randomization. RGB stays on the GPU as `(B, H, W, 3) uint8`.
+Render `n_envs > 1` rollouts in one batched GPU pass, with per-environment HDRI swaps for cheap domain randomization. RGB stays on the GPU as `(B, H, W, 3) uint8`.
 :::
 
 :::{grid-item-card} {octicon}`globe;1.2em;sd-mr-1` Gaussian-splat scenes
@@ -86,7 +86,7 @@ Drop captured-real environments straight into a simulated scene as a light field
 
 ## Get started in a minute
 
-Install the wheel from PyPI (see {doc}`user_guide/installation` for the full requirements):
+Install a GPU build of PyTorch for your vendor (CUDA or ROCm), then the wheel from PyPI (see {doc}`user_guide/installation` for the full requirements):
 
 ```bash
 pip install gs-nyx-plugin
@@ -120,11 +120,14 @@ Walk through the full version in {doc}`user_guide/quickstart`, or jump to {doc}`
 
 ## Find your way around
 
-- {doc}`user_guide/installation`: wheel requirements, CUDA driver, version pinning.
+- {doc}`user_guide/installation`: wheel requirements, CUDA / ROCm torch builds, version pinning.
 - {doc}`user_guide/quickstart`: render your first frame from an existing Genesis scene.
 - {doc}`user_guide/concepts`: the renderer lifecycle, scenes, and assets.
 - {doc}`user_guide/supported_features`: what the plugin renders, what it doesn't, and where the rough edges are.
-- {doc}`user_guide/advanced/sensor_lifecycle`: operational details on the render-on-read model, multi-camera constraints, and the lighting model.
+- {doc}`user_guide/advanced/sensor_lifecycle`: operational details on the render-on-read model, batched multi-env rendering, and multi-camera constraints.
+- {doc}`user_guide/advanced/gpu_backends`: how Nyx shares its buffers with a CUDA or ROCm PyTorch and how the GPU is picked.
+- {doc}`user_guide/advanced/camera_profiles`: lens, sensor and tone-mapping settings through camera profile files.
+- {doc}`user_guide/changelog`: what changed in this release, including breaking changes.
 - {doc}`api_reference/index`: the full `gs_nyx` and `gs_nyx_plugin` API.
 
 ```{toctree}

@@ -37,7 +37,7 @@ cam = scene.add_sensor(NyxCameraOptions(
 ))
 ```
 
-To mount the camera on a robot link instead of a static pose, drop `pos`/`lookat` and pass `entity_idx` / `link_idx_local` / `offset_T`, see {doc}`examples/attached_camera`.
+To mount the camera on a robot link instead of a static pose, drop `pos`/`lookat` and pass `entity_idx` / `link_idx_local` / `offset_T`, see {doc}`examples/attached_camera`. To emulate a physical camera (lens distortion, sensor noise, a different tone mapper) pass a `camera_profile` file instead of `fov`, see {doc}`advanced/camera_profiles`.
 
 ## 4. Add a light
 
@@ -67,7 +67,9 @@ scene.step()
 rgb = cam.read().rgb[0].cpu().numpy()  # (H, W, 3) uint8
 ```
 
-For video, hand `cam.read().rgb[0]` to [`scene.start_recording(...)`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.start_recording), see [`examples/02_attached_camera.py`](https://github.com/Genesis-Embodied-AI/nyx-for-genesis/blob/main/examples/02_attached_camera.py).
+The tensor lives on the torch device paired with the GPU Nyx renders on, a CUDA device on NVIDIA and a ROCm device on AMD (see {doc}`advanced/gpu_backends`). It is a view into the renderer's output and is overwritten by the next render, so `.clone()` or `.cpu()` it to keep a frame.
+
+For video, hand `cam.read().rgb[0]` to [`scene.add_recorder(...)`](https://genesis-world.readthedocs.io/en/latest/api_reference/scene/scene.html#genesis.engine.scene.Scene.add_recorder) with a `gs.recorders.VideoFile`, see [`examples/02_attached_camera.py`](https://github.com/Genesis-Embodied-AI/nyx-for-genesis/blob/main/examples/02_attached_camera.py).
 
 ## Where to go next
 

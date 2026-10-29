@@ -13,7 +13,7 @@ shipped by Poly Haven) and is passed to a camera through
     env_map.layout     = nps.EEnvMapLayout.LongLat
     env_map.multiplier = 1.0
     env_map.tint       = nps.float3(1.0, 1.0, 1.0)
-    env_map.rotation   = 0.0  # radians, about the world up axis
+    env_map.rotation   = 0.0  # degrees, about the world up axis
 
     # The asset is then consumed by a NyxCameraOptions instance:
     #

@@ -28,7 +28,8 @@ Genesis's MPM tutorial defaults to `vis_mode="particle"`. Switch it to `"visual"
 |---|---|---|
 | `Box`, `Sphere`, `Cylinder`, `Plane` | ✅ | Native Nyx primitives — no mesh triangulation. |
 | `Mesh` (`.obj`, `.stl`, `.glb`, `.gltf`) | ✅ | `.glb`/`.gltf` keep their embedded materials. |
-| `Mesh` (`.dae` / `.usd*`) | ❌ | Passed through, but Nyx has no Collada or USD importer — load will fail. |
+| `Mesh` (`.dae`) | ❌ | Passed through, but Nyx has no Collada importer — load will fail. |
+| `Mesh` (`.usd*`) | ⚠️ | Not validated. The renderer now ships a USD importer, but the plugin still hands USD morphs over at vgeom level, so embedded USD materials are not preserved. |
 | `URDF` | ✅ | Picking works at link-name granularity. |
 | `MJCF` | ✅ | Visual geometry is transcoded to OBJ at export time. |
 | `Drone` | ✅ | Renders fine; propeller spin shows up only if the rigid solver writes the propeller transforms. |
@@ -47,7 +48,7 @@ The plugin maps `genesis.surfaces.*` to a single Disney-style PBR slot.
 | `Plastic`, `Rough`, `Smooth`, `Default`, `BSDF` | ✅ | Generic PBR. |
 | `Metal` (incl. `Gold`, `Copper`, `Iron`, …) | ✅ | 8 named metals via a color lookup; no spectral complex IOR. |
 | `Emission` | ⚠️ | Emission is set, but the surface's base albedo is forced to black and metalness to 1.0 — emissive geometry reads as self-lit only. |
-| `Glass`, `Water` | ⚠️ | Renders, but transmission, IOR, thickness, subsurface and transparency are dropped. Looks closer to plastic than to glass. |
+| `Glass`, `Water` | ⚠️ | Renders, but transmission, IOR, thickness, subsurface and transparency are dropped. Looks closer to plastic than to glass. The renderer's {py:class}`~gs_nyx.nyx_py_sdk.MaterialAsset` now has `transmission` / `ior` / `thickness` / `absorption` fields; the plugin does not map Genesis surfaces to them yet. |
 | `Collision` | ✅ | Treated as plastic. |
 
 ### PBR properties
@@ -85,7 +86,7 @@ Lighting is configured through {py:class}`~gs_nyx_plugin.nyx_camera_options.NyxC
 | Spot light | ✅ |
 | Ambient light | ❌ |
 | Shadow toggle | ✅ |
-| HDRI environment map | ✅ via `NyxCameraOptions.env_maps`; per-env switching supported for domain randomization |
+| HDRI environment map | ✅ via `NyxCameraOptions.env_maps`; per-env switching supported for domain randomization; optional box parallax correction (see {doc}`advanced/environment_maps`) |
 | Light fields (gaussian splats) | ✅ |
 | Area lights (rectangle / sphere / disc / tube) | ❌ |
 
@@ -96,17 +97,20 @@ Lighting is configured through {py:class}`~gs_nyx_plugin.nyx_camera_options.NyxC
 | Pinhole model | ✅ |
 | Thin-lens / fisheye / orthographic | ❌ |
 | `res`, `pos`, `lookat`, `up`, `fov`, `near`, `far` | ✅ |
-| `spp`, `denoise`, `tone_mapper`, `anti_aliasing` | ✅ |
+| `spp`, `denoise`, `anti_aliasing` | ✅ |
+| Tone mapper (`Off` / `Reinhard` / `Neutral` / `ACES_1_3` / `LUT`) | ✅ through a `camera_profile` file; Reinhard by default. See {doc}`advanced/camera_profiles` |
+| Lens model (focal length, f-stop, distortion, chromatic aberration, vignette) and sensor model (exposure, noise) | ⚠️ through a `camera_profile` file only; `fov` is ignored when a profile is set |
+| `gpu_vendor` (NVIDIA / AMD GPU selection) | ✅ applies to the shared renderer |
 | Render mode ({py:attr}`~gs_nyx.nyx_py_renderer.ERenderMode.Forward` / {py:attr}`~gs_nyx.nyx_py_renderer.ERenderMode.FastPathTracer` / {py:attr}`~gs_nyx.nyx_py_renderer.ERenderMode.RefPathTracer` / {py:attr}`~gs_nyx.nyx_py_renderer.ERenderMode.Debug`) | ✅ — must be the **same across all cameras** in the scene |
 | Attached camera (mount on entity/link with offset) | ✅ — see {doc}`examples/attached_camera` |
 | Runtime pose update | ✅ |
-| `aperture`, `focal_len` | ❌ |
+| Genesis `aperture`, `focal_len` fields | ❌ ignored; use the camera profile's `lens.aperture` / `lens.optical` instead |
 
 ## Sensors / output channels
 
 | Channel | Status |
 |---|---|
-| RGB (`uint8`, `(B, H, W, 3)` on CUDA) | ✅ |
+| RGB (`uint8`, `(B, H, W, 3)` on the renderer's GPU, a CUDA or ROCm torch device) | ✅ |
 | Depth | ❌ |
 | Segmentation | ❌ |
 | Normals / world-position / optical-flow passes | ❌ |
@@ -115,7 +119,16 @@ Non-visual sensors (IMU, contact, force, proximity, temperature grid) are unaffe
 
 ## Multi-environment
 
-Multi-env (`n_envs > 1`) works, but the plugin renders each environment in a Python loop rather than batching across the GPU. Cost grows linearly with `n_envs`. Each environment can show a different HDRI for domain randomization.
+Multi-env (`n_envs > 1`) is batched: the plugin uploads the state of every environment in one copy and Nyx renders every (env, camera) pair in a single native call, with no per-env Python work, synchronization or memcpy. GPU render time still grows with the number of (env, camera) pairs. Each environment can show a different HDRI for domain randomization. Heterogeneous morphs (a different mesh per env) are not supported, see {doc}`examples/multi_camera_multi_env`.
+
+## GPUs
+
+| Vendor | Status |
+|---|---|
+| NVIDIA (CUDA torch build) | ✅ |
+| AMD (ROCm torch build) | ✅ new in `gs-nyx` 0.1.9; see {doc}`advanced/gpu_backends` |
+| Intel / other | ❌ no matching torch compute backend |
+| CPU-only torch | ❌ Nyx has no CPU renderer |
 
 ## Bottom line
 
@@ -123,4 +136,4 @@ You're on the well-trodden path if your scene uses **rigid bodies, articulated r
 
 Expect rough edges if you rely on **refractive glass, fluids/smoke, particle rendering, area lights, depth-of-field, depth or segmentation passes, ambient lighting from Genesis `VisOptions`, or runtime topology changes**.
 
-For the operational details behind these caveats (scene-lifecycle, CUDA requirement, multi-camera constraints), continue to {doc}`advanced/sensor_lifecycle`.
+For the operational details behind these caveats (scene lifecycle, GPU backend requirement, multi-camera constraints), continue to {doc}`advanced/sensor_lifecycle` and {doc}`advanced/gpu_backends`.
